@@ -24,6 +24,8 @@ public class InputManager : MonoBehaviour
         onFoot = inputActions.OnFoot;
 
         onFoot.Jump.performed += ctx => move.Jump();
+        onFoot.Sprint.performed += ctx => move.StartSprint();
+        onFoot.Sprint.canceled += ctx => move.StopSprint();
 
         onFoot.FirstPerson.performed += ctx => firstPerson();
         onFoot.ThirdPerson.performed += ctx => thirdPerson();
