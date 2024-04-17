@@ -13,6 +13,7 @@ namespace Nightmare
         public GameObject grenade;
         public float grenadeSpeed = 200f;
         public float grenadeFireDelay = 0.5f;
+        public Camera cam;
 
         float timer;
         Ray shootRay = new Ray();
@@ -48,6 +49,7 @@ namespace Nightmare
 
             StartPausible();
         }
+
 
         void OnDestroy()
         {
@@ -107,53 +109,46 @@ namespace Nightmare
         }
 
 
-        void Shoot ()
+        void Shoot()
         {
-            // Reset the timer.
             timer = 0f;
 
-            // Play the gun shot audioclip.
-            gunAudio.Play ();
+            gunAudio.Play();
 
-            // Enable the lights.
             gunLight.enabled = true;
-			faceLight.enabled = true;
+            faceLight.enabled = true;
 
-            // Stop the particles from playing if they were, then start the particles.
-            gunParticles.Stop ();
-            gunParticles.Play ();
+            gunParticles.Stop();
+            gunParticles.Play();
 
-            // Enable the line renderer and set it's first position to be the end of the gun.
             gunLine.enabled = true;
-            gunLine.SetPosition (0, transform.position);
+            gunLine.SetPosition(0, transform.position);
 
-            // Set the shootRay so that it starts at the end of the gun and points forward from the barrel.
-            shootRay.origin = transform.position;
-            shootRay.direction = transform.forward;
+            Ray camRay = cam.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
+            RaycastHit hit;
 
-            // Perform the raycast against gameobjects on the shootable layer and if it hits something...
-            if(Physics.Raycast (shootRay, out shootHit, range, shootableMask))
+            if (Physics.Raycast(camRay, out hit, range))
             {
-                // Try and find an EnemyHealth script on the gameobject hit.
-                EnemyHealth enemyHealth = shootHit.collider.GetComponent <EnemyHealth> ();
+                shootRay.origin = transform.position;
+                shootRay.direction = (hit.point - transform.position).normalized;
 
-                // If the EnemyHealth component exist...
-                if(enemyHealth != null)
+                EnemyHealth enemyHealth = hit.collider.GetComponent<EnemyHealth>();
+                if (enemyHealth != null)
                 {
-                    // ... the enemy should take damage.
-                    enemyHealth.TakeDamage (damagePerShot, shootHit.point);
+                    enemyHealth.TakeDamage(damagePerShot, hit.point);
                 }
 
-                // Set the second position of the line renderer to the point the raycast hit.
-                gunLine.SetPosition (1, shootHit.point);
+                gunLine.SetPosition(1, hit.point);
             }
-            // If the raycast didn't hit anything on the shootable layer...
             else
             {
-                // ... set the second position of the line renderer to the fullest extent of the gun's range.
-                gunLine.SetPosition (1, shootRay.origin + shootRay.direction * range);
+                shootRay.origin = transform.position;
+                shootRay.direction = camRay.direction;
+                gunLine.SetPosition(1, shootRay.origin + shootRay.direction * range);
             }
         }
+
+
 
         private void ChangeGunLine(float midPoint)
         {

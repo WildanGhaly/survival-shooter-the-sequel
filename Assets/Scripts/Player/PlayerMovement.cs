@@ -5,8 +5,12 @@ namespace Nightmare
 {
     public class PlayerMovement : PausibleObject
     {
-        public float speed = 6f;            // The speed that the player will move at.
-
+        [SerializeField] private float speed = 6f;            // The speed that the player will move at.
+        private CharacterController controller;
+        [SerializeField] private float jumpHeight = 2f;
+        [SerializeField] private float gravity = -9.8f;
+        private bool isGrounded;
+        private Vector3 playerVelocity;
 
         Vector3 movement;                   // The vector to store the direction of the player's movement.
         Animator anim;                      // Reference to the animator component.
@@ -30,6 +34,16 @@ namespace Nightmare
             StartPausible();
         }
 
+        private void Start()
+        {
+            controller = GetComponent<CharacterController>();
+        }
+
+        private void Update()
+        {
+            isGrounded = controller.isGrounded;
+        }
+
         void OnDestroy()
         {
             StopPausible();
@@ -37,61 +51,45 @@ namespace Nightmare
 
         void FixedUpdate ()
         {
-            if (isPaused)
-                return;
 
-            // Store the input axes.
-            float h = CrossPlatformInputManager.GetAxisRaw("Horizontal");
-            float v = CrossPlatformInputManager.GetAxisRaw("Vertical");
-
-            // Move the player around the scene.
-            Move (h, v);
-
-            // Turn the player to face the mouse cursor.
-            Turning ();
-
-            // Animate the player.
-            Animating (h, v);
         }
 
 
-        void Move (float h, float v)
+        public void ProcessMove (Vector2 input)
         {
-            // Set the movement vector based on the axis input.
-            movement.Set (h, 0f, v);
-            
-            // Normalise the movement vector and make it proportional to the speed per second.
-            movement = movement.normalized * speed * Time.deltaTime;
+            if (isPaused)
+                return;
 
-            // Move the player to it's current position plus the movement.
-            playerRigidbody.MovePosition (transform.position + movement);
+            Vector3 moveDirection = Vector3.zero;
+            moveDirection.x = input.x;
+            moveDirection.z = input.y;
+            controller.Move(transform.TransformDirection(moveDirection) * speed * Time.deltaTime);
+
+            playerVelocity.y += gravity * Time.deltaTime;
+            if (isGrounded && playerVelocity.y < 0)
+            {
+                playerVelocity.y = -2f;
+            }
+            controller.Move(playerVelocity * Time.deltaTime);
+
+            Turning();
+            Animating(input.x, input.y);
+
+        }
+
+        public void Jump()
+        {
+            if (isGrounded)
+            {
+                playerVelocity.y = Mathf.Sqrt(-2f * gravity * jumpHeight);
+            }
         }
 
 
         void Turning ()
         {
 #if !MOBILE_INPUT
-            // Create a ray from the mouse cursor on screen in the direction of the camera.
-            Ray camRay = Camera.main.ScreenPointToRay (Input.mousePosition);
 
-            // Create a RaycastHit variable to store information about what was hit by the ray.
-            RaycastHit floorHit;
-
-            // Perform the raycast and if it hits something on the floor layer...
-            if(Physics.Raycast (camRay, out floorHit, camRayLength, floorMask))
-            {
-                // Create a vector from the player to the point on the floor the raycast from the mouse hit.
-                Vector3 playerToMouse = floorHit.point - transform.position;
-
-                // Ensure the vector is entirely along the floor plane.
-                playerToMouse.y = 0f;
-
-                // Create a quaternion (rotation) based on looking down the vector from the player to the mouse.
-                Quaternion newRotatation = Quaternion.LookRotation (playerToMouse);
-
-                // Set the player's rotation to this new rotation.
-                playerRigidbody.MoveRotation (newRotatation);
-            }
 #else
 
             Vector3 turnDir = new Vector3(CrossPlatformInputManager.GetAxisRaw("Mouse X") , 0f , CrossPlatformInputManager.GetAxisRaw("Mouse Y"));
