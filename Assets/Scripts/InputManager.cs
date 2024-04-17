@@ -7,6 +7,7 @@ public class InputManager : MonoBehaviour
 {
     private PlayerLook look;
     private PlayerMovement move;
+    private PlayerHealth health;
     private PlayerInput inputActions;
     private PlayerInput.OnFootActions onFoot;
     private Camera cam;
@@ -17,6 +18,7 @@ public class InputManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        health = GetComponent<PlayerHealth>();
         look = GetComponent<PlayerLook>();
         cam = look.cam;
         inputActions = new PlayerInput();
@@ -34,13 +36,15 @@ public class InputManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        move.ProcessMove(onFoot.Movement.ReadValue<Vector2>());
+        if (!health.isDead)
+            move.ProcessMove(onFoot.Movement.ReadValue<Vector2>());
     }
 
     // Update is called once per frame
     void LateUpdate()
     {
-        look.ProcessLook(onFoot.Look.ReadValue<Vector2>());
+        if (!health.isDead)
+            look.ProcessLook(onFoot.Look.ReadValue<Vector2>());
     }
 
     private void OnEnable()

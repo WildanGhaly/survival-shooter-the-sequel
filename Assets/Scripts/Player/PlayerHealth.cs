@@ -20,7 +20,10 @@ namespace Nightmare
         AudioSource playerAudio;
         PlayerMovement playerMovement;
         PlayerShooting playerShooting;
-        bool isDead;
+        public bool isDead {
+            get;
+            private set;
+        }
         bool damaged;
 
         void Awake()
