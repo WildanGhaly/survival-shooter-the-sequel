@@ -14,6 +14,10 @@ namespace Nightmare
         public float grenadeSpeed = 200f;
         public float grenadeFireDelay = 0.5f;
         public Camera cam;
+        public GameObject player;
+
+        public bool isFiringBullet { get; private set; }
+        public bool isFiringGranat { get; private set; }
 
         float timer;
         Ray shootRay = new Ray();
@@ -69,14 +73,14 @@ namespace Nightmare
             if (timer >= timeBetweenBullets && Time.timeScale != 0)
             {
                 // If the Fire1 button is being press and it's time to fire...
-                if (Input.GetButton("Fire2") && grenadeStock > 0)
+                if (isFiringGranat && grenadeStock > 0)
                 {
                     // ... shoot a grenade.
                     ShootGrenade();
                 }
 
                 // If the Fire1 button is being press and it's time to fire...
-                else if (Input.GetButton("Fire1"))
+                else if (isFiringBullet)
                 {
                     // ... shoot the gun.
                     Shoot();
@@ -99,6 +103,26 @@ namespace Nightmare
             }
         }
 
+        public void StartFire()
+        {
+            isFiringBullet = true;
+        }
+
+        public void StopFire()
+        {
+            isFiringBullet = false;
+        }
+
+        public void StartThrowGranat()
+        {
+            isFiringGranat = true;
+        }
+
+        public void StopThrowGranat()
+        {
+            isFiringGranat = false;
+        }
+
 
         public void DisableEffects ()
         {
@@ -111,41 +135,74 @@ namespace Nightmare
 
         void Shoot()
         {
-            timer = 0f;
-
-            gunAudio.Play();
-
-            gunLight.enabled = true;
-            faceLight.enabled = true;
-
-            gunParticles.Stop();
-            gunParticles.Play();
-
-            gunLine.enabled = true;
-            gunLine.SetPosition(0, transform.position);
-
-            Ray camRay = cam.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
-            RaycastHit hit;
-
-            if (Physics.Raycast(camRay, out hit, range))
+            if (player.GetComponent<InputManager>().isTopdownPerson)
             {
-                shootRay.origin = transform.position;
-                shootRay.direction = (hit.point - transform.position).normalized;
+                timer = 0f;
+                gunAudio.Play();
+                gunLight.enabled = true;
+                faceLight.enabled = true;
 
-                EnemyHealth enemyHealth = hit.collider.GetComponent<EnemyHealth>();
-                if (enemyHealth != null)
+                gunParticles.Stop();
+                gunParticles.Play();
+
+                gunLine.enabled = true;
+                gunLine.SetPosition(0, transform.position);
+
+                Vector3 shootDirection = transform.forward; 
+                RaycastHit hit;
+                if (Physics.Raycast(transform.position, shootDirection, out hit, range))
                 {
-                    enemyHealth.TakeDamage(damagePerShot, hit.point);
+                    EnemyHealth enemyHealth = hit.collider.GetComponent<EnemyHealth>();
+                    if (enemyHealth != null)
+                    {
+                        enemyHealth.TakeDamage(damagePerShot, hit.point);
+                    }
+                    gunLine.SetPosition(1, hit.point);
                 }
-
-                gunLine.SetPosition(1, hit.point);
+                else
+                {
+                    gunLine.SetPosition(1, transform.position + shootDirection * range);
+                }
             }
             else
             {
-                shootRay.origin = transform.position;
-                shootRay.direction = camRay.direction;
-                gunLine.SetPosition(1, shootRay.origin + shootRay.direction * range);
+                timer = 0f;
+
+                gunAudio.Play();
+
+                gunLight.enabled = true;
+                faceLight.enabled = true;
+
+                gunParticles.Stop();
+                gunParticles.Play();
+
+                gunLine.enabled = true;
+                gunLine.SetPosition(0, transform.position);
+
+                Ray camRay = cam.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
+                RaycastHit hit;
+
+                if (Physics.Raycast(camRay, out hit, range))
+                {
+                    shootRay.origin = transform.position;
+                    shootRay.direction = (hit.point - transform.position).normalized;
+
+                    EnemyHealth enemyHealth = hit.collider.GetComponent<EnemyHealth>();
+                    if (enemyHealth != null)
+                    {
+                        enemyHealth.TakeDamage(damagePerShot, hit.point);
+                    }
+
+                    gunLine.SetPosition(1, hit.point);
+                }
+                else
+                {
+                    shootRay.origin = transform.position;
+                    shootRay.direction = camRay.direction;
+                    gunLine.SetPosition(1, shootRay.origin + shootRay.direction * range);
+                }
             }
+            
         }
 
 

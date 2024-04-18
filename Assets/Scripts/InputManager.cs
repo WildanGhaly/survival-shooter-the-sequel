@@ -9,11 +9,14 @@ public class InputManager : MonoBehaviour
     private PlayerMovement move;
     private PlayerHealth health;
     private PlayerInput inputActions;
-    private PlayerInput.OnFootActions onFoot;
+    public PlayerInput.OnFootActions onFoot;
+    public PlayerShooting playerShooting;
     private Camera cam;
-    bool isFirstPerson = true;
-    bool isThirdPerson;
-    bool isSecondPerson;
+    public bool isFirstPerson = true;
+    public bool isThirdPerson;
+    public bool isTopdownPerson;
+
+    [SerializeField] private GameObject gun;
 
     // Start is called before the first frame update
     void Awake()
@@ -23,6 +26,8 @@ public class InputManager : MonoBehaviour
         cam = look.cam;
         inputActions = new PlayerInput();
         move = GetComponent<PlayerMovement>();
+        
+        
         onFoot = inputActions.OnFoot;
 
         onFoot.Jump.performed += ctx => move.Jump();
@@ -32,6 +37,11 @@ public class InputManager : MonoBehaviour
         onFoot.FirstPerson.performed += ctx => firstPerson();
         onFoot.ThirdPerson.performed += ctx => thirdPerson();
         onFoot.FrontPerson.performed += ctx => frontPerson();
+
+        onFoot.Fire.performed += ctx => gun.GetComponent<PlayerShooting>().StartFire();
+        onFoot.Fire.canceled += ctx => gun.GetComponent<PlayerShooting>().StopFire();
+        onFoot.FireGranat.performed += ctx => gun.GetComponent<PlayerShooting>().StartThrowGranat();
+        onFoot.FireGranat.canceled += ctx => gun.GetComponent<PlayerShooting>().StopThrowGranat();
     }
 
     private void FixedUpdate()
@@ -63,7 +73,7 @@ public class InputManager : MonoBehaviour
         cam.transform.localRotation = Quaternion.Euler(0, 0, 0);
         isFirstPerson = true;
         isThirdPerson = false;
-        isSecondPerson = false;
+        isTopdownPerson = false;
     }
 
     private void thirdPerson()
@@ -72,11 +82,15 @@ public class InputManager : MonoBehaviour
         cam.transform.localRotation = Quaternion.Euler(10, 0, 0);
         isFirstPerson = false;
         isThirdPerson = true;
-        isSecondPerson = false;
+        isTopdownPerson = false;
     }
 
     private void frontPerson()
     {
-        // Useless for now
+        cam.transform.localPosition = new Vector3(0, 5, -5);
+        cam.transform.localRotation = Quaternion.Euler(30, 0, 0);
+        isFirstPerson = false;
+        isThirdPerson = false;
+        isTopdownPerson = true;
     }
 }

@@ -8,17 +8,26 @@ public class PlayerLook : MonoBehaviour
     private float xSensitivity = 30f;
     private float ySensitivity = 30f;
     private float tilt = 0;
+    public GameObject playerModel;
+    private InputManager inputManager;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        inputManager = GetComponent<InputManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (inputManager.isFirstPerson)
+        {
+            playerModel.SetActive(false);
+        } 
+        else
+        {
+            playerModel.SetActive(true);
+        }
     }
 
     public void ProcessLook(Vector2 look)
@@ -26,11 +35,23 @@ public class PlayerLook : MonoBehaviour
         float vertical = look.y * ySensitivity * Time.deltaTime;
         float horizontal = look.x * xSensitivity * Time.deltaTime;
 
-        tilt -= vertical;
-        tilt = Mathf.Clamp(tilt, -80f, 80f);
-
+        if (!inputManager.isTopdownPerson)
+        {
+            tilt -= vertical;
+            if (inputManager.isFirstPerson)
+            {
+                tilt = Mathf.Clamp(tilt, -80f, 80f);
+            }
+            else if (inputManager.isThirdPerson)
+            {
+                tilt = Mathf.Clamp(tilt, -60f, 5f);
+            }
+        }
+        else
+        {
+            tilt = 40f;
+        }
         cam.transform.localRotation = Quaternion.Euler(tilt, 0, 0);
-
         transform.Rotate(Vector3.up * horizontal);
     }
 }
