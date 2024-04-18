@@ -109,6 +109,17 @@
                     "isPartOfComposite": false
                 },
                 {
+                    "name": "",
+                    "id": "a16ce45f-dc22-4e57-a57e-b2c37a606c32",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
                     "name": "WASD",
                     "id": "90685dc7-bb7e-4df6-81df-d6fe87049929",
                     "path": "2DVector",
@@ -165,8 +176,30 @@
                 },
                 {
                     "name": "",
+                    "id": "9d883983-e239-4619-b33d-64cbfbbed99f",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "37a1c9a7-0644-4fd1-988a-5db89f1cdb00",
                     "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "33534402-0044-4759-ac0a-43f9e7f90d6f",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -187,8 +220,30 @@
                 },
                 {
                     "name": "",
+                    "id": "34f98fe9-9963-4fdf-acb8-ba414e7f7a4a",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "a0456b44-38db-4079-8b5d-2feec9a0f69b",
                     "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Sprint",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "407718b5-a55b-4a8e-89f1-d79914d6a3d3",
+                    "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -209,8 +264,30 @@
                 },
                 {
                     "name": "",
+                    "id": "7feb14e4-c14d-4f0a-a347-a171db14d55e",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Crouch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "891c4d22-e0e0-48c5-8f55-9ffeecb5a989",
                     "path": "<Keyboard>/f2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ThirdPerson",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "af7a8e63-fb99-44eb-bf8f-d224dfc5db8d",
+                    "path": "<Gamepad>/dpad/left",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -231,6 +308,17 @@
                 },
                 {
                     "name": "",
+                    "id": "1e846530-1a11-4748-9a13-e88373579687",
+                    "path": "<Gamepad>/dpad/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FirstPerson",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "89b93089-29b7-4c09-ab31-37af51f25e81",
                     "path": "<Keyboard>/f3",
                     "interactions": "",
@@ -242,8 +330,30 @@
                 },
                 {
                     "name": "",
+                    "id": "09cfb036-70e6-4246-bce4-9dc1e4f94233",
+                    "path": "<Gamepad>/dpad/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FrontPerson",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "32a825ab-6741-4700-bce6-697cf657e5cd",
                     "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FireGranat",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6457926a-e795-4f08-9644-d462ded22aed",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
