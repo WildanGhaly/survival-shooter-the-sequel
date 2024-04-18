@@ -568,6 +568,10 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 963194227}
+    - target: {fileID: 11400000, guid: 4e5a0d387dc27394b81600988ad0216f, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1758204021}
     - target: {fileID: 11400004, guid: 4e5a0d387dc27394b81600988ad0216f, type: 3}
       propertyPath: damageImage
       value: 
@@ -627,7 +631,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -1265,7 +1269,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFirstPerson: 1
   isThirdPerson: 0
-  isSecondPerson: 0
+  isTopdownPerson: 0
 --- !u!114 &1758204023
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -13,7 +13,7 @@ public class InputManager : MonoBehaviour
     private Camera cam;
     public bool isFirstPerson = true;
     public bool isThirdPerson;
-    public bool isSecondPerson;
+    public bool isTopdownPerson;
 
     // Start is called before the first frame update
     void Awake()
@@ -63,7 +63,7 @@ public class InputManager : MonoBehaviour
         cam.transform.localRotation = Quaternion.Euler(0, 0, 0);
         isFirstPerson = true;
         isThirdPerson = false;
-        isSecondPerson = false;
+        isTopdownPerson = false;
     }
 
     private void thirdPerson()
@@ -72,11 +72,15 @@ public class InputManager : MonoBehaviour
         cam.transform.localRotation = Quaternion.Euler(10, 0, 0);
         isFirstPerson = false;
         isThirdPerson = true;
-        isSecondPerson = false;
+        isTopdownPerson = false;
     }
 
     private void frontPerson()
     {
-        // Useless for now
+        cam.transform.localPosition = new Vector3(0, 5, -5);
+        cam.transform.localRotation = Quaternion.Euler(30, 0, 0);
+        isFirstPerson = false;
+        isThirdPerson = false;
+        isTopdownPerson = true;
     }
 }

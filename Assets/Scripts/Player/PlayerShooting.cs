@@ -14,6 +14,7 @@ namespace Nightmare
         public float grenadeSpeed = 200f;
         public float grenadeFireDelay = 0.5f;
         public Camera cam;
+        public GameObject player;
 
         float timer;
         Ray shootRay = new Ray();
@@ -111,41 +112,74 @@ namespace Nightmare
 
         void Shoot()
         {
-            timer = 0f;
-
-            gunAudio.Play();
-
-            gunLight.enabled = true;
-            faceLight.enabled = true;
-
-            gunParticles.Stop();
-            gunParticles.Play();
-
-            gunLine.enabled = true;
-            gunLine.SetPosition(0, transform.position);
-
-            Ray camRay = cam.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
-            RaycastHit hit;
-
-            if (Physics.Raycast(camRay, out hit, range))
+            if (player.GetComponent<InputManager>().isTopdownPerson)
             {
-                shootRay.origin = transform.position;
-                shootRay.direction = (hit.point - transform.position).normalized;
+                timer = 0f;
+                gunAudio.Play();
+                gunLight.enabled = true;
+                faceLight.enabled = true;
 
-                EnemyHealth enemyHealth = hit.collider.GetComponent<EnemyHealth>();
-                if (enemyHealth != null)
+                gunParticles.Stop();
+                gunParticles.Play();
+
+                gunLine.enabled = true;
+                gunLine.SetPosition(0, transform.position);
+
+                Vector3 shootDirection = transform.forward; 
+                RaycastHit hit;
+                if (Physics.Raycast(transform.position, shootDirection, out hit, range))
                 {
-                    enemyHealth.TakeDamage(damagePerShot, hit.point);
+                    EnemyHealth enemyHealth = hit.collider.GetComponent<EnemyHealth>();
+                    if (enemyHealth != null)
+                    {
+                        enemyHealth.TakeDamage(damagePerShot, hit.point);
+                    }
+                    gunLine.SetPosition(1, hit.point);
                 }
-
-                gunLine.SetPosition(1, hit.point);
+                else
+                {
+                    gunLine.SetPosition(1, transform.position + shootDirection * range);
+                }
             }
             else
             {
-                shootRay.origin = transform.position;
-                shootRay.direction = camRay.direction;
-                gunLine.SetPosition(1, shootRay.origin + shootRay.direction * range);
+                timer = 0f;
+
+                gunAudio.Play();
+
+                gunLight.enabled = true;
+                faceLight.enabled = true;
+
+                gunParticles.Stop();
+                gunParticles.Play();
+
+                gunLine.enabled = true;
+                gunLine.SetPosition(0, transform.position);
+
+                Ray camRay = cam.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
+                RaycastHit hit;
+
+                if (Physics.Raycast(camRay, out hit, range))
+                {
+                    shootRay.origin = transform.position;
+                    shootRay.direction = (hit.point - transform.position).normalized;
+
+                    EnemyHealth enemyHealth = hit.collider.GetComponent<EnemyHealth>();
+                    if (enemyHealth != null)
+                    {
+                        enemyHealth.TakeDamage(damagePerShot, hit.point);
+                    }
+
+                    gunLine.SetPosition(1, hit.point);
+                }
+                else
+                {
+                    shootRay.origin = transform.position;
+                    shootRay.direction = camRay.direction;
+                    gunLine.SetPosition(1, shootRay.origin + shootRay.direction * range);
+                }
             }
+            
         }
 
 
