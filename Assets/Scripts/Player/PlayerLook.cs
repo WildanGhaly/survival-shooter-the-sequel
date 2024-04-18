@@ -36,7 +36,14 @@ public class PlayerLook : MonoBehaviour
         float horizontal = look.x * xSensitivity * Time.deltaTime;
 
         tilt -= vertical;
-        tilt = Mathf.Clamp(tilt, -80f, 80f);
+        if (inputManager.isFirstPerson)
+        {
+            tilt = Mathf.Clamp(tilt, -80f, 80f);
+        }
+        else if (inputManager.isThirdPerson)
+        {
+            tilt = Mathf.Clamp(tilt, -60f, 5f);
+        }
 
         cam.transform.localRotation = Quaternion.Euler(tilt, 0, 0);
 
