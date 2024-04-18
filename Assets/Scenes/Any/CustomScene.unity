@@ -347,6 +347,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5171f72421770240bd7c3989fe351e3, type: 3}
+--- !u!1 &278147390 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100004, guid: 4e5a0d387dc27394b81600988ad0216f, type: 3}
+  m_PrefabInstance: {fileID: 466829025}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &334656438
 GameObject:
   m_ObjectHideFlags: 0
@@ -1267,9 +1272,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da177af446c26a64a8c19f2dd7680dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerShooting: {fileID: 0}
   isFirstPerson: 1
   isThirdPerson: 0
   isTopdownPerson: 0
+  gun: {fileID: 278147390}
 --- !u!114 &1758204023
 MonoBehaviour:
   m_ObjectHideFlags: 0

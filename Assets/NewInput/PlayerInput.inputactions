@@ -51,7 +51,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "New action",
+                    "name": "Crouch",
                     "type": "Button",
                     "id": "8920825f-d5e4-4647-86e8-abbbe6214955",
                     "expectedControlType": "Button",
@@ -81,6 +81,15 @@
                     "name": "FrontPerson",
                     "type": "Button",
                     "id": "53a70f8f-b5fc-48ac-97a4-7c67dd4522be",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "FireGranat",
+                    "type": "Button",
+                    "id": "800c0fa6-ae96-4704-91f6-5f91ebe6afd6",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -194,7 +203,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
+                    "action": "Crouch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -228,6 +237,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "FrontPerson",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "32a825ab-6741-4700-bce6-697cf657e5cd",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FireGranat",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

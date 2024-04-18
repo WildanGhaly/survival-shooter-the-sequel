@@ -73,7 +73,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""New action"",
+                    ""name"": ""Crouch"",
                     ""type"": ""Button"",
                     ""id"": ""8920825f-d5e4-4647-86e8-abbbe6214955"",
                     ""expectedControlType"": ""Button"",
@@ -103,6 +103,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""name"": ""FrontPerson"",
                     ""type"": ""Button"",
                     ""id"": ""53a70f8f-b5fc-48ac-97a4-7c67dd4522be"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""FireGranat"",
+                    ""type"": ""Button"",
+                    ""id"": ""800c0fa6-ae96-4704-91f6-5f91ebe6afd6"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -216,7 +225,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""New action"",
+                    ""action"": ""Crouch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -250,6 +259,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""FrontPerson"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""32a825ab-6741-4700-bce6-697cf657e5cd"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""FireGranat"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -781,10 +801,11 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_OnFoot_Jump = m_OnFoot.FindAction("Jump", throwIfNotFound: true);
         m_OnFoot_Fire = m_OnFoot.FindAction("Fire", throwIfNotFound: true);
         m_OnFoot_Sprint = m_OnFoot.FindAction("Sprint", throwIfNotFound: true);
-        m_OnFoot_Newaction = m_OnFoot.FindAction("New action", throwIfNotFound: true);
+        m_OnFoot_Crouch = m_OnFoot.FindAction("Crouch", throwIfNotFound: true);
         m_OnFoot_ThirdPerson = m_OnFoot.FindAction("ThirdPerson", throwIfNotFound: true);
         m_OnFoot_FirstPerson = m_OnFoot.FindAction("FirstPerson", throwIfNotFound: true);
         m_OnFoot_FrontPerson = m_OnFoot.FindAction("FrontPerson", throwIfNotFound: true);
+        m_OnFoot_FireGranat = m_OnFoot.FindAction("FireGranat", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -863,10 +884,11 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_OnFoot_Jump;
     private readonly InputAction m_OnFoot_Fire;
     private readonly InputAction m_OnFoot_Sprint;
-    private readonly InputAction m_OnFoot_Newaction;
+    private readonly InputAction m_OnFoot_Crouch;
     private readonly InputAction m_OnFoot_ThirdPerson;
     private readonly InputAction m_OnFoot_FirstPerson;
     private readonly InputAction m_OnFoot_FrontPerson;
+    private readonly InputAction m_OnFoot_FireGranat;
     public struct OnFootActions
     {
         private @PlayerInput m_Wrapper;
@@ -876,10 +898,11 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_OnFoot_Jump;
         public InputAction @Fire => m_Wrapper.m_OnFoot_Fire;
         public InputAction @Sprint => m_Wrapper.m_OnFoot_Sprint;
-        public InputAction @Newaction => m_Wrapper.m_OnFoot_Newaction;
+        public InputAction @Crouch => m_Wrapper.m_OnFoot_Crouch;
         public InputAction @ThirdPerson => m_Wrapper.m_OnFoot_ThirdPerson;
         public InputAction @FirstPerson => m_Wrapper.m_OnFoot_FirstPerson;
         public InputAction @FrontPerson => m_Wrapper.m_OnFoot_FrontPerson;
+        public InputAction @FireGranat => m_Wrapper.m_OnFoot_FireGranat;
         public InputActionMap Get() { return m_Wrapper.m_OnFoot; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -904,9 +927,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Sprint.started += instance.OnSprint;
             @Sprint.performed += instance.OnSprint;
             @Sprint.canceled += instance.OnSprint;
-            @Newaction.started += instance.OnNewaction;
-            @Newaction.performed += instance.OnNewaction;
-            @Newaction.canceled += instance.OnNewaction;
+            @Crouch.started += instance.OnCrouch;
+            @Crouch.performed += instance.OnCrouch;
+            @Crouch.canceled += instance.OnCrouch;
             @ThirdPerson.started += instance.OnThirdPerson;
             @ThirdPerson.performed += instance.OnThirdPerson;
             @ThirdPerson.canceled += instance.OnThirdPerson;
@@ -916,6 +939,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @FrontPerson.started += instance.OnFrontPerson;
             @FrontPerson.performed += instance.OnFrontPerson;
             @FrontPerson.canceled += instance.OnFrontPerson;
+            @FireGranat.started += instance.OnFireGranat;
+            @FireGranat.performed += instance.OnFireGranat;
+            @FireGranat.canceled += instance.OnFireGranat;
         }
 
         private void UnregisterCallbacks(IOnFootActions instance)
@@ -935,9 +961,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Sprint.started -= instance.OnSprint;
             @Sprint.performed -= instance.OnSprint;
             @Sprint.canceled -= instance.OnSprint;
-            @Newaction.started -= instance.OnNewaction;
-            @Newaction.performed -= instance.OnNewaction;
-            @Newaction.canceled -= instance.OnNewaction;
+            @Crouch.started -= instance.OnCrouch;
+            @Crouch.performed -= instance.OnCrouch;
+            @Crouch.canceled -= instance.OnCrouch;
             @ThirdPerson.started -= instance.OnThirdPerson;
             @ThirdPerson.performed -= instance.OnThirdPerson;
             @ThirdPerson.canceled -= instance.OnThirdPerson;
@@ -947,6 +973,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @FrontPerson.started -= instance.OnFrontPerson;
             @FrontPerson.performed -= instance.OnFrontPerson;
             @FrontPerson.canceled -= instance.OnFrontPerson;
+            @FireGranat.started -= instance.OnFireGranat;
+            @FireGranat.performed -= instance.OnFireGranat;
+            @FireGranat.canceled -= instance.OnFireGranat;
         }
 
         public void RemoveCallbacks(IOnFootActions instance)
@@ -1089,10 +1118,11 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
-        void OnNewaction(InputAction.CallbackContext context);
+        void OnCrouch(InputAction.CallbackContext context);
         void OnThirdPerson(InputAction.CallbackContext context);
         void OnFirstPerson(InputAction.CallbackContext context);
         void OnFrontPerson(InputAction.CallbackContext context);
+        void OnFireGranat(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

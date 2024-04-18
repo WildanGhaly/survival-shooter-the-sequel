@@ -16,6 +16,9 @@ namespace Nightmare
         public Camera cam;
         public GameObject player;
 
+        public bool isFiringBullet { get; private set; }
+        public bool isFiringGranat { get; private set; }
+
         float timer;
         Ray shootRay = new Ray();
         RaycastHit shootHit;
@@ -70,14 +73,14 @@ namespace Nightmare
             if (timer >= timeBetweenBullets && Time.timeScale != 0)
             {
                 // If the Fire1 button is being press and it's time to fire...
-                if (Input.GetButton("Fire2") && grenadeStock > 0)
+                if (isFiringGranat && grenadeStock > 0)
                 {
                     // ... shoot a grenade.
                     ShootGrenade();
                 }
 
                 // If the Fire1 button is being press and it's time to fire...
-                else if (Input.GetButton("Fire1"))
+                else if (isFiringBullet)
                 {
                     // ... shoot the gun.
                     Shoot();
@@ -98,6 +101,26 @@ namespace Nightmare
                 // ... disable the effects.
                 DisableEffects ();
             }
+        }
+
+        public void StartFire()
+        {
+            isFiringBullet = true;
+        }
+
+        public void StopFire()
+        {
+            isFiringBullet = false;
+        }
+
+        public void StartThrowGranat()
+        {
+            isFiringGranat = true;
+        }
+
+        public void StopThrowGranat()
+        {
+            isFiringGranat = false;
         }
 
 
