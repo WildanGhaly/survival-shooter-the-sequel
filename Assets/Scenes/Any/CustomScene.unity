@@ -2210,6 +2210,7 @@ MonoBehaviour:
   isFirstPerson: 1
   isThirdPerson: 0
   isTopdownPerson: 0
+  mobileButton: {fileID: 1265370761}
   gun: {fileID: 278147390}
 --- !u!114 &1758204023
 MonoBehaviour:

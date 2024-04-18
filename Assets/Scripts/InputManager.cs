@@ -16,11 +16,19 @@ public class InputManager : MonoBehaviour
     public bool isThirdPerson;
     public bool isTopdownPerson;
 
+    [SerializeField] private GameObject mobileButton;
     [SerializeField] private GameObject gun;
 
     // Start is called before the first frame update
     void Awake()
     {
+        // TODO: ni masi gagal di android
+#if UNITY_IOS || UNITY_ANDROID
+        mobileButton.SetActive(true);
+#else
+        mobileButton.SetActive(false);
+#endif
+
         health = GetComponent<PlayerHealth>();
         look = GetComponent<PlayerLook>();
         cam = look.cam;
