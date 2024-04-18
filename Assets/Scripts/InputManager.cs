@@ -11,9 +11,9 @@ public class InputManager : MonoBehaviour
     private PlayerInput inputActions;
     private PlayerInput.OnFootActions onFoot;
     private Camera cam;
-    bool isFirstPerson = true;
-    bool isThirdPerson;
-    bool isSecondPerson;
+    public bool isFirstPerson = true;
+    public bool isThirdPerson;
+    public bool isSecondPerson;
 
     // Start is called before the first frame update
     void Awake()

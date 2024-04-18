@@ -8,17 +8,26 @@ public class PlayerLook : MonoBehaviour
     private float xSensitivity = 30f;
     private float ySensitivity = 30f;
     private float tilt = 0;
+    public GameObject playerModel;
+    private InputManager inputManager;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        inputManager = GetComponent<InputManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (inputManager.isFirstPerson)
+        {
+            playerModel.SetActive(false);
+        } 
+        else
+        {
+            playerModel.SetActive(true);
+        }
     }
 
     public void ProcessLook(Vector2 look)
