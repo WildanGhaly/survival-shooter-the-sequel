@@ -905,8 +905,8 @@ PlayerSettings:
   apiCompatibilityLevelPerPlatform: {}
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: Test Asset 6
-  metroPackageVersion: 
+  metroPackageName: TestAsset6
+  metroPackageVersion: 1.0.0.0
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
@@ -914,7 +914,7 @@ PlayerSettings:
   metroCertificateNotAfter: 0000000000000000
   metroApplicationDescription: Test Asset 6
   wsaImages: {}
-  metroTileShortName: 
+  metroTileShortName: Test Asset 6
   metroTileShowName: 0
   metroMediumTileShowName: 0
   metroLargeTileShowName: 0

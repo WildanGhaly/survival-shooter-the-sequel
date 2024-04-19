@@ -44,7 +44,7 @@ public class PlayerLook : MonoBehaviour
             }
             else if (inputManager.isThirdPerson)
             {
-                tilt = Mathf.Clamp(tilt, -60f, 5f);
+                tilt = Mathf.Clamp(tilt, 10f, 40f);
             }
         }
         else

@@ -18,6 +18,7 @@ public class InputManager : MonoBehaviour
 
     [SerializeField] private GameObject mobileButton;
     [SerializeField] private GameObject gun;
+    [SerializeField] private GameObject crosshair;
 
     // Start is called before the first frame update
     void Awake()
@@ -77,20 +78,22 @@ public class InputManager : MonoBehaviour
 
     private void firstPerson()
     {
-        cam.transform.localPosition = new Vector3(0.38f, 0.8f, 0);
+        cam.transform.localPosition = new Vector3(0f, 0.8f, 0);
         cam.transform.localRotation = Quaternion.Euler(0, 0, 0);
         isFirstPerson = true;
         isThirdPerson = false;
         isTopdownPerson = false;
+        crosshair.SetActive(true);
     }
 
     private void thirdPerson()
     {
-        cam.transform.localPosition = new Vector3(0, 2, -5);
-        cam.transform.localRotation = Quaternion.Euler(10, 0, 0);
+        cam.transform.localPosition = new Vector3(0, 5, -5);
+        cam.transform.localRotation = Quaternion.Euler(30, 0, 0);
         isFirstPerson = false;
         isThirdPerson = true;
         isTopdownPerson = false;
+        crosshair.SetActive(true);
     }
 
     private void frontPerson()
@@ -100,5 +103,6 @@ public class InputManager : MonoBehaviour
         isFirstPerson = false;
         isThirdPerson = false;
         isTopdownPerson = true;
+        crosshair.SetActive(false);
     }
 }
