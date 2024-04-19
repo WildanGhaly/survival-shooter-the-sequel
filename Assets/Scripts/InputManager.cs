@@ -104,5 +104,9 @@ public class InputManager : MonoBehaviour
         isThirdPerson = false;
         isTopDown = true;
         crosshair.SetActive(false);
+        // TODO: Rebind mouse control on different modes
+        // if topDown, rebind input mouse to "Position (Mouse)"
+        // else, rebind input mouse to "Delta (Mouse)"
+        // thus also rehandle ProcessLook
     }
 }
