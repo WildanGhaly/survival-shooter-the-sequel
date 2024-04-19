@@ -116,6 +116,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""1ea6ee3b-f948-4b1c-a0f8-89c2a36a90fb"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -380,6 +389,28 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""FireGranat"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""82406559-bbbf-4f18-ac8b-cfcdb922e974"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b00897b3-bfcb-47f4-a402-84bf4985ec19"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -916,6 +947,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_OnFoot_FirstPerson = m_OnFoot.FindAction("FirstPerson", throwIfNotFound: true);
         m_OnFoot_FrontPerson = m_OnFoot.FindAction("FrontPerson", throwIfNotFound: true);
         m_OnFoot_FireGranat = m_OnFoot.FindAction("FireGranat", throwIfNotFound: true);
+        m_OnFoot_Interact = m_OnFoot.FindAction("Interact", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -999,6 +1031,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_OnFoot_FirstPerson;
     private readonly InputAction m_OnFoot_FrontPerson;
     private readonly InputAction m_OnFoot_FireGranat;
+    private readonly InputAction m_OnFoot_Interact;
     public struct OnFootActions
     {
         private @PlayerInput m_Wrapper;
@@ -1013,6 +1046,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @FirstPerson => m_Wrapper.m_OnFoot_FirstPerson;
         public InputAction @FrontPerson => m_Wrapper.m_OnFoot_FrontPerson;
         public InputAction @FireGranat => m_Wrapper.m_OnFoot_FireGranat;
+        public InputAction @Interact => m_Wrapper.m_OnFoot_Interact;
         public InputActionMap Get() { return m_Wrapper.m_OnFoot; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1052,6 +1086,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @FireGranat.started += instance.OnFireGranat;
             @FireGranat.performed += instance.OnFireGranat;
             @FireGranat.canceled += instance.OnFireGranat;
+            @Interact.started += instance.OnInteract;
+            @Interact.performed += instance.OnInteract;
+            @Interact.canceled += instance.OnInteract;
         }
 
         private void UnregisterCallbacks(IOnFootActions instance)
@@ -1086,6 +1123,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @FireGranat.started -= instance.OnFireGranat;
             @FireGranat.performed -= instance.OnFireGranat;
             @FireGranat.canceled -= instance.OnFireGranat;
+            @Interact.started -= instance.OnInteract;
+            @Interact.performed -= instance.OnInteract;
+            @Interact.canceled -= instance.OnInteract;
         }
 
         public void RemoveCallbacks(IOnFootActions instance)
@@ -1233,6 +1273,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnFirstPerson(InputAction.CallbackContext context);
         void OnFrontPerson(InputAction.CallbackContext context);
         void OnFireGranat(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
