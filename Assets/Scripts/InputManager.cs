@@ -77,7 +77,7 @@ public class InputManager : MonoBehaviour
 
     private void firstPerson()
     {
-        cam.transform.localPosition = new Vector3(0.38f, 0.8f, 0);
+        cam.transform.localPosition = new Vector3(0f, 0.8f, 0);
         cam.transform.localRotation = Quaternion.Euler(0, 0, 0);
         isFirstPerson = true;
         isThirdPerson = false;
