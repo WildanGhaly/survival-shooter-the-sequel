@@ -35,7 +35,7 @@ public class PlayerLook : MonoBehaviour
         float vertical = look.y * ySensitivity * Time.deltaTime;
         float horizontal = look.x * xSensitivity * Time.deltaTime;
 
-        if (!inputManager.isTopdownPerson)
+        if (!inputManager.isTopDown)
         {
             tilt -= vertical;
             if (inputManager.isFirstPerson)

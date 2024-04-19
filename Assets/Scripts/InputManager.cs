@@ -14,7 +14,7 @@ public class InputManager : MonoBehaviour
     private Camera cam;
     public bool isFirstPerson = true;
     public bool isThirdPerson;
-    public bool isTopdownPerson;
+    public bool isTopDown;
 
     [SerializeField] private GameObject mobileButton;
     [SerializeField] private GameObject gun;
@@ -45,7 +45,7 @@ public class InputManager : MonoBehaviour
 
         onFoot.FirstPerson.performed += ctx => firstPerson();
         onFoot.ThirdPerson.performed += ctx => thirdPerson();
-        onFoot.FrontPerson.performed += ctx => frontPerson();
+        onFoot.IsometricTopDown.performed += ctx => topDown();
 
         onFoot.Fire.performed += ctx => gun.GetComponent<PlayerShooting>().StartFire();
         onFoot.Fire.canceled += ctx => gun.GetComponent<PlayerShooting>().StopFire();
@@ -82,7 +82,7 @@ public class InputManager : MonoBehaviour
         cam.transform.localRotation = Quaternion.Euler(0, 0, 0);
         isFirstPerson = true;
         isThirdPerson = false;
-        isTopdownPerson = false;
+        isTopDown = false;
         crosshair.SetActive(true);
     }
 
@@ -92,17 +92,17 @@ public class InputManager : MonoBehaviour
         cam.transform.localRotation = Quaternion.Euler(30, 0, 0);
         isFirstPerson = false;
         isThirdPerson = true;
-        isTopdownPerson = false;
+        isTopDown = false;
         crosshair.SetActive(true);
     }
 
-    private void frontPerson()
+    private void topDown()
     {
         cam.transform.localPosition = new Vector3(0, 5, -5);
         cam.transform.localRotation = Quaternion.Euler(30, 0, 0);
         isFirstPerson = false;
         isThirdPerson = false;
-        isTopdownPerson = true;
+        isTopDown = true;
         crosshair.SetActive(false);
     }
 }

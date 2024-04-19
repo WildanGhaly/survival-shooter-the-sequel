@@ -100,7 +100,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""FrontPerson"",
+                    ""name"": ""IsometricTopDown"",
                     ""type"": ""Button"",
                     ""id"": ""53a70f8f-b5fc-48ac-97a4-7c67dd4522be"",
                     ""expectedControlType"": ""Button"",
@@ -355,7 +355,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""FrontPerson"",
+                    ""action"": ""IsometricTopDown"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -366,7 +366,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""FrontPerson"",
+                    ""action"": ""IsometricTopDown"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -945,7 +945,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_OnFoot_Crouch = m_OnFoot.FindAction("Crouch", throwIfNotFound: true);
         m_OnFoot_ThirdPerson = m_OnFoot.FindAction("ThirdPerson", throwIfNotFound: true);
         m_OnFoot_FirstPerson = m_OnFoot.FindAction("FirstPerson", throwIfNotFound: true);
-        m_OnFoot_FrontPerson = m_OnFoot.FindAction("FrontPerson", throwIfNotFound: true);
+        m_OnFoot_IsometricTopDown = m_OnFoot.FindAction("IsometricTopDown", throwIfNotFound: true);
         m_OnFoot_FireGranat = m_OnFoot.FindAction("FireGranat", throwIfNotFound: true);
         m_OnFoot_Interact = m_OnFoot.FindAction("Interact", throwIfNotFound: true);
         // UI
@@ -1029,7 +1029,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_OnFoot_Crouch;
     private readonly InputAction m_OnFoot_ThirdPerson;
     private readonly InputAction m_OnFoot_FirstPerson;
-    private readonly InputAction m_OnFoot_FrontPerson;
+    private readonly InputAction m_OnFoot_IsometricTopDown;
     private readonly InputAction m_OnFoot_FireGranat;
     private readonly InputAction m_OnFoot_Interact;
     public struct OnFootActions
@@ -1044,7 +1044,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @Crouch => m_Wrapper.m_OnFoot_Crouch;
         public InputAction @ThirdPerson => m_Wrapper.m_OnFoot_ThirdPerson;
         public InputAction @FirstPerson => m_Wrapper.m_OnFoot_FirstPerson;
-        public InputAction @FrontPerson => m_Wrapper.m_OnFoot_FrontPerson;
+        public InputAction @IsometricTopDown => m_Wrapper.m_OnFoot_IsometricTopDown;
         public InputAction @FireGranat => m_Wrapper.m_OnFoot_FireGranat;
         public InputAction @Interact => m_Wrapper.m_OnFoot_Interact;
         public InputActionMap Get() { return m_Wrapper.m_OnFoot; }
@@ -1080,9 +1080,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @FirstPerson.started += instance.OnFirstPerson;
             @FirstPerson.performed += instance.OnFirstPerson;
             @FirstPerson.canceled += instance.OnFirstPerson;
-            @FrontPerson.started += instance.OnFrontPerson;
-            @FrontPerson.performed += instance.OnFrontPerson;
-            @FrontPerson.canceled += instance.OnFrontPerson;
+            @IsometricTopDown.started += instance.OnIsometricTopDown;
+            @IsometricTopDown.performed += instance.OnIsometricTopDown;
+            @IsometricTopDown.canceled += instance.OnIsometricTopDown;
             @FireGranat.started += instance.OnFireGranat;
             @FireGranat.performed += instance.OnFireGranat;
             @FireGranat.canceled += instance.OnFireGranat;
@@ -1117,9 +1117,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @FirstPerson.started -= instance.OnFirstPerson;
             @FirstPerson.performed -= instance.OnFirstPerson;
             @FirstPerson.canceled -= instance.OnFirstPerson;
-            @FrontPerson.started -= instance.OnFrontPerson;
-            @FrontPerson.performed -= instance.OnFrontPerson;
-            @FrontPerson.canceled -= instance.OnFrontPerson;
+            @IsometricTopDown.started -= instance.OnIsometricTopDown;
+            @IsometricTopDown.performed -= instance.OnIsometricTopDown;
+            @IsometricTopDown.canceled -= instance.OnIsometricTopDown;
             @FireGranat.started -= instance.OnFireGranat;
             @FireGranat.performed -= instance.OnFireGranat;
             @FireGranat.canceled -= instance.OnFireGranat;
@@ -1271,7 +1271,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnCrouch(InputAction.CallbackContext context);
         void OnThirdPerson(InputAction.CallbackContext context);
         void OnFirstPerson(InputAction.CallbackContext context);
-        void OnFrontPerson(InputAction.CallbackContext context);
+        void OnIsometricTopDown(InputAction.CallbackContext context);
         void OnFireGranat(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
     }
