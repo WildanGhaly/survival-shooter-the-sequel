@@ -2223,6 +2223,7 @@ MonoBehaviour:
   isTopdownPerson: 0
   mobileButton: {fileID: 1820176606}
   gun: {fileID: 278147390}
+  crosshair: {fileID: 1454823805}
 --- !u!114 &1758204023
 MonoBehaviour:
   m_ObjectHideFlags: 0
