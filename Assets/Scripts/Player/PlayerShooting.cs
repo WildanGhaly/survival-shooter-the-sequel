@@ -7,7 +7,6 @@ namespace Nightmare
 {
     public class PlayerShooting : PausibleObject
     {
-        public int damagePerShot = 20;
         public float timeBetweenBullets = 0.15f;
         public float range = 100f;
         public GameObject grenade;
@@ -146,7 +145,7 @@ namespace Nightmare
                     EnemyHealth enemyHealth = hit.collider.GetComponent<EnemyHealth>();
                     if (enemyHealth != null)
                     {
-                        enemyHealth.TakeDamage(damagePerShot, hit.point);
+                        enemyHealth.TakeDamage(BaseInstance.Instance.gunDamage, hit.point);
                     }
                     gunLine.SetPosition(1, hit.point);
                 }
@@ -181,7 +180,7 @@ namespace Nightmare
                     EnemyHealth enemyHealth = hit.collider.GetComponent<EnemyHealth>();
                     if (enemyHealth != null)
                     {
-                        enemyHealth.TakeDamage(damagePerShot, hit.point);
+                        enemyHealth.TakeDamage(BaseInstance.Instance.gunDamage, hit.point);
                     }
 
                     gunLine.SetPosition(1, hit.point);
