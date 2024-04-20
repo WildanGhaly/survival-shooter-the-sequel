@@ -11,8 +11,6 @@ public class PlayerLook : MonoBehaviour
     public GameObject playerModel;
     private InputManager inputManager;
 
-    [SerializeField] private GameObject crosshair;
-
 
     // Start is called before the first frame update
     void Start()
@@ -41,7 +39,6 @@ public class PlayerLook : MonoBehaviour
         if (!inputManager.isTopDown)
         {
             tilt -= vertical;
-            crosshair.SetActive(true);
             if (inputManager.isFirstPerson)
             {
                 SetFPSCam();
@@ -57,7 +54,6 @@ public class PlayerLook : MonoBehaviour
         else
         {
             SetTopDownCam();
-            crosshair.SetActive(false);
             TopDownLook(look);
             tilt = 50f;
         }
