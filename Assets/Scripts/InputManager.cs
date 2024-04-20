@@ -43,9 +43,9 @@ public class InputManager : MonoBehaviour
         onFoot.Sprint.performed += ctx => move.StartSprint();
         onFoot.Sprint.canceled += ctx => move.StopSprint();
 
-        onFoot.FirstPerson.performed += ctx => firstPerson();
-        onFoot.ThirdPerson.performed += ctx => thirdPerson();
-        onFoot.IsometricTopDown.performed += ctx => topDown();
+        onFoot.FirstPerson.performed += ctx => FirstPerson();
+        onFoot.ThirdPerson.performed += ctx => ThirdPerson();
+        onFoot.IsometricTopDown.performed += ctx => TopDown();
 
         onFoot.Fire.performed += ctx => gun.GetComponent<PlayerShooting>().StartFire();
         onFoot.Fire.canceled += ctx => gun.GetComponent<PlayerShooting>().StopFire();
@@ -63,7 +63,13 @@ public class InputManager : MonoBehaviour
     void LateUpdate()
     {
         if (!health.isDead)
-            look.ProcessLook(onFoot.Look.ReadValue<Vector2>());
+            if (isThirdPerson || isFirstPerson)
+            {
+                look.ProcessLook(onFoot.FPSTPSLook.ReadValue<Vector2>());
+            } else if (isTopDown)
+            {
+                look.ProcessLook(onFoot.IsometricTopDownLook.ReadValue<Vector2>());
+            }
     }
 
     private void OnEnable()
@@ -76,30 +82,27 @@ public class InputManager : MonoBehaviour
         onFoot.Disable();
     }
 
-    private void firstPerson()
+    private void FirstPerson()
     {
-        cam.transform.localPosition = new Vector3(0f, 0.8f, 0);
-        cam.transform.localRotation = Quaternion.Euler(0, 0, 0);
+        look.SetFPSCam();
         isFirstPerson = true;
         isThirdPerson = false;
         isTopDown = false;
         crosshair.SetActive(true);
     }
 
-    private void thirdPerson()
+    private void ThirdPerson()
     {
-        cam.transform.localPosition = new Vector3(0, 5, -5);
-        cam.transform.localRotation = Quaternion.Euler(30, 0, 0);
+        look.SetTPSCam();
         isFirstPerson = false;
         isThirdPerson = true;
         isTopDown = false;
         crosshair.SetActive(true);
     }
 
-    private void topDown()
+    private void TopDown()
     {
-        cam.transform.localPosition = new Vector3(0, 5, -5);
-        cam.transform.localRotation = Quaternion.Euler(30, 0, 0);
+        look.SetTopDownCam();
         isFirstPerson = false;
         isThirdPerson = false;
         isTopDown = true;
@@ -107,6 +110,6 @@ public class InputManager : MonoBehaviour
         // TODO: Rebind mouse control on different modes
         // if topDown, rebind input mouse to "Position (Mouse)"
         // else, rebind input mouse to "Delta (Mouse)"
-        // thus also rehandle ProcessLook
+        // thus also rehandle ProcessLook in Update functions
     }
 }

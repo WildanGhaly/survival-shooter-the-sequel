@@ -28,7 +28,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             ""id"": ""87dde0d2-960f-4ca7-a766-a0f3713cdc3a"",
             ""actions"": [
                 {
-                    ""name"": ""Look"",
+                    ""name"": ""FPS/TPS Look"",
                     ""type"": ""Value"",
                     ""id"": ""25e1624e-ba6c-4341-913a-3550d029b8d9"",
                     ""expectedControlType"": ""Vector2"",
@@ -125,6 +125,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""IsometricTopDown Look"",
+                    ""type"": ""Button"",
+                    ""id"": ""6aea6c94-d917-45d2-9f4f-00f96609f12a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -135,7 +144,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Look"",
+                    ""action"": ""FPS/TPS Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -146,7 +155,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Look"",
+                    ""action"": ""FPS/TPS Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -411,6 +420,28 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""18d370fe-c1d6-4c6c-b2bc-62683ac72640"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""IsometricTopDown Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0e6e8211-47f3-460e-82be-bc8fe8ed5676"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""IsometricTopDown Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -937,7 +968,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
 }");
         // OnFoot
         m_OnFoot = asset.FindActionMap("OnFoot", throwIfNotFound: true);
-        m_OnFoot_Look = m_OnFoot.FindAction("Look", throwIfNotFound: true);
+        m_OnFoot_FPSTPSLook = m_OnFoot.FindAction("FPS/TPS Look", throwIfNotFound: true);
         m_OnFoot_Movement = m_OnFoot.FindAction("Movement", throwIfNotFound: true);
         m_OnFoot_Jump = m_OnFoot.FindAction("Jump", throwIfNotFound: true);
         m_OnFoot_Fire = m_OnFoot.FindAction("Fire", throwIfNotFound: true);
@@ -948,6 +979,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_OnFoot_IsometricTopDown = m_OnFoot.FindAction("IsometricTopDown", throwIfNotFound: true);
         m_OnFoot_FireGranat = m_OnFoot.FindAction("FireGranat", throwIfNotFound: true);
         m_OnFoot_Interact = m_OnFoot.FindAction("Interact", throwIfNotFound: true);
+        m_OnFoot_IsometricTopDownLook = m_OnFoot.FindAction("IsometricTopDown Look", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1021,7 +1053,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     // OnFoot
     private readonly InputActionMap m_OnFoot;
     private List<IOnFootActions> m_OnFootActionsCallbackInterfaces = new List<IOnFootActions>();
-    private readonly InputAction m_OnFoot_Look;
+    private readonly InputAction m_OnFoot_FPSTPSLook;
     private readonly InputAction m_OnFoot_Movement;
     private readonly InputAction m_OnFoot_Jump;
     private readonly InputAction m_OnFoot_Fire;
@@ -1032,11 +1064,12 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_OnFoot_IsometricTopDown;
     private readonly InputAction m_OnFoot_FireGranat;
     private readonly InputAction m_OnFoot_Interact;
+    private readonly InputAction m_OnFoot_IsometricTopDownLook;
     public struct OnFootActions
     {
         private @PlayerInput m_Wrapper;
         public OnFootActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Look => m_Wrapper.m_OnFoot_Look;
+        public InputAction @FPSTPSLook => m_Wrapper.m_OnFoot_FPSTPSLook;
         public InputAction @Movement => m_Wrapper.m_OnFoot_Movement;
         public InputAction @Jump => m_Wrapper.m_OnFoot_Jump;
         public InputAction @Fire => m_Wrapper.m_OnFoot_Fire;
@@ -1047,6 +1080,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @IsometricTopDown => m_Wrapper.m_OnFoot_IsometricTopDown;
         public InputAction @FireGranat => m_Wrapper.m_OnFoot_FireGranat;
         public InputAction @Interact => m_Wrapper.m_OnFoot_Interact;
+        public InputAction @IsometricTopDownLook => m_Wrapper.m_OnFoot_IsometricTopDownLook;
         public InputActionMap Get() { return m_Wrapper.m_OnFoot; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1056,9 +1090,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_OnFootActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_OnFootActionsCallbackInterfaces.Add(instance);
-            @Look.started += instance.OnLook;
-            @Look.performed += instance.OnLook;
-            @Look.canceled += instance.OnLook;
+            @FPSTPSLook.started += instance.OnFPSTPSLook;
+            @FPSTPSLook.performed += instance.OnFPSTPSLook;
+            @FPSTPSLook.canceled += instance.OnFPSTPSLook;
             @Movement.started += instance.OnMovement;
             @Movement.performed += instance.OnMovement;
             @Movement.canceled += instance.OnMovement;
@@ -1089,13 +1123,16 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Interact.started += instance.OnInteract;
             @Interact.performed += instance.OnInteract;
             @Interact.canceled += instance.OnInteract;
+            @IsometricTopDownLook.started += instance.OnIsometricTopDownLook;
+            @IsometricTopDownLook.performed += instance.OnIsometricTopDownLook;
+            @IsometricTopDownLook.canceled += instance.OnIsometricTopDownLook;
         }
 
         private void UnregisterCallbacks(IOnFootActions instance)
         {
-            @Look.started -= instance.OnLook;
-            @Look.performed -= instance.OnLook;
-            @Look.canceled -= instance.OnLook;
+            @FPSTPSLook.started -= instance.OnFPSTPSLook;
+            @FPSTPSLook.performed -= instance.OnFPSTPSLook;
+            @FPSTPSLook.canceled -= instance.OnFPSTPSLook;
             @Movement.started -= instance.OnMovement;
             @Movement.performed -= instance.OnMovement;
             @Movement.canceled -= instance.OnMovement;
@@ -1126,6 +1163,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Interact.started -= instance.OnInteract;
             @Interact.performed -= instance.OnInteract;
             @Interact.canceled -= instance.OnInteract;
+            @IsometricTopDownLook.started -= instance.OnIsometricTopDownLook;
+            @IsometricTopDownLook.performed -= instance.OnIsometricTopDownLook;
+            @IsometricTopDownLook.canceled -= instance.OnIsometricTopDownLook;
         }
 
         public void RemoveCallbacks(IOnFootActions instance)
@@ -1263,7 +1303,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     public UIActions @UI => new UIActions(this);
     public interface IOnFootActions
     {
-        void OnLook(InputAction.CallbackContext context);
+        void OnFPSTPSLook(InputAction.CallbackContext context);
         void OnMovement(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
@@ -1274,6 +1314,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnIsometricTopDown(InputAction.CallbackContext context);
         void OnFireGranat(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnIsometricTopDownLook(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
