@@ -1715,7 +1715,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 30905903230329058, guid: 00bf7dd79939e684eb17ce29b81e78a5, type: 3}
       propertyPath: m_Name
-      value: nc-Orb4-1
+      value: Orb-IncreaseDamage
       objectReference: {fileID: 0}
     - target: {fileID: 3898394270376667069, guid: 00bf7dd79939e684eb17ce29b81e78a5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1948,6 +1948,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1110784003}
   - component: {fileID: 1110784002}
+  - component: {fileID: 1110784004}
   m_Layer: 0
   m_Name: World
   m_TagString: Untagged
@@ -1984,6 +1985,18 @@ Transform:
   - {fileID: 1758204030}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1110784004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1110784001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab812d05a5177b1469315dc0784e22b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1139211716
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1994,7 +2007,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3071435129641118245, guid: 847722941f67ff64699718a98b8f17ce, type: 3}
       propertyPath: m_Name
-      value: nc-Orb4-2
+      value: Orb-HealthRecovery
       objectReference: {fileID: 0}
     - target: {fileID: 3944333707795735787, guid: 847722941f67ff64699718a98b8f17ce, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2126,7 +2139,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1073518222070360549, guid: d673bbb88906ec5489658ba050637950, type: 3}
       propertyPath: m_Name
-      value: nc-Orb9-1
+      value: Orb-IncreaseSpeed
       objectReference: {fileID: 0}
     - target: {fileID: 2402642520517680265, guid: d673bbb88906ec5489658ba050637950, type: 3}
       propertyPath: m_LocalPosition.x
