@@ -5,7 +5,7 @@ namespace Nightmare
 {
     public class PlayerMovement : PausibleObject
     {
-        [SerializeField] private float speed = 6f;            // The speed that the player will move at.
+        [SerializeField] private float normalSpeed = 6f;
         [SerializeField] private float sprintSpeed = 12f;
         private CharacterController controller;
         [SerializeField] private float jumpHeight = 2f;
@@ -44,12 +44,12 @@ namespace Nightmare
 
         public void StartSprint()
         {
-            speed = sprintSpeed;
+            BaseInstance.Instance.UpdadeNormalSpeed(sprintSpeed);
         }
 
         public void StopSprint()
         {
-            speed = BaseInstance.Instance.normalSpeed;
+            BaseInstance.Instance.UpdadeNormalSpeed(normalSpeed);
         }
 
         public void ProcessMove (Vector2 input)
@@ -57,12 +57,10 @@ namespace Nightmare
             if (isPaused)
                 return;
 
-            speed = BaseInstance.Instance.normalSpeed;
-
             Vector3 moveDirection = Vector3.zero;
             moveDirection.x = input.x;
             moveDirection.z = input.y;
-            controller.Move(speed * Time.deltaTime * transform.TransformDirection(moveDirection));
+            controller.Move(BaseInstance.Instance.normalSpeed * Time.deltaTime * transform.TransformDirection(moveDirection));
 
             playerVelocity.y += gravity * Time.deltaTime;
             if (isGrounded && playerVelocity.y < 0)
