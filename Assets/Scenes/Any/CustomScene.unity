@@ -962,6 +962,10 @@ PrefabInstance:
       propertyPath: mobileButton
       value: 
       objectReference: {fileID: 1820176606}
+    - target: {fileID: 5006043325377866374, guid: 4e5a0d387dc27394b81600988ad0216f, type: 3}
+      propertyPath: crosshair
+      value: 
+      objectReference: {fileID: 1454823805}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
