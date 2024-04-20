@@ -12,6 +12,12 @@ public class BaseInstance : MonoBehaviour
 		private set;
 	} = 20;
 
+	public float normalSpeed
+	{
+		get;
+		private set;
+	} = 6;
+
 	void Awake()
 	{
 		Instance = this;
@@ -20,5 +26,10 @@ public class BaseInstance : MonoBehaviour
 	public void UpdateGunDamage(int damage)
     {
 		gunDamage = damage;
+    }
+
+	public void UpdadeNormalSpeed(float speed)
+    {
+		normalSpeed = speed;
     }
 }

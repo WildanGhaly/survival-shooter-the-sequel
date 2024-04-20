@@ -6,7 +6,6 @@ namespace Nightmare
     public class PlayerMovement : PausibleObject
     {
         [SerializeField] private float speed = 6f;            // The speed that the player will move at.
-        [SerializeField] private float normalSpeed = 6f;
         [SerializeField] private float sprintSpeed = 12f;
         private CharacterController controller;
         [SerializeField] private float jumpHeight = 2f;
@@ -50,13 +49,15 @@ namespace Nightmare
 
         public void StopSprint()
         {
-            speed = normalSpeed;
+            speed = BaseInstance.Instance.normalSpeed;
         }
 
         public void ProcessMove (Vector2 input)
         {
             if (isPaused)
                 return;
+
+            speed = BaseInstance.Instance.normalSpeed;
 
             Vector3 moveDirection = Vector3.zero;
             moveDirection.x = input.x;
