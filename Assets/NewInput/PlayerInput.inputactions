@@ -6,7 +6,7 @@
             "id": "87dde0d2-960f-4ca7-a766-a0f3713cdc3a",
             "actions": [
                 {
-                    "name": "Look",
+                    "name": "FPS/TPS Look",
                     "type": "Value",
                     "id": "25e1624e-ba6c-4341-913a-3550d029b8d9",
                     "expectedControlType": "Vector2",
@@ -78,7 +78,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "FrontPerson",
+                    "name": "IsometricTopDown",
                     "type": "Button",
                     "id": "53a70f8f-b5fc-48ac-97a4-7c67dd4522be",
                     "expectedControlType": "Button",
@@ -103,6 +103,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "IsometricTopDown Look",
+                    "type": "Button",
+                    "id": "6aea6c94-d917-45d2-9f4f-00f96609f12a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -113,7 +122,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Look",
+                    "action": "FPS/TPS Look",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -124,7 +133,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Look",
+                    "action": "FPS/TPS Look",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -333,7 +342,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "FrontPerson",
+                    "action": "IsometricTopDown",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -344,7 +353,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "FrontPerson",
+                    "action": "IsometricTopDown",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -389,6 +398,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "18d370fe-c1d6-4c6c-b2bc-62683ac72640",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "IsometricTopDown Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0e6e8211-47f3-460e-82be-bc8fe8ed5676",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "IsometricTopDown Look",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

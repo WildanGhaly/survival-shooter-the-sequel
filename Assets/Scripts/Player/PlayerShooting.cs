@@ -125,7 +125,7 @@ namespace Nightmare
 
         void Shoot()
         {
-            if (player.GetComponent<InputManager>().isTopdownPerson)
+            if (player.GetComponent<InputManager>().isTopDown)
             {
                 timer = 0f;
                 gunAudio.Play();
