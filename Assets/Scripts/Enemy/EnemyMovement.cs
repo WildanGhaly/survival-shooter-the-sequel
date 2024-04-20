@@ -51,7 +51,7 @@ namespace Nightmare
             if (!isPaused)
             {
                 // If both the enemy and the player have health left...
-                if (enemyHealth.CurrentHealth() > 0 && playerHealth.currentHealth > 0)
+                if (enemyHealth.CurrentHealth() > 0 && HealthSystem.Instance.hitPoint > 0)
                 {
                     LookForPlayer();
                     WanderOrIdle();

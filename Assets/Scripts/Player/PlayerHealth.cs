@@ -7,9 +7,6 @@ namespace Nightmare
 {
     public class PlayerHealth : MonoBehaviour
     {
-        public int startingHealth = 100;
-        public int currentHealth;
-        public Slider healthSlider;
         public Image damageImage;
         public AudioClip deathClip;
         public float flashSpeed = 5f;
@@ -39,9 +36,6 @@ namespace Nightmare
 
         public void ResetPlayer()
         {
-            // Set the initial health of the player.
-            currentHealth = startingHealth;
-
             playerMovement.enabled = true;
             playerShooting.enabled = true;
 
@@ -78,16 +72,13 @@ namespace Nightmare
             damaged = true;
 
             // Reduce the current health by the damage amount.
-            currentHealth -= amount;
-
-            // Set the health bar's value to the current health.
-            healthSlider.value = currentHealth;
+            HealthSystem.Instance.TakeDamage(amount);
 
             // Play the hurt sound effect.
             playerAudio.Play();
 
             // If the player has lost all it's health and the death flag hasn't been set yet...
-            if (currentHealth <= 0 && !isDead)
+            if (HealthSystem.Instance.hitPoint <= 0 && !isDead)
             {
                 // ... it should die.
                 Death();

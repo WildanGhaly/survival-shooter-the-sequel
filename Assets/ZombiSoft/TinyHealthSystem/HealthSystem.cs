@@ -17,16 +17,16 @@ public class HealthSystem : MonoBehaviour
 	public static HealthSystem Instance;
 
 	public Image currentHealthBar;
-	public Image currentHealthGlobe;
 	public Text healthText;
 	public float hitPoint = 100f;
 	public float maxHitPoint = 100f;
 
 	public Image currentManaBar;
-	public Image currentManaGlobe;
 	public Text manaText;
 	public float manaPoint = 100f;
 	public float maxManaPoint = 100f;
+
+	public bool isDeath;
 
 	//==============================================================
 	// Regenerate Health & Mana
@@ -44,6 +44,7 @@ public class HealthSystem : MonoBehaviour
 	void Awake()
 	{
 		Instance = this;
+		isDeath = false;
 	}
 	
 	//==============================================================
@@ -60,7 +61,7 @@ public class HealthSystem : MonoBehaviour
 	//==============================================================
 	void Update ()
 	{
-		if (Regenerate)
+		if (Regenerate && !isDeath)
 			Regen();
 	}
 
@@ -103,8 +104,6 @@ public class HealthSystem : MonoBehaviour
 
 	private void UpdateHealthGlobe()
 	{
-		float ratio = hitPoint / maxHitPoint;
-		currentHealthGlobe.rectTransform.localPosition = new Vector3(0, currentHealthGlobe.rectTransform.rect.height * ratio - currentHealthGlobe.rectTransform.rect.height, 0);
 		healthText.text = hitPoint.ToString("0") + "/" + maxHitPoint.ToString("0");
 	}
 
@@ -112,11 +111,13 @@ public class HealthSystem : MonoBehaviour
 	{
 		hitPoint -= Damage;
 		if (hitPoint < 1)
+        {
+			isDeath = true;
 			hitPoint = 0;
-
+        }
 		UpdateGraphics();
 
-		StartCoroutine(PlayerHurts());
+		// StartCoroutine(PlayerHurts());
 	}
 
 	public void HealDamage(float Heal)
@@ -146,8 +147,6 @@ public class HealthSystem : MonoBehaviour
 
 	private void UpdateManaGlobe()
 	{
-		float ratio = manaPoint / maxManaPoint;
-		currentManaGlobe.rectTransform.localPosition = new Vector3(0, currentManaGlobe.rectTransform.rect.height * ratio - currentManaGlobe.rectTransform.rect.height, 0);
 		manaText.text = manaPoint.ToString("0") + "/" + maxManaPoint.ToString("0");
 	}
 
