@@ -23,7 +23,9 @@ public class InputManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        // TODO: ni masi gagal di android
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
 #if UNITY_IOS || UNITY_ANDROID
         mobileButton.SetActive(true);
 #else
@@ -89,6 +91,8 @@ public class InputManager : MonoBehaviour
         isThirdPerson = false;
         isTopDown = false;
         crosshair.SetActive(true);
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void ThirdPerson()
@@ -98,6 +102,8 @@ public class InputManager : MonoBehaviour
         isThirdPerson = true;
         isTopDown = false;
         crosshair.SetActive(true);
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void TopDown()
@@ -107,5 +113,7 @@ public class InputManager : MonoBehaviour
         isThirdPerson = false;
         isTopDown = true;
         crosshair.SetActive(false);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
     }
 }
