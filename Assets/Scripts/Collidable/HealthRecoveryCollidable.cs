@@ -8,5 +8,6 @@ public class HealthRecoveryCollidable : Collidable
     {
         base.CollideEnter();
         HealthSystem.Instance.FullHealDamage();
+        Destroy(gameObject);
     }
 }
