@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class IncreaseSpeedCollidable : Collidable
 {
-    [SerializeField] private float normalSpeed = 9f;
+    [SerializeField] private float normalSpeed = 90f;
     protected override void CollideEnter()
     {
         base.CollideEnter();

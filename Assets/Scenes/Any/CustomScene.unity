@@ -587,7 +587,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1110784003}
   - component: {fileID: 1110784002}
-  - component: {fileID: 1110784004}
   m_Layer: 0
   m_Name: World
   m_TagString: Untagged
@@ -623,18 +622,6 @@ Transform:
   - {fileID: 1772766333}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1110784004
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1110784001}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab812d05a5177b1469315dc0784e22b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1454094186
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1371,6 +1358,10 @@ PrefabInstance:
     - target: {fileID: 6156236713408923608, guid: 75bdfcce4e626f4439055e65eaa94ca9, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6858928379897907143, guid: 75bdfcce4e626f4439055e65eaa94ca9, type: 3}
+      propertyPath: normalSpeed
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7003812467304024665, guid: 75bdfcce4e626f4439055e65eaa94ca9, type: 3}
       propertyPath: m_LocalScale.x

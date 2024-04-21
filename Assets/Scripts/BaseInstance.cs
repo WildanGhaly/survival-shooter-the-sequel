@@ -12,11 +12,23 @@ public class BaseInstance : MonoBehaviour
 		private set;
 	} = 20;
 
+	public float currentSpeed
+	{
+		get;
+		private set;
+	} = 6;
+
 	public float normalSpeed
 	{
 		get;
 		private set;
 	} = 6;
+
+	public float sprintSpeed
+	{
+		get;
+		private set;
+	} = 12;
 
 	void Awake()
 	{
@@ -31,5 +43,16 @@ public class BaseInstance : MonoBehaviour
 	public void UpdadeNormalSpeed(float speed)
     {
 		normalSpeed = speed;
+		currentSpeed = normalSpeed;
+    }
+
+	public void StartSprint()
+    {
+		currentSpeed = sprintSpeed;
+    }
+
+	public void StopSprint()
+    {
+		currentSpeed = normalSpeed;
     }
 }
