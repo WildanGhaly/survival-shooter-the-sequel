@@ -71,5 +71,6 @@ public class BaseInstance : MonoBehaviour
 	public void ResetSpeed()
     {
 		normalSpeed = defaultSpeed;
+		currentSpeed = normalSpeed;
     }
 }
