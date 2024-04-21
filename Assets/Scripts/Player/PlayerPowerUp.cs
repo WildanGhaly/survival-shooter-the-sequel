@@ -12,6 +12,7 @@ public class PlayerPowerUp : MonoBehaviour
 
     private float increaseSpeedTime = 0;
     private float increaseDamageTime = 0;
+    private float currentMultiplier = 2f;
 
     public static PlayerPowerUp Instance;
 
@@ -40,7 +41,7 @@ public class PlayerPowerUp : MonoBehaviour
             {
                 isIncreaseDamage = false;
                 increaseDamageTime = 0;
-                BaseInstance.Instance.HalfDamage();
+                BaseInstance.Instance.UpdateGunDamage((int)(BaseInstance.Instance.gunDamage / currentMultiplier));
             }
         }
     }
@@ -52,9 +53,11 @@ public class PlayerPowerUp : MonoBehaviour
         BaseInstance.Instance.UpdadeNormalSpeed(normalSpeed);
     }
 
-    public void IncreaseDamagePowerUp()
+    public void IncreaseDamagePowerUp(int multiplier)
     {
         isIncreaseDamage = true;
         increaseDamageTime = 0;
+        BaseInstance.Instance.UpdateGunDamage(BaseInstance.Instance.gunDamage * multiplier);
+        currentMultiplier = multiplier;
     }
 }
