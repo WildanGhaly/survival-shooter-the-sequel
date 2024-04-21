@@ -12,11 +12,29 @@ public class BaseInstance : MonoBehaviour
 		private set;
 	} = 20;
 
+	public float defaultSpeed
+	{
+		get;
+		private set;
+	} = 6;
+
+	public float currentSpeed
+	{
+		get;
+		private set;
+	} = 6;
+
 	public float normalSpeed
 	{
 		get;
 		private set;
 	} = 6;
+
+	public float sprintSpeed
+	{
+		get;
+		private set;
+	} = 12;
 
 	void Awake()
 	{
@@ -28,8 +46,31 @@ public class BaseInstance : MonoBehaviour
 		gunDamage = damage;
     }
 
+	public void HalfDamage()
+    {
+		gunDamage = gunDamage / 2;
+    }
+
 	public void UpdadeNormalSpeed(float speed)
     {
+		defaultSpeed = normalSpeed;
 		normalSpeed = speed;
+		currentSpeed = normalSpeed;
+    }
+
+	public void StartSprint()
+    {
+		currentSpeed = sprintSpeed;
+    }
+
+	public void StopSprint()
+    {
+		currentSpeed = normalSpeed;
+    }
+
+	public void ResetSpeed()
+    {
+		normalSpeed = defaultSpeed;
+		currentSpeed = normalSpeed;
     }
 }

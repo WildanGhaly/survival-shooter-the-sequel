@@ -8,7 +8,7 @@ public class IncreaseSpeedCollidable : Collidable
     protected override void CollideEnter()
     {
         base.CollideEnter();
-        BaseInstance.Instance.UpdadeNormalSpeed(normalSpeed);
+        PlayerPowerUp.Instance.IncreaseSpeedPowerUp(normalSpeed);
         Destroy(gameObject);
     }
 }
