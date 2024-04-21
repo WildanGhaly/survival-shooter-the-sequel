@@ -12,6 +12,12 @@ public class BaseInstance : MonoBehaviour
 		private set;
 	} = 20;
 
+	public float defaultSpeed
+	{
+		get;
+		private set;
+	} = 6;
+
 	public float currentSpeed
 	{
 		get;
@@ -40,8 +46,14 @@ public class BaseInstance : MonoBehaviour
 		gunDamage = damage;
     }
 
+	public void HalfDamage()
+    {
+		gunDamage = gunDamage / 2;
+    }
+
 	public void UpdadeNormalSpeed(float speed)
     {
+		defaultSpeed = normalSpeed;
 		normalSpeed = speed;
 		currentSpeed = normalSpeed;
     }
@@ -54,5 +66,10 @@ public class BaseInstance : MonoBehaviour
 	public void StopSprint()
     {
 		currentSpeed = normalSpeed;
+    }
+
+	public void ResetSpeed()
+    {
+		normalSpeed = defaultSpeed;
     }
 }

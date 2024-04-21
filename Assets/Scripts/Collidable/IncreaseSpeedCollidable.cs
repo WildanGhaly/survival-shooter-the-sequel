@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class IncreaseSpeedCollidable : Collidable
 {
-    [SerializeField] private float normalSpeed = 90f;
+    [SerializeField] private float normalSpeed = 9f;
     protected override void CollideEnter()
     {
         base.CollideEnter();
-        BaseInstance.Instance.UpdadeNormalSpeed(normalSpeed);
+        PlayerPowerUp.Instance.IncreaseSpeedPowerUp(normalSpeed);
         Destroy(gameObject);
     }
 }
