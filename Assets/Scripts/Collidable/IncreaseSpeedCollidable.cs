@@ -9,5 +9,6 @@ public class IncreaseSpeedCollidable : Collidable
     {
         base.CollideEnter();
         BaseInstance.Instance.UpdadeNormalSpeed(normalSpeed);
+        Destroy(gameObject);
     }
 }
