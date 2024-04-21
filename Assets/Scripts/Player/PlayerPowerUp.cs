@@ -31,6 +31,7 @@ public class PlayerPowerUp : MonoBehaviour
                 isIncreaseSpeed = false;
                 increaseSpeedTime = 0;
                 BaseInstance.Instance.ResetSpeed();
+                BuffIconInstance.Instance.DisableSpeedBuff();
             }
         }
 
@@ -42,6 +43,7 @@ public class PlayerPowerUp : MonoBehaviour
                 isIncreaseDamage = false;
                 increaseDamageTime = 0;
                 BaseInstance.Instance.UpdateGunDamage((int)(BaseInstance.Instance.gunDamage / currentMultiplier));
+                BuffIconInstance.Instance.DisableDamageBuff();
             }
         }
     }
@@ -51,6 +53,7 @@ public class PlayerPowerUp : MonoBehaviour
         isIncreaseSpeed = true;
         increaseSpeedTime = 0;
         BaseInstance.Instance.UpdadeNormalSpeed(normalSpeed);
+        BuffIconInstance.Instance.EnableSpeedBuff();
     }
 
     public void IncreaseDamagePowerUp(int multiplier)
@@ -58,6 +61,7 @@ public class PlayerPowerUp : MonoBehaviour
         isIncreaseDamage = true;
         increaseDamageTime = 0;
         BaseInstance.Instance.UpdateGunDamage(BaseInstance.Instance.gunDamage * multiplier);
+        BuffIconInstance.Instance.EnableDamageBuff();
         currentMultiplier = multiplier;
     }
 }
