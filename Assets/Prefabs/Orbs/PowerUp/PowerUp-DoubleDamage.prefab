@@ -38958,7 +38958,7 @@ GameObject:
   - component: {fileID: 1163318555415660905}
   - component: {fileID: 3982045978722703093}
   m_Layer: 0
-  m_Name: PowerUp-IncreaseDamage
+  m_Name: PowerUp-DoubleDamage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43841,6 +43841,7 @@ MonoBehaviour:
   eventCollideExit: 0
   countdown: 5
   multiplierDamage: 2
+  duration: 15
 --- !u!1 &6546258143591689559
 GameObject:
   m_ObjectHideFlags: 0
