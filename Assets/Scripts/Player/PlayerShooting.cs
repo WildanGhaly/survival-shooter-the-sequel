@@ -18,10 +18,10 @@ namespace Nightmare
         public bool isFiringBullet { get; private set; }
         public bool isFiringGranat { get; private set; }
 
+        public int weaponId = 1;
+
         float timer;
         Ray shootRay = new Ray();
-        RaycastHit shootHit;
-        int shootableMask;
         ParticleSystem gunParticles;
         LineRenderer gunLine;
         AudioSource gunAudio;
@@ -34,9 +34,6 @@ namespace Nightmare
 
         void Awake ()
         {
-            // Create a layer mask for the Shootable layer.
-            shootableMask = LayerMask.GetMask ("Shootable", "Enemy");
-
             // Set up the references.
             gunParticles = GetComponent<ParticleSystem> ();
             gunLine = GetComponent <LineRenderer> ();
