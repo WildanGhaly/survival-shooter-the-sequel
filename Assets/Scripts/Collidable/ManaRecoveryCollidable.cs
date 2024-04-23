@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ManaRecoveryCollidable : Collidable
+public class ManaRecoveryCollidable : PowerUpCollidable
 {
     protected override void CollideEnter()
     {
