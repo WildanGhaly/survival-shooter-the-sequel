@@ -29,6 +29,9 @@ namespace Nightmare
 		public Light faceLight;
         float effectsDisplayTime = 0.2f;
         int grenadeStock = 99;
+
+        [SerializeField] private int shotgunBulletCount = 10;
+        [SerializeField] private float shotgunMaxSpreadAngle = 20f;
   
         private UnityAction listener;
 
@@ -119,8 +122,108 @@ namespace Nightmare
             gunLight.enabled = false;
         }
 
-
         void Shoot()
+        {
+            if (weaponId == 1)
+            {
+                ShootRifle();
+            }
+            else if (weaponId == 2)
+            {
+                ShootShotgun();
+            }
+        }
+
+        void ShootShotgun()
+        {
+            if (player.GetComponent<InputManager>().isTopDown)
+            {
+                timer = 0f;
+                gunAudio.Play();
+                gunLight.enabled = true;
+                faceLight.enabled = true;
+                gunParticles.Stop();
+                gunParticles.Play();
+                // gunLine.enabled = true;
+
+                for (int i = 0; i < shotgunBulletCount; i++)
+                {
+                    float angle = shotgunMaxSpreadAngle * (i - shotgunBulletCount / 2) / (shotgunBulletCount / 2);
+                    Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.up);
+
+                    Vector3 shootDirection = rotation * transform.forward;
+                    Ray shotRay = new Ray(transform.position, shootDirection);
+                    RaycastHit hit;
+
+                    if (Physics.Raycast(shotRay, out hit, range))
+                    {
+                        EnemyHealth enemyHealth = hit.collider.GetComponent<EnemyHealth>();
+                        if (enemyHealth != null)
+                        {
+                            enemyHealth.TakeDamage(BaseInstance.Instance.gunDamage, hit.point);
+                            Debug.DrawRay(transform.position, shootDirection * range, Color.red, 1.0f); // Debug ray visualized in red (TODO: ganti jadi keliatan beneran)
+                        }
+                        else
+                        {
+                            Debug.DrawRay(transform.position, shootDirection * range, Color.yellow, 1.0f); // Debug ray visualized in yellow (TODO: ganti jadi keliatan beneran)
+                        }
+                        // gunLine.SetPosition(i, hit.point);
+                    }
+                    else
+                    {
+                        // gunLine.SetPosition(i, shotRay.origin + shotRay.direction * range);
+                        Debug.DrawRay(transform.position, shootDirection * range, Color.yellow, 1.0f); // Debug ray visualized in yellow (TODO: ganti jadi keliatan beneran)
+                    }
+                }
+            }
+            else
+            {
+                timer = 0f;
+                gunAudio.Play();
+                gunLight.enabled = true;
+                faceLight.enabled = true;
+                gunParticles.Stop();
+                gunParticles.Play();
+                // gunLine.enabled = true;
+
+                for (int i = 0; i < shotgunBulletCount; i++)
+                {
+                    float horizontalAngle = shotgunMaxSpreadAngle * (Random.value - 0.5f) * 2;
+                    float verticalAngle = shotgunMaxSpreadAngle * (Random.value - 0.5f) * 2;
+
+                    Quaternion horizontalRotation = Quaternion.AngleAxis(horizontalAngle, Vector3.up);
+                    Quaternion verticalRotation = Quaternion.AngleAxis(verticalAngle, Vector3.right);
+                    Quaternion combinedRotation = horizontalRotation * verticalRotation;
+
+                    Vector3 shootDirection = combinedRotation * cam.transform.forward;
+                    Ray shotRay = new Ray(cam.transform.position, shootDirection);
+                    RaycastHit hit;
+
+                    if (Physics.Raycast(shotRay, out hit, range))
+                    {
+                        EnemyHealth enemyHealth = hit.collider.GetComponent<EnemyHealth>();
+                        if (enemyHealth != null)
+                        {
+                            enemyHealth.TakeDamage(BaseInstance.Instance.gunDamage, hit.point);
+                            Debug.DrawRay(cam.transform.position, shootDirection * range, Color.red, 1.0f); // Debug ray visualized in red
+                        }
+                        else
+                        {
+                            Debug.DrawRay(cam.transform.position, shootDirection * range, Color.yellow, 1.0f); // Debug ray visualized in yellow
+                        }
+                        // gunLine.SetPosition(i * 2 + 1, hit.point);
+                    }
+                    else
+                    {
+                        // gunLine.SetPosition(i * 2 + 1, shotRay.origin + shotRay.direction * range);
+                        Debug.DrawRay(cam.transform.position, shootDirection * range, Color.yellow, 1.0f); // Debug ray visualized in yellow
+                    }
+                }
+            }
+        }
+
+
+        void ShootRifle()
         {
             if (player.GetComponent<InputManager>().isTopDown)
             {
