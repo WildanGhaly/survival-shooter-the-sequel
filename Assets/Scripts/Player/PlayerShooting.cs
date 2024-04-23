@@ -8,6 +8,10 @@ namespace Nightmare
     public class PlayerShooting : PausibleObject
     {
         public float timeBetweenBullets = 0.15f;
+        [SerializeField] private float rifleTimeBetweenBullets = 0.15f;
+        [SerializeField] private float shotgunTimeBetweenBullets = 1f;
+        [SerializeField] private float swordTimeBetweenBullets = 0.5f;
+
         public float range = 100f;
         public GameObject grenade;
         public float grenadeSpeed = 200f;
@@ -18,10 +22,10 @@ namespace Nightmare
         public bool isFiringBullet { get; private set; }
         public bool isFiringGranat { get; private set; }
 
+        [SerializeField] private int weaponId = 1;
+
         float timer;
         Ray shootRay = new Ray();
-        RaycastHit shootHit;
-        int shootableMask;
         ParticleSystem gunParticles;
         LineRenderer gunLine;
         AudioSource gunAudio;
@@ -29,14 +33,14 @@ namespace Nightmare
 		public Light faceLight;
         float effectsDisplayTime = 0.2f;
         int grenadeStock = 99;
+
+        [SerializeField] private int shotgunBulletCount = 10;
+        [SerializeField] private float shotgunMaxSpreadAngle = 20f;
   
         private UnityAction listener;
 
         void Awake ()
         {
-            // Create a layer mask for the Shootable layer.
-            shootableMask = LayerMask.GetMask ("Shootable", "Enemy");
-
             // Set up the references.
             gunParticles = GetComponent<ParticleSystem> ();
             gunLine = GetComponent <LineRenderer> ();
@@ -86,10 +90,33 @@ namespace Nightmare
             }
             
             // If the timer has exceeded the proportion of timeBetweenBullets that the effects should be displayed for...
-            if(timer >= timeBetweenBullets * effectsDisplayTime)
+            if(timer >= rifleTimeBetweenBullets * effectsDisplayTime)
             {
                 // ... disable the effects.
                 DisableEffects ();
+            }
+        }
+
+        public void ChangeWeapon(int id)
+        {
+            switch (id)
+            {
+                case 1:
+                    timeBetweenBullets = rifleTimeBetweenBullets;
+                    weaponId = 1;
+                    return;
+                case 2:
+                    timeBetweenBullets = shotgunTimeBetweenBullets;
+                    weaponId = 2;
+                    return;
+                case 3:
+                    timeBetweenBullets = swordTimeBetweenBullets;
+                    weaponId = 3;
+                    return;
+                default:
+                    timeBetweenBullets = rifleTimeBetweenBullets;
+                    weaponId = 1;
+                    return;
             }
         }
 
@@ -122,20 +149,105 @@ namespace Nightmare
             gunLight.enabled = false;
         }
 
-
         void Shoot()
         {
+            gunAudio.Play();
+            gunLight.enabled = true;
+            faceLight.enabled = true;
+            gunParticles.Stop();
+            gunParticles.Play();
+            gunLine.enabled = true;
+            timer = 0f;
+
+            if (weaponId == 1)
+            {
+                ShootRifle();
+            }
+            else if (weaponId == 2)
+            {
+                ShootShotgun();
+            }
+        }
+
+        void ShootShotgun()
+        {
+            gunLine.positionCount = shotgunBulletCount * 2;
             if (player.GetComponent<InputManager>().isTopDown)
             {
-                timer = 0f;
-                gunAudio.Play();
-                gunLight.enabled = true;
-                faceLight.enabled = true;
+                for (int i = 0; i < shotgunBulletCount; i++)
+                {
+                    float angle = shotgunMaxSpreadAngle * (i - shotgunBulletCount / 2) / (shotgunBulletCount / 2);
+                    Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.up);
 
-                gunParticles.Stop();
-                gunParticles.Play();
+                    Vector3 shootDirection = rotation * transform.forward;
+                    Ray shotRay = new Ray(transform.position, shootDirection);
+                    RaycastHit hit;
 
-                gunLine.enabled = true;
+                    gunLine.SetPosition(i * 2, transform.position);
+                    if (Physics.Raycast(shotRay, out hit, range))
+                    {
+                        EnemyHealth enemyHealth = hit.collider.GetComponent<EnemyHealth>();
+                        if (enemyHealth != null)
+                        {
+                            enemyHealth.TakeDamage(BaseInstance.Instance.gunDamage, hit.point);
+                            gunLine.SetPosition(i * 2 + 1, hit.point);
+                        }
+                        else
+                        {
+                            gunLine.SetPosition(i * 2 + 1, shootDirection * range);
+                        }
+                    }
+                    else
+                    {
+                        gunLine.SetPosition(i * 2 + 1, shootDirection * range);
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < shotgunBulletCount; i++)
+                {
+                    float horizontalAngle = shotgunMaxSpreadAngle * (Random.value - 0.5f) * 2;
+                    float verticalAngle = shotgunMaxSpreadAngle * (Random.value - 0.5f) * 2;
+
+                    Quaternion horizontalRotation = Quaternion.AngleAxis(horizontalAngle, Vector3.up);
+                    Quaternion verticalRotation = Quaternion.AngleAxis(verticalAngle, Vector3.right);
+                    Quaternion combinedRotation = horizontalRotation * verticalRotation;
+
+                    Vector3 shootDirection = combinedRotation * cam.transform.forward;
+                    Ray shotRay = new Ray(transform.position, shootDirection);
+                    RaycastHit hit;
+
+                    gunLine.SetPosition(i * 2, transform.position);
+
+                    if (Physics.Raycast(shotRay, out hit, range))
+                    {
+                        EnemyHealth enemyHealth = hit.collider.GetComponent<EnemyHealth>();
+                        if (enemyHealth != null)
+                        {
+                            enemyHealth.TakeDamage(BaseInstance.Instance.gunDamage, hit.point);
+                            gunLine.SetPosition(i * 2 + 1, hit.point);
+                        }
+                        else
+                        {
+                            gunLine.SetPosition(i * 2 + 1, shootDirection * range);
+                        }
+                        
+                    }
+                    else
+                    {
+                        gunLine.SetPosition(i * 2 + 1, shootDirection * range);
+                    }
+                }
+            }
+        }
+
+
+        void ShootRifle()
+        {
+            gunLine.positionCount = 2;
+            if (player.GetComponent<InputManager>().isTopDown)
+            {
                 gunLine.SetPosition(0, transform.position);
 
                 Vector3 shootDirection = transform.forward; 
@@ -156,17 +268,6 @@ namespace Nightmare
             }
             else
             {
-                timer = 0f;
-
-                gunAudio.Play();
-
-                gunLight.enabled = true;
-                faceLight.enabled = true;
-
-                gunParticles.Stop();
-                gunParticles.Play();
-
-                gunLine.enabled = true;
                 gunLine.SetPosition(0, transform.position);
 
                 Ray camRay = cam.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));

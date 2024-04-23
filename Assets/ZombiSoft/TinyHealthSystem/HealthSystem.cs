@@ -32,7 +32,8 @@ public class HealthSystem : MonoBehaviour
 	// Regenerate Health & Mana
 	//==============================================================
 	public bool Regenerate = true;
-	public float regen = 0.1f;
+	public float healthRegen = 1f;
+	public float manaRegen = 3f;
 	private float timeleft = 0.0f;	// Left time for current interval
 	public float regenUpdateInterval = 1f;
 
@@ -82,8 +83,8 @@ public class HealthSystem : MonoBehaviour
 			}
 			else
 			{
-				HealDamage(regen);
-				RestoreMana(regen);				
+				HealDamage(healthRegen);
+				RestoreMana(manaRegen);				
 			}
 
 			UpdateGraphics();
@@ -135,6 +136,12 @@ public class HealthSystem : MonoBehaviour
 		UpdateGraphics();
     }
 
+	public void FullRecoverMana()
+    {
+		manaPoint = maxManaPoint;
+		UpdateGraphics();
+    }
+
 	public void SetMaxHealth(float max)
 	{
 		maxHitPoint += (int)(maxHitPoint * max / 100);
@@ -165,6 +172,11 @@ public class HealthSystem : MonoBehaviour
 
 		UpdateGraphics();
 	}
+
+	public bool isRunOutOfMana()
+    {
+		return manaPoint < 5;
+    }
 
 	public void RestoreMana(float Mana)
 	{
