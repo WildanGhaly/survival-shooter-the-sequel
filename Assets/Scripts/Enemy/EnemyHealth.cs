@@ -77,6 +77,8 @@ namespace Nightmare
 
         void Death ()
         {
+            GetComponent<PowerUpSpawner>().TrySpawnOrb();
+
             EventManager.TriggerEvent("Sound", this.transform.position);
             anim.SetTrigger ("Dead");
 
