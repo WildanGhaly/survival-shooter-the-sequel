@@ -1099,10 +1099,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hellephant
       objectReference: {fileID: 0}
-    - target: {fileID: 153412, guid: 548c56f4bcf4db24b8aa057e9846a005, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 418926, guid: 548c56f4bcf4db24b8aa057e9846a005, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.816368
@@ -1306,21 +1302,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 567776515195728952, guid: 765afca53a5c31544ad60817c5b4498c, type: 3}
-      propertyPath: sprintSpeed
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 2023764058360593417, guid: 765afca53a5c31544ad60817c5b4498c, type: 3}
       propertyPath: m_Name
       value: PlayerWithUI
-      objectReference: {fileID: 0}
-    - target: {fileID: 3238190465883776870, guid: 765afca53a5c31544ad60817c5b4498c, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3238190465890369156, guid: 765afca53a5c31544ad60817c5b4498c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3238190465895703334, guid: 765afca53a5c31544ad60817c5b4498c, type: 3}
       propertyPath: m_Enabled
@@ -1329,26 +1313,6 @@ PrefabInstance:
     - target: {fileID: 3238190465895703334, guid: 765afca53a5c31544ad60817c5b4498c, type: 3}
       propertyPath: m_Positions.Array.size
       value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 3238190465895703334, guid: 765afca53a5c31544ad60817c5b4498c, type: 3}
-      propertyPath: m_ApplyActiveColorSpace
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3238190465895703334, guid: 765afca53a5c31544ad60817c5b4498c, type: 3}
-      propertyPath: m_Parameters.textureMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3238190465895703334, guid: 765afca53a5c31544ad60817c5b4498c, type: 3}
-      propertyPath: m_Positions.Array.data[0].x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3238190465895703334, guid: 765afca53a5c31544ad60817c5b4498c, type: 3}
-      propertyPath: m_Positions.Array.data[0].y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3238190465895703334, guid: 765afca53a5c31544ad60817c5b4498c, type: 3}
-      propertyPath: m_Positions.Array.data[0].z
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3238190465895703334, guid: 765afca53a5c31544ad60817c5b4498c, type: 3}
       propertyPath: m_Positions.Array.data[1].x
@@ -1579,14 +1543,6 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3238190465895703334, guid: 765afca53a5c31544ad60817c5b4498c, type: 3}
-      propertyPath: m_Positions.Array.data[20].z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3238190465895703334, guid: 765afca53a5c31544ad60817c5b4498c, type: 3}
-      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].time
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3238190465895703334, guid: 765afca53a5c31544ad60817c5b4498c, type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
       value: 0.07142639
       objectReference: {fileID: 0}
@@ -1594,13 +1550,9 @@ PrefabInstance:
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].value
       value: 0.10714416
       objectReference: {fileID: 0}
-    - target: {fileID: 3238190465896870822, guid: 765afca53a5c31544ad60817c5b4498c, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3238190465897450342, guid: 765afca53a5c31544ad60817c5b4498c, type: 3}
-      propertyPath: shotgunBulletCount
-      value: 10
+      propertyPath: layer.m_Bits
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 5861419219326725246, guid: 765afca53a5c31544ad60817c5b4498c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1762,7 +1714,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6070487127092280119, guid: aef81f3beeed11a4eb3fa3ca3327be33, type: 3}
       propertyPath: m_Name
-      value: PowerUp-IncreaseDamage
+      value: PowerUp-DoubleDamage
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
