@@ -9,7 +9,7 @@ namespace Nightmare
         public int scoreValue = 10;
         public AudioClip deathClip;
 
-        int currentHealth;
+        float currentHealth;
         Animator anim;
         AudioSource enemyAudio;
         ParticleSystem hitParticles;
@@ -54,7 +54,7 @@ namespace Nightmare
             return (currentHealth <= 0f);
         }
 
-        public void TakeDamage (int amount, Vector3 hitPoint)
+        public void TakeDamage (float amount, Vector3 hitPoint)
         {
             if (!IsDead())
             {
@@ -92,7 +92,7 @@ namespace Nightmare
             ScoreManager.score += scoreValue;
         }
 
-        public int CurrentHealth()
+        public float CurrentHealth()
         {
             return currentHealth;
         }

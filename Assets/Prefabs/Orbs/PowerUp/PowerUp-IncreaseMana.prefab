@@ -14622,7 +14622,7 @@ GameObject:
   - component: {fileID: 1590349106201584989}
   - component: {fileID: 6271571552522364454}
   - component: {fileID: 5615623694497225874}
-  - component: {fileID: 5879455372812219073}
+  - component: {fileID: 8204760833458914054}
   m_Layer: 0
   m_Name: PowerUp-IncreaseMana
   m_TagString: Untagged
@@ -14638,7 +14638,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3994127337954090109}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -17.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -19489,7 +19489,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &5879455372812219073
+--- !u!114 &8204760833458914054
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -19498,14 +19498,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 3994127337954090109}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 029366fe2f8996d439bf6cbd8b579fae, type: 3}
+  m_Script: {fileID: 11500000, guid: 9952a14cda50dc94f9beb04930006c46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   promptMessage: Collide
   eventCollideEnter: 0
   eventCollideStay: 0
   eventCollideExit: 0
-  multiplierDamage: 2
+  countdown: 5
 --- !u!1 &4107338374234817223
 GameObject:
   m_ObjectHideFlags: 0

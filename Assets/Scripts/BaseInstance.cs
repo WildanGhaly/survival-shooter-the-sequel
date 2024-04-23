@@ -6,11 +6,13 @@ public class BaseInstance : MonoBehaviour
 {
     public static BaseInstance Instance;
 
-	public int gunDamage
+	[SerializeField] private float gunDamage = 20f;
+
+	public float multiplierGunDamage
 	{
 		get;
 		private set;
-	} = 20;
+	} = 1;
 
 	public float defaultSpeed
 	{
@@ -41,7 +43,12 @@ public class BaseInstance : MonoBehaviour
 		Instance = this;
 	}
 
-	public void UpdateGunDamage(int damage)
+	public float GetGunDamage()
+    {
+		return gunDamage * multiplierGunDamage;
+    }
+
+	public void UpdateGunDamage(float damage)
     {
 		gunDamage = damage;
     }
@@ -72,5 +79,10 @@ public class BaseInstance : MonoBehaviour
     {
 		normalSpeed = defaultSpeed;
 		currentSpeed = normalSpeed;
+    }
+
+	public void AddMultiplierGunDamage(float multiplier)
+    {
+		multiplierGunDamage += multiplier;
     }
 }

@@ -16,6 +16,9 @@ public class PlayerPowerUp : MonoBehaviour
 
     public static PlayerPowerUp Instance;
 
+    private int multiplierCount = 0;
+    [SerializeField] private int maxIncreaseDamageCount = 15;
+
     void Awake()
     {
         Instance = this;
@@ -42,7 +45,7 @@ public class PlayerPowerUp : MonoBehaviour
             {
                 isIncreaseDamage = false;
                 increaseDamageTime = 0;
-                BaseInstance.Instance.UpdateGunDamage((int)(BaseInstance.Instance.gunDamage / currentMultiplier));
+                BaseInstance.Instance.UpdateGunDamage(BaseInstance.Instance.GetGunDamage() / currentMultiplier);
                 BuffIconInstance.Instance.DisableDamageBuff();
             }
         }
@@ -60,8 +63,17 @@ public class PlayerPowerUp : MonoBehaviour
     {
         isIncreaseDamage = true;
         increaseDamageTime = 0;
-        BaseInstance.Instance.UpdateGunDamage(BaseInstance.Instance.gunDamage * multiplier);
+        BaseInstance.Instance.UpdateGunDamage(BaseInstance.Instance.GetGunDamage() * multiplier);
         BuffIconInstance.Instance.EnableDamageBuff();
         currentMultiplier = multiplier;
+    }
+
+    public void PermanentDamagePowerUp(float multiplier)
+    {
+        if (multiplierCount < 15)
+        {
+            multiplierCount++;
+            BaseInstance.Instance.AddMultiplierGunDamage(multiplier);
+        }
     }
 }

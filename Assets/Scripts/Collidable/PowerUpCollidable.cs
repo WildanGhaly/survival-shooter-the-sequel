@@ -8,7 +8,7 @@ public class PowerUpCollidable : Collidable
 
     void Start()
     {
-        StartCoroutine(DisappearAfterSeconds(5));
+        StartCoroutine(DisappearAfterSeconds(countdown));
     }
 
     protected override void CollideEnter()
