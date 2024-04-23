@@ -8,6 +8,11 @@ namespace Nightmare
         private CharacterController controller;
         [SerializeField] private float jumpHeight = 2f;
         [SerializeField] private float gravity = -9.8f;
+        [SerializeField] private float timeSprint = 0.1f;
+        [SerializeField] private float manaCost = 2f;
+
+        private float currentSprintTime = 0;
+        private bool isSprinting;
         private bool isGrounded;
         private Vector3 playerVelocity;
 
@@ -28,6 +33,22 @@ namespace Nightmare
         private void Update()
         {
             isGrounded = controller.isGrounded;
+            if (isSprinting)
+            {
+                currentSprintTime += Time.deltaTime;
+                if (currentSprintTime >= timeSprint)
+                {
+                    if (HealthSystem.Instance.isRunOutOfMana())
+                    {
+                        StopSprint();
+                    }
+                    else
+                    {
+                        HealthSystem.Instance.UseMana(manaCost);
+                        currentSprintTime = 0;
+                    }
+                }
+            }
         }
 
         void OnDestroy()
@@ -43,11 +64,13 @@ namespace Nightmare
         public void StartSprint()
         {
             BaseInstance.Instance.StartSprint();
+            isSprinting = true;
         }
 
         public void StopSprint()
         {
             BaseInstance.Instance.StopSprint();
+            isSprinting = false;
         }
 
         public void ProcessMove (Vector2 input)
