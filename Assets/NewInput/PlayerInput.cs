@@ -134,6 +134,42 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PrimaryWeapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""d0161219-3cae-4907-aca3-e32a3f6c4a52"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SecondaryWeapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""8fa37b6b-e650-4b5e-8de1-3c01c62d3070"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SwordWeapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""cd1f80e0-49e4-41c3-95d3-938f95a912ae"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SwitchWeapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""39ce3086-8e62-4b17-b956-db32376a7201"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -442,6 +478,50 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""IsometricTopDown Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2fe7df11-2cf8-4106-970b-cea369880ff3"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PrimaryWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0ddbf18c-0e89-4df4-bccd-b86cf5beea6e"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SecondaryWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""97822f53-1196-4928-885c-d23d78966bf0"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwordWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""35f6378b-c3e7-4ae5-8e9b-b216c213f1d0"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchWeapon"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -980,6 +1060,10 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_OnFoot_FireGranat = m_OnFoot.FindAction("FireGranat", throwIfNotFound: true);
         m_OnFoot_Interact = m_OnFoot.FindAction("Interact", throwIfNotFound: true);
         m_OnFoot_IsometricTopDownLook = m_OnFoot.FindAction("IsometricTopDown Look", throwIfNotFound: true);
+        m_OnFoot_PrimaryWeapon = m_OnFoot.FindAction("PrimaryWeapon", throwIfNotFound: true);
+        m_OnFoot_SecondaryWeapon = m_OnFoot.FindAction("SecondaryWeapon", throwIfNotFound: true);
+        m_OnFoot_SwordWeapon = m_OnFoot.FindAction("SwordWeapon", throwIfNotFound: true);
+        m_OnFoot_SwitchWeapon = m_OnFoot.FindAction("SwitchWeapon", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1065,6 +1149,10 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_OnFoot_FireGranat;
     private readonly InputAction m_OnFoot_Interact;
     private readonly InputAction m_OnFoot_IsometricTopDownLook;
+    private readonly InputAction m_OnFoot_PrimaryWeapon;
+    private readonly InputAction m_OnFoot_SecondaryWeapon;
+    private readonly InputAction m_OnFoot_SwordWeapon;
+    private readonly InputAction m_OnFoot_SwitchWeapon;
     public struct OnFootActions
     {
         private @PlayerInput m_Wrapper;
@@ -1081,6 +1169,10 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @FireGranat => m_Wrapper.m_OnFoot_FireGranat;
         public InputAction @Interact => m_Wrapper.m_OnFoot_Interact;
         public InputAction @IsometricTopDownLook => m_Wrapper.m_OnFoot_IsometricTopDownLook;
+        public InputAction @PrimaryWeapon => m_Wrapper.m_OnFoot_PrimaryWeapon;
+        public InputAction @SecondaryWeapon => m_Wrapper.m_OnFoot_SecondaryWeapon;
+        public InputAction @SwordWeapon => m_Wrapper.m_OnFoot_SwordWeapon;
+        public InputAction @SwitchWeapon => m_Wrapper.m_OnFoot_SwitchWeapon;
         public InputActionMap Get() { return m_Wrapper.m_OnFoot; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1126,6 +1218,18 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @IsometricTopDownLook.started += instance.OnIsometricTopDownLook;
             @IsometricTopDownLook.performed += instance.OnIsometricTopDownLook;
             @IsometricTopDownLook.canceled += instance.OnIsometricTopDownLook;
+            @PrimaryWeapon.started += instance.OnPrimaryWeapon;
+            @PrimaryWeapon.performed += instance.OnPrimaryWeapon;
+            @PrimaryWeapon.canceled += instance.OnPrimaryWeapon;
+            @SecondaryWeapon.started += instance.OnSecondaryWeapon;
+            @SecondaryWeapon.performed += instance.OnSecondaryWeapon;
+            @SecondaryWeapon.canceled += instance.OnSecondaryWeapon;
+            @SwordWeapon.started += instance.OnSwordWeapon;
+            @SwordWeapon.performed += instance.OnSwordWeapon;
+            @SwordWeapon.canceled += instance.OnSwordWeapon;
+            @SwitchWeapon.started += instance.OnSwitchWeapon;
+            @SwitchWeapon.performed += instance.OnSwitchWeapon;
+            @SwitchWeapon.canceled += instance.OnSwitchWeapon;
         }
 
         private void UnregisterCallbacks(IOnFootActions instance)
@@ -1166,6 +1270,18 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @IsometricTopDownLook.started -= instance.OnIsometricTopDownLook;
             @IsometricTopDownLook.performed -= instance.OnIsometricTopDownLook;
             @IsometricTopDownLook.canceled -= instance.OnIsometricTopDownLook;
+            @PrimaryWeapon.started -= instance.OnPrimaryWeapon;
+            @PrimaryWeapon.performed -= instance.OnPrimaryWeapon;
+            @PrimaryWeapon.canceled -= instance.OnPrimaryWeapon;
+            @SecondaryWeapon.started -= instance.OnSecondaryWeapon;
+            @SecondaryWeapon.performed -= instance.OnSecondaryWeapon;
+            @SecondaryWeapon.canceled -= instance.OnSecondaryWeapon;
+            @SwordWeapon.started -= instance.OnSwordWeapon;
+            @SwordWeapon.performed -= instance.OnSwordWeapon;
+            @SwordWeapon.canceled -= instance.OnSwordWeapon;
+            @SwitchWeapon.started -= instance.OnSwitchWeapon;
+            @SwitchWeapon.performed -= instance.OnSwitchWeapon;
+            @SwitchWeapon.canceled -= instance.OnSwitchWeapon;
         }
 
         public void RemoveCallbacks(IOnFootActions instance)
@@ -1315,6 +1431,10 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnFireGranat(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnIsometricTopDownLook(InputAction.CallbackContext context);
+        void OnPrimaryWeapon(InputAction.CallbackContext context);
+        void OnSecondaryWeapon(InputAction.CallbackContext context);
+        void OnSwordWeapon(InputAction.CallbackContext context);
+        void OnSwitchWeapon(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
