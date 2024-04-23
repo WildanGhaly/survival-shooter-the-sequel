@@ -130,6 +130,13 @@ public class HealthSystem : MonoBehaviour
 		UpdateGraphics();
 	}
 
+	public void HealDamagePercent(float percentage)
+    {
+		hitPoint = Mathf.Min(hitPoint + maxHitPoint * percentage / 100, maxHitPoint);
+		UpdateGraphics();
+
+	}
+
 	public void FullHealDamage()
     {
 		hitPoint = maxHitPoint;

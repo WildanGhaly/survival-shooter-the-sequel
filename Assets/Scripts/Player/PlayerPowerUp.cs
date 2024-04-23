@@ -10,10 +10,6 @@ public class PlayerPowerUp : MonoBehaviour
     [SerializeField] private float increaseSpeedDuration = 10;
     [SerializeField] private float increaseDamageDuration = 10;
 
-    private float increaseSpeedTime = 0;
-    private float increaseDamageTime = 0;
-    private float currentMultiplier = 2f;
-
     public static PlayerPowerUp Instance;
 
     private int multiplierCount = 0;
@@ -24,48 +20,33 @@ public class PlayerPowerUp : MonoBehaviour
         Instance = this;
     }
 
-    void Update()
+    public void IncreaseSpeedPowerUp(float duration, float speedPercentage)
     {
-        if (isIncreaseSpeed)
-        {
-            increaseSpeedTime += Time.deltaTime;
-            if (increaseSpeedDuration <= increaseSpeedTime)
-            {
-                isIncreaseSpeed = false;
-                increaseSpeedTime = 0;
-                BaseInstance.Instance.ResetSpeed();
-                BuffIconInstance.Instance.DisableSpeedBuff();
-            }
-        }
-
-        if (isIncreaseDamage)
-        {
-            increaseDamageTime += Time.deltaTime;
-            if (increaseDamageDuration <= increaseDamageTime)
-            {
-                isIncreaseDamage = false;
-                increaseDamageTime = 0;
-                BaseInstance.Instance.UpdateGunDamage(BaseInstance.Instance.GetGunDamage() / currentMultiplier);
-                BuffIconInstance.Instance.DisableDamageBuff();
-            }
-        }
+        StartCoroutine(HandleSpeedIncrease(duration, speedPercentage));
     }
 
-    public void IncreaseSpeedPowerUp(float normalSpeed)
+    private IEnumerator HandleSpeedIncrease(float duration, float speedPercentage)
     {
-        isIncreaseSpeed = true;
-        increaseSpeedTime = 0;
-        BaseInstance.Instance.UpdadeNormalSpeed(normalSpeed);
+        BaseInstance.Instance.UpdadeNormalSpeed(speedPercentage);
         BuffIconInstance.Instance.EnableSpeedBuff();
+        yield return new WaitForSeconds(duration);
+        BaseInstance.Instance.ResetSpeed();
+        BuffIconInstance.Instance.DisableSpeedBuff();
     }
 
-    public void IncreaseDamagePowerUp(int multiplier)
+    public void IncreaseDamagePowerUp(float duration, int multiplier)
     {
-        isIncreaseDamage = true;
-        increaseDamageTime = 0;
-        BaseInstance.Instance.UpdateGunDamage(BaseInstance.Instance.GetGunDamage() * multiplier);
+        StartCoroutine(HandleDamageIncrease(duration, multiplier));
+    }
+
+    private IEnumerator HandleDamageIncrease(float duration, int multiplier)
+    {
+        float originalDamage = BaseInstance.Instance.GetGunDamage();
+        BaseInstance.Instance.UpdateGunDamage(originalDamage * multiplier);
         BuffIconInstance.Instance.EnableDamageBuff();
-        currentMultiplier = multiplier;
+        yield return new WaitForSeconds(duration);
+        BaseInstance.Instance.UpdateGunDamage(originalDamage);
+        BuffIconInstance.Instance.DisableDamageBuff();
     }
 
     public void PermanentDamagePowerUp(float multiplier)

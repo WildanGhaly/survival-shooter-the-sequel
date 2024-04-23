@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class HealthRecoveryCollidable : PowerUpCollidable
 {
+    [SerializeField] private float healPercentage = 20;
     protected override void CollideEnter()
     {
         base.CollideEnter();
-        HealthSystem.Instance.FullHealDamage();
+        HealthSystem.Instance.HealDamagePercent(healPercentage);
         Destroy(gameObject);
     }
 }

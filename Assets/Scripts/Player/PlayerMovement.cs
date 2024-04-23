@@ -81,7 +81,7 @@ namespace Nightmare
             Vector3 moveDirection = Vector3.zero;
             moveDirection.x = input.x;
             moveDirection.z = input.y;
-            controller.Move(BaseInstance.Instance.currentSpeed * Time.deltaTime * transform.TransformDirection(moveDirection));
+            controller.Move(BaseInstance.Instance.GetCurrentSpeed() * Time.deltaTime * transform.TransformDirection(moveDirection));
 
             playerVelocity.y += gravity * Time.deltaTime;
             if (isGrounded && playerVelocity.y < 0)

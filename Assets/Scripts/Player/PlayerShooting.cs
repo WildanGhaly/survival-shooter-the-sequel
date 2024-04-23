@@ -225,7 +225,6 @@ namespace Nightmare
                         EnemyHealth enemyHealth = hit.collider.GetComponent<EnemyHealth>();
                         if (enemyHealth != null)
                         {
-                            Debug.Log("Enemy hit damage: " + BaseInstance.Instance.GetGunDamage());
                             enemyHealth.TakeDamage(BaseInstance.Instance.GetGunDamage(), hit.point);
                             gunLine.SetPosition(i * 2 + 1, hit.point);
                         }

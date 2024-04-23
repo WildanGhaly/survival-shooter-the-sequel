@@ -7,36 +7,11 @@ public class BaseInstance : MonoBehaviour
     public static BaseInstance Instance;
 
 	[SerializeField] private float gunDamage = 20f;
-
-	public float multiplierGunDamage
-	{
-		get;
-		private set;
-	} = 1;
-
-	public float defaultSpeed
-	{
-		get;
-		private set;
-	} = 6;
-
-	public float currentSpeed
-	{
-		get;
-		private set;
-	} = 6;
-
-	public float normalSpeed
-	{
-		get;
-		private set;
-	} = 6;
-
-	public float sprintSpeed
-	{
-		get;
-		private set;
-	} = 12;
+	[SerializeField] private float multiplierGunDamage = 1f;
+	[SerializeField] private float defaultSpeed = 6f;
+	[SerializeField] private float normalSpeed = 6f;
+	[SerializeField] private float sprintSpeed = 8f;
+	[SerializeField] private float currentSpeed = 6f;
 
 	void Awake()
 	{
@@ -48,6 +23,11 @@ public class BaseInstance : MonoBehaviour
 		return gunDamage * multiplierGunDamage;
     }
 
+	public float GetCurrentSpeed()
+    {
+		return currentSpeed;
+    }
+
 	public void UpdateGunDamage(float damage)
     {
 		gunDamage = damage;
@@ -55,13 +35,13 @@ public class BaseInstance : MonoBehaviour
 
 	public void HalfDamage()
     {
-		gunDamage = gunDamage / 2;
+		gunDamage /= 2;
     }
 
-	public void UpdadeNormalSpeed(float speed)
+	public void UpdadeNormalSpeed(float speedPercentage)
     {
 		defaultSpeed = normalSpeed;
-		normalSpeed = speed;
+		normalSpeed += speedPercentage/100 * normalSpeed;
 		currentSpeed = normalSpeed;
     }
 
