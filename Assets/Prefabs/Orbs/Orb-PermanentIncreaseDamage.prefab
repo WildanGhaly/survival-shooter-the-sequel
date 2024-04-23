@@ -9730,7 +9730,7 @@ GameObject:
   - component: {fileID: 7361514787518480109}
   - component: {fileID: 1870186473353307433}
   m_Layer: 0
-  m_Name: Orb-MaxAmmo
+  m_Name: Orb-PermanentIncreaseDamage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

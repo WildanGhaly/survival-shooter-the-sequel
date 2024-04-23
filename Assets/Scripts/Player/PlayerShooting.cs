@@ -189,7 +189,7 @@ namespace Nightmare
                         EnemyHealth enemyHealth = hit.collider.GetComponent<EnemyHealth>();
                         if (enemyHealth != null)
                         {
-                            enemyHealth.TakeDamage(BaseInstance.Instance.gunDamage, hit.point);
+                            enemyHealth.TakeDamage(BaseInstance.Instance.GetGunDamage(), hit.point);
                             gunLine.SetPosition(i * 2 + 1, hit.point);
                         }
                         else
@@ -225,7 +225,7 @@ namespace Nightmare
                         EnemyHealth enemyHealth = hit.collider.GetComponent<EnemyHealth>();
                         if (enemyHealth != null)
                         {
-                            enemyHealth.TakeDamage(BaseInstance.Instance.gunDamage, hit.point);
+                            enemyHealth.TakeDamage(BaseInstance.Instance.GetGunDamage(), hit.point);
                             gunLine.SetPosition(i * 2 + 1, hit.point);
                         }
                         else
@@ -257,7 +257,7 @@ namespace Nightmare
                     EnemyHealth enemyHealth = hit.collider.GetComponent<EnemyHealth>();
                     if (enemyHealth != null)
                     {
-                        enemyHealth.TakeDamage(BaseInstance.Instance.gunDamage, hit.point);
+                        enemyHealth.TakeDamage(BaseInstance.Instance.GetGunDamage(), hit.point);
                     }
                     gunLine.SetPosition(1, hit.point);
                 }
@@ -281,7 +281,7 @@ namespace Nightmare
                     EnemyHealth enemyHealth = hit.collider.GetComponent<EnemyHealth>();
                     if (enemyHealth != null)
                     {
-                        enemyHealth.TakeDamage(BaseInstance.Instance.gunDamage, hit.point);
+                        enemyHealth.TakeDamage(BaseInstance.Instance.GetGunDamage(), hit.point);
                     }
 
                     gunLine.SetPosition(1, hit.point);

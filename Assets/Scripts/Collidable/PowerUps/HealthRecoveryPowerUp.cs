@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ManaRecoveryCollidable : Collidable
+public class HealthRecoveryCollidable : PowerUpCollidable
 {
+    [SerializeField] private float healPercentage = 20;
     protected override void CollideEnter()
     {
         base.CollideEnter();
-        HealthSystem.Instance.FullRecoverMana();
+        HealthSystem.Instance.HealDamagePercent(healPercentage);
         Destroy(gameObject);
     }
 }

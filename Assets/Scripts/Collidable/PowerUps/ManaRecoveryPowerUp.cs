@@ -2,14 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IncreaseDamageCollidable : Collidable
+public class ManaRecoveryCollidable : PowerUpCollidable
 {
-    [SerializeField] private int multiplierDamage = 2;
-
     protected override void CollideEnter()
     {
         base.CollideEnter();
-        PlayerPowerUp.Instance.IncreaseDamagePowerUp(multiplierDamage);
+        HealthSystem.Instance.FullRecoverMana();
         Destroy(gameObject);
     }
 }
