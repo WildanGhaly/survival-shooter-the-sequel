@@ -136,6 +136,12 @@ public class HealthSystem : MonoBehaviour
 		UpdateGraphics();
     }
 
+	public void FullRecoverMana()
+    {
+		manaPoint = maxManaPoint;
+		UpdateGraphics();
+    }
+
 	public void SetMaxHealth(float max)
 	{
 		maxHitPoint += (int)(maxHitPoint * max / 100);
