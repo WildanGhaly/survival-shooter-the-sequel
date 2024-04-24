@@ -11,24 +11,13 @@ public class PlayerLook : MonoBehaviour
     public GameObject playerModel;
     private InputManager inputManager;
 
+    [SerializeField] private GameObject crosshair;
+
 
     // Start is called before the first frame update
     void Start()
     {
         inputManager = GetComponent<InputManager>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (inputManager.isFirstPerson)
-        {
-            playerModel.SetActive(false);
-        } 
-        else
-        {
-            playerModel.SetActive(true);
-        }
     }
 
     public void ProcessLook(Vector2 look)
@@ -60,18 +49,15 @@ public class PlayerLook : MonoBehaviour
         cam.transform.localRotation = Quaternion.Euler(tilt, 0, 0);
     }
 
-    // FIXME: Yang rotate playernya doang, gunnya kaga
+    // FIXME: rotasinya jadi ga sesuai kursor
     public void TopDownLook(Vector2 mousePosition)
     {
 #if !MOBILE_INPUT
         // Create a ray from the mouse cursor on screen in the direction of the camera.
         Ray camRay = Camera.main.ScreenPointToRay(mousePosition);
 
-        // Create a RaycastHit variable to store information about what was hit by the ray.
-        RaycastHit floorHit;
-
         // Perform the raycast and if it hits something on the floor layer...
-        if (Physics.Raycast(camRay, out floorHit))
+        if (Physics.Raycast(camRay, out RaycastHit floorHit))
         {
             // Create a vector from the player to the point on the floor the raycast from the mouse hit.
             Vector3 playerToMouse = floorHit.point - transform.position;
@@ -108,14 +94,28 @@ public class PlayerLook : MonoBehaviour
 
     public void SetFPSCam()
     {
+        playerModel.GetComponent<SkinnedMeshRenderer>().enabled = false;
         cam.transform.SetLocalPositionAndRotation(new Vector3(0f, 0.8f, 0), Quaternion.Euler(0, 0, 0));
-    }
-    public void SetTopDownCam()
-    {
-        cam.transform.SetLocalPositionAndRotation(new Vector3(0, 7, -5), Quaternion.Euler(50, 0, 0));
+        playerModel.transform.localRotation = Quaternion.identity;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        crosshair.SetActive(true);
     }
     public void SetTPSCam()
     {
+        playerModel.GetComponent<SkinnedMeshRenderer>().enabled = true;
         cam.transform.SetLocalPositionAndRotation(new Vector3(0, 3, -5), Quaternion.Euler(45, 0, 0));
+        playerModel.transform.localRotation = Quaternion.identity;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        crosshair.SetActive(true);
+    }
+    public void SetTopDownCam()
+    {
+        playerModel.GetComponent<SkinnedMeshRenderer>().enabled = true;
+        cam.transform.SetLocalPositionAndRotation(new Vector3(0, 7, -5), Quaternion.Euler(50, 0, 0));
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
+        crosshair.SetActive(false);
     }
 }

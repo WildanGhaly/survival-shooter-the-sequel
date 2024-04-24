@@ -11,14 +11,22 @@ public class InputManager : MonoBehaviour
     private PlayerInput inputActions;
     public PlayerInput.OnFootActions onFoot;
     public PlayerShooting playerShooting;
-    private Camera cam;
+
     public bool isFirstPerson = true;
     public bool isThirdPerson;
     public bool isTopDown;
 
+    public enum CameraMode
+    {
+        FirstPerson,
+        ThirdPerson,
+        TopDown
+    }
+
+    private CameraMode currentCameraMode;
+
     [SerializeField] private GameObject mobileButton;
     [SerializeField] private GameObject gun;
-    [SerializeField] private GameObject crosshair;
 
     // Start is called before the first frame update
     void Awake()
@@ -34,7 +42,6 @@ public class InputManager : MonoBehaviour
 
         health = GetComponent<PlayerHealth>();
         look = GetComponent<PlayerLook>();
-        cam = look.cam;
         inputActions = new PlayerInput();
         move = GetComponent<PlayerMovement>();
         
@@ -45,9 +52,9 @@ public class InputManager : MonoBehaviour
         onFoot.Sprint.performed += ctx => move.StartSprint();
         onFoot.Sprint.canceled += ctx => move.StopSprint();
 
-        onFoot.FirstPerson.performed += ctx => FirstPerson();
-        onFoot.ThirdPerson.performed += ctx => ThirdPerson();
-        onFoot.IsometricTopDown.performed += ctx => TopDown();
+        onFoot.FirstPerson.performed += ctx => SetCameraMode(CameraMode.FirstPerson);
+        onFoot.ThirdPerson.performed += ctx => SetCameraMode(CameraMode.ThirdPerson);
+        onFoot.IsometricTopDown.performed += ctx => SetCameraMode(CameraMode.TopDown);
 
         onFoot.Fire.performed += ctx => gun.GetComponent<PlayerShooting>().StartFire();
         onFoot.Fire.canceled += ctx => gun.GetComponent<PlayerShooting>().StopFire();
@@ -88,36 +95,24 @@ public class InputManager : MonoBehaviour
         onFoot.Disable();
     }
 
-    private void FirstPerson()
+    private void SetCameraMode(CameraMode mode)
     {
-        look.SetFPSCam();
-        isFirstPerson = true;
-        isThirdPerson = false;
-        isTopDown = false;
-        crosshair.SetActive(true);
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
-    }
+        currentCameraMode = mode;
+        isFirstPerson = (mode == CameraMode.FirstPerson);
+        isThirdPerson = (mode == CameraMode.ThirdPerson);
+        isTopDown = (mode == CameraMode.TopDown);
 
-    private void ThirdPerson()
-    {
-        look.SetTPSCam();
-        isFirstPerson = false;
-        isThirdPerson = true;
-        isTopDown = false;
-        crosshair.SetActive(true);
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
-    }
-
-    private void TopDown()
-    {
-        look.SetTopDownCam();
-        isFirstPerson = false;
-        isThirdPerson = false;
-        isTopDown = true;
-        crosshair.SetActive(false);
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.Confined;
+        switch (mode)
+        {
+            case CameraMode.FirstPerson:
+                look.SetFPSCam();
+                break;
+            case CameraMode.ThirdPerson:
+                look.SetTPSCam();
+                break;
+            case CameraMode.TopDown:
+                look.SetTopDownCam();
+                break;
+        }
     }
 }
