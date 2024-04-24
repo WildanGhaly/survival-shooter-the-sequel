@@ -29,7 +29,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 400002}
+  - {fileID: 400004}
   m_Father: {fileID: 400006}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &13700000
@@ -111,11 +113,11 @@ Transform:
   m_GameObject: {fileID: 100002}
   serializedVersion: 2
   m_LocalRotation: {x: 0.44829786, y: 0.44829786, z: -0.5468355, w: 0.5468355}
-  m_LocalPosition: {x: 0.42256805, y: 0.2720632, z: -0.17690624}
+  m_LocalPosition: {x: 0.42256784, y: 0.27206326, z: -0.17690635}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 400006}
+  m_Father: {fileID: 400000}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &13700002
 SkinnedMeshRenderer:
@@ -200,13 +202,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 100004}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.004913834, y: 0, z: 0, w: 0.99998796}
-  m_LocalPosition: {x: 0.42256805, y: 0.3097692, z: 0.74614936}
-  m_LocalScale: {x: 0.99999994, y: 1, z: 1}
+  m_LocalRotation: {x: 0.004913834, y: -0, z: -0, w: 0.99998796}
+  m_LocalPosition: {x: 0.42256784, y: 0.30976915, z: 0.7461493}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 400008}
-  m_Father: {fileID: 400006}
+  m_Father: {fileID: 400000}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!199 &19900000
 ParticleSystemRenderer:
@@ -5305,15 +5307,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c83720df9acb89488dbf2c0dbd3ad78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damagePerShot: 20
   timeBetweenBullets: 0.12
-  range: 120
+  rifleTimeBetweenBullets: 0.15
+  shotgunTimeBetweenBullets: 1
+  swordTimeBetweenBullets: 0.5
+  shotgunRange: 30
+  swordRange: 3
+  rifleRange: 100
+  layer:
+    serializedVersion: 2
+    m_Bits: 0
   grenade: {fileID: 1105787354104060, guid: 41a4c48eef428174cb5039adb608d30c, type: 3}
   grenadeSpeed: 400
   grenadeFireDelay: 0.75
   cam: {fileID: 1843439715709032536}
   player: {fileID: 100006}
+  weaponId: 1
   faceLight: {fileID: 10800002}
+  shotgunBulletCount: 10
+  shotgunMaxSpreadAngle: 20
 --- !u!108 &10800000
 Light:
   m_ObjectHideFlags: 0
@@ -5418,8 +5430,6 @@ Transform:
   m_Children:
   - {fileID: 2426153467784689368}
   - {fileID: 400000}
-  - {fileID: 400002}
-  - {fileID: 400004}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &9500000
@@ -5455,9 +5465,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c32067ea884548644b13cf9baddd4573, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 100
-  currentHealth: 0
-  healthSlider: {fileID: 0}
   damageImage: {fileID: 0}
   deathClip: {fileID: 8300000, guid: d36a393bca4582043982db9089e1694f, type: 3}
   flashSpeed: 5
@@ -5475,11 +5482,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b2268f9c7df8764aa2e92dbf55b5ae1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
-  normalSpeed: 6
-  sprintSpeed: 12
   jumpHeight: 2
   gravity: -9.8
+  timeSprint: 0.1
+  manaCost: 2
 --- !u!136 &13600000
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5628,7 +5634,7 @@ MonoBehaviour:
   playerShooting: {fileID: 11400000}
   isFirstPerson: 1
   isThirdPerson: 0
-  isTopdownPerson: 0
+  isTopDown: 0
   mobileButton: {fileID: 0}
   gun: {fileID: 100004}
   crosshair: {fileID: 0}
