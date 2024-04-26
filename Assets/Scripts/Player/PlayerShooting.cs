@@ -16,6 +16,10 @@ namespace Nightmare
         [SerializeField] private float swordRange = 3f;
         [SerializeField] private float rifleRange = 100f;
 
+        [SerializeField] private GameObject rifle;
+        [SerializeField] private GameObject shotgun;
+        [SerializeField] private GameObject sword;
+
         [SerializeField] private LayerMask layer;
 
         public GameObject grenade;
@@ -109,18 +113,49 @@ namespace Nightmare
                 case 1:
                     timeBetweenBullets = rifleTimeBetweenBullets;
                     weaponId = 1;
+                    ActivateWeapon(weaponId);
                     return;
                 case 2:
                     timeBetweenBullets = shotgunTimeBetweenBullets;
                     weaponId = 2;
+                    ActivateWeapon(weaponId);
                     return;
                 case 3:
                     timeBetweenBullets = swordTimeBetweenBullets;
                     weaponId = 3;
+                    ActivateWeapon(weaponId);
                     return;
                 default:
                     timeBetweenBullets = rifleTimeBetweenBullets;
                     weaponId = 1;
+                    ActivateWeapon(weaponId);
+                    return;
+            }
+        }
+
+        private void ActivateWeapon(int weaponid)
+        {
+            switch (weaponid)
+            {
+                case 1:
+                    rifle.SetActive(true);
+                    shotgun.SetActive(false);
+                    sword.SetActive(false);
+                    return;
+                case 2:
+                    rifle.SetActive(false);
+                    shotgun.SetActive(true);
+                    sword.SetActive(false);
+                    return;
+                case 3:
+                    rifle.SetActive(false);
+                    shotgun.SetActive(false);
+                    sword.SetActive(true);
+                    return;
+                default:
+                    rifle.SetActive(true);
+                    shotgun.SetActive(false);
+                    sword.SetActive(false);
                     return;
             }
         }
