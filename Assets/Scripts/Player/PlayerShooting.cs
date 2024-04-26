@@ -52,7 +52,11 @@ namespace Nightmare
         Ray shootRay = new Ray();
         ParticleSystem gunParticles;
         LineRenderer gunLine;
-        AudioSource gunAudio;
+
+        AudioSource rifleAudio;
+        AudioSource shotgunAudio;
+        AudioSource swordAudio;
+
         Light gunLight;
 		public Light faceLight;
         float effectsDisplayTime = 0.2f;
@@ -68,9 +72,13 @@ namespace Nightmare
             // Set up the references.
             gunParticles = GetComponent<ParticleSystem> ();
             gunLine = GetComponent <LineRenderer> ();
-            gunAudio = GetComponent<AudioSource> ();
+            
             gunLight = GetComponent<Light> ();
-			//faceLight = GetComponentInChildren<Light> ();
+            //faceLight = GetComponentInChildren<Light> ();
+
+            rifleAudio = rifle.GetComponent<AudioSource>();
+            shotgunAudio = shotgun.GetComponent<AudioSource>();
+            swordAudio = sword.GetComponent<AudioSource>();
 
             AdjustGrenadeStock(0);
 
@@ -206,7 +214,6 @@ namespace Nightmare
 
         void Shoot()
         {
-            gunAudio.Play();
             gunLight.enabled = true;
             faceLight.enabled = true;
             gunParticles.Stop();
@@ -217,14 +224,17 @@ namespace Nightmare
             if (weaponId == 1)
             {
                 ShootRifle();
+                rifleAudio.Play();
             }
             else if (weaponId == 2)
             {
                 ShootShotgun();
+                shotgunAudio.Play();
             }
             else if (weaponId == 3)
             {
                 SwordSlash();
+                swordAudio.Play();
             }
         }
 
@@ -244,12 +254,8 @@ namespace Nightmare
                     {
                         enemyHealth.TakeDamage(BaseInstance.Instance.GetGunDamage(), hit.point);
                     }
-                    gunLine.SetPosition(1, hit.point);
                 }
-                else
-                {
-                    gunLine.SetPosition(1, transform.position + shootDirection * swordRange);
-                }
+                gunLine.SetPosition(1, transform.position);
             }
             else
             {
@@ -268,15 +274,8 @@ namespace Nightmare
                     {
                         enemyHealth.TakeDamage(BaseInstance.Instance.GetGunDamage(), hit.point);
                     }
-
-                    gunLine.SetPosition(1, hit.point);
                 }
-                else
-                {
-                    shootRay.origin = transform.position;
-                    shootRay.direction = camRay.direction;
-                    gunLine.SetPosition(1, shootRay.origin + shootRay.direction * swordRange);
-                }
+                gunLine.SetPosition(1, transform.position);
             }
         }
 
