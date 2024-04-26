@@ -628,11 +628,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eventInteract: 1
   promptMessage: Interact
---- !u!1 &512441000 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6390777468996055571, guid: 765afca53a5c31544ad60817c5b4498c, type: 3}
-  m_PrefabInstance: {fileID: 4279735268129334142}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -727,11 +722,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &1078808581 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3238190465890369156, guid: 765afca53a5c31544ad60817c5b4498c, type: 3}
-  m_PrefabInstance: {fileID: 4279735268129334142}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1110784001
 GameObject:
   m_ObjectHideFlags: 0
@@ -777,11 +767,6 @@ Transform:
   - {fileID: 1772766333}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1335262494 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3218962484902808547, guid: 765afca53a5c31544ad60817c5b4498c, type: 3}
-  m_PrefabInstance: {fileID: 4279735268129334142}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1454094186
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1321,18 +1306,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerWithUI
       objectReference: {fileID: 0}
-    - target: {fileID: 3238190465897450342, guid: 765afca53a5c31544ad60817c5b4498c, type: 3}
-      propertyPath: rifle
-      value: 
-      objectReference: {fileID: 1078808581}
-    - target: {fileID: 3238190465897450342, guid: 765afca53a5c31544ad60817c5b4498c, type: 3}
-      propertyPath: sword
-      value: 
-      objectReference: {fileID: 1335262494}
-    - target: {fileID: 3238190465897450342, guid: 765afca53a5c31544ad60817c5b4498c, type: 3}
-      propertyPath: shotgun
-      value: 
-      objectReference: {fileID: 512441000}
+    - target: {fileID: 3238190465883776870, guid: 765afca53a5c31544ad60817c5b4498c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5861419219326725246, guid: 765afca53a5c31544ad60817c5b4498c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.851267

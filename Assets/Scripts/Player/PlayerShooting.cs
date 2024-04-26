@@ -20,6 +20,21 @@ namespace Nightmare
         [SerializeField] private GameObject shotgun;
         [SerializeField] private GameObject sword;
 
+        [Header("Shotgun Close Range")]
+        [SerializeField] private float closeRangeMultiplier = 1f;
+        [Tooltip("Effective distance for maximum damage at close range")]
+        [SerializeField] private float closeRangeDistance = 5f;
+
+        [Header("Shotgun Mid Range")]
+        [SerializeField] private float midRangeMultiplier = 0.5f;
+        [Tooltip("Effective distance for reduced damage at mid range")]
+        [SerializeField] private float midRangeDistance = 10f;
+
+        [Header("Shotgun Long Range")]
+        [SerializeField] private float longRangeMultiplier = 0.2f;
+        [Tooltip("Effective distance for minimum damage at long range")]
+        [SerializeField] private float longRangeDistance = 30f;
+
         [SerializeField] private LayerMask layer;
 
         public GameObject grenade;
@@ -37,7 +52,11 @@ namespace Nightmare
         Ray shootRay = new Ray();
         ParticleSystem gunParticles;
         LineRenderer gunLine;
-        AudioSource gunAudio;
+
+        AudioSource rifleAudio;
+        AudioSource shotgunAudio;
+        AudioSource swordAudio;
+
         Light gunLight;
 		public Light faceLight;
         float effectsDisplayTime = 0.2f;
@@ -53,9 +72,13 @@ namespace Nightmare
             // Set up the references.
             gunParticles = GetComponent<ParticleSystem> ();
             gunLine = GetComponent <LineRenderer> ();
-            gunAudio = GetComponent<AudioSource> ();
+            
             gunLight = GetComponent<Light> ();
-			//faceLight = GetComponentInChildren<Light> ();
+            //faceLight = GetComponentInChildren<Light> ();
+
+            rifleAudio = rifle.GetComponent<AudioSource>();
+            shotgunAudio = shotgun.GetComponent<AudioSource>();
+            swordAudio = sword.GetComponent<AudioSource>();
 
             AdjustGrenadeStock(0);
 
@@ -191,7 +214,6 @@ namespace Nightmare
 
         void Shoot()
         {
-            gunAudio.Play();
             gunLight.enabled = true;
             faceLight.enabled = true;
             gunParticles.Stop();
@@ -202,14 +224,17 @@ namespace Nightmare
             if (weaponId == 1)
             {
                 ShootRifle();
+                rifleAudio.Play();
             }
             else if (weaponId == 2)
             {
                 ShootShotgun();
+                shotgunAudio.Play();
             }
             else if (weaponId == 3)
             {
                 SwordSlash();
+                swordAudio.Play();
             }
         }
 
@@ -229,12 +254,8 @@ namespace Nightmare
                     {
                         enemyHealth.TakeDamage(BaseInstance.Instance.GetGunDamage(), hit.point);
                     }
-                    gunLine.SetPosition(1, hit.point);
                 }
-                else
-                {
-                    gunLine.SetPosition(1, transform.position + shootDirection * swordRange);
-                }
+                gunLine.SetPosition(1, transform.position);
             }
             else
             {
@@ -253,15 +274,8 @@ namespace Nightmare
                     {
                         enemyHealth.TakeDamage(BaseInstance.Instance.GetGunDamage(), hit.point);
                     }
-
-                    gunLine.SetPosition(1, hit.point);
                 }
-                else
-                {
-                    shootRay.origin = transform.position;
-                    shootRay.direction = camRay.direction;
-                    gunLine.SetPosition(1, shootRay.origin + shootRay.direction * swordRange);
-                }
+                gunLine.SetPosition(1, transform.position);
             }
         }
 
@@ -283,9 +297,12 @@ namespace Nightmare
                     if (Physics.Raycast(shotRay, out hit, shotgunRange, layer))
                     {
                         EnemyHealth enemyHealth = hit.collider.GetComponent<EnemyHealth>();
+                        float distance = Vector3.Distance(transform.position, hit.point);
+                        float multiplier = distance < closeRangeDistance ? closeRangeMultiplier : distance < midRangeDistance ? midRangeMultiplier : distance < longRangeDistance ? longRangeMultiplier : 0;
+
                         if (enemyHealth != null)
                         {
-                            enemyHealth.TakeDamage(BaseInstance.Instance.GetGunDamage(), hit.point);
+                            enemyHealth.TakeDamage(BaseInstance.Instance.GetGunDamage() * multiplier, hit.point);
                         }
                         gunLine.SetPosition(i * 2 + 1, hit.point);
                     }
@@ -314,9 +331,12 @@ namespace Nightmare
                     if (Physics.Raycast(shotRay, out RaycastHit hit, shotgunRange, layer))
                     {
                         EnemyHealth enemyHealth = hit.collider.GetComponent<EnemyHealth>();
+                        float distance = Vector3.Distance(transform.position, hit.point);
+                        float multiplier = distance < closeRangeDistance ? closeRangeMultiplier : distance < midRangeDistance ? midRangeMultiplier : distance < longRangeDistance ? longRangeMultiplier : 0;
+                        
                         if (enemyHealth != null)
                         {
-                            enemyHealth.TakeDamage(BaseInstance.Instance.GetGunDamage(), hit.point);
+                            enemyHealth.TakeDamage(BaseInstance.Instance.GetGunDamage() * multiplier, hit.point);
                             
                         }
                         gunLine.SetPosition(i * 2 + 1, hit.point);
