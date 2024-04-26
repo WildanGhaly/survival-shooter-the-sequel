@@ -20,6 +20,21 @@ namespace Nightmare
         [SerializeField] private GameObject shotgun;
         [SerializeField] private GameObject sword;
 
+        [Header("Shotgun Close Range")]
+        [SerializeField] private float closeRangeMultiplier = 1f;
+        [Tooltip("Effective distance for maximum damage at close range")]
+        [SerializeField] private float closeRangeDistance = 5f;
+
+        [Header("Shotgun Mid Range")]
+        [SerializeField] private float midRangeMultiplier = 0.5f;
+        [Tooltip("Effective distance for reduced damage at mid range")]
+        [SerializeField] private float midRangeDistance = 10f;
+
+        [Header("Shotgun Long Range")]
+        [SerializeField] private float longRangeMultiplier = 0.2f;
+        [Tooltip("Effective distance for minimum damage at long range")]
+        [SerializeField] private float longRangeDistance = 30f;
+
         [SerializeField] private LayerMask layer;
 
         public GameObject grenade;
@@ -283,9 +298,12 @@ namespace Nightmare
                     if (Physics.Raycast(shotRay, out hit, shotgunRange, layer))
                     {
                         EnemyHealth enemyHealth = hit.collider.GetComponent<EnemyHealth>();
+                        float distance = Vector3.Distance(transform.position, hit.point);
+                        float multiplier = distance < closeRangeDistance ? closeRangeMultiplier : distance < midRangeDistance ? midRangeMultiplier : distance < longRangeDistance ? longRangeMultiplier : 0;
+
                         if (enemyHealth != null)
                         {
-                            enemyHealth.TakeDamage(BaseInstance.Instance.GetGunDamage(), hit.point);
+                            enemyHealth.TakeDamage(BaseInstance.Instance.GetGunDamage() * multiplier, hit.point);
                         }
                         gunLine.SetPosition(i * 2 + 1, hit.point);
                     }
@@ -314,9 +332,12 @@ namespace Nightmare
                     if (Physics.Raycast(shotRay, out RaycastHit hit, shotgunRange, layer))
                     {
                         EnemyHealth enemyHealth = hit.collider.GetComponent<EnemyHealth>();
+                        float distance = Vector3.Distance(transform.position, hit.point);
+                        float multiplier = distance < closeRangeDistance ? closeRangeMultiplier : distance < midRangeDistance ? midRangeMultiplier : distance < longRangeDistance ? longRangeMultiplier : 0;
+                        
                         if (enemyHealth != null)
                         {
-                            enemyHealth.TakeDamage(BaseInstance.Instance.GetGunDamage(), hit.point);
+                            enemyHealth.TakeDamage(BaseInstance.Instance.GetGunDamage() * multiplier, hit.point);
                             
                         }
                         gunLine.SetPosition(i * 2 + 1, hit.point);
