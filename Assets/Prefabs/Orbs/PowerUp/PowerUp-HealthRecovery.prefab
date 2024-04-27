@@ -68045,6 +68045,8 @@ MonoBehaviour:
   eventCollideStay: 0
   eventCollideExit: 0
   countdown: 5
+  audioSource: {fileID: 5233713376729224260, guid: 5dc85deb6675fd744b60f9d45c4106e6, type: 3}
+  healPercentage: 20
 --- !u!1001 &1558741990387243289
 PrefabInstance:
   m_ObjectHideFlags: 0

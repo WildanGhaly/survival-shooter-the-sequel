@@ -5,6 +5,7 @@ using UnityEngine;
 public class PowerUpCollidable : Collidable
 {
     [SerializeField] protected float countdown = 5f;
+    [SerializeField] protected GameObject audioSource;
 
     void Start()
     {
@@ -13,6 +14,7 @@ public class PowerUpCollidable : Collidable
 
     protected override void CollideEnter()
     {
+        audioSource.GetComponent<AudioSource>().Play();
         base.CollideEnter();
     }
 
