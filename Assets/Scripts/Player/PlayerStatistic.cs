@@ -32,6 +32,18 @@ public class PlayerStatistic : MonoBehaviour
         
     }
 
+    public void addKill(){
+        enemiesKilled++;
+    }
+
+    public int getKillCount(){
+        return enemiesKilled;
+    }
+
+    public float getDistance(){
+        return distanceReached;
+    }
+
     protected virtual IEnumerator CalculateDistance(float count){
         currentPosition = transform.position;
 
