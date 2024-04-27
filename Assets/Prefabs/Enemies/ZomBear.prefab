@@ -328,15 +328,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orbsWithProbabilities:
-  - orbPrefab: {fileID: 6070487127092280119, guid: aef81f3beeed11a4eb3fa3ca3327be33, type: 3}
+  - orbPrefab: {fileID: 8363414893086624847, guid: ca9dadda73fffd44790bb1ebab680bd2, type: 3}
     probability: 5
-  - orbPrefab: {fileID: 8154793173975930432, guid: a94a2668386c28140b678291b24d6c79, type: 3}
+  - orbPrefab: {fileID: 1196561483885472495, guid: e05ac88bec4511d40ba4a06216a2b205, type: 3}
     probability: 20
-  - orbPrefab: {fileID: 3994127337954090109, guid: c8609b0c3db5292408b954f137adc5c2, type: 3}
+  - orbPrefab: {fileID: 3002461420310479958, guid: 7db73da8507cb7946a936e0d0bcf72a2, type: 3}
     probability: 10
-  - orbPrefab: {fileID: 1989112365759347675, guid: 75bdfcce4e626f4439055e65eaa94ca9, type: 3}
+  - orbPrefab: {fileID: 8288017297698150514, guid: 9f960730167cce54788cdcdc21dc256f, type: 3}
     probability: 20
-  - orbPrefab: {fileID: 7379198026096011778, guid: 3227dc8954c88644cbff82589cd85d37, type: 3}
+  - orbPrefab: {fileID: 1378687163409516870, guid: 6afa191679c96084299d5bc4beddb3e5, type: 3}
     probability: 15
   - orbPrefab: {fileID: 0}
     probability: 30

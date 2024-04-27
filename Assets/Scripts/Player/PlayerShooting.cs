@@ -2,6 +2,7 @@
 using UnityEngine.Events;
 using System.Text;
 using UnitySampleAssets.CrossPlatformInput;
+using System.Collections;
 
 namespace Nightmare
 {
@@ -36,6 +37,13 @@ namespace Nightmare
         [SerializeField] private float longRangeDistance = 30f;
 
         [SerializeField] private LayerMask layer;
+
+        public int rifleBulletShoot = 0;
+        public int rifleBulletHit = 0;
+        public int shotgunBulletShoot = 0;
+        public int shotgunBulletHit = 0;
+        public int swordBulletShoot = 0;
+        public int swordBulletHit = 0;
 
         public GameObject grenade;
         public float grenadeSpeed = 200f;
@@ -88,7 +96,6 @@ namespace Nightmare
 
             StartPausible();
         }
-
 
         void OnDestroy()
         {
@@ -223,16 +230,22 @@ namespace Nightmare
 
             if (weaponId == 1)
             {
+                rifleBulletShoot++;
+                gunLine.positionCount = 2;
                 ShootRifle();
                 rifleAudio.Play();
             }
             else if (weaponId == 2)
             {
+                shotgunBulletShoot += shotgunBulletCount;
+                gunLine.positionCount = shotgunBulletCount * 2;
                 ShootShotgun();
                 shotgunAudio.Play();
             }
             else if (weaponId == 3)
             {
+                swordBulletShoot++;
+                gunLine.positionCount = 2;
                 SwordSlash();
                 swordAudio.Play();
             }
@@ -240,19 +253,18 @@ namespace Nightmare
 
         void SwordSlash()
         {
-            gunLine.positionCount = 2;
             if (player.GetComponent<InputManager>().isTopDown)
             {
                 gunLine.SetPosition(0, transform.position);
 
                 Vector3 shootDirection = transform.forward;
-                RaycastHit hit;
-                if (Physics.Raycast(transform.position, shootDirection, out hit, swordRange))
+                if (Physics.Raycast(transform.position, shootDirection, out RaycastHit hit, swordRange))
                 {
                     EnemyHealth enemyHealth = hit.collider.GetComponent<EnemyHealth>();
                     if (enemyHealth != null)
                     {
                         enemyHealth.TakeDamage(BaseInstance.Instance.GetGunDamage(), hit.point);
+                        swordBulletHit++;
                     }
                 }
                 gunLine.SetPosition(1, transform.position);
@@ -262,9 +274,8 @@ namespace Nightmare
                 gunLine.SetPosition(0, transform.position);
 
                 Ray camRay = cam.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
-                RaycastHit hit;
 
-                if (Physics.Raycast(camRay, out hit, swordRange))
+                if (Physics.Raycast(camRay, out RaycastHit hit, swordRange))
                 {
                     shootRay.origin = transform.position;
                     shootRay.direction = (hit.point - transform.position).normalized;
@@ -273,6 +284,7 @@ namespace Nightmare
                     if (enemyHealth != null)
                     {
                         enemyHealth.TakeDamage(BaseInstance.Instance.GetGunDamage(), hit.point);
+                        swordBulletHit++;
                     }
                 }
                 gunLine.SetPosition(1, transform.position);
@@ -281,7 +293,6 @@ namespace Nightmare
 
         void ShootShotgun()
         {
-            gunLine.positionCount = shotgunBulletCount * 2;
             if (player.GetComponent<InputManager>().isTopDown)
             {
                 for (int i = 0; i < shotgunBulletCount; i++)
@@ -290,11 +301,10 @@ namespace Nightmare
                     Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.up);
 
                     Vector3 shootDirection = rotation * transform.forward;
-                    Ray shotRay = new Ray(transform.position, shootDirection);
-                    RaycastHit hit;
+                    Ray shotRay = new (transform.position, shootDirection);
 
                     gunLine.SetPosition(i * 2, transform.position);
-                    if (Physics.Raycast(shotRay, out hit, shotgunRange, layer))
+                    if (Physics.Raycast(shotRay, out RaycastHit hit, shotgunRange, layer))
                     {
                         EnemyHealth enemyHealth = hit.collider.GetComponent<EnemyHealth>();
                         float distance = Vector3.Distance(transform.position, hit.point);
@@ -303,6 +313,7 @@ namespace Nightmare
                         if (enemyHealth != null)
                         {
                             enemyHealth.TakeDamage(BaseInstance.Instance.GetGunDamage() * multiplier, hit.point);
+                            shotgunBulletHit++;
                         }
                         gunLine.SetPosition(i * 2 + 1, hit.point);
                     }
@@ -337,7 +348,7 @@ namespace Nightmare
                         if (enemyHealth != null)
                         {
                             enemyHealth.TakeDamage(BaseInstance.Instance.GetGunDamage() * multiplier, hit.point);
-                            
+                            shotgunBulletHit++;
                         }
                         gunLine.SetPosition(i * 2 + 1, hit.point);
                     }
@@ -352,19 +363,18 @@ namespace Nightmare
 
         void ShootRifle()
         {
-            gunLine.positionCount = 2;
+            gunLine.SetPosition(0, transform.position);
+
             if (player.GetComponent<InputManager>().isTopDown)
             {
-                gunLine.SetPosition(0, transform.position);
-
                 Vector3 shootDirection = transform.forward; 
-                RaycastHit hit;
-                if (Physics.Raycast(transform.position, shootDirection, out hit, rifleRange))
+                if (Physics.Raycast(transform.position, shootDirection, out RaycastHit hit, rifleRange))
                 {
                     EnemyHealth enemyHealth = hit.collider.GetComponent<EnemyHealth>();
                     if (enemyHealth != null)
                     {
                         enemyHealth.TakeDamage(BaseInstance.Instance.GetGunDamage(), hit.point);
+                        rifleBulletHit++;
                     }
                     gunLine.SetPosition(1, hit.point);
                 }
@@ -375,12 +385,9 @@ namespace Nightmare
             }
             else
             {
-                gunLine.SetPosition(0, transform.position);
-
                 Ray camRay = cam.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
-                RaycastHit hit;
 
-                if (Physics.Raycast(camRay, out hit, rifleRange))
+                if (Physics.Raycast(camRay, out RaycastHit hit, rifleRange))
                 {
                     shootRay.origin = transform.position;
                     shootRay.direction = (hit.point - transform.position).normalized;
@@ -389,6 +396,7 @@ namespace Nightmare
                     if (enemyHealth != null)
                     {
                         enemyHealth.TakeDamage(BaseInstance.Instance.GetGunDamage(), hit.point);
+                        rifleBulletHit++;
                     }
 
                     gunLine.SetPosition(1, hit.point);
@@ -401,19 +409,6 @@ namespace Nightmare
                 }
             }
             
-        }
-
-
-
-        private void ChangeGunLine(float midPoint)
-        {
-            AnimationCurve curve = new AnimationCurve();
-
-            curve.AddKey(0f, 0f);
-            curve.AddKey(midPoint, 0.5f);
-            curve.AddKey(1f, 1f);
-
-            gunLine.widthCurve = curve;
         }
 
         public void CollectGrenade()
