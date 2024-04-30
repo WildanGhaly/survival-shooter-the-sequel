@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerStatistic : MonoBehaviour
@@ -60,8 +61,8 @@ public class PlayerStatistic : MonoBehaviour
     }
 
     public float getHitRatio(){
-        return bulletsHit/bulletsShot;
-    }
+        return (float) bulletsHit/ (float) bulletsShot;
+    }   
 
     protected virtual IEnumerator CalculateDistance(float count){
         currentPosition = transform.position;
