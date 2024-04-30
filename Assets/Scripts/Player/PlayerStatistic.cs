@@ -1,17 +1,19 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+[Serializable]
 public class PlayerStatistic : MonoBehaviour
 {
     public static PlayerStatistic INSTANCE;
-    private float distanceReached = 0.0f;
+    [SerializeField] private float distanceReached = 0.0f;
     protected float updateCountdown = 5f; 
-    private int enemiesKilled = 0;
-    private float time;
-    private int bulletsShot;
-    private int bulletsHit;
+    [SerializeField] private int enemiesKilled = 0;
+    [SerializeField] private float time;
+    [SerializeField] private int bulletsShot;
+    [SerializeField] private int bulletsHit;
     private Vector3 previousPosition;
     private Vector3 currentPosition;
 
