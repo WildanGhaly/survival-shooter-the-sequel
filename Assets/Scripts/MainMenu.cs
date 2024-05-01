@@ -5,6 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public GameObject mainMenuCanvas;
+    public GameObject settingsCanvas;
+    public GameObject statsCanvas;
+
+    void Start()
+    {
+        mainMenuCanvas.SetActive(true);
+        settingsCanvas.SetActive(false);
+        statsCanvas.SetActive(false);
+    }
     public void NewGame()
     {
         // new game here
@@ -20,13 +30,22 @@ public class MainMenu : MonoBehaviour
     public void Stats()
     {
         // stats goes here
-        SceneManager.LoadSceneAsync("");
+        mainMenuCanvas.SetActive(false);
+        statsCanvas.SetActive(true);
+
     }
 
     public void Settings()
     {
-        // settings goes here
-        SceneManager.LoadSceneAsync("");
+        mainMenuCanvas.SetActive(false);
+        settingsCanvas.SetActive(true);
+    }
+
+    public void ToMainMenu()
+    {
+        mainMenuCanvas.SetActive(true);
+        settingsCanvas.SetActive(false);
+        statsCanvas.SetActive(false);
     }
 
     public void Quit()
