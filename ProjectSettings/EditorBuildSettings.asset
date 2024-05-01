@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Any/Ultra Difficult.unity
     guid: 793af3b2c42881d4a8b4354bdc26d966
+  - enabled: 1
+    path: Assets/Scenes/Any/Main Menu.unity
+    guid: f053bf737f876664f8ca509dccf080e6
   m_configObjects: {}

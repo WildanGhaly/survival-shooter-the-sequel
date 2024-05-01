@@ -5,9 +5,28 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public void Play()
+    public void NewGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        // new game here
+        SceneManager.LoadSceneAsync("Ultra Difficult");
+    }
+
+    public void LoadGame()
+    {
+        // TODO: load game here
+        SceneManager.LoadSceneAsync("");
+    }
+
+    public void Stats()
+    {
+        // stats goes here
+        SceneManager.LoadSceneAsync("");
+    }
+
+    public void Settings()
+    {
+        // settings goes here
+        SceneManager.LoadSceneAsync("");
     }
 
     public void Quit()
