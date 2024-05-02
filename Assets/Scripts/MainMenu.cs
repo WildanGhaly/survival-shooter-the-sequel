@@ -5,9 +5,47 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public void Play()
+    public GameObject mainMenuCanvas;
+    public GameObject settingsCanvas;
+    public GameObject statsCanvas;
+
+    void Start()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        mainMenuCanvas.SetActive(true);
+        settingsCanvas.SetActive(false);
+        statsCanvas.SetActive(false);
+    }
+    public void NewGame()
+    {
+        // new game here
+        SceneManager.LoadSceneAsync("Ultra Difficult");
+    }
+
+    public void LoadGame()
+    {
+        // TODO: load game here
+        SceneManager.LoadSceneAsync("");
+    }
+
+    public void Stats()
+    {
+        // stats goes here
+        mainMenuCanvas.SetActive(false);
+        statsCanvas.SetActive(true);
+
+    }
+
+    public void Settings()
+    {
+        mainMenuCanvas.SetActive(false);
+        settingsCanvas.SetActive(true);
+    }
+
+    public void ToMainMenu()
+    {
+        mainMenuCanvas.SetActive(true);
+        settingsCanvas.SetActive(false);
+        statsCanvas.SetActive(false);
     }
 
     public void Quit()
