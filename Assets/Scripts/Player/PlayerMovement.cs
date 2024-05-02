@@ -15,6 +15,7 @@ namespace Nightmare
         private bool isSprinting;
         private bool isGrounded;
         private Vector3 playerVelocity;
+        public float speedModifier = 1f;
 
         Animator anim;                      // Reference to the animator component.
 
@@ -83,7 +84,7 @@ namespace Nightmare
             moveDirection.z = input.y;
             controller.Move(BaseInstance.Instance.GetCurrentSpeed() * Time.deltaTime * transform.TransformDirection(moveDirection));
 
-            playerVelocity.y += gravity * Time.deltaTime;
+            playerVelocity.y += gravity * Time.deltaTime * speedModifier;
             if (isGrounded && playerVelocity.y < 0)
             {
                 playerVelocity.y = -2f;
