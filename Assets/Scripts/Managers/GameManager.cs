@@ -1,12 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager INSTANCE;
-    public GameObject button;
+    public int point = 0;
+    public int coin = 0;
 
     void Awake()
     {
@@ -26,8 +30,23 @@ public class GameManager : MonoBehaviour
         
     }
 
+    public void updatePointCoin(){
+        point++;
+        coin = (int) ((float) point * 0.8);
+    }
+
     public void SaveGame()
     {
-        System.IO.File.WriteAllText(Application.persistentDataPath + "/PlayerStats.json", JsonUtility.ToJson(PlayerStatistic.INSTANCE));
+        string playerStat = "\"player\": " + JsonUtility.ToJson(PlayerStatistic.INSTANCE);
+        string scene = "\"scene\": {\"name\":\""+ SceneManager.GetActiveScene().name + "\", \"index\": " + SceneManager.GetActiveScene().buildIndex.ToString() + "}"; 
+        string pointCoint = "\"point\": " + this.point + ", \"coin\":" + this.coin;
+
+        string json = "{"+ pointCoint + ", " + playerStat + "," + scene + "}";
+
+        string path = Path.Combine(Application.persistentDataPath, "savefile.json");
+
+        File.WriteAllText(path, json);
+
+        Debug.Log(path);
     }
 }

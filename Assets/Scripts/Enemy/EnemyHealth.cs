@@ -83,6 +83,7 @@ namespace Nightmare
             anim.SetTrigger ("Dead");
 
             PlayerStatistic.INSTANCE.addKill();
+            GameManager.INSTANCE.updatePointCoin();
 
             enemyAudio.clip = deathClip;
             enemyAudio.Play ();
