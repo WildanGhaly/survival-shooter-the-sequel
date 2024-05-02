@@ -249,6 +249,9 @@ namespace Nightmare
                 SwordSlash();
                 swordAudio.Play();
             }
+
+            PlayerStatistic.INSTANCE.setBulletFired(swordBulletShoot + shotgunBulletShoot + rifleBulletShoot);
+            PlayerStatistic.INSTANCE.setBulletHit(swordBulletHit + shotgunBulletHit + rifleBulletHit);
         }
 
         void SwordSlash()
