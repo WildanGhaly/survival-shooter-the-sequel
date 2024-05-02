@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: LineRenderMaterial
-  m_Shader: {fileID: 10755, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 10760, guid: 0000000000000000f000000000000000, type: 0}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -55,7 +55,7 @@ Material:
     - _MainTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
+        m_Offset: {x: -0.04, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -80,7 +80,8 @@ Material:
     m_Floats:
     - _AlphaTestRef: 0.5
     - _BumpScale: 1
-    - _Cutoff: 0.5
+    - _ColorMask: 46.93
+    - _Cutoff: 0.53
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _DynamicEmissionLM: 0
@@ -93,10 +94,16 @@ Material:
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _SrcBlend: 1
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
     - _UVSec: 0
+    - _UseUIAlphaClip: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 1, g: 0.90882397, b: 0.641, a: 1}
+    - _Color: {r: 0, g: 0, b: 0, a: 0.5686275}
     - _EmissionColor: {r: 0.97058815, g: 0.88071525, b: 0.37824392, a: 0.99999994}
     - _EmissionColorUI: {r: 0.9705882, g: 0.8807153, b: 0.37824395, a: 1}
     - _EmissionColorWithMapUI: {r: 1, g: 1, b: 1, a: 1}
