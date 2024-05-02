@@ -6,13 +6,19 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     public GameObject mainMenuCanvas;
+    public GameObject loadGameCanvas;
     public GameObject settingsCanvas;
     public GameObject statsCanvas;
+    public bool saved1 = true;
+    public bool saved2 = true;
+    public bool saved3 = false;
+
 
     void Start()
     {
         mainMenuCanvas.SetActive(true);
         settingsCanvas.SetActive(false);
+        loadGameCanvas.SetActive(false);
         statsCanvas.SetActive(false);
     }
     public void NewGame()
@@ -23,8 +29,8 @@ public class MainMenu : MonoBehaviour
 
     public void LoadGame()
     {
-        // TODO: load game here
-        SceneManager.LoadSceneAsync("");
+        loadGameCanvas.SetActive(true);
+        mainMenuCanvas.SetActive(false);
     }
 
     public void Stats()
@@ -32,7 +38,6 @@ public class MainMenu : MonoBehaviour
         // stats goes here
         mainMenuCanvas.SetActive(false);
         statsCanvas.SetActive(true);
-
     }
 
     public void Settings()
@@ -46,6 +51,7 @@ public class MainMenu : MonoBehaviour
         mainMenuCanvas.SetActive(true);
         settingsCanvas.SetActive(false);
         statsCanvas.SetActive(false);
+        loadGameCanvas.SetActive(false);
     }
 
     public void Quit()
