@@ -9,14 +9,14 @@ namespace Nightmare
         public int scoreValue = 10;
         public AudioClip deathClip;
 
-        float currentHealth;
-        Animator anim;
-        AudioSource enemyAudio;
-        ParticleSystem hitParticles;
+        public float currentHealth;
+        protected Animator anim;
+        protected AudioSource enemyAudio;
+        protected ParticleSystem hitParticles;
         CapsuleCollider capsuleCollider;
         EnemyMovement enemyMovement;
 
-        void Awake ()
+        protected virtual void Awake ()
         {
             anim = GetComponent <Animator> ();
             enemyAudio = GetComponent <AudioSource> ();
@@ -25,7 +25,7 @@ namespace Nightmare
             enemyMovement = this.GetComponent<EnemyMovement>();
         }
 
-        void OnEnable()
+        protected virtual void OnEnable()
         {
             currentHealth = startingHealth;
             SetKinematics(false);
@@ -37,7 +37,7 @@ namespace Nightmare
             capsuleCollider.attachedRigidbody.isKinematic = isKinematic;
         }
 
-        void Update ()
+        protected virtual void Update ()
         {
             if (IsDead())
             {
@@ -49,12 +49,12 @@ namespace Nightmare
             }
         }
 
-        public bool IsDead()
+        public virtual bool IsDead()
         {
             return (currentHealth <= 0f);
         }
 
-        public void TakeDamage (float amount, Vector3 hitPoint)
+        public virtual void TakeDamage (float amount, Vector3 hitPoint)
         {
             if (!IsDead())
             {
@@ -75,7 +75,7 @@ namespace Nightmare
             hitParticles.Play();
         }
 
-        void Death ()
+        protected virtual void Death ()
         {
             GetComponent<PowerUpSpawner>().TrySpawnOrb();
 
