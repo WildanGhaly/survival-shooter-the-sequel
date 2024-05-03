@@ -9,7 +9,7 @@ namespace Nightmare
         public int scoreValue = 10;
         public AudioClip deathClip;
 
-        float currentHealth;
+        protected float currentHealth;
         Animator anim;
         AudioSource enemyAudio;
         ParticleSystem hitParticles;
@@ -25,7 +25,7 @@ namespace Nightmare
             enemyMovement = this.GetComponent<EnemyMovement>();
         }
 
-        void OnEnable()
+        protected virtual void OnEnable()
         {
             currentHealth = startingHealth;
             SetKinematics(false);
@@ -75,7 +75,7 @@ namespace Nightmare
             hitParticles.Play();
         }
 
-        void Death ()
+        protected virtual void Death ()
         {
             GetComponent<PowerUpSpawner>().TrySpawnOrb();
 
