@@ -5,7 +5,6 @@ using UnityEngine;
 public class Cutscene2Trigger : Collidable
 {
     [SerializeField] private float fadeDuration = 0.5f;
-    [SerializeField] private CanvasGroup fadeCanvasGroup;
     [SerializeField] private GameObject playerCam;
     [SerializeField] private GameObject firstCam;
     [SerializeField] private GameObject secondCam;

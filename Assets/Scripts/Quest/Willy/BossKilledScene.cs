@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BossKilledScene : MonoBehaviour
 {
-    [SerializeField] private CanvasGroup fadeCanvasGroup;
     [SerializeField] private float fadeDuration = 0.5f;
     [SerializeField] private GameObject playerCam;
     [SerializeField] private GameObject cutsceneCam;

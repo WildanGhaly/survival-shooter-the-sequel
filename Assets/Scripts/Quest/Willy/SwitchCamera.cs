@@ -18,6 +18,11 @@ public class SwitchCamera : MonoBehaviour
         StartCoroutine(SwitchCameraWithFade(offCam, onCam, fadeDuration));
     }
 
+    public void SimpleFade(float targetAlpha, float fadeDuration)
+    {
+        StartCoroutine(Fade(targetAlpha, fadeDuration));
+    }
+
     IEnumerator SwitchCameraWithFade(GameObject offCam, GameObject onCam, float fadeDuration)
     {
         yield return StartCoroutine(Fade(1, fadeDuration));

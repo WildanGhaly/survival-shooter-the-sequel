@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class WelcomeQuest : MonoBehaviour
 {
-    [SerializeField] private GameObject questUI;
     [SerializeField] private InputManager inputManager;
     [SerializeField] private GameObject cameraStart, cameraPlayer, crosshair;
 
@@ -24,7 +23,6 @@ public class WelcomeQuest : MonoBehaviour
     {
         inputManager.enabled = false;
         crosshair.SetActive(false);
-        questUI.SetActive(true);
         Conversation.Instance.StartConversation(dialogues);
         Conversation.Instance.ConversationEnded += HandleConversationEnd;
         StartCoroutine(DisableWelcomeQuest());
@@ -32,7 +30,6 @@ public class WelcomeQuest : MonoBehaviour
 
     void HandleConversationEnd()
     {
-        questUI.SetActive(false);
         inputManager.enabled = true;
         SwitchCamera.Instance.SwitchCameraMethod(cameraStart, cameraPlayer, 0.5f);
     }
