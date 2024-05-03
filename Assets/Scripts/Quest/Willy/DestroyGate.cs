@@ -19,6 +19,11 @@ public class DestroyGate : MonoBehaviour
     [SerializeField] TextMeshProUGUI timer;
     [SerializeField] GameObject timerObject;
 
+    private readonly string[,] dialogues = new string[,]
+    {
+        {"Chatter", "Gate is open, it will be closed after you enter"}
+    };
+
     void Start()
     {
         StartCoroutine(StartDestroyGate());
@@ -60,6 +65,7 @@ public class DestroyGate : MonoBehaviour
             timerGate--;
         }
         timerObject.SetActive(false);
+        Conversation.Instance.StartConversation(dialogues);
     }
 }
 
