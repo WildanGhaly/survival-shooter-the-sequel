@@ -3440,7 +3440,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0.5
-  attackDamage: 1
+  attackDamage: 2
 --- !u!114 &-2291381014649812887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3453,9 +3453,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea9a6ed18654d14db02bf0076cfe488, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visionRange: 3.63
+  visionRange: 5
   hearingRange: 15.1
-  wanderDistance: 7.21
+  wanderDistance: 10
   idleTimeRange: {x: 0, y: 0}
   psychicLevels: 0.2
   timer: 0
