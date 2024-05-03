@@ -14,6 +14,14 @@ public class Cutscene2Trigger : Collidable
     [SerializeField] private GameObject playerModel;
     [SerializeField] private GameObject wizardHealthBar;
 
+    private readonly string[,] dialogues = new string[,]
+    {
+        {"Chatter", "Wait... Is that... KEPALA KEROCO??"},
+        {"Chatter", "This monster can launch a very powerfull attack and summon KEROCO"},
+        {"Chatter", "Find cover when he attacks, you should be fine!"},
+        {"Chatter", "He can walk through object, but it's weapon can't"},
+    };
+
     protected override void CollideEnter()
     {
         StartCoroutine(SwitchPlayerToCutscene(playerCam, firstCam, secondCam));
@@ -23,31 +31,13 @@ public class Cutscene2Trigger : Collidable
 
     IEnumerator SwitchPlayerToCutscene(GameObject pCam, GameObject c1Cam, GameObject c2Cam)
     {
-        yield return SwitchCameraWithFade(pCam, c1Cam);
-        yield return new WaitForSeconds(6f);
-        yield return SwitchCameraWithFade(c1Cam, c2Cam);
+        SwitchCamera.Instance.SwitchCameraMethod(pCam, c1Cam, fadeDuration);
+        yield return new WaitForSeconds(7f);
+        Conversation.Instance.StartConversation(dialogues);
+        SwitchCamera.Instance.SwitchCameraMethod(c1Cam, c2Cam, fadeDuration);
         yield return new WaitForSeconds(4f);
-        yield return SwitchCameraWithFade(c2Cam, pCam);
+        SwitchCamera.Instance.SwitchCameraMethod(c2Cam, pCam, fadeDuration);
         wizardHealthBar.SetActive(true);
-    }
-
-    IEnumerator SwitchCameraWithFade(GameObject offCam, GameObject onCam)
-    {
-        yield return StartCoroutine(Fade(1));
-        offCam.SetActive(false);
-        onCam.SetActive(true);
-
-        yield return StartCoroutine(Fade(0));
-    }
-
-    IEnumerator Fade(float targetAlpha)
-    {
-        float speed = Mathf.Abs(fadeCanvasGroup.alpha - targetAlpha) / fadeDuration;
-        while (!Mathf.Approximately(fadeCanvasGroup.alpha, targetAlpha))
-        {
-            fadeCanvasGroup.alpha = Mathf.MoveTowards(fadeCanvasGroup.alpha, targetAlpha, speed * Time.deltaTime);
-            yield return null;
-        }
     }
 
     IEnumerator PlayerMove()
