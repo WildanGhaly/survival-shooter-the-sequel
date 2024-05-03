@@ -10,6 +10,14 @@ public class PetShopInteractable : Interactable
 
     private List<PetData> availablePets = new List<PetData>();
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) && UI.activeSelf)
+        {
+            CloseUI();
+        }
+    }
+
     protected override void Interact()
     {
         UI.SetActive(true);
@@ -17,11 +25,23 @@ public class PetShopInteractable : Interactable
         base.Interact();
     }
 
+    private void CloseUI()
+    {
+        UI.SetActive(false);
+    }
+
     private void PopulatePetList()
     {
+        // remove existing game object
+        foreach (Transform child in contentPanel)
+        {
+            Destroy(child.gameObject);
+        }
+        availablePets.Clear();
         AddPetToShop(new PetData("Pet 1", 1231));
-        AddPetToShop(new PetData("Pet 2", 122413)); 
+        AddPetToShop(new PetData("Pet 2", 122413));
         Debug.Log(availablePets.Count);
+
         foreach (PetData pet in availablePets)
         {
             GameObject newItem = Instantiate(petItemPrefab, contentPanel);
@@ -39,9 +59,7 @@ public class PetShopInteractable : Interactable
     public void AddPetToShop(PetData pet)
     {
         availablePets.Add(pet);
-
     }
-
 
     public class PetData
     {
