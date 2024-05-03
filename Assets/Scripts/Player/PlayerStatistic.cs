@@ -1,16 +1,27 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
+[Serializable]
 public class PlayerStatistic : MonoBehaviour
 {
+    public TextMeshProUGUI playerNameValue;
+    public TextMeshProUGUI killCountValue;
+    public TextMeshProUGUI distanceValue;
+    public TextMeshProUGUI hitRatioValue;
+    public TextMeshProUGUI timePlayedValue;
     public static PlayerStatistic INSTANCE;
-    private float distanceReached = 0.0f;
+    [SerializeField] private string playerName = "Player";
+    [SerializeField] private float distanceReached = 0.0f;
     protected float updateCountdown = 5f; 
-    private int enemiesKilled = 0;
-    private float time;
-    private int bulletsShot;
-    private int bulletsHit;
+    [SerializeField] private int enemiesKilled = 0;
+    [SerializeField] private float time;
+    [SerializeField] private int bulletsShot;
+    [SerializeField] private int bulletsHit;
     private Vector3 previousPosition;
     private Vector3 currentPosition;
 
@@ -33,6 +44,22 @@ public class PlayerStatistic : MonoBehaviour
     void Update()
     {
         time += Time.deltaTime;
+        playerNameValue.SetText(getPlayerName().ToString() + "'s statistics");
+        killCountValue.SetText(getKillCount().ToString());
+        distanceValue.SetText(getDistance().ToString());
+        hitRatioValue.SetText(getHitRatio().ToString());
+        timePlayedValue.SetText(((int) getTimePlayed()/60).ToString()+ ":"+((int)getTimePlayed()%60).ToString());
+
+    }
+
+    public void setPlayerName(string name)
+    {
+        this.playerName = name;
+    }
+
+    public string getPlayerName()
+    {
+        return playerName;
     }
 
     public void addKill(){
@@ -60,8 +87,8 @@ public class PlayerStatistic : MonoBehaviour
     }
 
     public float getHitRatio(){
-        return bulletsHit/bulletsShot;
-    }
+        return (float) bulletsHit/ (float) bulletsShot;
+    }   
 
     protected virtual IEnumerator CalculateDistance(float count){
         currentPosition = transform.position;

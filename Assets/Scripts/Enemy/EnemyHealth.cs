@@ -9,14 +9,14 @@ namespace Nightmare
         public int scoreValue = 10;
         public AudioClip deathClip;
 
-        protected float currentHealth;
-        Animator anim;
+        public float currentHealth;
+        protected Animator anim;
         protected AudioSource enemyAudio;
-        ParticleSystem hitParticles;
+        protected ParticleSystem hitParticles;
         CapsuleCollider capsuleCollider;
         EnemyMovement enemyMovement;
 
-        void Awake ()
+        protected virtual void Awake ()
         {
             anim = GetComponent <Animator> ();
             enemyAudio = GetComponent <AudioSource> ();
@@ -37,7 +37,7 @@ namespace Nightmare
             capsuleCollider.attachedRigidbody.isKinematic = isKinematic;
         }
 
-        void Update ()
+        protected virtual void Update ()
         {
             if (IsDead())
             {
@@ -49,7 +49,7 @@ namespace Nightmare
             }
         }
 
-        public bool IsDead()
+        public virtual bool IsDead()
         {
             return (currentHealth <= 0f);
         }
