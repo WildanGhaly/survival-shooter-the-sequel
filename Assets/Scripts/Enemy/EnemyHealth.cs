@@ -11,7 +11,7 @@ namespace Nightmare
 
         protected float currentHealth;
         Animator anim;
-        AudioSource enemyAudio;
+        protected AudioSource enemyAudio;
         ParticleSystem hitParticles;
         CapsuleCollider capsuleCollider;
         EnemyMovement enemyMovement;
@@ -54,7 +54,7 @@ namespace Nightmare
             return (currentHealth <= 0f);
         }
 
-        public void TakeDamage (float amount, Vector3 hitPoint)
+        public virtual void TakeDamage (float amount, Vector3 hitPoint)
         {
             if (!IsDead())
             {
