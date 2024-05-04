@@ -15,7 +15,6 @@ public class InputManager : MonoBehaviour
     public bool isFirstPerson = true;
     public bool isThirdPerson;
     public bool isTopDown;
-    private bool isPause = false;
 
     public enum CameraMode
     {

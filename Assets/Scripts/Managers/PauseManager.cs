@@ -17,6 +17,7 @@ public class PauseManager : MonoBehaviour {
         isPaused = !isPaused;
 		if (isPaused)
 		{
+			//TODO: Handle cursor visibility with 1st 3rd and topdown
             pauseCanvas.enabled = true;
 			Cursor.visible = true;
 			Cursor.lockState = CursorLockMode.Confined;
@@ -24,7 +25,7 @@ public class PauseManager : MonoBehaviour {
 		{
             pauseCanvas.enabled = false;
             Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.lockState = CursorLockMode.Locked;
         }
 		Debug.Log("Game is Paused ("+isPaused+")");
 		EventManager.TriggerEvent("Pause", isPaused);

@@ -11,13 +11,11 @@ public class PauseMenu : MonoBehaviour
     public void PauseGame()
     {
         FindObjectOfType<PauseManager>().Pause();
-        gameObject.SetActive(true);
         Debug.Log("Level Pause");
     }
     public void ContinueGame()
     {
         FindObjectOfType<PauseManager>().Pause();
-        gameObject.SetActive(false);
         Debug.Log("Level Continue");
     }
     public void RestartLevel()
