@@ -30,9 +30,15 @@ public class WizardFollow : MonoBehaviour
     private float enemyStoppingDistance;
 
     private bool isStarted;
+    [SerializeField] private bool isBoss = false;
 
     private void Awake()
     {
+        if (player == null)
+        {
+            player = GameObject.FindWithTag("Player").transform;
+            GetComponent<Animator>().SetBool("Arise", true);
+        }
         enemySpeed = enemy.speed;
         enemyStoppingDistance = enemy.stoppingDistance;
         staff.GetComponent<LineRenderer>().positionCount = bulletPerAttack * 2;
@@ -56,7 +62,7 @@ public class WizardFollow : MonoBehaviour
             StartCoroutine(StartAI());
         }
 
-        if (IsWalking() && !enemyAnimator.GetBool("Attacking") && !enemyAnimator.GetBool("Summoning") && isStarted)
+        if (IsWalking() && !enemyAnimator.GetBool("Attacking") && !enemyAnimator.GetBool("Summoning") && isStarted && !HealthSystem.Instance.isDeath)
         {
             enemy.isStopped = false;
             enemy.speed = enemySpeed;
@@ -85,18 +91,32 @@ public class WizardFollow : MonoBehaviour
     IEnumerator ShootAndSpawnPhase()
     {
         yield return new WaitForSeconds(shootingFrequency);
-        enemyAnimator.SetBool("Attacking", true);
-        StartCoroutine(Attacking());
+        if (!HealthSystem.Instance.isDeath)
+        {
+            enemyAnimator.SetBool("Attacking", true);
+            StartCoroutine(Attacking());
+        }
 
         yield return new WaitForSeconds(shootingFrequency);
-        enemyAnimator.SetBool("Attacking", true);
-        StartCoroutine(Attacking());
+
+        if (!HealthSystem.Instance.isDeath)
+        {
+            enemyAnimator.SetBool("Attacking", true);
+            StartCoroutine(Attacking());
+        }
 
         yield return new WaitForSeconds(spawningFrequency);
-        enemyAnimator.SetBool("Summoning", true);
-        StartCoroutine(Summoning());
 
-        StartCoroutine(ShootAndSpawnPhase());
+        if (!HealthSystem.Instance.isDeath)
+        {
+            enemyAnimator.SetBool("Summoning", true);
+            StartCoroutine(Summoning());
+        }
+
+        if (!HealthSystem.Instance.isDeath)
+        {
+            StartCoroutine(ShootAndSpawnPhase());
+        }
     }
 
     IEnumerator Summoning()
@@ -150,11 +170,18 @@ public class WizardFollow : MonoBehaviour
 
     private void OnDisable()
     {
-        GetComponent<BossKilledScene>().enabled = true;
+        if (isBoss)
+        {
+            GetComponent<BossKilledScene>().enabled = true;
+        }
+        else
+        {
+            GetComponent<WizardKilledScene>().enabled = true;
+        }
+
         enemyAnimator.SetBool("Arise", false);
         enemyAnimator.SetBool("Attacking", false);
         enemyAnimator.SetBool("Summoning", false);
         StopAllCoroutines();
     }
-
 }

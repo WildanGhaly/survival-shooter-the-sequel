@@ -65,10 +65,6 @@ namespace Nightmare
                 {
                     Death();
                 }
-                else
-                {
-                    enemyMovement.GoToPlayer();
-                }
             }
                 
             hitParticles.transform.position = hitPoint;

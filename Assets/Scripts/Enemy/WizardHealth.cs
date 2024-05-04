@@ -7,14 +7,19 @@ namespace Nightmare
         [SerializeField] private RectTransform healthBar;
         private float healthBarWidth;
         private float healthMultiplierToUI;
+        private bool withHealthBar = false;
 
         override protected void Awake()
         {
             anim = GetComponent<Animator>();
             enemyAudio = GetComponent<AudioSource>();
             hitParticles = GetComponentInChildren<ParticleSystem>();
-            healthBarWidth = healthBar.sizeDelta.x;
-            healthMultiplierToUI = healthBarWidth / startingHealth;
+            if (healthBar != null)
+            {
+                healthBarWidth = healthBar.sizeDelta.x;
+                healthMultiplierToUI = healthBarWidth / startingHealth;
+                withHealthBar = true;
+            }
         }
 
         override protected void OnEnable()
@@ -32,7 +37,10 @@ namespace Nightmare
 
             if (!IsDead())
             {
-                healthBar.sizeDelta = new Vector2(healthBar.sizeDelta.x - amount * healthMultiplierToUI, healthBar.sizeDelta.y);
+                if (withHealthBar)
+                {
+                    healthBar.sizeDelta = new Vector2(healthBar.sizeDelta.x - amount * healthMultiplierToUI, healthBar.sizeDelta.y);
+                }
                 enemyAudio.Play();
                 currentHealth -= amount;
 
