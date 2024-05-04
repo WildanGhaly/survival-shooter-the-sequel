@@ -9,11 +9,11 @@ using UnityEngine.UI;
 [Serializable]
 public class PlayerStatistic : MonoBehaviour
 {
-    public TextMeshProUGUI playerNameValue;
-    public TextMeshProUGUI killCountValue;
-    public TextMeshProUGUI distanceValue;
-    public TextMeshProUGUI hitRatioValue;
-    public TextMeshProUGUI timePlayedValue;
+    [NonSerialized] public TextMeshProUGUI playerNameValue;
+    [NonSerialized] public TextMeshProUGUI killCountValue;
+    [NonSerialized] public TextMeshProUGUI distanceValue;
+    [NonSerialized] public TextMeshProUGUI hitRatioValue;
+    [NonSerialized] public TextMeshProUGUI timePlayedValue;
     public static PlayerStatistic INSTANCE;
     [SerializeField] private string playerName = "Player";
     [SerializeField] private float distanceReached = 0.0f;
@@ -49,7 +49,6 @@ public class PlayerStatistic : MonoBehaviour
         distanceValue.SetText(getDistance().ToString());
         hitRatioValue.SetText(getHitRatio().ToString());
         timePlayedValue.SetText(((int) getTimePlayed()/60).ToString()+ ":"+((int)getTimePlayed()%60).ToString());
-
     }
 
     public void setPlayerName(string name)
