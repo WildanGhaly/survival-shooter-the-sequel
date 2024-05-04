@@ -9,21 +9,18 @@ public class MainMenu : MonoBehaviour
     public GameObject loadGameCanvas;
     public GameObject settingsCanvas;
     public GameObject statsCanvas;
-    public bool saved1 = true;
-    public bool saved2 = true;
-    public bool saved3 = false;
 
 
-    void Start()
+    public void Start()
     {
         mainMenuCanvas.SetActive(true);
         settingsCanvas.SetActive(false);
         loadGameCanvas.SetActive(false);
         statsCanvas.SetActive(false);
+        
     }
     public void NewGame()
     {
-        // new game here
         SceneManager.LoadSceneAsync("Ultra Difficult");
     }
 
