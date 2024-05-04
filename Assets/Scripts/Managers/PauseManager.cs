@@ -7,47 +7,29 @@ using UnityEditor;
 #endif
 
 public class PauseManager : MonoBehaviour {
-	
-	public AudioMixerSnapshot paused;
-	public AudioMixerSnapshot unpaused;
-	
-	Canvas canvas;
-	
-	void Start()
-	{
-		canvas = GetComponent<Canvas>();
-	}
-	
-	void Update()
-	{
-		if (Input.GetKeyDown(KeyCode.Escape))
-		{
-			canvas.enabled = !canvas.enabled;
-			Pause();
-		}
-	}
-	
-	public void Pause()
+
+	public bool isPaused = false;
+	[SerializeField] private Canvas pauseCanvas;
+
+    public void Pause()
 	{
 		Time.timeScale = Time.timeScale == 0 ? 1 : 0;
-		Lowpass ();
-		
-	}
-	
-	void Lowpass()
-	{
-		if (Time.timeScale == 0)
+        isPaused = !isPaused;
+		if (isPaused)
 		{
-			paused.TransitionTo(.01f);
-		}
-		
-		else
-			
+            pauseCanvas.enabled = true;
+			Cursor.visible = true;
+			Cursor.lockState = CursorLockMode.Confined;
+		} else
 		{
-			unpaused.TransitionTo(.01f);
-		}
-	}
-	
+            pauseCanvas.enabled = false;
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Confined;
+        }
+		Debug.Log("Game is Paused ("+isPaused+")");
+		EventManager.TriggerEvent("Pause", isPaused);
+    }
+
 	public void Quit()
 	{
 		#if UNITY_EDITOR 

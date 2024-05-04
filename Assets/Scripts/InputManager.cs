@@ -66,7 +66,7 @@ public class InputManager : MonoBehaviour
         onFoot.SecondaryWeapon.performed += ctx => gun.GetComponent<PlayerShooting>().ChangeWeapon(2);
         onFoot.SwordWeapon.performed += ctx => gun.GetComponent<PlayerShooting>().ChangeWeapon(3);
 
-        onFoot.Pause.performed += ctx => { EventManager.TriggerEvent("Pause", !isPause); isPause = !isPause; Debug.Log(isPause); };
+        onFoot.Pause.performed += ctx => { FindObjectOfType<PauseManager>().Pause(); };
     }
 
     private void FixedUpdate()
