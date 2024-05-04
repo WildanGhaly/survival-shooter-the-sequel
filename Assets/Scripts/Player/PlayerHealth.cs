@@ -63,7 +63,7 @@ namespace Nightmare
         }
 
 
-        public void TakeDamage(int amount)
+        public void TakeDamage(float amount)
         {
             if (godMode)
                 return;

@@ -76,7 +76,7 @@ namespace Nightmare
             GetComponent<PowerUpSpawner>().TrySpawnOrb();
 
             EventManager.TriggerEvent("Sound", this.transform.position);
-            anim.SetTrigger ("Dead");
+            // anim.SetTrigger ("Dead");
 
             PlayerStatistic.INSTANCE.addKill();
             GameManager.INSTANCE.updatePointCoin();
