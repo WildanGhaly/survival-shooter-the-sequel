@@ -15,6 +15,7 @@ public class InputManager : MonoBehaviour
     public bool isFirstPerson = true;
     public bool isThirdPerson;
     public bool isTopDown;
+    private bool isPause = false;
 
     public enum CameraMode
     {
@@ -44,8 +45,8 @@ public class InputManager : MonoBehaviour
         look = GetComponent<PlayerLook>();
         inputActions = new PlayerInput();
         move = GetComponent<PlayerMovement>();
-        
-        
+
+
         onFoot = inputActions.OnFoot;
 
         onFoot.Jump.performed += ctx => move.Jump();
@@ -65,7 +66,7 @@ public class InputManager : MonoBehaviour
         onFoot.SecondaryWeapon.performed += ctx => gun.GetComponent<PlayerShooting>().ChangeWeapon(2);
         onFoot.SwordWeapon.performed += ctx => gun.GetComponent<PlayerShooting>().ChangeWeapon(3);
 
-        onFoot.Pause.performed += ctx => EventManager.TriggerEvent("Pause", true);
+        onFoot.Pause.performed += ctx => { EventManager.TriggerEvent("Pause", !isPause); isPause = !isPause; Debug.Log(isPause); };
     }
 
     private void FixedUpdate()
