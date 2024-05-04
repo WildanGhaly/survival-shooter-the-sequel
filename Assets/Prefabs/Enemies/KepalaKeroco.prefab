@@ -12748,15 +12748,13 @@ MonoBehaviour:
   - {fileID: 3046479088695375763}
   - {fileID: 8009195450058664395}
   - {fileID: 8429335235191671129}
-  enemyPrefab: {fileID: 153412, guid: 548c56f4bcf4db24b8aa057e9846a005, type: 3}
+  enemyPrefab: {fileID: 9172193577678207995, guid: a603436c3324a9641b3399acee08891a, type: 3}
   staff: {fileID: 2832201123622822990}
   bulletPerAttack: 10
   maxAngle: 5
   shootRange: 100
   shootDamage: 10
   boomLaser: {fileID: 6907154261784437212}
-  targetSink: 4
-  sinkSpeed: 4
   isBoss: 0
 --- !u!114 &1171882002392269359
 MonoBehaviour:
@@ -12901,6 +12899,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01022665aff6f7844a104ec149597ed8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetSink: 4
+  sinkSpeed: 4
+  waitBeforeSink: 3
 --- !u!1 &7734327399852227760
 GameObject:
   m_ObjectHideFlags: 0

@@ -12312,7 +12312,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 1.2
-  m_Speed: 8
+  m_Speed: 5
   m_Acceleration: 8
   avoidancePriority: 20
   m_AngularSpeed: 120
@@ -12336,7 +12336,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66a9ced6e49b696418b9000bafd51a79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 200
+  startingHealth: 300
   sinkSpeed: 3
   scoreValue: 10
   deathClip: {fileID: 8300000, guid: 8c615fd0429f34edf85539d70279360d, type: 3}
@@ -13041,4 +13041,4 @@ MonoBehaviour:
   eventCollideStay: 0
   eventCollideExit: 0
   debuffRadius: 2
-  damagePerSecond: 10
+  damagePerSecond: 5
