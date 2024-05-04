@@ -37,7 +37,6 @@ namespace Nightmare
         {
             for (int i = 0; i < targetSpawn; i++)
             {
-                yield return new WaitForSeconds(spawnTime);
 
                 // If the player has no health left...
                 if (HealthSystem.Instance.hitPoint <= 0f)
@@ -52,6 +51,8 @@ namespace Nightmare
                 // Create an instance of the enemy prefab at the randomly selected spawn point's position and rotation.
 
                 Instantiate(enemy, spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
+
+                yield return new WaitForSeconds(spawnTime);
             }
         }
     }
