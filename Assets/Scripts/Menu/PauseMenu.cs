@@ -20,7 +20,7 @@ public class PauseMenu : MonoBehaviour
     }
     public void RestartLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Debug.Log("Level Restart");
     }
     public void Cheats()
