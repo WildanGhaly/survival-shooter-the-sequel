@@ -623,6 +623,10 @@ PrefabInstance:
       propertyPath: crosshair
       value: 
       objectReference: {fileID: 3787143671077616371}
+    - target: {fileID: 8565237899300623832, guid: 4e5a0d387dc27394b81600988ad0216f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -789,6 +793,30 @@ PrefabInstance:
     - target: {fileID: 375623075532561394, guid: 75f4ad0664dd06b4381e28a345014272, type: 3}
       propertyPath: m_Name
       value: PlayerUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 520423428003068445, guid: 75f4ad0664dd06b4381e28a345014272, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3125495920120175779, guid: 75f4ad0664dd06b4381e28a345014272, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3232193371267897991, guid: 75f4ad0664dd06b4381e28a345014272, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5217135217401578980, guid: 75f4ad0664dd06b4381e28a345014272, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5276373601030390522, guid: 75f4ad0664dd06b4381e28a345014272, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5500718095142007525, guid: 75f4ad0664dd06b4381e28a345014272, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5586830909848898797, guid: 75f4ad0664dd06b4381e28a345014272, type: 3}
       propertyPath: m_Pivot.x

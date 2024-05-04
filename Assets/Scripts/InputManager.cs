@@ -64,6 +64,8 @@ public class InputManager : MonoBehaviour
         onFoot.PrimaryWeapon.performed += ctx => gun.GetComponent<PlayerShooting>().ChangeWeapon(1);
         onFoot.SecondaryWeapon.performed += ctx => gun.GetComponent<PlayerShooting>().ChangeWeapon(2);
         onFoot.SwordWeapon.performed += ctx => gun.GetComponent<PlayerShooting>().ChangeWeapon(3);
+
+        onFoot.Pause.performed += ctx => EventManager.TriggerEvent("Pause", true);
     }
 
     private void FixedUpdate()

@@ -5314,9 +5314,24 @@ MonoBehaviour:
   shotgunRange: 30
   swordRange: 3
   rifleRange: 100
+  rifle: {fileID: 0}
+  shotgun: {fileID: 0}
+  sword: {fileID: 0}
+  closeRangeMultiplier: 1
+  closeRangeDistance: 5
+  midRangeMultiplier: 0.5
+  midRangeDistance: 10
+  longRangeMultiplier: 0.2
+  longRangeDistance: 30
   layer:
     serializedVersion: 2
     m_Bits: 0
+  rifleBulletShoot: 0
+  rifleBulletHit: 0
+  shotgunBulletShoot: 0
+  shotgunBulletHit: 0
+  swordBulletShoot: 0
+  swordBulletHit: 0
   grenade: {fileID: 1105787354104060, guid: 41a4c48eef428174cb5039adb608d30c, type: 3}
   grenadeSpeed: 400
   grenadeFireDelay: 0.75
@@ -5486,6 +5501,7 @@ MonoBehaviour:
   gravity: -9.8
   timeSprint: 0.1
   manaCost: 2
+  speedModifier: 1
 --- !u!136 &13600000
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5619,6 +5635,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 1843439715709032536}
   playerModel: {fileID: 100000}
+  crosshair: {fileID: 0}
 --- !u!114 &2360004819290527775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5637,7 +5654,6 @@ MonoBehaviour:
   isTopDown: 0
   mobileButton: {fileID: 0}
   gun: {fileID: 100004}
-  crosshair: {fileID: 0}
 --- !u!143 &1710994848742009876
 CharacterController:
   m_ObjectHideFlags: 0

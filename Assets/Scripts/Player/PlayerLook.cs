@@ -49,7 +49,6 @@ public class PlayerLook : MonoBehaviour
         cam.transform.localRotation = Quaternion.Euler(tilt, 0, 0);
     }
 
-    // FIXME: rotasinya jadi ga sesuai kursor
     public void TopDownLook(Vector2 mousePosition)
     {
 #if !MOBILE_INPUT
@@ -113,6 +112,7 @@ public class PlayerLook : MonoBehaviour
     public void SetTopDownCam()
     {
         playerModel.GetComponent<SkinnedMeshRenderer>().enabled = true;
+        transform.localRotation = Quaternion.identity;
         cam.transform.SetLocalPositionAndRotation(new Vector3(0, 7, -5), Quaternion.Euler(50, 0, 0));
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
