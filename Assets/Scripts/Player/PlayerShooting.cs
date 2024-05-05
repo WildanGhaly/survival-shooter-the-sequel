@@ -261,7 +261,7 @@ namespace Nightmare
                 gunLine.SetPosition(0, transform.position);
 
                 Vector3 shootDirection = transform.forward;
-                if (Physics.Raycast(transform.position, shootDirection, out RaycastHit hit, swordRange))
+                if (Physics.Raycast(transform.position, shootDirection, out RaycastHit hit, swordRange, layer))
                 {
                     EnemyHealth enemyHealth = hit.collider.GetComponent<EnemyHealth>();
                     if (enemyHealth != null)
@@ -278,7 +278,7 @@ namespace Nightmare
 
                 Ray camRay = cam.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
 
-                if (Physics.Raycast(camRay, out RaycastHit hit, swordRange))
+                if (Physics.Raycast(camRay, out RaycastHit hit, swordRange, layer))
                 {
                     shootRay.origin = transform.position;
                     shootRay.direction = (hit.point - transform.position).normalized;
@@ -371,7 +371,7 @@ namespace Nightmare
             if (player.GetComponent<InputManager>().isTopDown)
             {
                 Vector3 shootDirection = transform.forward; 
-                if (Physics.Raycast(transform.position, shootDirection, out RaycastHit hit, rifleRange))
+                if (Physics.Raycast(transform.position, shootDirection, out RaycastHit hit, rifleRange, layer))
                 {
                     EnemyHealth enemyHealth = hit.collider.GetComponent<EnemyHealth>();
                     if (enemyHealth != null)
@@ -390,7 +390,7 @@ namespace Nightmare
             {
                 Ray camRay = cam.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
 
-                if (Physics.Raycast(camRay, out RaycastHit hit, rifleRange))
+                if (Physics.Raycast(camRay, out RaycastHit hit, rifleRange, layer))
                 {
                     shootRay.origin = transform.position;
                     shootRay.direction = (hit.point - transform.position).normalized;
