@@ -44,11 +44,13 @@ public class InputManager : MonoBehaviour
         look = GetComponent<PlayerLook>();
         inputActions = new PlayerInput();
         move = GetComponent<PlayerMovement>();
-        
-        
+
+
         onFoot = inputActions.OnFoot;
 
         onFoot.Jump.performed += ctx => move.Jump();
+
+        //FIXME!! Sprint depletes even when player is staying still
         onFoot.Sprint.performed += ctx => move.StartSprint();
         onFoot.Sprint.canceled += ctx => move.StopSprint();
 
@@ -64,6 +66,8 @@ public class InputManager : MonoBehaviour
         onFoot.PrimaryWeapon.performed += ctx => gun.GetComponent<PlayerShooting>().ChangeWeapon(1);
         onFoot.SecondaryWeapon.performed += ctx => gun.GetComponent<PlayerShooting>().ChangeWeapon(2);
         onFoot.SwordWeapon.performed += ctx => gun.GetComponent<PlayerShooting>().ChangeWeapon(3);
+
+        onFoot.Pause.performed += ctx => { FindObjectOfType<PauseManager>().Pause(); };
     }
 
     private void FixedUpdate()
