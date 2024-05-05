@@ -205,7 +205,6 @@ public class RajaFollow : MonoBehaviour
         {
             yield return new WaitForSeconds(0.6f);
             staff.GetComponent<LineRenderer>().enabled = true;
-            Debug.Log("Laser " + i);
             staff.GetComponent<LineRenderer>().positionCount = 2;
             Vector3 startPoint = staff.transform.position;
             Vector3 baseDirection = player.position + Vector3.up * 0.5f - startPoint;

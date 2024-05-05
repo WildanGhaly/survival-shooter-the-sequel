@@ -7784,7 +7784,7 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
-  - {x: 10, y: 10, z: 10}
+  - {x: 0, y: 0, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.2
@@ -13709,6 +13709,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 7796440841747619327}
     m_Modifications:
     - target: {fileID: 1271186294854669874, guid: 0a3972e964dcd2b47b2a3bc58d35d554, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1271186294854669874, guid: 0a3972e964dcd2b47b2a3bc58d35d554, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -13729,6 +13733,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1930872869197779339, guid: 0a3972e964dcd2b47b2a3bc58d35d554, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1930872869197779339, guid: 0a3972e964dcd2b47b2a3bc58d35d554, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -13747,6 +13755,10 @@ PrefabInstance:
     - target: {fileID: 1930872869197779349, guid: 0a3972e964dcd2b47b2a3bc58d35d554, type: 3}
       propertyPath: m_Materials.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2626158323867689943, guid: 0a3972e964dcd2b47b2a3bc58d35d554, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2626158323867689943, guid: 0a3972e964dcd2b47b2a3bc58d35d554, type: 3}
       propertyPath: m_IsActive
@@ -13777,6 +13789,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4631614612473733674, guid: 0a3972e964dcd2b47b2a3bc58d35d554, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4631614612473733674, guid: 0a3972e964dcd2b47b2a3bc58d35d554, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -13805,6 +13821,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5074345953107634853, guid: 0a3972e964dcd2b47b2a3bc58d35d554, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5074345953107634853, guid: 0a3972e964dcd2b47b2a3bc58d35d554, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -13823,6 +13843,10 @@ PrefabInstance:
     - target: {fileID: 5074345953123232309, guid: 0a3972e964dcd2b47b2a3bc58d35d554, type: 3}
       propertyPath: m_Materials.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6809944706084690921, guid: 0a3972e964dcd2b47b2a3bc58d35d554, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6809944706084690921, guid: 0a3972e964dcd2b47b2a3bc58d35d554, type: 3}
       propertyPath: m_IsActive
@@ -13846,11 +13870,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6809944706259094416, guid: 0a3972e964dcd2b47b2a3bc58d35d554, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6809944706259094416, guid: 0a3972e964dcd2b47b2a3bc58d35d554, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6809944706259094416, guid: 0a3972e964dcd2b47b2a3bc58d35d554, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13912,13 +13936,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: Debuff
       objectReference: {fileID: 0}
+    - target: {fileID: 6809944706259094419, guid: 0a3972e964dcd2b47b2a3bc58d35d554, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 7823922038308135904, guid: 0a3972e964dcd2b47b2a3bc58d35d554, type: 3}
       propertyPath: m_Materials.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7823922038308135934, guid: 0a3972e964dcd2b47b2a3bc58d35d554, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7823922038308135934, guid: 0a3972e964dcd2b47b2a3bc58d35d554, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8529801204956692684, guid: 0a3972e964dcd2b47b2a3bc58d35d554, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8529801204956692684, guid: 0a3972e964dcd2b47b2a3bc58d35d554, type: 3}
       propertyPath: m_IsActive
@@ -13939,6 +13975,10 @@ PrefabInstance:
     - target: {fileID: 8529801204956692687, guid: 0a3972e964dcd2b47b2a3bc58d35d554, type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9198020450770373298, guid: 0a3972e964dcd2b47b2a3bc58d35d554, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 9198020450770373298, guid: 0a3972e964dcd2b47b2a3bc58d35d554, type: 3}
       propertyPath: m_IsActive
@@ -13969,7 +14009,7 @@ PrefabInstance:
       addedObject: {fileID: 20930375861102369}
     - targetCorrespondingSourceObject: {fileID: 6809944706259094419, guid: 0a3972e964dcd2b47b2a3bc58d35d554, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4363103094751490307}
+      addedObject: {fileID: 8711885278149953063}
   m_SourcePrefab: {fileID: 100100000, guid: 0a3972e964dcd2b47b2a3bc58d35d554, type: 3}
 --- !u!4 &3057071682264889984 stripped
 Transform:
@@ -14001,10 +14041,10 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 4.3
-  m_Height: 20
+  m_Height: 10
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4363103094751490307
+--- !u!114 &8711885278149953063
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -14013,7 +14053,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3057071682264889987}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a82d8a124d92674f879bee75b3b208c, type: 3}
+  m_Script: {fileID: 11500000, guid: dbba6eb26ae9b3246b86666cec0c5eb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   promptMessage: Collide
@@ -14021,4 +14061,7 @@ MonoBehaviour:
   eventCollideStay: 0
   eventCollideExit: 0
   debuffRadius: 2
-  damagePerSecond: 5
+  damagePerSecond: 10
+  playerTransform: {fileID: 0}
+  speedDebuff: 20
+  attackDebuff: 50

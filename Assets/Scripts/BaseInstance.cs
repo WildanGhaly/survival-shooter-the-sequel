@@ -8,9 +8,7 @@ public class BaseInstance : MonoBehaviour
 
 	[SerializeField] private float gunDamage = 20f;
 	[SerializeField] private float multiplierGunDamage = 1f;
-	[SerializeField] private float defaultSpeed = 6f;
-	[SerializeField] private float normalSpeed = 6f;
-	[SerializeField] private float sprintSpeed = 8f;
+	[SerializeField] private float multiplierSpeed = 1f;
 	[SerializeField] private float currentSpeed = 6f;
 
 	void Awake()
@@ -25,44 +23,30 @@ public class BaseInstance : MonoBehaviour
 
 	public float GetCurrentSpeed()
     {
-		return currentSpeed;
-    }
-
-	public void UpdateGunDamage(float damage)
-    {
-		gunDamage = damage;
-    }
-
-	public void HalfDamage()
-    {
-		gunDamage /= 2;
-    }
-
-	public void UpdadeNormalSpeed(float speedPercentage)
-    {
-		defaultSpeed = normalSpeed;
-		normalSpeed += speedPercentage/100 * normalSpeed;
-		currentSpeed = normalSpeed;
-    }
-
-	public void StartSprint()
-    {
-		currentSpeed = sprintSpeed;
-    }
-
-	public void StopSprint()
-    {
-		currentSpeed = normalSpeed;
-    }
-
-	public void ResetSpeed()
-    {
-		normalSpeed = defaultSpeed;
-		currentSpeed = normalSpeed;
+		return currentSpeed * multiplierSpeed;
     }
 
 	public void AddMultiplierGunDamage(float multiplier)
     {
+		Debug.Log("Multiplier " + multiplier);
+		Debug.Log("Changing the gun damage from " + gunDamage + " * " + multiplierGunDamage + " to " + (multiplierGunDamage + multiplier));
 		multiplierGunDamage += multiplier;
+		if (multiplierGunDamage <= 0) multiplierGunDamage = 0;
+    }
+
+	public void AddMultiplierSpeed(float multiplier)
+    {
+		multiplierSpeed += multiplier;
+		if (multiplierSpeed <= 0) multiplierSpeed = 0;
+	}
+
+	public void ResetMultiplierGunDamage()
+    {
+		multiplierGunDamage = 1f;
+    }
+
+	public void ResetMultiplierSpeed()
+    {
+		multiplierSpeed = 1f;
     }
 }

@@ -34,6 +34,7 @@ namespace Nightmare
         public override void TakeDamage(float amount, Vector3 hitPoint)
         {
             base.TakeDamage(amount, hitPoint);
+            Debug.Log("Damadged: " + amount);
         }
 
         override protected void Death()

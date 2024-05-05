@@ -10,6 +10,7 @@ namespace Nightmare
         [SerializeField] private float gravity = -9.8f;
         [SerializeField] private float timeSprint = 0.1f;
         [SerializeField] private float manaCost = 2f;
+        [SerializeField] private float sprintSpeedUpMultiplier = 20f;
 
         private float currentSprintTime = 0;
         private bool isSprinting;
@@ -56,20 +57,15 @@ namespace Nightmare
             StopPausible();
         }
 
-        void FixedUpdate ()
-        {
-
-        }
-
         public void StartSprint()
         {
-            BaseInstance.Instance.StartSprint();
+            BaseInstance.Instance.AddMultiplierSpeed(sprintSpeedUpMultiplier / 100);
             isSprinting = true;
         }
 
         public void StopSprint()
         {
-            BaseInstance.Instance.StopSprint();
+            BaseInstance.Instance.AddMultiplierSpeed(-sprintSpeedUpMultiplier / 100);
             isSprinting = false;
         }
 

@@ -15,6 +15,8 @@ public class PlayerPowerUp : MonoBehaviour
     private int multiplierCount = 0;
     [SerializeField] private int maxIncreaseDamageCount = 15;
 
+    private Coroutine currentSpeedCoroutine = null;
+
     void Awake()
     {
         Instance = this;
@@ -22,16 +24,26 @@ public class PlayerPowerUp : MonoBehaviour
 
     public void IncreaseSpeedPowerUp(float duration, float speedPercentage)
     {
-        StartCoroutine(HandleSpeedIncrease(duration, speedPercentage));
+        if (currentSpeedCoroutine != null)
+        {
+            StopCoroutine(currentSpeedCoroutine);
+            BaseInstance.Instance.AddMultiplierSpeed(-speedPercentage);
+        }
+
+        currentSpeedCoroutine = StartCoroutine(HandleSpeedIncrease(duration, speedPercentage));
     }
 
     private IEnumerator HandleSpeedIncrease(float duration, float speedPercentage)
     {
-        BaseInstance.Instance.UpdadeNormalSpeed(speedPercentage);
-        BuffIconInstance.Instance.EnableSpeedBuff();
-        yield return new WaitForSeconds(duration);
-        BaseInstance.Instance.ResetSpeed();
-        BuffIconInstance.Instance.DisableSpeedBuff();
+        if (!isIncreaseSpeed)
+        {
+            isIncreaseSpeed = true;
+            BaseInstance.Instance.AddMultiplierSpeed(speedPercentage);
+            BuffIconInstance.Instance.EnableSpeedBuff();
+            yield return new WaitForSeconds(duration);
+            BaseInstance.Instance.AddMultiplierSpeed(-speedPercentage);
+            BuffIconInstance.Instance.DisableSpeedBuff();
+        }
     }
 
     public void IncreaseDamagePowerUp(float duration, int multiplier)
@@ -41,11 +53,10 @@ public class PlayerPowerUp : MonoBehaviour
 
     private IEnumerator HandleDamageIncrease(float duration, int multiplier)
     {
-        float originalDamage = BaseInstance.Instance.GetGunDamage();
-        BaseInstance.Instance.UpdateGunDamage(originalDamage * multiplier);
+        BaseInstance.Instance.AddMultiplierGunDamage(multiplier);
         BuffIconInstance.Instance.EnableDamageBuff();
         yield return new WaitForSeconds(duration);
-        BaseInstance.Instance.UpdateGunDamage(originalDamage);
+        BaseInstance.Instance.AddMultiplierGunDamage(-multiplier);
         BuffIconInstance.Instance.DisableDamageBuff();
     }
 
