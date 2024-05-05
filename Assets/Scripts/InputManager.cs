@@ -49,6 +49,8 @@ public class InputManager : MonoBehaviour
         onFoot = inputActions.OnFoot;
 
         onFoot.Jump.performed += ctx => move.Jump();
+
+        //FIXME!! Sprint depletes even when player is staying still
         onFoot.Sprint.performed += ctx => move.StartSprint();
         onFoot.Sprint.canceled += ctx => move.StopSprint();
 

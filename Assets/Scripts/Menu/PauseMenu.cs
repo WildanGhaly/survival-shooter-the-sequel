@@ -23,11 +23,6 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Debug.Log("Level Restart");
     }
-    public void Cheats()
-    {
-        // TODO: not implemented
-        Debug.Log("Cheats Menu");
-    }
     public void ExitLevel()
     {
         // diasumsikan ke main level/main menu

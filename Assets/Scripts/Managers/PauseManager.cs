@@ -9,26 +9,32 @@ using UnityEditor;
 public class PauseManager : MonoBehaviour {
 
 	public bool isPaused = false;
-	[SerializeField] private Canvas pauseCanvas;
+	[SerializeField] private GameObject pauseMenu;
+
+    private void Awake()
+    {
+		pauseMenu = GameObject.Find("PauseMenu");
+		if (gameObject == null) { Debug.Log("Pause Menu object is not found in scene"); return; }
+		pauseMenu.SetActive(false);
+    }
 
     public void Pause()
 	{
-		Time.timeScale = Time.timeScale == 0 ? 1 : 0;
         isPaused = !isPaused;
+        EventManager.TriggerEvent("Pause", isPaused);
+        Time.timeScale = Time.timeScale == 0 ? 1 : 0;
 		if (isPaused)
 		{
-			//TODO: Handle cursor visibility with 1st 3rd and topdown
-            pauseCanvas.enabled = true;
+			//TODO!!: Handle cursor visibility with 1st 3rd and topdown
+			//FIXME!!: Pause Menu is clashing with UI Keyboard Controls
+			pauseMenu.SetActive(true);
 			Cursor.visible = true;
 			Cursor.lockState = CursorLockMode.Confined;
 		} else
 		{
-            pauseCanvas.enabled = false;
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
+            pauseMenu.SetActive(false);
         }
 		Debug.Log("Game is Paused ("+isPaused+")");
-		EventManager.TriggerEvent("Pause", isPaused);
     }
 
 	public void Quit()

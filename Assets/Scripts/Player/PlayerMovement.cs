@@ -76,9 +76,6 @@ namespace Nightmare
 
         public void ProcessMove (Vector2 input)
         {
-            if (isPaused)
-                return;
-
             Vector3 moveDirection = Vector3.zero;
             moveDirection.x = input.x;
             moveDirection.z = input.y;

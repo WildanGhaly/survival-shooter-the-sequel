@@ -46,9 +46,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Jump"",
+                    ""name"": ""Pause"",
                     ""type"": ""Button"",
-                    ""id"": ""685d6bd3-99fa-40be-a37d-cff681764678"",
+                    ""id"": ""4e39e1a4-e322-4024-98ea-b89ddd50f451"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -67,6 +67,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""name"": ""Sprint"",
                     ""type"": ""Button"",
                     ""id"": ""f15b3773-bfd6-4e6c-8ed1-3b38e9750182"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Jump"",
+                    ""type"": ""Button"",
+                    ""id"": ""685d6bd3-99fa-40be-a37d-cff681764678"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -172,9 +181,18 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Pause"",
+                    ""name"": ""ToggleDebug/Cheat"",
                     ""type"": ""Button"",
-                    ""id"": ""4e39e1a4-e322-4024-98ea-b89ddd50f451"",
+                    ""id"": ""b1502f81-fc04-4961-8f9a-3c6e1ddbfde3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DebugEnter"",
+                    ""type"": ""Button"",
+                    ""id"": ""704d3cce-a23d-4cd1-92d1-66d652eab888"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -267,28 +285,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""37a1c9a7-0644-4fd1-988a-5db89f1cdb00"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Jump"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""33534402-0044-4759-ac0a-43f9e7f90d6f"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -536,6 +532,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""850f8d75-e5a3-44a2-b36c-34815b3707b2"",
+                    ""path"": ""<Keyboard>/backquote"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ToggleDebug/Cheat"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""9b450c1d-2069-409a-8e37-b386a53173ac"",
                     ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
@@ -553,6 +560,39 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""37a1c9a7-0644-4fd1-988a-5db89f1cdb00"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""33534402-0044-4759-ac0a-43f9e7f90d6f"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7abeb6cb-c23c-40bf-bc8a-00b239b7e85a"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DebugEnter"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1081,9 +1121,10 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_OnFoot = asset.FindActionMap("OnFoot", throwIfNotFound: true);
         m_OnFoot_FPSTPSLook = m_OnFoot.FindAction("FPS/TPS Look", throwIfNotFound: true);
         m_OnFoot_Movement = m_OnFoot.FindAction("Movement", throwIfNotFound: true);
-        m_OnFoot_Jump = m_OnFoot.FindAction("Jump", throwIfNotFound: true);
+        m_OnFoot_Pause = m_OnFoot.FindAction("Pause", throwIfNotFound: true);
         m_OnFoot_Fire = m_OnFoot.FindAction("Fire", throwIfNotFound: true);
         m_OnFoot_Sprint = m_OnFoot.FindAction("Sprint", throwIfNotFound: true);
+        m_OnFoot_Jump = m_OnFoot.FindAction("Jump", throwIfNotFound: true);
         m_OnFoot_Crouch = m_OnFoot.FindAction("Crouch", throwIfNotFound: true);
         m_OnFoot_ThirdPerson = m_OnFoot.FindAction("ThirdPerson", throwIfNotFound: true);
         m_OnFoot_FirstPerson = m_OnFoot.FindAction("FirstPerson", throwIfNotFound: true);
@@ -1095,7 +1136,8 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_OnFoot_SecondaryWeapon = m_OnFoot.FindAction("SecondaryWeapon", throwIfNotFound: true);
         m_OnFoot_SwordWeapon = m_OnFoot.FindAction("SwordWeapon", throwIfNotFound: true);
         m_OnFoot_SwitchWeapon = m_OnFoot.FindAction("SwitchWeapon", throwIfNotFound: true);
-        m_OnFoot_Pause = m_OnFoot.FindAction("Pause", throwIfNotFound: true);
+        m_OnFoot_ToggleDebugCheat = m_OnFoot.FindAction("ToggleDebug/Cheat", throwIfNotFound: true);
+        m_OnFoot_DebugEnter = m_OnFoot.FindAction("DebugEnter", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1171,9 +1213,10 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private List<IOnFootActions> m_OnFootActionsCallbackInterfaces = new List<IOnFootActions>();
     private readonly InputAction m_OnFoot_FPSTPSLook;
     private readonly InputAction m_OnFoot_Movement;
-    private readonly InputAction m_OnFoot_Jump;
+    private readonly InputAction m_OnFoot_Pause;
     private readonly InputAction m_OnFoot_Fire;
     private readonly InputAction m_OnFoot_Sprint;
+    private readonly InputAction m_OnFoot_Jump;
     private readonly InputAction m_OnFoot_Crouch;
     private readonly InputAction m_OnFoot_ThirdPerson;
     private readonly InputAction m_OnFoot_FirstPerson;
@@ -1185,16 +1228,18 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_OnFoot_SecondaryWeapon;
     private readonly InputAction m_OnFoot_SwordWeapon;
     private readonly InputAction m_OnFoot_SwitchWeapon;
-    private readonly InputAction m_OnFoot_Pause;
+    private readonly InputAction m_OnFoot_ToggleDebugCheat;
+    private readonly InputAction m_OnFoot_DebugEnter;
     public struct OnFootActions
     {
         private @PlayerInput m_Wrapper;
         public OnFootActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @FPSTPSLook => m_Wrapper.m_OnFoot_FPSTPSLook;
         public InputAction @Movement => m_Wrapper.m_OnFoot_Movement;
-        public InputAction @Jump => m_Wrapper.m_OnFoot_Jump;
+        public InputAction @Pause => m_Wrapper.m_OnFoot_Pause;
         public InputAction @Fire => m_Wrapper.m_OnFoot_Fire;
         public InputAction @Sprint => m_Wrapper.m_OnFoot_Sprint;
+        public InputAction @Jump => m_Wrapper.m_OnFoot_Jump;
         public InputAction @Crouch => m_Wrapper.m_OnFoot_Crouch;
         public InputAction @ThirdPerson => m_Wrapper.m_OnFoot_ThirdPerson;
         public InputAction @FirstPerson => m_Wrapper.m_OnFoot_FirstPerson;
@@ -1206,7 +1251,8 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @SecondaryWeapon => m_Wrapper.m_OnFoot_SecondaryWeapon;
         public InputAction @SwordWeapon => m_Wrapper.m_OnFoot_SwordWeapon;
         public InputAction @SwitchWeapon => m_Wrapper.m_OnFoot_SwitchWeapon;
-        public InputAction @Pause => m_Wrapper.m_OnFoot_Pause;
+        public InputAction @ToggleDebugCheat => m_Wrapper.m_OnFoot_ToggleDebugCheat;
+        public InputAction @DebugEnter => m_Wrapper.m_OnFoot_DebugEnter;
         public InputActionMap Get() { return m_Wrapper.m_OnFoot; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1222,15 +1268,18 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Movement.started += instance.OnMovement;
             @Movement.performed += instance.OnMovement;
             @Movement.canceled += instance.OnMovement;
-            @Jump.started += instance.OnJump;
-            @Jump.performed += instance.OnJump;
-            @Jump.canceled += instance.OnJump;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
             @Fire.started += instance.OnFire;
             @Fire.performed += instance.OnFire;
             @Fire.canceled += instance.OnFire;
             @Sprint.started += instance.OnSprint;
             @Sprint.performed += instance.OnSprint;
             @Sprint.canceled += instance.OnSprint;
+            @Jump.started += instance.OnJump;
+            @Jump.performed += instance.OnJump;
+            @Jump.canceled += instance.OnJump;
             @Crouch.started += instance.OnCrouch;
             @Crouch.performed += instance.OnCrouch;
             @Crouch.canceled += instance.OnCrouch;
@@ -1264,9 +1313,12 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @SwitchWeapon.started += instance.OnSwitchWeapon;
             @SwitchWeapon.performed += instance.OnSwitchWeapon;
             @SwitchWeapon.canceled += instance.OnSwitchWeapon;
-            @Pause.started += instance.OnPause;
-            @Pause.performed += instance.OnPause;
-            @Pause.canceled += instance.OnPause;
+            @ToggleDebugCheat.started += instance.OnToggleDebugCheat;
+            @ToggleDebugCheat.performed += instance.OnToggleDebugCheat;
+            @ToggleDebugCheat.canceled += instance.OnToggleDebugCheat;
+            @DebugEnter.started += instance.OnDebugEnter;
+            @DebugEnter.performed += instance.OnDebugEnter;
+            @DebugEnter.canceled += instance.OnDebugEnter;
         }
 
         private void UnregisterCallbacks(IOnFootActions instance)
@@ -1277,15 +1329,18 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Movement.started -= instance.OnMovement;
             @Movement.performed -= instance.OnMovement;
             @Movement.canceled -= instance.OnMovement;
-            @Jump.started -= instance.OnJump;
-            @Jump.performed -= instance.OnJump;
-            @Jump.canceled -= instance.OnJump;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
             @Fire.started -= instance.OnFire;
             @Fire.performed -= instance.OnFire;
             @Fire.canceled -= instance.OnFire;
             @Sprint.started -= instance.OnSprint;
             @Sprint.performed -= instance.OnSprint;
             @Sprint.canceled -= instance.OnSprint;
+            @Jump.started -= instance.OnJump;
+            @Jump.performed -= instance.OnJump;
+            @Jump.canceled -= instance.OnJump;
             @Crouch.started -= instance.OnCrouch;
             @Crouch.performed -= instance.OnCrouch;
             @Crouch.canceled -= instance.OnCrouch;
@@ -1319,9 +1374,12 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @SwitchWeapon.started -= instance.OnSwitchWeapon;
             @SwitchWeapon.performed -= instance.OnSwitchWeapon;
             @SwitchWeapon.canceled -= instance.OnSwitchWeapon;
-            @Pause.started -= instance.OnPause;
-            @Pause.performed -= instance.OnPause;
-            @Pause.canceled -= instance.OnPause;
+            @ToggleDebugCheat.started -= instance.OnToggleDebugCheat;
+            @ToggleDebugCheat.performed -= instance.OnToggleDebugCheat;
+            @ToggleDebugCheat.canceled -= instance.OnToggleDebugCheat;
+            @DebugEnter.started -= instance.OnDebugEnter;
+            @DebugEnter.performed -= instance.OnDebugEnter;
+            @DebugEnter.canceled -= instance.OnDebugEnter;
         }
 
         public void RemoveCallbacks(IOnFootActions instance)
@@ -1461,9 +1519,10 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     {
         void OnFPSTPSLook(InputAction.CallbackContext context);
         void OnMovement(InputAction.CallbackContext context);
-        void OnJump(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
+        void OnJump(InputAction.CallbackContext context);
         void OnCrouch(InputAction.CallbackContext context);
         void OnThirdPerson(InputAction.CallbackContext context);
         void OnFirstPerson(InputAction.CallbackContext context);
@@ -1475,7 +1534,8 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnSecondaryWeapon(InputAction.CallbackContext context);
         void OnSwordWeapon(InputAction.CallbackContext context);
         void OnSwitchWeapon(InputAction.CallbackContext context);
-        void OnPause(InputAction.CallbackContext context);
+        void OnToggleDebugCheat(InputAction.CallbackContext context);
+        void OnDebugEnter(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
