@@ -64,8 +64,7 @@ public class MazeMonster : MonoBehaviour
         }
         else
         {
-            navMesh.isStopped = true;
-            GetComponent<Animator>().SetBool("isPlayerDeath", true);
+            StopMovement();
         }
     }
     IEnumerator Attack()
@@ -81,5 +80,12 @@ public class MazeMonster : MonoBehaviour
         yield return new WaitForSeconds(15);
         walkAudioSource.Play();
         GetComponent<Animator>().SetBool("isNotIdle", true);
+    }
+    public void StopMovement()
+    {
+        navMesh.isStopped = true;
+        GetComponent<Animator>().SetBool("isPlayerDeath", true);
+        GetComponent<Animator>().SetBool("isNotIdle", false);
+        walkAudioSource.Stop();
     }
 }
