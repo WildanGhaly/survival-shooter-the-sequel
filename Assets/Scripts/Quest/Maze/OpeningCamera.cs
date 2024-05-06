@@ -15,12 +15,14 @@ public class OpeningCamera : MonoBehaviour
         }
         else
         {
+            Debug.Log("[START] ELSE");
             enabled = false;
         }
     }
 
     private void OnDisable()
     {
+        Debug.Log("[START] ON DISABLED");
         SwitchCamera.Instance.SwitchCameraMethod(gameObject, cam2, 0.5f);
     }
 }
