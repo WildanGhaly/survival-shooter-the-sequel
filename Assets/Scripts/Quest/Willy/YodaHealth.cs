@@ -41,7 +41,7 @@ namespace Nightmare
         {
             base.Death();
             anim.SetBool("Die", true);
-            GetComponent<YodaFollow>().enabled = false;
+            if (GetComponent<YodaFollow>() != null) GetComponent<YodaFollow>().enabled = false;
             StartCoroutine(StartSink());
         }
 

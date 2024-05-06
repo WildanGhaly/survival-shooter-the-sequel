@@ -164,9 +164,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gunDamage: 20
   multiplierGunDamage: 1
-  defaultSpeed: 6
-  normalSpeed: 6
-  sprintSpeed: 8
+  multiplierSpeed: 1
   currentSpeed: 6
 --- !u!1 &7089832825130035547
 GameObject:
@@ -373,7 +371,7 @@ PrefabInstance:
       objectReference: {fileID: 6390777468996055571}
     - target: {fileID: 11400000, guid: 4e5a0d387dc27394b81600988ad0216f, type: 3}
       propertyPath: layer.m_Bits
-      value: 4294967295
+      value: 243
       objectReference: {fileID: 0}
     - target: {fileID: 11400002, guid: 4e5a0d387dc27394b81600988ad0216f, type: 3}
       propertyPath: sprintSpeed

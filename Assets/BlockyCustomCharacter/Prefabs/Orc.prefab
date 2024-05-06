@@ -3326,6 +3326,7 @@ GameObject:
   - component: {fileID: 6982556104344816586}
   - component: {fileID: 3331260079939779298}
   - component: {fileID: 4232614564162915077}
+  - component: {fileID: 2344493940325568231}
   m_Layer: 0
   m_Name: Orc
   m_TagString: Enemy
@@ -3427,6 +3428,7 @@ MonoBehaviour:
   sinkSpeed: 2.5
   scoreValue: 10
   deathClip: {fileID: 8300000, guid: cfd3310059f326f42b45c93d3510418c, type: 3}
+  currentHealth: 0
 --- !u!114 &5496598299381097823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3665,6 +3667,18 @@ MonoBehaviour:
     probability: 1
   - orbPrefab: {fileID: 1989112365759347675, guid: 75bdfcce4e626f4439055e65eaa94ca9, type: 3}
     probability: 1
+--- !u!114 &2344493940325568231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1964894900783212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c079bd301d9e44541b261f7c7a1d0ba3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &922529144327067702
 GameObject:
   m_ObjectHideFlags: 0

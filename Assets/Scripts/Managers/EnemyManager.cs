@@ -42,7 +42,7 @@ namespace Nightmare
         }
 
         void Spawn ()
-        {           
+        {
             // If the player has no health left...
             if(HealthSystem.Instance.hitPoint <= 0f)
             {

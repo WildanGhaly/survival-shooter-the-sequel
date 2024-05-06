@@ -70,6 +70,11 @@ public class RajaFollow : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.fixedDeltaTime * 5);
         }
 
+        if (IsDeath())
+        {
+            Death();
+        }
+
         enemy.SetDestination(player.position);
         
         if (HealthSystem.Instance.isDeath)
@@ -118,7 +123,7 @@ public class RajaFollow : MonoBehaviour
 
     private bool IsDeath()
     {
-        return enemyAnimator.GetBool("Death");
+        return enemyAnimator.GetBool("Die");
     }
 
     private bool IsRun()
@@ -157,7 +162,8 @@ public class RajaFollow : MonoBehaviour
 
     private void Death()
     {
-        enemyAnimator.SetBool("Death", true);
+        StopAllCoroutines();
+        enabled = false;
     }
 
     private IEnumerator Run()
@@ -324,8 +330,4 @@ public class RajaFollow : MonoBehaviour
         enemyAnimator.SetBool("Started", true);
     }
 
-    private void OnDisable()
-    {
-        StopAllCoroutines();
-    }
 }
