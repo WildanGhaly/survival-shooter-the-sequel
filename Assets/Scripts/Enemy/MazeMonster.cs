@@ -34,15 +34,7 @@ public class MazeMonster : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (navMesh.path != null)
-        {
-            Vector3 previousCorner = transform.position;
-            foreach (Vector3 corner in navMesh.path.corners)
-            {
-                Debug.DrawLine(previousCorner, corner, Color.red);
-                previousCorner = corner;
-            }
-        }
+        // DO NOTHING
     }
 
     private void FixedUpdate()
@@ -64,7 +56,6 @@ public class MazeMonster : MonoBehaviour
             {
                 GetComponent<Animator>().SetBool("isAttacking", false);
                 GetComponent<Animator>().SetBool("isWalking", true);
-                Debug.Log("Play walk sound");
             }
         }
         else if (!HealthSystem.Instance.isDeath)
@@ -81,7 +72,6 @@ public class MazeMonster : MonoBehaviour
     {
         isAttack = true;
         attackAudioSource.Play();
-        Debug.Log("Play attack sound");
         yield return new WaitForSeconds(1);
         playerHealth.TakeDamage(40);
         isAttack = false;
@@ -91,6 +81,5 @@ public class MazeMonster : MonoBehaviour
         yield return new WaitForSeconds(15);
         walkAudioSource.Play();
         GetComponent<Animator>().SetBool("isNotIdle", true);
-        Debug.Log("isNotIdle" + GetComponent<Animator>().GetBool("isNotIdle"));
     }
 }
