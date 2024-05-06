@@ -1195,6 +1195,7 @@ GameObject:
   - component: {fileID: 241914700}
   - component: {fileID: 241914699}
   - component: {fileID: 241914698}
+  - component: {fileID: 241914701}
   m_Layer: 0
   m_Name: Camera (Level Foreshadow)
   m_TagString: Untagged
@@ -1275,7 +1276,28 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 9.968866, y: 47.69474, z: 0}
+  m_LocalEulerAnglesHint: {x: 359.8322, y: 2.917958, z: 359.8423}
+--- !u!95 &241914701
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 241914697}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &294981158
 GameObject:
   m_ObjectHideFlags: 0
@@ -7204,6 +7226,7 @@ GameObject:
   - component: {fileID: 1866323231}
   - component: {fileID: 1866323230}
   - component: {fileID: 1866323229}
+  - component: {fileID: 1866323232}
   m_Layer: 0
   m_Name: Camera (Doorway)
   m_TagString: MainCamera
@@ -7285,6 +7308,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 178.923, z: 0}
+--- !u!95 &1866323232
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1866323228}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!43 &1882536941
 Mesh:
   m_ObjectHideFlags: 0
@@ -8445,7 +8489,7 @@ Transform:
   - {fileID: 2426153469722901581}
   - {fileID: 1955549205}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: -0.00000007035425, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0.00001518844, z: 0}
 --- !u!4 &1955549205
 Transform:
   m_ObjectHideFlags: 0
@@ -30920,6 +30964,12 @@ PlayableDirector:
     value: {fileID: 8606938513819153649}
   - key: {fileID: 1946311328259412192, guid: 90fe293164e374012ac147a12a045355, type: 2}
     value: {fileID: 6397163092264469273}
+  - key: {fileID: 2553476655036760351, guid: 90fe293164e374012ac147a12a045355, type: 2}
+    value: {fileID: 8596233505393618951}
+  - key: {fileID: -5043130856657803262, guid: 90fe293164e374012ac147a12a045355, type: 2}
+    value: {fileID: 1866323232}
+  - key: {fileID: 2537534158896498965, guid: 90fe293164e374012ac147a12a045355, type: 2}
+    value: {fileID: 241914701}
   m_ExposedReferences:
     m_References:
     - bc53204a3b3664855af668fe5680e127: {fileID: 1955122229}
@@ -31561,8 +31611,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5383022790538684747}
-  - component: {fileID: 5383022790538684748}
   - component: {fileID: 5383022790538684749}
+  - component: {fileID: 5383022790538684750}
   m_Layer: 0
   m_Name: ChatMode
   m_TagString: Untagged
@@ -31578,7 +31628,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7160562117959197682}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -32442,18 +32492,6 @@ Transform:
   - {fileID: 7468532025898007841}
   m_Father: {fileID: 2218318620265061619}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5383022790538684748
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3007653657256057175}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a65ca7cff965b4444965806e603fd10a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &5383022790538684749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32472,18 +32510,30 @@ MonoBehaviour:
     m_Events:
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 5383022790538684748}
+        - m_Target: {fileID: 5383022790538684750}
           m_TargetAssemblyTypeName: Subtitle, Assembly-CSharp
-          m_MethodName: SetPlayerText
-          m_Mode: 5
+          m_MethodName: Next
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: Home sweet home
+            m_StringArgument: LSKDJf
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &5383022790538684750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3007653657256057175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0283068e4f061487398310a924351e1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5488709620620347048
 GameObject:
   m_ObjectHideFlags: 0
@@ -32706,13 +32756,14 @@ GameObject:
   - component: {fileID: 4334098040253000866}
   - component: {fileID: 6772930559473501215}
   - component: {fileID: 3225900548958706592}
+  - component: {fileID: 8596233505393618951}
   m_Layer: 5
   m_Name: Fade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7468532025898007841
 Transform:
   m_ObjectHideFlags: 0
@@ -38732,6 +38783,27 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &8596233505393618951
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7160562117959197682}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8606938513819153649
 GameObject:
   m_ObjectHideFlags: 0
