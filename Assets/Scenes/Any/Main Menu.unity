@@ -6708,7 +6708,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1033336222
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8122,13 +8122,14 @@ GameObject:
   - component: {fileID: 1367002969}
   - component: {fileID: 1367002968}
   - component: {fileID: 1367002967}
+  - component: {fileID: 1367002970}
   m_Layer: 0
   m_Name: Statistics Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1367002966
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8214,6 +8215,23 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1367002970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1367002965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db4192f42a98d604ead68decac921c59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerNameValue: {fileID: 1870971411}
+  killCountValue: {fileID: 1869396115}
+  distanceValue: {fileID: 2038214660}
+  hitRatioValue: {fileID: 611098260}
+  timePlayedValue: {fileID: 504805000}
 --- !u!1 &1408904982
 GameObject:
   m_ObjectHideFlags: 0
