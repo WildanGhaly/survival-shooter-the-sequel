@@ -49,4 +49,60 @@ public class GameManager : MonoBehaviour
 
         Debug.Log(path);
     }
+
+    public void LoadGame(string path)
+    {
+        // Get the path
+        if(File.Exists(path))
+        {
+            string json = File.ReadAllText(path);
+
+            // Deserialize the JSON
+            GameData gameData = JsonUtility.FromJson<GameData>(json);
+
+            // Update some Class
+            // Update GameManager
+            point = gameData.point;
+            coin = gameData.coin;
+
+            // Update Player Statistics
+            PlayerStatistic.INSTANCE.setPlayerName(gameData.player.playerName);
+            PlayerStatistic.INSTANCE.setDistance(gameData.player.distanceReached);
+            PlayerStatistic.INSTANCE.setEnemiesKilled(gameData.player.enemiesKilled);
+            PlayerStatistic.INSTANCE.setTimePlayed(gameData.player.time);
+            PlayerStatistic.INSTANCE.setBulletFired(gameData.player.bulletsShot);
+            PlayerStatistic.INSTANCE.setBulletHit(gameData.player.bulletsHit);
+
+            // Update Scene (TBD)
+            SceneManager.LoadScene(gameData.scene.index); 
+        }
+
+    }
+}
+
+[Serializable]
+public class GameData
+{
+    public int point;
+    public int coin;
+    public PlayerData player;
+    public SceneData scene;
+}
+
+[Serializable]
+public class PlayerData
+{
+    public string playerName;
+    public int distanceReached;
+    public int enemiesKilled;
+    public float time;
+    public int bulletsShot;
+    public int bulletsHit;
+}
+
+[Serializable]
+public class SceneData
+{
+    public string name;
+    public int index;
 }

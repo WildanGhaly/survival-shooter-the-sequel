@@ -65,6 +65,11 @@ public class PlayerStatistic : MonoBehaviour
         enemiesKilled++;
     }
 
+    public void setEnemiesKilled (int kill)
+    {
+        enemiesKilled = kill;
+    }
+
     public int getKillCount(){
         return enemiesKilled;
     }
@@ -73,8 +78,18 @@ public class PlayerStatistic : MonoBehaviour
         return distanceReached;
     }
 
+    public void setDistance(float dist)
+    {
+        distanceReached = dist;
+    }
+
     public float getTimePlayed(){
         return time;
+    }
+
+    public void setTimePlayed(float time)
+    {
+        this.time = time;
     }
 
     public void setBulletHit(int hit){
@@ -87,7 +102,7 @@ public class PlayerStatistic : MonoBehaviour
 
     public float getHitRatio(){
         return (float) bulletsHit/ (float) bulletsShot;
-    }   
+    }
 
     protected virtual IEnumerator CalculateDistance(float count){
         currentPosition = transform.position;
