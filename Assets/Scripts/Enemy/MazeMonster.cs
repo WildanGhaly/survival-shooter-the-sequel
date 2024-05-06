@@ -76,7 +76,7 @@ public class MazeMonster : MonoBehaviour
     }
     IEnumerator StartWalking()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(15);
         GetComponent<Animator>().SetBool("isNotIdle", true);
         Debug.Log("isNotIdle" + GetComponent<Animator>().GetBool("isNotIdle"));
     }
