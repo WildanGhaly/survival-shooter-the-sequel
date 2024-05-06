@@ -60,14 +60,20 @@ namespace Nightmare
 
         public void StartSprint()
         {
-            BaseInstance.Instance.AddMultiplierSpeed(sprintSpeedUpMultiplier / 100);
-            isSprinting = true;
+            if (!isSprinting)
+            {
+                BaseInstance.Instance.AddMultiplierSpeed(sprintSpeedUpMultiplier / 100);
+                isSprinting = true;
+            }
         }
 
         public void StopSprint()
         {
-            BaseInstance.Instance.AddMultiplierSpeed(-sprintSpeedUpMultiplier / 100);
-            isSprinting = false;
+            if (isSprinting)
+            {
+                BaseInstance.Instance.AddMultiplierSpeed(-sprintSpeedUpMultiplier / 100);
+                isSprinting = false;
+            }
         }
 
         public void ProcessMove (Vector2 input)
