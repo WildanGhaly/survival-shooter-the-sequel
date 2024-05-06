@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Any/Willy.unity
     guid: 31ad50ff79a145443b06566380719095
+  - enabled: 1
+    path: Assets/Scenes/Any/Adventure.unity
+    guid: 35f06b6daafaa4977b0d75beacd3810b
+  - enabled: 1
+    path: Assets/Scenes/Any/MainHall.unity
+    guid: c031ca43712764cdd8f15f6890804fa4
   m_configObjects: {}

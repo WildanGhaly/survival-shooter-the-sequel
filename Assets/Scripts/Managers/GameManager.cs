@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
         coin = (int) ((float) point * 0.8);
     }
 
-    public void SaveGame()
+    public void SaveGame(int id = 1)
     {
         string playerStat = "\"player\": " + JsonUtility.ToJson(PlayerStatistic.INSTANCE);
         string scene = "\"scene\": {\"name\":\""+ SceneManager.GetActiveScene().name + "\", \"index\": " + SceneManager.GetActiveScene().buildIndex.ToString() + "}"; 
@@ -43,19 +43,19 @@ public class GameManager : MonoBehaviour
 
         string json = "{"+ pointCoint + ", " + playerStat + "," + scene + "}";
 
-        string path = Path.Combine(Application.persistentDataPath, "savefile.json");
+        string path = Path.Combine(Application.persistentDataPath, "savefile"+id+".json");
 
         File.WriteAllText(path, json);
 
         Debug.Log(path);
     }
 
-    public void LoadGame(string path)
+    public void LoadGame(int id)
     {
         // Get the path
-        if(File.Exists(path))
+        if(File.Exists(Path.Combine(Application.persistentDataPath, "savefile"+id+".json")))
         {
-            string json = File.ReadAllText(path);
+            string json = File.ReadAllText(Path.Combine(Application.persistentDataPath, "savefile"+id+".json"));
 
             // Deserialize the JSON
             GameData gameData = JsonUtility.FromJson<GameData>(json);

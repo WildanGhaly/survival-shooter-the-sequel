@@ -16,10 +16,10 @@ TagManager:
   - UI
   - MobileInput
   - Interactable
+  - Ground
+  - Wall
+  - Player
   - InvisibleCollider
-  - 
-  - 
-  - 
   - 
   - 
   - 
