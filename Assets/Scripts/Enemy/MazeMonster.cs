@@ -8,12 +8,22 @@ public class MazeMonster : MonoBehaviour
     private Nightmare.PlayerHealth playerHealth;
     private NavMeshAgent navMesh;
     private bool isAttack;
+    private GameObject attack;
+    private GameObject walk;
+    private AudioSource attackAudioSource;
+    private AudioSource walkAudioSource;
 
     private void Awake()
     {
         player = GameObject.FindWithTag("Player").transform;
         navMesh = GetComponent<NavMeshAgent>();
         playerHealth = player.GetComponent<Nightmare.PlayerHealth>();
+        attack = transform.Find("Attack").gameObject;
+        walk = transform.Find("Walk").gameObject;
+        if (attack != null)
+            attackAudioSource = attack.GetComponent<AudioSource>();
+        if (walk != null)
+            walkAudioSource = walk.GetComponent<AudioSource>();
     }
     // Use this for initialization
     void Start()
@@ -54,6 +64,7 @@ public class MazeMonster : MonoBehaviour
             {
                 GetComponent<Animator>().SetBool("isAttacking", false);
                 GetComponent<Animator>().SetBool("isWalking", true);
+                Debug.Log("Play walk sound");
             }
         }
         else if (!HealthSystem.Instance.isDeath)
@@ -68,8 +79,9 @@ public class MazeMonster : MonoBehaviour
     }
     IEnumerator Attack()
     {
-
         isAttack = true;
+        attackAudioSource.Play();
+        Debug.Log("Play attack sound");
         yield return new WaitForSeconds(1);
         playerHealth.TakeDamage(40);
         isAttack = false;
@@ -77,6 +89,7 @@ public class MazeMonster : MonoBehaviour
     IEnumerator StartWalking()
     {
         yield return new WaitForSeconds(15);
+        walkAudioSource.Play();
         GetComponent<Animator>().SetBool("isNotIdle", true);
         Debug.Log("isNotIdle" + GetComponent<Animator>().GetBool("isNotIdle"));
     }
