@@ -37,7 +37,7 @@ namespace Nightmare
                 input = "";
             }
         }
-
+        [ContextMenu("ToggleDebug")]
         public void OnToggleDebugCheat()
         {
             showConsole = !showConsole;
