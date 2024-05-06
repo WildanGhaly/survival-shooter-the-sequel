@@ -28,6 +28,8 @@ public class MainMenu : MonoBehaviour
     {
         loadGameCanvas.SetActive(true);
         mainMenuCanvas.SetActive(false);
+
+        loadGameCanvas.GetComponent<ReadSaveFiles>().enabled = true; 
     }
 
     public void Stats()
@@ -49,6 +51,9 @@ public class MainMenu : MonoBehaviour
         settingsCanvas.SetActive(false);
         statsCanvas.SetActive(false);
         loadGameCanvas.SetActive(false);
+
+        // Disable
+        loadGameCanvas.GetComponent<ReadSaveFiles>().enabled = false; 
     }
 
     public void Quit()
