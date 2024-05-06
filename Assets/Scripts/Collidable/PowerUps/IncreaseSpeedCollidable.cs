@@ -9,7 +9,7 @@ public class IncreaseSpeedCollidable : PowerUpCollidable
     protected override void CollideEnter()
     {
         base.CollideEnter();
-        PlayerPowerUp.Instance.IncreaseSpeedPowerUp(duration, percentage);
+        PlayerPowerUp.Instance.IncreaseSpeedPowerUp(duration, percentage / 100f);
         Destroy(gameObject);
     }
 }

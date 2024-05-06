@@ -24210,7 +24210,7 @@ MonoBehaviour:
   eventCollideExit: 0
   countdown: 5
   audioSource: {fileID: 5233713376729224260, guid: 5dc85deb6675fd744b60f9d45c4106e6, type: 3}
-  percentage: 100
+  percentage: 20
   duration: 15
 --- !u!1 &2246831566923720424
 GameObject:
