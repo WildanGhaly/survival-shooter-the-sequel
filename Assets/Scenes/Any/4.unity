@@ -261,6 +261,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46ef861553452a04ea1c6837af54487c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &169270115
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 169270116}
+  - component: {fileID: 169270117}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &169270116
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 169270115}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 174080331}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &169270117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 169270115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb03fdfb152c0a84090b25ca67c71feb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  point: 0
+  coin: 0
 --- !u!1 &174080329
 GameObject:
   m_ObjectHideFlags: 0
@@ -306,6 +352,7 @@ Transform:
   - {fileID: 1009312776}
   - {fileID: 1851945248}
   - {fileID: 504590610}
+  - {fileID: 169270116}
   - {fileID: 100493976}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -428,11 +475,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e89165ecb21963947b68c180605c5a6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerNameValue: {fileID: 0}
-  killCountValue: {fileID: 0}
-  distanceValue: {fileID: 0}
-  hitRatioValue: {fileID: 0}
-  timePlayedValue: {fileID: 0}
   playerName: Player
   distanceReached: 0
   enemiesKilled: 0
