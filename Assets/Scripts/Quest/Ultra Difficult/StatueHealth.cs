@@ -2,11 +2,14 @@ using UnityEngine;
 using System.Collections;
 using Nightmare;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 public class StatueHealth : EnemyHealth
 {
     [SerializeField] CanvasGroup canvasGroupText;
     [SerializeField] GameObject player;
     [SerializeField] RectTransform healthBar;
+    [SerializeField] CanvasGroup canvasGroupBlack;
+    [SerializeField] GameObject enemyManager;
     private float healthBarWidth;
     private float healthMultiplierToUI;
 
@@ -53,16 +56,30 @@ public class StatueHealth : EnemyHealth
         }
     }
 
+    private IEnumerator genocideEnemies()
+    {
+        while(GameObject.FindGameObjectWithTag("Enemy") != null)
+        {
+            Destroy(GameObject.FindGameObjectWithTag("Enemy"));
+            yield return null;
+        }
+    }
+
     private IEnumerator fadeToBlack()
     {
-        float fadeSpeed = (float) 1/fadeDuration;
-        // while (canvasGroupBlack.alpha != 1)
-        // {
-        //     canvasGroupBlack.alpha = Mathf.MoveTowards(canvasGroupBlack.alpha, 1, fadeSpeed * Time.deltaTime);
-        //     yield return null;
-        // }
+        enemyManager.SetActive(false);
 
-        SwitchCamera.Instance.SimpleFade(1, 0.5f);
+        StartCoroutine(genocideEnemies());
+
+        float fadeSpeed = (float) 1/fadeDuration;
+        while (canvasGroupBlack.alpha != 1)
+        {
+            canvasGroupBlack.alpha = Mathf.MoveTowards(canvasGroupBlack.alpha, 1, fadeSpeed * Time.deltaTime);
+            yield return null;
+        }
+
+        // SwitchCamera.Instance.SimpleFade(1, 0.5f);
+        // yield return new WaitForSeconds(1);
 
         while (canvasGroupText.alpha != 1)
         {
@@ -78,8 +95,8 @@ public class StatueHealth : EnemyHealth
             yield return null;
         }
 
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(2);
 
-        SceneManager.LoadScene(0); // TODO: Go to main scene
+        SceneManager.LoadScene(6); // TODO: Go to main scene
     }
 } 
