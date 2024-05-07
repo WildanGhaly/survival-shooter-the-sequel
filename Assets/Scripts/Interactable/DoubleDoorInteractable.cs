@@ -11,7 +11,7 @@ public class DoubleDoorInteractable : Interactable
     [SerializeField] private GameObject playerModel;
     [SerializeField] private Willy2SecondCutscene enemyActiveChecker;
 
-    bool isQuestStarted = false;
+    public bool isQuestStarted = false;
     public bool stopTransform = false;
 
     private readonly string[,] dialogues = new string[,]
