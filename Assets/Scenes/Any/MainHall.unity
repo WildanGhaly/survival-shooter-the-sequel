@@ -52581,7 +52581,7 @@ PrefabInstance:
       addedObject: {fileID: 1612886579}
     - targetCorrespondingSourceObject: {fileID: 144138, guid: 015f23238a8ca9f4d80f824581484228, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1612886580}
+      addedObject: {fileID: 1612886584}
   m_SourcePrefab: {fileID: 100100000, guid: 015f23238a8ca9f4d80f824581484228, type: 3}
 --- !u!1 &1612886571 stripped
 GameObject:
@@ -52611,7 +52611,7 @@ CapsuleCollider:
   m_Height: 4.4
   m_Direction: 1
   m_Center: {x: 0.021918895, y: 1.912479, z: 0.259936}
---- !u!114 &1612886580
+--- !u!114 &1612886584
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -52620,7 +52620,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1612886571}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80143250906c6499a93e50094d7a2f2b, type: 3}
+  m_Script: {fileID: 11500000, guid: b3a92c307ab4e4f33873c6b93d8ff692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   eventInteract: 0
@@ -65699,7 +65699,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: e8ea8df8ed6194594859b3ad1c19c506, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 9fcd727ac0a07a04ca442df5195c4f3b, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
