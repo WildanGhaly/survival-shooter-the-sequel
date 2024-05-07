@@ -6,6 +6,8 @@ public class SecondDoorInteractable : Interactable
 {
     [SerializeField] private GameObject pCam, cam1;
     [SerializeField] private GameObject player, playerModel;
+    [SerializeField] private AudioSource aud;
+    [SerializeField] private AudioSource aud2;
 
     public bool stopTransform = false;
 
@@ -30,6 +32,8 @@ public class SecondDoorInteractable : Interactable
             isQuestStarted = true;
             GetComponent<MeshCollider>().isTrigger = true;
             base.Interact();
+            aud.Stop();
+            aud2.Play();
         }
     }
 

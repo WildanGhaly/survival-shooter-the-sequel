@@ -10,6 +10,8 @@ public class DoubleDoorInteractable : Interactable
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject playerModel;
     [SerializeField] private Willy2SecondCutscene enemyActiveChecker;
+    [SerializeField] private AudioSource aud;
+    [SerializeField] private AudioSource aud2;
 
     public bool isQuestStarted = false;
     public bool stopTransform = false;
@@ -36,6 +38,8 @@ public class DoubleDoorInteractable : Interactable
             StartCoroutine(ActivatePlayer());
             base.Interact();
             isQuestStarted = true;
+            aud.Stop();
+            aud2.Play();
         }
     }
 
