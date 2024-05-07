@@ -13110,7 +13110,7 @@ GameObject:
   - component: {fileID: 5636055542792237909}
   m_Layer: 0
   m_Name: Raja
-  m_TagString: Untagged
+  m_TagString: FinalBoss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

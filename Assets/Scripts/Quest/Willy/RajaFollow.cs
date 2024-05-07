@@ -37,6 +37,8 @@ public class RajaFollow : MonoBehaviour
     private bool mutexLockDefend = false;
     private bool mutexLockRun = false;
 
+    bool isStarted;
+
     private void Awake()
     {
         enemy = GetComponent<NavMeshAgent>();
@@ -44,11 +46,14 @@ public class RajaFollow : MonoBehaviour
 
         player = GameObject.FindWithTag("Player").transform;
         enemyStoppingDistance = enemy.stoppingDistance;
+
+        enemy.isStopped = true;
     }
 
     private void Start()
     {
         StartCoroutine(StartRunning());
+        StartCoroutine(WaitWakeUp());
     }
 
     IEnumerator StartRunning()
@@ -73,6 +78,11 @@ public class RajaFollow : MonoBehaviour
         if (IsDeath())
         {
             Death();
+        }
+
+        if (!isStarted)
+        {
+            return;
         }
 
         enemy.SetDestination(player.position);
@@ -119,6 +129,12 @@ public class RajaFollow : MonoBehaviour
             }
         }
         
+    }
+
+    IEnumerator WaitWakeUp()
+    {
+        yield return new WaitForSeconds(startChase);
+        isStarted = true;
     }
 
     private bool IsDeath()

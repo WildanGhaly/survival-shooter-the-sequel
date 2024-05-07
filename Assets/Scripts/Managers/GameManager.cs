@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public static GameManager INSTANCE;
     public int point = 0;
     public int coin = 0;
+    public int currentQuestID = 0;
 
     void Awake()
     {
@@ -28,6 +29,11 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void updateCurrentQuestID()
+    {
+        currentQuestID++;
     }
 
     public void updatePointCoin(){
