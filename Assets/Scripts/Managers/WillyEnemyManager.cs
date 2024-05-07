@@ -28,7 +28,6 @@ namespace Nightmare
 
         private IEnumerator StartSpawn()
         {
-            yield return new WaitWhile(() => isPaused);
             yield return new WaitForSeconds(firstSpawnTime);
             StartCoroutine(Spawn(spawnTime, targetSpawn));
         }
@@ -54,6 +53,11 @@ namespace Nightmare
 
                 yield return new WaitForSeconds(spawnTime);
             }
+        }
+
+        private void OnDisable()
+        {
+            StopAllCoroutines();
         }
     }
 }

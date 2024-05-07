@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.101524316, g: 0.10256869, b: 0.09486429, a: 1}
+  m_IndirectSpecularColor: {r: 0.10152436, g: 0.10256898, b: 0.094864465, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -9712,6 +9712,7 @@ MonoBehaviour:
   eventCollideExit: 0
   gateToClose: {fileID: 1629402910}
   gateToOpen: {fileID: 1120713240}
+  enemyManager: {fileID: 0}
 --- !u!65 &500487838
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10782,7 +10783,7 @@ GameObject:
   - component: {fileID: 545738540}
   - component: {fileID: 545738539}
   - component: {fileID: 545738538}
-  - component: {fileID: 545738537}
+  - component: {fileID: 545738542}
   m_Layer: 0
   m_Name: FirstHalfFinishLine
   m_TagString: Untagged
@@ -10805,33 +10806,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1157780181}
   m_LocalEulerAnglesHint: {x: 0, y: 60.611, z: 0}
---- !u!114 &545738537
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 545738535}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 686f67ac32cfe474daddd47824e2f011, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  unityEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 545738535}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &545738538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10850,6 +10824,7 @@ MonoBehaviour:
   eventCollideExit: 0
   gateToClose: {fileID: 2027445917}
   gateToOpen: {fileID: 1629402910}
+  enemyManager: {fileID: 1362545943}
 --- !u!65 &545738539
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10921,6 +10896,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 545738535}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &545738542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 545738535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 686f67ac32cfe474daddd47824e2f011, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &552319872 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 482004, guid: 20a79b55466cdb84da379ae63fc30867, type: 3}
@@ -21834,6 +21824,10 @@ PrefabInstance:
       value: PlayerWithUI
       objectReference: {fileID: 0}
     - target: {fileID: 2023764058360593417, guid: 765afca53a5c31544ad60817c5b4498c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2264545336214248041, guid: 765afca53a5c31544ad60817c5b4498c, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -45495,6 +45489,10 @@ PrefabInstance:
     - target: {fileID: 7668598671086299945, guid: 6ffbdefb83d4a3c46bb0b81d6b806fbe, type: 3}
       propertyPath: m_Name
       value: PolyArtWizardMaskTintMat
+      objectReference: {fileID: 0}
+    - target: {fileID: 7668598671086299945, guid: 6ffbdefb83d4a3c46bb0b81d6b806fbe, type: 3}
+      propertyPath: m_TagString
+      value: FinalBoss
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
