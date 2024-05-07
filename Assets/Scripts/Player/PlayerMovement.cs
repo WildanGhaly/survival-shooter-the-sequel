@@ -11,12 +11,16 @@ namespace Nightmare
         [SerializeField] private float timeSprint = 0.1f;
         [SerializeField] private float manaCost = 2f;
         [SerializeField] private float sprintSpeedUpMultiplier = 20f;
+        [SerializeField] AudioSource walkAud;
+        [SerializeField] AudioSource runAud;
+        [SerializeField] AudioSource jumpAud;
 
         private float currentSprintTime = 0;
         private bool isSprinting;
         private bool isGrounded;
         private Vector3 playerVelocity;
         public float speedModifier = 1f;
+        private bool isTriggered = false;
 
         Animator anim;                      // Reference to the animator component.
 
@@ -51,6 +55,21 @@ namespace Nightmare
                     }
                 }
             }
+            if (!isGrounded)
+            {
+                walkAud.Stop();
+                isTriggered = false;
+                if (isSprinting)
+                {
+                    runAud.Stop();
+                }
+            } else
+            {
+                if (!runAud.isPlaying && isSprinting)
+                {
+                    runAud.Play();
+                }
+            }
         }
 
         void OnDestroy()
@@ -64,15 +83,20 @@ namespace Nightmare
             {
                 BaseInstance.Instance.AddMultiplierSpeed(sprintSpeedUpMultiplier / 100);
                 isSprinting = true;
+                isTriggered = false;
+                walkAud.Stop();
+                runAud.Play();
             }
         }
 
         public void StopSprint()
         {
+            Debug.Log("STOP SPRINTING");
             if (isSprinting)
             {
                 BaseInstance.Instance.AddMultiplierSpeed(-sprintSpeedUpMultiplier / 100);
                 isSprinting = false;
+                runAud.Stop();
             }
         }
 
@@ -93,6 +117,18 @@ namespace Nightmare
             Turning();
             Animating(input.x, input.y);
 
+            if (input != Vector2.zero)
+            {
+                if (!isTriggered)
+                {
+                    walkAud.Play();
+                }
+                isTriggered = true;
+            } else
+            {
+                walkAud.Stop();
+                isTriggered = false;
+            }
         }
 
         public void Jump()
@@ -100,6 +136,7 @@ namespace Nightmare
             if (isGrounded)
             {
                 playerVelocity.y = Mathf.Sqrt(-2f * gravity * jumpHeight);
+                jumpAud.Play();
             }
         }
 
