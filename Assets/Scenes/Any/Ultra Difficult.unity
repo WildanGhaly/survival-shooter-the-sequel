@@ -1672,7 +1672,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5861419219326725246, guid: 765afca53a5c31544ad60817c5b4498c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.851267
+      value: -6.52
       objectReference: {fileID: 0}
     - target: {fileID: 5861419219326725246, guid: 765afca53a5c31544ad60817c5b4498c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5962,6 +5962,8 @@ MonoBehaviour:
   canvasGroupText: {fileID: 304566121}
   player: {fileID: 1932686607}
   healthBar: {fileID: 1330269091}
+  canvasGroupBlack: {fileID: 878722604}
+  enemyManager: {fileID: 546635588}
   newCam: {fileID: 1697537056}
 --- !u!82 &2123271348
 AudioSource:
