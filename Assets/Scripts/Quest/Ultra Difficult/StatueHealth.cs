@@ -20,7 +20,7 @@ public class StatueHealth : EnemyHealth
     {
         base.Awake();
         healthBarWidth = healthBar.sizeDelta.x;
-        healthMultiplierToUI = healthBarWidth / 10000;
+        healthMultiplierToUI = healthBarWidth / 5000;
     }
 
     protected override void Death()
