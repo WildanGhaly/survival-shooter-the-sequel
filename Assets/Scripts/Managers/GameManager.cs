@@ -32,9 +32,9 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public void updateCurrentQuestID()
+    public void updateCurrentQuestID(int questID)
     {
-        currentQuestID++;
+        currentQuestID = questID;
     }
 
     public bool UseUltimate()

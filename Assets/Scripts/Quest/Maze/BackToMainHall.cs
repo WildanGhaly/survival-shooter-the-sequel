@@ -7,6 +7,7 @@ public class BackToMainHall : MonoBehaviour
 {
     void Start()
     {
+        GameManager.INSTANCE.updateCurrentQuestID(1);
         StartCoroutine(wait());
     }
     IEnumerator wait()

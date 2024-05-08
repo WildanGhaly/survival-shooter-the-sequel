@@ -15,6 +15,13 @@ public class StatueInteractable : Interactable
         Debug.Log("LOAD QUEST");
         SwitchCamera.Instance.SimpleFade(1, 2f);
         yield return new WaitForSeconds(2f);
-        SceneManager.LoadScene(4);
+
+        if(GameManager.INSTANCE.currentQuestID == 1){
+            SceneManager.LoadScene(4);
+        }else if(GameManager.INSTANCE.currentQuestID == 2){
+            SceneManager.LoadScene(5);
+        }else if(GameManager.INSTANCE.currentQuestID == 3){
+            SceneManager.LoadScene(6);
+        }
     }
 }

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88de40828f4540a47872ef27e9f61c83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetSceneIndex: 0
+  targetSceneIndex: 3
 --- !u!1102 &-4377324357849670964
 AnimatorState:
   serializedVersion: 6
