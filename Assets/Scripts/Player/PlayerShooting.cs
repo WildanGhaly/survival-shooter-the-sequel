@@ -249,7 +249,7 @@ namespace Nightmare
                 SwordSlash();
                 swordAudio.Play();
             }
-
+            // FIXME Often NullReferenceException because of no PlayerStatistic script
             PlayerStatistic.INSTANCE.setBulletFired(swordBulletShoot + shotgunBulletShoot + rifleBulletShoot);
             PlayerStatistic.INSTANCE.setBulletHit(swordBulletHit + shotgunBulletHit + rifleBulletHit);
         }
