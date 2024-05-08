@@ -21,7 +21,7 @@ public class MainMenu : MonoBehaviour
     }
     public void NewGame()
     {
-        SceneManager.LoadSceneAsync("Ultra Difficult");
+        SceneManager.LoadScene(1);
     }
 
     public void LoadGame()

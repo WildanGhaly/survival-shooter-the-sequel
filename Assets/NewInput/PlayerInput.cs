@@ -197,6 +197,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Ultimate"",
+                    ""type"": ""Button"",
+                    ""id"": ""9bc7f4b9-9a0f-4943-b51f-30262cf805da"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -593,6 +602,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""DebugEnter"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a051127d-32af-4fb0-8b60-e5129281dc4e"",
+                    ""path"": ""<Keyboard>/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ultimate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1138,6 +1158,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_OnFoot_SwitchWeapon = m_OnFoot.FindAction("SwitchWeapon", throwIfNotFound: true);
         m_OnFoot_ToggleDebugCheat = m_OnFoot.FindAction("ToggleDebug/Cheat", throwIfNotFound: true);
         m_OnFoot_DebugEnter = m_OnFoot.FindAction("DebugEnter", throwIfNotFound: true);
+        m_OnFoot_Ultimate = m_OnFoot.FindAction("Ultimate", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1230,6 +1251,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_OnFoot_SwitchWeapon;
     private readonly InputAction m_OnFoot_ToggleDebugCheat;
     private readonly InputAction m_OnFoot_DebugEnter;
+    private readonly InputAction m_OnFoot_Ultimate;
     public struct OnFootActions
     {
         private @PlayerInput m_Wrapper;
@@ -1253,6 +1275,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @SwitchWeapon => m_Wrapper.m_OnFoot_SwitchWeapon;
         public InputAction @ToggleDebugCheat => m_Wrapper.m_OnFoot_ToggleDebugCheat;
         public InputAction @DebugEnter => m_Wrapper.m_OnFoot_DebugEnter;
+        public InputAction @Ultimate => m_Wrapper.m_OnFoot_Ultimate;
         public InputActionMap Get() { return m_Wrapper.m_OnFoot; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1319,6 +1342,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @DebugEnter.started += instance.OnDebugEnter;
             @DebugEnter.performed += instance.OnDebugEnter;
             @DebugEnter.canceled += instance.OnDebugEnter;
+            @Ultimate.started += instance.OnUltimate;
+            @Ultimate.performed += instance.OnUltimate;
+            @Ultimate.canceled += instance.OnUltimate;
         }
 
         private void UnregisterCallbacks(IOnFootActions instance)
@@ -1380,6 +1406,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @DebugEnter.started -= instance.OnDebugEnter;
             @DebugEnter.performed -= instance.OnDebugEnter;
             @DebugEnter.canceled -= instance.OnDebugEnter;
+            @Ultimate.started -= instance.OnUltimate;
+            @Ultimate.performed -= instance.OnUltimate;
+            @Ultimate.canceled -= instance.OnUltimate;
         }
 
         public void RemoveCallbacks(IOnFootActions instance)
@@ -1536,6 +1565,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnSwitchWeapon(InputAction.CallbackContext context);
         void OnToggleDebugCheat(InputAction.CallbackContext context);
         void OnDebugEnter(InputAction.CallbackContext context);
+        void OnUltimate(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

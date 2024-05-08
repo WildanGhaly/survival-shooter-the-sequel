@@ -10,16 +10,18 @@ public class DoubleDoorInteractable : Interactable
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject playerModel;
     [SerializeField] private Willy2SecondCutscene enemyActiveChecker;
+    [SerializeField] private AudioSource aud;
+    [SerializeField] private AudioSource aud2;
 
     public bool isQuestStarted = false;
     public bool stopTransform = false;
 
     private readonly string[,] dialogues = new string[,]
     {
-        {"Chatter", "Villager never open the door because of the monster"},
-        {"Chatter", "Kill all the monster so then the villager can come here"},
-        {"Chatter", "Use obstacle to hide if you need"},
-        {"Chatter", "The monster has debuff area that you can see!"},
+        {"Chatter", "Villagers never open this door because of the monsters"},
+        {"Chatter", "Kill all the monsters so the villagers can come here"},
+        {"Chatter", "Use obstacles to hide if you need"},
+        {"Chatter", "The monster has a debuff area that you can see!"},
         {"Chatter", "Good luck..."},
     };
 
@@ -27,6 +29,7 @@ public class DoubleDoorInteractable : Interactable
     {
         if (!isQuestStarted)
         {
+            GameManager.INSTANCE.updateCurrentQuestID(4);
             StartDialogues();
             promptMessage = string.Empty;
             OpenDoor();
@@ -36,6 +39,8 @@ public class DoubleDoorInteractable : Interactable
             StartCoroutine(ActivatePlayer());
             base.Interact();
             isQuestStarted = true;
+            aud.Stop();
+            aud2.Play();
         }
     }
 

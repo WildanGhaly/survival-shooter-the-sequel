@@ -428,6 +428,50 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 82716618}
   m_Mesh: {fileID: 4300000, guid: f3ae2f327b1ccba488153e136bd96969, type: 3}
+--- !u!1 &92530263
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 92530265}
+  - component: {fileID: 92530264}
+  m_Layer: 0
+  m_Name: SwitchScene
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &92530264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 92530263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c113ace9464104e90a708aec3e8a98e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &92530265
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 92530263}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -9.181735, y: 3.2031991, z: -3.113987}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &96194040
 GameObject:
   m_ObjectHideFlags: 0
@@ -7989,6 +8033,10 @@ MonoBehaviour:
   gravity: -9.8
   timeSprint: 0.1
   manaCost: 2
+  sprintSpeedUpMultiplier: 20
+  walkAud: {fileID: 0}
+  runAud: {fileID: 0}
+  jumpAud: {fileID: 0}
   speedModifier: 1
 --- !u!108 &1949139221
 Light:
@@ -39004,3 +39052,4 @@ SceneRoots:
   - {fileID: 241914700}
   - {fileID: 2218318620265061619}
   - {fileID: 2095166322}
+  - {fileID: 92530265}

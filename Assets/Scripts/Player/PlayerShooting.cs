@@ -396,7 +396,7 @@ namespace Nightmare
                     shootRay.direction = (hit.point - transform.position).normalized;
 
                     EnemyHealth enemyHealth = hit.collider.GetComponent<EnemyHealth>();
-                    if (enemyHealth != null)
+                    if (enemyHealth !=   null)
                     {
                         enemyHealth.TakeDamage(BaseInstance.Instance.GetGunDamage(), hit.point);
                         rifleBulletHit++;

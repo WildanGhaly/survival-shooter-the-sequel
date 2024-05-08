@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public int point = 0;
     public int coin = 0;
     public int currentQuestID = 0;
+    public int ultimateCount = 0;
 
     void Awake()
     {
@@ -31,9 +32,24 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public void updateCurrentQuestID()
+    public void updateCurrentQuestID(int questID)
     {
-        currentQuestID++;
+        currentQuestID = questID;
+    }
+
+    public bool UseUltimate()
+    {
+        if (ultimateCount > 0)
+        {
+            ultimateCount--;
+            return true;
+        }
+        return false;
+    }
+
+    public void AddUltimate(int num = 1)
+    {
+        ultimateCount += num;
     }
 
     public void updatePointCoin(){

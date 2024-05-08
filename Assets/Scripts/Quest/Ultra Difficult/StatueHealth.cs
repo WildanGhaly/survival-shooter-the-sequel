@@ -25,6 +25,7 @@ public class StatueHealth : EnemyHealth
 
     protected override void Death()
     {
+        GameManager.INSTANCE.updateCurrentQuestID(7);
         Debug.Log("DESTROYED STATUE");
 
         GetComponent<Animator>().SetBool("isDestroyed", true);
@@ -97,6 +98,6 @@ public class StatueHealth : EnemyHealth
 
         yield return new WaitForSeconds(2);
 
-        SceneManager.LoadScene(6); // TODO: Go to main scene
+        SceneManager.LoadScene(3); // TODO: Go to main scene
     }
 } 

@@ -25,6 +25,7 @@ public class FinalCutscene : MonoBehaviour
 
     private void OnEnable()
     {
+        GameManager.INSTANCE.updateCurrentQuestID(3);
         crosshair.SetActive(false);
         characterController.enabled = false;
         inputManager.enabled = false;

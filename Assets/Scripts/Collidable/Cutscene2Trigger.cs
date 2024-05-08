@@ -23,6 +23,7 @@ public class Cutscene2Trigger : Collidable
 
     protected override void CollideEnter()
     {
+        GameManager.INSTANCE.updateCurrentQuestID(2);
         StartCoroutine(SwitchPlayerToCutscene(playerCam, firstCam, secondCam));
         StartCoroutine(PlayerMove());
         base.CollideEnter();
