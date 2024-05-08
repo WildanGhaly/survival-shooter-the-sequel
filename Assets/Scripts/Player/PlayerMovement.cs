@@ -91,7 +91,6 @@ namespace Nightmare
 
         public void StopSprint()
         {
-            Debug.Log("STOP SPRINTING");
             if (isSprinting)
             {
                 BaseInstance.Instance.AddMultiplierSpeed(-sprintSpeedUpMultiplier / 100);

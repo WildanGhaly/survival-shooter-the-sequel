@@ -6,6 +6,7 @@ public class SecondDoorInteractable : Interactable
 {
     [SerializeField] private GameObject pCam, cam1;
     [SerializeField] private GameObject player, playerModel;
+
     [SerializeField] private AudioSource aud;
     [SerializeField] private AudioSource aud2;
 
