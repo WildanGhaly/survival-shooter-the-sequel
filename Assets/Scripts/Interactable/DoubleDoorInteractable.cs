@@ -18,10 +18,10 @@ public class DoubleDoorInteractable : Interactable
 
     private readonly string[,] dialogues = new string[,]
     {
-        {"Chatter", "Villager never open the door because of the monster"},
-        {"Chatter", "Kill all the monster so then the villager can come here"},
-        {"Chatter", "Use obstacle to hide if you need"},
-        {"Chatter", "The monster has debuff area that you can see!"},
+        {"Chatter", "Villagers never open this door because of the monsters"},
+        {"Chatter", "Kill all the monsters so the villagers can come here"},
+        {"Chatter", "Use obstacles to hide if you need"},
+        {"Chatter", "The monster has a debuff area that you can see!"},
         {"Chatter", "Good luck..."},
     };
 
@@ -29,6 +29,7 @@ public class DoubleDoorInteractable : Interactable
     {
         if (!isQuestStarted)
         {
+            GameManager.INSTANCE.updateCurrentQuestID(4);
             StartDialogues();
             promptMessage = string.Empty;
             OpenDoor();
