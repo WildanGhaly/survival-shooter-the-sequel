@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class Willy2ThirdCutscene : MonoBehaviour
 {
@@ -24,6 +26,7 @@ public class Willy2ThirdCutscene : MonoBehaviour
             StartCoroutine(StartCutscene());
             aud.Stop();
             aud2.Play();
+            StartCoroutine(SwitchScene());
         }
         
         if (GameObject.FindGameObjectWithTag("FinalBoss") == null && GameObject.FindGameObjectWithTag("Enemy") != null)
@@ -41,5 +44,11 @@ public class Willy2ThirdCutscene : MonoBehaviour
         SwitchCamera.Instance.SwitchCameraMethod(cam2, pCam, 0.5f);
         door.GetComponent<MeshCollider>().isTrigger = true;
         enabled = false;
+    }
+    IEnumerator SwitchScene()
+    {
+        SwitchCamera.Instance.SimpleFade(1, 2f);
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene(3);
     }
 }
