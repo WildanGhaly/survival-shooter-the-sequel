@@ -7,6 +7,8 @@ public class Willy2ThirdCutscene : MonoBehaviour
     bool isTriggered;
     [SerializeField] private GameObject pCam, cam2;
     [SerializeField] private Animator door;
+    [SerializeField] private AudioSource aud;
+    [SerializeField] private AudioSource aud2;
 
     private readonly string[,] dialogues = new string[,]
     {
@@ -20,6 +22,8 @@ public class Willy2ThirdCutscene : MonoBehaviour
         {
             isTriggered = true;
             StartCoroutine(StartCutscene());
+            aud.Stop();
+            aud2.Play();
         }
         
         if (GameObject.FindGameObjectWithTag("FinalBoss") == null && GameObject.FindGameObjectWithTag("Enemy") != null)
