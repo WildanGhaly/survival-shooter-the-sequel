@@ -111,6 +111,7 @@ public class HealthSystem : MonoBehaviour
 	public void TakeDamage(float Damage)
 	{
 		hitPoint -= Damage;
+		hitPoint = Mathf.Clamp(hitPoint, 0, maxHitPoint);
 		if (hitPoint < 1)
         {
 			isDeath = true;
