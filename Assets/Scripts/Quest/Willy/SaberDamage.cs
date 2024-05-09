@@ -5,7 +5,12 @@ using UnityEngine;
 public class SaberDamage : Collidable
 {
     private Nightmare.PlayerHealth playerHealth;
-    [SerializeField] private float damagePerHit = 25f;
+    private float damagePerHit;
+
+    public void SetDamagePerHit(float damage)
+    {
+        damagePerHit = damage;
+    }
 
     private void Awake()
     {

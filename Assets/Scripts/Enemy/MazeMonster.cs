@@ -13,8 +13,17 @@ public class MazeMonster : MonoBehaviour
     private AudioSource attackAudioSource;
     private AudioSource walkAudioSource;
 
+    [SerializeField] private float damagePerHit = 40f;
+    private float damage;
+
+    void SetUpDamage()
+    {
+        damage = damagePerHit * GameManager.INSTANCE.multiplier;
+    }
+
     private void Awake()
     {
+        SetUpDamage();
         player = GameObject.FindWithTag("Player").transform;
         navMesh = GetComponent<NavMeshAgent>();
         playerHealth = player.GetComponent<Nightmare.PlayerHealth>();
@@ -72,7 +81,7 @@ public class MazeMonster : MonoBehaviour
         isAttack = true;
         attackAudioSource.Play();
         yield return new WaitForSeconds(1);
-        playerHealth.TakeDamage(40);
+        playerHealth.TakeDamage(damage);
         isAttack = false;
     }
     IEnumerator StartWalking()

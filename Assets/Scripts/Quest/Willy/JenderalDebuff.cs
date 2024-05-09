@@ -7,12 +7,16 @@ public class JenderalDebuff : Collidable
     [SerializeField] private float debuffRadius = 2f, damagePerSecond = 10f;
     [SerializeField] private Transform playerTransform;
 
+    public float multiplier = 1f;
+
     private Nightmare.PlayerHealth playerHealth;
 
     protected virtual void Awake()
     {
         transform.localScale = new Vector3(debuffRadius, 1, debuffRadius);
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Nightmare.PlayerHealth>();
+        
+        multiplier = GameManager.INSTANCE.multiplier;
     }
 
     protected override void CollideEnter()
@@ -23,11 +27,16 @@ public class JenderalDebuff : Collidable
     protected override void CollideStay()
     {
         base.CollideStay();
-        playerHealth.TakeDamage(damagePerSecond * Time.deltaTime);
+        playerHealth.TakeDamage(DamagePerSecond() * Time.deltaTime);
     }
 
     protected override void CollideExit()
     {
         base.CollideExit();
+    }
+
+    private float DamagePerSecond()
+    {
+        return damagePerSecond * multiplier;
     }
 }

@@ -12,6 +12,47 @@ public class GameManager : MonoBehaviour
     public int point = 0;
     public int coin = 0;
     public int currentQuestID = 0;
+    public int ultimateCount = 0;
+    
+    public string playerName;
+    public float volume;
+
+    public float multiplier = 1f;
+    public int difficulty = 2;
+
+    public void SetPlayerName(string name)
+    {
+        playerName = name;
+    }
+
+    public void SetVolume(float volum)
+    {
+        volume = volum;
+    }
+
+    public void UpdateDifficulty(int df)
+    {
+        difficulty = df;
+        switch (difficulty)
+        {
+            case 0: // Very Easy
+                multiplier = 0.1f;
+                break;
+            case 1: // Easy
+                multiplier = 0.5f;
+                break;
+            case 2: // Medium
+                multiplier = 1f;
+                break;
+            case 3: // Hard
+                multiplier = 2f;
+                break;
+            case 4: // ASIAN
+                multiplier = 5f;
+                break;
+        }
+    }
+
 
     void Awake()
     {
@@ -31,9 +72,34 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public void updateCurrentQuestID()
+    public void updateCurrentQuestID(int questID)
     {
-        currentQuestID++;
+        currentQuestID = questID;
+    }
+
+    public bool UseUltimate()
+    {
+        if (ultimateCount > 0)
+        {
+            ultimateCount--;
+            return true;
+        }
+        return false;
+    }
+
+    public void AddUltimate(int num = 1)
+    {
+        ultimateCount += num;
+    }
+
+    public void addCoin(int coin)
+    {
+        this.coin += coin;
+    }
+
+    public void addPoint(int point)
+    {
+        this.point = point;
     }
 
     public void updatePointCoin(){
@@ -44,7 +110,7 @@ public class GameManager : MonoBehaviour
     public void SaveGame(int id = 1)
     {
         string playerStat = "\"player\": " + JsonUtility.ToJson(PlayerStatistic.INSTANCE);
-        string scene = "\"scene\": {\"name\":\""+ SceneManager.GetActiveScene().name + "\", \"index\": " + SceneManager.GetActiveScene().buildIndex.ToString() + "}"; 
+        string scene = "\"scene\": {\"name\":\""+ SceneManager.GetActiveScene().name + "\", \"index\": " + SceneManager.GetActiveScene().buildIndex.ToString() + ", \"currentQuestID: \"" + currentQuestID.ToString() + ", \"ultimateCount: \"" + ultimateCount.ToString() +"}"; 
         string pointCoint = "\"point\": " + this.point + ", \"coin\":" + this.coin;
 
         string json = "{"+ pointCoint + ", " + playerStat + "," + scene + "}";
@@ -70,6 +136,8 @@ public class GameManager : MonoBehaviour
             // Update GameManager
             point = gameData.point;
             coin = gameData.coin;
+            currentQuestID = gameData.currentQuestID;
+            ultimateCount = gameData.ultimateCount;
 
             // Update Player Statistics
             PlayerStatistic.INSTANCE.setPlayerName(gameData.player.playerName);
@@ -91,6 +159,8 @@ public class GameData
 {
     public int point;
     public int coin;
+    public int currentQuestID;
+    public int ultimateCount;
     public PlayerData player;
     public SceneData scene;
 }

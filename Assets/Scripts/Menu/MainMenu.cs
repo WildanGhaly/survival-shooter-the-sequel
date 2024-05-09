@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
 
 public class MainMenu : MonoBehaviour
 {
@@ -21,7 +23,7 @@ public class MainMenu : MonoBehaviour
     }
     public void NewGame()
     {
-        SceneManager.LoadSceneAsync("Ultra Difficult");
+        SceneManager.LoadScene(1);
     }
 
     public void LoadGame()
@@ -60,5 +62,16 @@ public class MainMenu : MonoBehaviour
     {
         Application.Quit();
         Debug.Log("Player quit da gem");
+    }
+
+    public void SaveSettings()
+    {
+        TMP_InputField rename = settingsCanvas.GetComponentInChildren<TMP_InputField>();
+        Slider volume = settingsCanvas.GetComponentInChildren<Slider>();
+        TMP_Dropdown difficulty = settingsCanvas.GetComponentInChildren<TMP_Dropdown>();
+
+        GameManager.INSTANCE.SetPlayerName(rename.text);
+        GameManager.INSTANCE.SetVolume(volume.value);
+        GameManager.INSTANCE.UpdateDifficulty(difficulty.value);
     }
 }

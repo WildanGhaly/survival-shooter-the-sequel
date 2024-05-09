@@ -249,9 +249,7 @@ namespace Nightmare
                 SwordSlash();
                 swordAudio.Play();
             }
-            // FIXME Often NullReferenceException because of no PlayerStatistic script
-            PlayerStatistic.INSTANCE.setBulletFired(swordBulletShoot + shotgunBulletShoot + rifleBulletShoot);
-            PlayerStatistic.INSTANCE.setBulletHit(swordBulletHit + shotgunBulletHit + rifleBulletHit);
+            PlayerStatistic.INSTANCE.addBulletFired();
         }
 
         void SwordSlash()
@@ -268,6 +266,7 @@ namespace Nightmare
                     {
                         enemyHealth.TakeDamage(BaseInstance.Instance.GetGunDamage(), hit.point);
                         swordBulletHit++;
+                        PlayerStatistic.INSTANCE.addBulletHit();
                     }
                 }
                 gunLine.SetPosition(1, transform.position);
@@ -288,6 +287,7 @@ namespace Nightmare
                     {
                         enemyHealth.TakeDamage(BaseInstance.Instance.GetGunDamage(), hit.point);
                         swordBulletHit++;
+                        PlayerStatistic.INSTANCE.addBulletHit();
                     }
                 }
                 gunLine.SetPosition(1, transform.position);
@@ -317,6 +317,7 @@ namespace Nightmare
                         {
                             enemyHealth.TakeDamage(BaseInstance.Instance.GetGunDamage() * multiplier, hit.point);
                             shotgunBulletHit++;
+                            PlayerStatistic.INSTANCE.addBulletHit();
                         }
                         gunLine.SetPosition(i * 2 + 1, hit.point);
                     }
@@ -352,6 +353,7 @@ namespace Nightmare
                         {
                             enemyHealth.TakeDamage(BaseInstance.Instance.GetGunDamage() * multiplier, hit.point);
                             shotgunBulletHit++;
+                            PlayerStatistic.INSTANCE.addBulletHit();
                         }
                         gunLine.SetPosition(i * 2 + 1, hit.point);
                     }
@@ -378,6 +380,7 @@ namespace Nightmare
                     {
                         enemyHealth.TakeDamage(BaseInstance.Instance.GetGunDamage(), hit.point);
                         rifleBulletHit++;
+                        PlayerStatistic.INSTANCE.addBulletHit();
                     }
                     gunLine.SetPosition(1, hit.point);
                 }
@@ -396,10 +399,11 @@ namespace Nightmare
                     shootRay.direction = (hit.point - transform.position).normalized;
 
                     EnemyHealth enemyHealth = hit.collider.GetComponent<EnemyHealth>();
-                    if (enemyHealth != null)
+                    if (enemyHealth !=   null)
                     {
                         enemyHealth.TakeDamage(BaseInstance.Instance.GetGunDamage(), hit.point);
                         rifleBulletHit++;
+                        PlayerStatistic.INSTANCE.addBulletHit();
                     }
 
                     gunLine.SetPosition(1, hit.point);

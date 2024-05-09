@@ -67,6 +67,8 @@ public class InputManager : MonoBehaviour
         onFoot.SecondaryWeapon.performed += ctx => gun.GetComponent<PlayerShooting>().ChangeWeapon(2);
         onFoot.SwordWeapon.performed += ctx => gun.GetComponent<PlayerShooting>().ChangeWeapon(3);
 
+        onFoot.Ultimate.performed += ctx => Ultimate();
+
         onFoot.Pause.performed += ctx => { FindObjectOfType<PauseManager>().Pause(); };
     }
 
@@ -118,5 +120,10 @@ public class InputManager : MonoBehaviour
                 look.SetTopDownCam();
                 break;
         }
+    }
+
+    private void Ultimate()
+    {
+        GetComponent<PlayerUltimate>().enabled = true;
     }
 }

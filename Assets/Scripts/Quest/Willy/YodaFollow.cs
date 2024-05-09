@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;   
 
-public class YodaFollow : MonoBehaviour
+public class YodaFollow : EnemyFollow
 {
     private NavMeshAgent enemy;
     private Animator enemyAnimator;
@@ -12,19 +12,37 @@ public class YodaFollow : MonoBehaviour
 
     private float enemyStoppingDistance;
     [SerializeField] private float startChase = 1.5f;
+    [SerializeField] private float damagePerHit = 30f;
+    [SerializeField] private SaberDamage saber;
 
-    private void Awake()
+
+    public override void AddDamageMultiplier(float value)
     {
+        base.AddDamageMultiplier(value);
+        SetSaberDamage();
+    }
+
+    protected override void Awake()
+    {
+        base.Awake();
+
         enemy = GetComponent<NavMeshAgent>();
         enemyAnimator = GetComponent<Animator>();
 
         player = GameObject.FindWithTag("Player").transform;
         enemyStoppingDistance = enemy.stoppingDistance;
+
+        SetSaberDamage();
     }
 
     private void Start()
     {
         StartCoroutine(StartRunning());
+    }
+
+    private void SetSaberDamage()
+    {
+        saber.SetDamagePerHit(damagePerHit * damageMultiplier);
     }
 
     IEnumerator StartRunning()

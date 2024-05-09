@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FadeOnLoad : MonoBehaviour
 {
-    void Start()
+    void Awake()
     {
         SwitchCamera.Instance.SimpleFade(0, 1f);
     }
