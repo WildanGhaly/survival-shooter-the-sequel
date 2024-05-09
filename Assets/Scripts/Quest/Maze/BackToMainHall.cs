@@ -7,6 +7,8 @@ public class BackToMainHall : MonoBehaviour
 {
     void Start()
     {
+        GameManager.INSTANCE.addCoin(100);
+        GameManager.INSTANCE.addPoint(150);
         GameManager.INSTANCE.updateCurrentQuestID(1);
         StartCoroutine(wait());
     }

@@ -20,6 +20,8 @@ public class Willy2ThirdCutscene : MonoBehaviour
 
     void Update()
     {
+        GameManager.INSTANCE.addCoin(100);
+        GameManager.INSTANCE.addPoint(150);
         GameManager.INSTANCE.updateCurrentQuestID(5);
         if (!isTriggered && GameObject.FindGameObjectWithTag("FinalBoss") == null)
         {

@@ -92,6 +92,16 @@ public class GameManager : MonoBehaviour
         ultimateCount += num;
     }
 
+    public void addCoin(int coin)
+    {
+        this.coin += coin;
+    }
+
+    public void addPoint(int point)
+    {
+        this.point = point;
+    }
+
     public void updatePointCoin(){
         point++;
         coin = (int) ((float) point * 0.8);

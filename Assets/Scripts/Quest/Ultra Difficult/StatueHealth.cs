@@ -25,6 +25,8 @@ public class StatueHealth : EnemyHealth
 
     protected override void Death()
     {
+        GameManager.INSTANCE.addCoin(100);
+        GameManager.INSTANCE.addPoint(150);
         GameManager.INSTANCE.updateCurrentQuestID(7);
         Debug.Log("DESTROYED STATUE");
 
