@@ -8,8 +8,7 @@ public class EnemyFollow : MonoBehaviour
 
     protected virtual void Awake()
     {
-        // TODO
-        // damageMultiplier = GameManager.multiplier;
+        damageMultiplier = GameManager.multiplier;
     }
 
     public virtual void AddDamageMultiplier(float value)
