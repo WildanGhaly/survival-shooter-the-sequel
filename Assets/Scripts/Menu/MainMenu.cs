@@ -109,6 +109,11 @@ public class MainMenu : MonoBehaviour
         GameManager.INSTANCE.SetVolume(volume.value);
         GameManager.INSTANCE.UpdateDifficulty(difficulty.value);
     }
+
+    public void LoadGameToScene(int id)
+    {
+        GameManager.INSTANCE.LoadGame(id);
+    }
 }
 
 [Serializable]
