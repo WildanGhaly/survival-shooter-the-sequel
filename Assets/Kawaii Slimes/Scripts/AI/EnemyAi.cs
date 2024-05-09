@@ -26,7 +26,7 @@ public class EnemyAi : MonoBehaviour
     void Start()
     {
         originPos = transform.position;
-        faceMaterial = SmileBody.GetComponent<Renderer>().materials[1];
+        // faceMaterial = SmileBody.GetComponent<Renderer>().materials[1];
         walkType = WalkType.Patroll;
     }
     public void WalkToNextDestination()
@@ -40,7 +40,7 @@ public class EnemyAi : MonoBehaviour
 
     void SetFace(Texture tex)
     {
-        faceMaterial.SetTexture("_MainTex", tex);
+        // faceMaterial.SetTexture("_MainTex", tex);
     }
     void Update()
     {

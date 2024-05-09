@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.Tracing;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CompleteGameInteract : Interactable
 {
@@ -29,6 +30,12 @@ public class CompleteGameInteract : Interactable
     IEnumerator Cutscene()
     {
         enemyManager.SetActive(false);
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in enemies)
+        {
+            Destroy(enemy);
+        }
+
         enemyManagerContinouos.SetActive(false);
         SwitchCamera.Instance.SwitchCameraMethod(playerCam, cutSceneCam, 0.5f);
         yield return new WaitForSeconds(1);
@@ -37,6 +44,11 @@ public class CompleteGameInteract : Interactable
         freedPet.SetActive(false);
         Conversation.Instance.StartConversation(dialogues);
         yield return new WaitForSeconds(15);
-        //TODO: Scene change is here
+        SwitchCamera.Instance.SimpleFade(1, 0.5f);
+        yield return new WaitForSeconds(1);
+        GameManager.INSTANCE.addCoin(100);
+        GameManager.INSTANCE.addPoint(200);
+        GameManager.INSTANCE.updateCurrentQuestID(6);
+        SceneManager.LoadScene(3);
     }
 }

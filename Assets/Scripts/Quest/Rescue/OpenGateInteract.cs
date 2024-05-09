@@ -30,6 +30,12 @@ public class OpenGateInteract : Interactable
     IEnumerator Cutscene()
     {
         enemyManager.SetActive(false);
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in enemies)
+        {
+            Destroy(enemy);
+        }
+
         SwitchCamera.Instance.SwitchCameraMethod(playerCam, cutSceneCam, 0.5f);
         yield return new WaitForSeconds(1);
         player.SetActive(false);
@@ -40,9 +46,12 @@ public class OpenGateInteract : Interactable
         player.SetActive(true);
         SwitchCamera.Instance.SwitchCameraMethod(cutSceneCam, playerCam, 0.5f);
         enemyManagerContinouos.SetActive(true);
-        gameObject.SetActive(false);
         prisonedPet.SetActive(false);
         finishGame.SetActive(true);
         freedPet.SetActive(true);
+
+        
+
+        gameObject.SetActive(false);
     }
 }
