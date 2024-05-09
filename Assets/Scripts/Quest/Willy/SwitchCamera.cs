@@ -20,6 +20,7 @@ public class SwitchCamera : MonoBehaviour
 
     public void SimpleFade(float targetAlpha, float fadeDuration)
     {
+        StopAllCoroutines();
         StartCoroutine(Fade(targetAlpha, fadeDuration));
     }
 

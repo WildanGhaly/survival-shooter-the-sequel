@@ -13108,6 +13108,7 @@ GameObject:
   - component: {fileID: 7726320090770480496}
   - component: {fileID: 980940182044772407}
   - component: {fileID: 5636055542792237909}
+  - component: {fileID: 7564864725361554606}
   m_Layer: 0
   m_Name: Raja
   m_TagString: FinalBoss
@@ -13371,6 +13372,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3eaa78c734289649bff577573004d3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageMultiplier: 1
   startChase: 1.5
   defendTime: 5
   attackFrequency: 10
@@ -13380,13 +13382,15 @@ MonoBehaviour:
   closestRunTarget: 3
   closeRangeTrigger: 5
   shootRange: 100
-  shootDamage: 10
+  defaultShootDamage: 10
   bulletPerAttack: 10
   maxAngle: 5
   saber: {fileID: 4915659735753984055}
   shield: {fileID: 6343620481746453553}
   staff: {fileID: 8551413465194459612}
   boomLaser: {fileID: 4026285130330908302}
+  saberDamage: {fileID: 6344994480690579132}
+  saberDamagePerHit: 25
 --- !u!120 &5636055542792237909
 LineRenderer:
   serializedVersion: 2
@@ -13491,6 +13495,21 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!114 &7564864725361554606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9172193577678207995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa827b738340fb645b16ed3c6342e0b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pet: {fileID: 5205217544112192330, guid: d0020b4a94f59ef47a6fd506a367db16, type: 3}
+  numberOfPet: 2
+  spawnRadius: 5
 --- !u!1 &9211073363936417547
 GameObject:
   m_ObjectHideFlags: 0
@@ -13731,7 +13750,6 @@ MonoBehaviour:
   eventCollideEnter: 0
   eventCollideStay: 0
   eventCollideExit: 0
-  damagePerHit: 25
 --- !u!95 &4915659735753984055
 Animator:
   serializedVersion: 5

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class RajaFollow : MonoBehaviour
+public class RajaFollow : EnemyFollow
 {
     private NavMeshAgent enemy;
     private Animator enemyAnimator;
@@ -22,7 +22,8 @@ public class RajaFollow : MonoBehaviour
 
     [SerializeField] private float closeRangeTrigger = 5f;
     [SerializeField] private float shootRange = 100f;
-    [SerializeField] private float shootDamage = 10f;
+
+    [SerializeField] private float defaultShootDamage = 10f;
     [SerializeField] private int bulletPerAttack = 10;
     [SerializeField] private float maxAngle = 5f;
 
@@ -32,15 +33,36 @@ public class RajaFollow : MonoBehaviour
 
     [SerializeField] private AudioSource boomLaser;
 
+    [SerializeField] private SaberDamage saberDamage;
+    [SerializeField] private float saberDamagePerHit = 25f;
+
     private bool mutexLockGeneral = false;
     private bool mutexLockAttack = false;
     private bool mutexLockDefend = false;
     private bool mutexLockRun = false;
 
+    private float shootDamage;
+
     bool isStarted;
 
-    private void Awake()
+    private void SetUpDamage()
     {
+        saberDamage.SetDamagePerHit(saberDamagePerHit * damageMultiplier);
+        shootDamage = defaultShootDamage * damageMultiplier;
+    }
+
+    public override void AddDamageMultiplier(float value)
+    {
+        base.AddDamageMultiplier(value);
+        SetUpDamage();
+    }
+
+    protected override void Awake()
+    {
+        base.Awake();
+
+        SetUpDamage();
+
         enemy = GetComponent<NavMeshAgent>();
         enemyAnimator = GetComponent<Animator>();
 
@@ -97,6 +119,7 @@ public class RajaFollow : MonoBehaviour
         {
             StopRun();
             mutexLockGeneral = false;
+            return;
         }
 
         if (!mutexLockGeneral)
@@ -294,6 +317,7 @@ public class RajaFollow : MonoBehaviour
         mutexLockGeneral = true;
         enemyAnimator.SetBool("CloseRange", true);
         saber.SetBool("Activate", true);
+        SetUpDamage();
         yield return new WaitForSeconds(0.5f);
         saber.SetBool("Activate", false);
         enemyAnimator.SetBool("CloseRange", false);
