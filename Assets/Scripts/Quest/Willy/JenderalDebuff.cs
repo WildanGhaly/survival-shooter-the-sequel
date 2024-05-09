@@ -16,7 +16,7 @@ public class JenderalDebuff : Collidable
         transform.localScale = new Vector3(debuffRadius, 1, debuffRadius);
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Nightmare.PlayerHealth>();
         
-        multiplier = GameManager.multiplier;
+        multiplier = GameManager.INSTANCE.multiplier;
     }
 
     protected override void CollideEnter()

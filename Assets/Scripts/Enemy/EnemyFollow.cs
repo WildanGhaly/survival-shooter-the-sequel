@@ -8,11 +8,21 @@ public class EnemyFollow : MonoBehaviour
 
     protected virtual void Awake()
     {
-        damageMultiplier = GameManager.multiplier;
+        damageMultiplier = GameManager.INSTANCE.multiplier;
     }
 
     public virtual void AddDamageMultiplier(float value)
     {
         damageMultiplier += value;
+    }
+
+    public virtual void SetDamageMultiplier(float value)
+    {
+        damageMultiplier = value;
+    }
+
+    public virtual void ResetDamageMultiplier()
+    {
+        damageMultiplier = GameManager.INSTANCE.multiplier;
     }
 }
