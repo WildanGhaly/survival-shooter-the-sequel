@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using System;
+using System.IO;
 
 public class MainMenu : MonoBehaviour
 {
@@ -19,6 +21,8 @@ public class MainMenu : MonoBehaviour
         settingsCanvas.SetActive(false);
         loadGameCanvas.SetActive(false);
         statsCanvas.SetActive(false);
+
+        SetupGeneralSave();
         
     }
     public void NewGame()
@@ -45,6 +49,29 @@ public class MainMenu : MonoBehaviour
     {
         mainMenuCanvas.SetActive(false);
         settingsCanvas.SetActive(true);
+
+        SetupGeneralSave();
+    }
+
+    private void SetupGeneralSave()
+    {
+        string filePath = Path.Combine(Application.persistentDataPath, "generalsave.json");
+
+        if(File.Exists(filePath))
+        {
+            string json = File.ReadAllText(filePath);
+            GeneralSave gs = JsonUtility.FromJson<GeneralSave>(json);
+
+            // Write to GameManager
+            GameManager.INSTANCE.SetPlayerName(gs.playerName);
+            GameManager.INSTANCE.SetVolume(gs.volume);
+            GameManager.INSTANCE.UpdateDifficulty(gs.difficulty);
+
+            // Write to Canvas
+            settingsCanvas.GetComponentInChildren<TMP_InputField>().text = gs.playerName;
+            settingsCanvas.GetComponentInChildren<Slider>().value = gs.volume;
+            settingsCanvas.GetComponentInChildren<TMP_Dropdown>().value = gs.difficulty;
+        }
     }
 
     public void ToMainMenu()
@@ -70,8 +97,30 @@ public class MainMenu : MonoBehaviour
         Slider volume = settingsCanvas.GetComponentInChildren<Slider>();
         TMP_Dropdown difficulty = settingsCanvas.GetComponentInChildren<TMP_Dropdown>();
 
+        GeneralSave gs = new GeneralSave(rename.text, volume.value, difficulty.value);
+
+        string json = JsonUtility.ToJson(gs);
+
+        string filePath = Path.Combine(Application.persistentDataPath, "generalsave.json");
+        
+        File.WriteAllText(filePath, json);
+
         GameManager.INSTANCE.SetPlayerName(rename.text);
         GameManager.INSTANCE.SetVolume(volume.value);
         GameManager.INSTANCE.UpdateDifficulty(difficulty.value);
+    }
+}
+
+[Serializable]
+class GeneralSave{
+    public string playerName;
+    public float volume;
+    public int difficulty;
+
+    public GeneralSave(string p, float v, int d)
+    {
+        playerName = p;
+        volume = v;
+        difficulty = d;
     }
 }
