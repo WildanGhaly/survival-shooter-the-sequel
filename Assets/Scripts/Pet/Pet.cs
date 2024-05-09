@@ -68,7 +68,7 @@ public class Pet : MonoBehaviour
                 navMesh.SetDestination(closestEnemy.position);
                 if (closestDistance <= attackRange)
                 {
-                    Attack(closestEnemy.GetComponent<Nightmare.YodaHealth>());
+                    Attack(closestEnemy.GetComponent<Nightmare.EnemyHealth>());
                 }
             }
         }
@@ -88,7 +88,7 @@ public class Pet : MonoBehaviour
         }
     }
 
-    private void Attack(Nightmare.YodaHealth enemyHealth)
+    private void Attack(Nightmare.EnemyHealth enemyHealth)
     {
         if (enemyHealth != null && !enemyHealth.IsDead())
         {

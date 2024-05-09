@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
     public float multiplier = 1f;
     public int difficulty = 2;
 
+    public Dictionary<int, bool> hasPet = new();
+
     public void SetPlayerName(string name)
     {
         playerName = name;
@@ -152,6 +154,12 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene(gameData.scene.index); 
         }
 
+    }
+
+    public void AddPet(int id = 0)
+    {
+        hasPet.Add(id, true);
+        Debug.Log("yo , di id: " + id + " adalah " + hasPet[id]);
     }
 }
 

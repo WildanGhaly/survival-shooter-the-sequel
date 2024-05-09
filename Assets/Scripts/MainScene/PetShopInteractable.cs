@@ -20,6 +20,10 @@ public class PetShopInteractable : Interactable
 
     protected override void Interact()
     {
+        GameObject.FindGameObjectWithTag("Player").GetComponent<InputManager>().enabled = false;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
+
         UI.SetActive(true);
         PopulatePetList();
         base.Interact();
@@ -38,13 +42,15 @@ public class PetShopInteractable : Interactable
             Destroy(child.gameObject);
         }
         availablePets.Clear();
-        AddPetToShop(new PetData("Pet 1", 1231));
-        AddPetToShop(new PetData("Pet 2", 122413));
+        AddPetToShop(new PetData(1, "Pet 1", 256));
+        AddPetToShop(new PetData(2, "Pet 2", 128));
         Debug.Log(availablePets.Count);
 
         foreach (PetData pet in availablePets)
         {
             GameObject newItem = Instantiate(petItemPrefab, contentPanel);
+            petItemPrefab.GetComponent<PetBuy>().SetId(pet.id);
+
             TextMeshProUGUI nameText = newItem.transform.Find("NameText").GetComponent<TextMeshProUGUI>();
             TextMeshProUGUI priceText = newItem.transform.Find("PriceText").GetComponent<TextMeshProUGUI>();
 
@@ -63,12 +69,14 @@ public class PetShopInteractable : Interactable
 
     public class PetData
     {
+        public int id;
         public string Name;
         public float Price;
 
         // ctor
-        public PetData(string _name, float _price)
+        public PetData(int _id, string _name, float _price)
         {
+            id = _id;
             Name = _name;
             Price = _price;
         }
