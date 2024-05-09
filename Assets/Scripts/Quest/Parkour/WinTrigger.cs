@@ -12,6 +12,10 @@ public class WinTrigger : MonoBehaviour
     private void ParkourLevelWin()
     {
         Debug.Log("Player has winned");
+        
+        GameManager.INSTANCE.addCoin(200);
+        GameManager.INSTANCE.addPoint(500);
+
         gameObject.GetComponentInChildren<ParticleSystem>().Play();
         cutscene.stopped += OnCutscenePlayed;
         cutscene.Play();
