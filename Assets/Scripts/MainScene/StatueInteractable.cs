@@ -24,6 +24,8 @@ public class StatueInteractable : Interactable
             SceneManager.LoadScene(6);
         }else if(GameManager.INSTANCE.currentQuestID == 6){ // Prev quest is Scene5
             SceneManager.LoadScene(7);
+        }else if(GameManager.INSTANCE.currentQuestID == 7){ // Prev quest is Ultra Diff
+            SceneManager.LoadScene(8);
         }
     }
 }
