@@ -1,0 +1,42 @@
+using System.Collections;
+using System.Collections.Generic;
+using System.Diagnostics.Tracing;
+using UnityEngine;
+
+public class CompleteGameInteract : Interactable
+{
+    [SerializeField] private GameObject player;
+    [SerializeField] private GameObject playerCam;
+    [SerializeField] private GameObject cutSceneCam;
+    [SerializeField] private GameObject enemyManagerContinouos;
+    [SerializeField] private GameObject enemyManager;
+    [SerializeField] private GameObject previewPet;
+    [SerializeField] private GameObject freedPet;
+    [SerializeField] private InputManager inputManager;
+    private readonly string[,] dialogues = new string[,]
+    {
+        {"Chatter", "Nice, you saved the pet"},
+        {"Chatter", "That pet can heal you while you in combat"},
+        {"Chatter", "So you can use the pet for further quest!"},
+        {"Chatter", "Congratulations!!, Now back to mainland"},
+    };
+
+    public void CompleteScenePlay()
+    {
+        StartCoroutine(Cutscene());
+    }
+
+    IEnumerator Cutscene()
+    {
+        enemyManager.SetActive(false);
+        enemyManagerContinouos.SetActive(false);
+        SwitchCamera.Instance.SwitchCameraMethod(playerCam, cutSceneCam, 0.5f);
+        yield return new WaitForSeconds(1);
+        player.SetActive(false);
+        previewPet.SetActive(true);
+        freedPet.SetActive(false);
+        Conversation.Instance.StartConversation(dialogues);
+        yield return new WaitForSeconds(15);
+        //TODO: Scene change is here
+    }
+}

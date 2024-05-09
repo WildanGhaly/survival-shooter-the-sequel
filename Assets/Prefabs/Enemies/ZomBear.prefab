@@ -108,7 +108,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -189,6 +189,7 @@ MonoBehaviour:
   sinkSpeed: 2.5
   scoreValue: 11
   deathClip: {fileID: 8300000, guid: 62366b8d2c37a49dca550841c741317f, type: 3}
+  currentHealth: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -36,7 +36,7 @@ public class HealthSystem : MonoBehaviour
 	public float manaRegen = 3f;
 	private float timeleft = 0.0f;	// Left time for current interval
 	public float regenUpdateInterval = 1f;
-
+	public float regenMultiplier = 1f;
 	public bool GodMode;
 
 	//==============================================================
@@ -83,7 +83,7 @@ public class HealthSystem : MonoBehaviour
 			}
 			else
 			{
-				HealDamage(healthRegen);
+				HealDamage(healthRegen * regenMultiplier);
 				RestoreMana(manaRegen);				
 			}
 
@@ -91,6 +91,10 @@ public class HealthSystem : MonoBehaviour
 
 			timeleft = regenUpdateInterval;
 		}
+	}
+
+	public void SetRegenMultiplier(float amount){
+		regenMultiplier = amount;
 	}
 
 	//==============================================================
