@@ -15,6 +15,7 @@ public class EnemyPet : MonoBehaviour
     private Vector3 pointC; // target
     private Transform pointD; // slime
     private Animator animate;
+    private EnemyFollow enemyFollow;
 
     public GameObject enemy;
     
@@ -26,6 +27,12 @@ public class EnemyPet : MonoBehaviour
         pointC = Vector3.zero;
         pointD = transform;
         animate = GetComponent<Animator>();
+        enemyFollow = enemy.GetComponent<EnemyFollow>();
+    }
+
+    private void OnEnable()
+    {
+        enemy.GetComponent<EnemyFollow>().AddDamageMultiplier(damageIncreasePercent / 100f);
     }
 
     void Update()
@@ -56,7 +63,7 @@ public class EnemyPet : MonoBehaviour
             Vector3 normalizedDirection = direction.normalized;
             pointC = pointB.position + normalizedDirection * radiusFromEnemy;
         }
-        else if (distanceToEnemy > radiusFromEnemy)
+        else if (distanceToPlayer < radiusFromEnemy)
         {
             Vector3 direction = pointD.position - pointA.position;
             Vector3 normalizedDirection = direction.normalized;
@@ -86,5 +93,10 @@ public class EnemyPet : MonoBehaviour
     void Stay()
     {
         animate.SetFloat("Speed", 0);
+    }
+
+    private void OnDisable()
+    {
+        enemyFollow.AddDamageMultiplier(-damageIncreasePercent / 100f);
     }
 }

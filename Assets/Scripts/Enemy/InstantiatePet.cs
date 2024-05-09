@@ -18,6 +18,7 @@ public class InstantiatePet : MonoBehaviour
             
             GameObject enemyPet = Instantiate(pet, spawnPosition, Quaternion.identity);
             enemyPet.GetComponent<EnemyPet>().enemy = gameObject;
+            enemyPet.GetComponent<EnemyPet>().enabled = true;
         }
     }
 }
