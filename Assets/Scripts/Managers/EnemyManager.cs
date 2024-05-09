@@ -10,9 +10,9 @@ namespace Nightmare
         public Transform[] spawnPoints;
 
         private float timer;
-        private int spawned = 0;
+        protected int spawned = 0;
 
-        void Start ()
+        protected virtual void Start ()
         {
             timer = spawnTime;
         }
@@ -41,7 +41,7 @@ namespace Nightmare
             }
         }
 
-        void Spawn ()
+        protected virtual void Spawn ()
         {
             // If the player has no health left...
             if(HealthSystem.Instance.hitPoint <= 0f)
