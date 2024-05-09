@@ -8,14 +8,20 @@ using UnityEditor;
 
 public class PauseManager : MonoBehaviour {
 
+	public static PauseManager INSTANCE;
 	public bool isPaused = false;
 	[SerializeField] private GameObject pauseMenu;
 
     private void Awake()
     {
-		pauseMenu = GameObject.Find("PauseMenu");
-		if (pauseMenu == null) { Debug.Log("Pause Menu object is not found in scene"); return; }
-		pauseMenu.SetActive(false);
+		if(INSTANCE == null){
+			INSTANCE = this;
+			// pauseMenu = GameObject.Find("PauseMenu");
+			// if (pauseMenu == null) { Debug.Log("Pause Menu object is not found in scene"); return; }
+			// pauseMenu.SetActive(false);
+		}else{
+			Destroy(gameObject);
+		}
     }
 
     public void Pause()

@@ -27,7 +27,7 @@ public class PauseMenu : MonoBehaviour
     public void ExitLevel()
     {
         // diasumsikan ke main level/main menu
-        SceneManager.LoadScene(SceneManager.GetSceneByName("Main Menu").buildIndex);
+        SceneManager.LoadScene(0);
         FindObjectOfType<PauseManager>().Pause();
         Debug.Log("Level Exit");
     }
