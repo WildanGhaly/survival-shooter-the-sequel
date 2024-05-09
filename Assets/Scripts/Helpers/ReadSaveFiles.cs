@@ -33,6 +33,8 @@ public class ReadSaveFiles : MonoBehaviour
 
                 saveSlots[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText(gameData.scene.name);
                 saveSlots[i].transform.GetChild(1).GetComponent<TextMeshProUGUI>().SetText(((int)gameData.player.time / 60).ToString() + ":" + ((int)gameData.player.time % 60).ToString());
+                saveSlots[i].transform.GetChild(3).GetComponent<TextMeshProUGUI>().SetText("Quest: " + gameData.scene.currentQuestID.ToString());
+                saveSlots[i].transform.GetChild(3).GetComponent<TextMeshProUGUI>().SetText("$ " + (gameData.point.ToString()) + " / " + (gameData.coin.ToString()));
             }
             else
             {
