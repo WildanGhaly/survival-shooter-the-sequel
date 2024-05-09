@@ -49,7 +49,7 @@ public class PetShopInteractable : Interactable
         foreach (PetData pet in availablePets)
         {
             GameObject newItem = Instantiate(petItemPrefab, contentPanel);
-            petItemPrefab.GetComponent<PetBuy>().SetId(pet.id);
+            newItem.GetComponent<PetBuy>().SetId(pet.id);
 
             TextMeshProUGUI nameText = newItem.transform.Find("NameText").GetComponent<TextMeshProUGUI>();
             TextMeshProUGUI priceText = newItem.transform.Find("PriceText").GetComponent<TextMeshProUGUI>();
