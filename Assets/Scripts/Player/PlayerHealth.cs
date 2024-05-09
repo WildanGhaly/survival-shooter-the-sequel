@@ -108,6 +108,8 @@ namespace Nightmare
             // Turn off the movement and shooting scripts.
             playerMovement.enabled = false;
             playerShooting.enabled = false;
+
+            PlayerStatistic.INSTANCE.addDeathCount();
         }
 
         public void RestartLevel()

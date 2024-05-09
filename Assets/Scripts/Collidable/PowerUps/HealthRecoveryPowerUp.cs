@@ -8,6 +8,7 @@ public class HealthRecoveryCollidable : PowerUpCollidable
     protected override void CollideEnter()
     {
         base.CollideEnter();
+        PlayerStatistic.INSTANCE.addOrbsCollected();
         HealthSystem.Instance.HealDamagePercent(healPercentage);
         Destroy(gameObject);
     }

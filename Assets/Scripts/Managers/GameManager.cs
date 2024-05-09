@@ -147,6 +147,8 @@ public class GameManager : MonoBehaviour
             PlayerStatistic.INSTANCE.setTimePlayed(gameData.player.time);
             PlayerStatistic.INSTANCE.setBulletFired(gameData.player.bulletsShot);
             PlayerStatistic.INSTANCE.setBulletHit(gameData.player.bulletsHit);
+            PlayerStatistic.INSTANCE.setDeathCount(gameData.player.deathCount);
+            PlayerStatistic.INSTANCE.setOrbsCollected(gameData.player.orbsCollected);
 
             // Update Scene (TBD)
             SceneManager.LoadScene(gameData.scene.index); 
@@ -173,6 +175,8 @@ public class PlayerData
     public float time;
     public int bulletsShot;
     public int bulletsHit;
+    public int deathCount;
+    public int orbsCollected;
 }
 
 [Serializable]

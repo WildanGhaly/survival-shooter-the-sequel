@@ -7,6 +7,7 @@ public class ManaRecoveryCollidable : PowerUpCollidable
     protected override void CollideEnter()
     {
         base.CollideEnter();
+        PlayerStatistic.INSTANCE.addOrbsCollected();
         HealthSystem.Instance.FullRecoverMana();
         Destroy(gameObject);
     }

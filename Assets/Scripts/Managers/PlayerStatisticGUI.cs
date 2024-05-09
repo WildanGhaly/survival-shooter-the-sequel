@@ -11,6 +11,8 @@ public class PlayerStatisticGUI : MonoBehaviour
     [SerializeField] public TextMeshProUGUI distanceValue;
     [SerializeField] public TextMeshProUGUI hitRatioValue;
     [SerializeField] public TextMeshProUGUI timePlayedValue;
+    [SerializeField] public TextMeshProUGUI orbsCollectedValue;
+    [SerializeField] public TextMeshProUGUI deathCountValue;
 
     void Start()
     {
@@ -23,12 +25,20 @@ public class PlayerStatisticGUI : MonoBehaviour
         playerNameValue.SetText(PlayerStatistic.INSTANCE.getPlayerName().ToString() + "'s statistics");
         killCountValue.SetText(PlayerStatistic.INSTANCE.getKillCount().ToString());
         distanceValue.SetText(PlayerStatistic.INSTANCE.getDistance().ToString());
+        deathCountValue.SetText(PlayerStatistic.INSTANCE.getDeathCount().ToString());
+        orbsCollectedValue.SetText(PlayerStatistic.INSTANCE.getOrbsCollected().ToString());
         if(float.IsNaN(PlayerStatistic.INSTANCE.getHitRatio()))
         {
             hitRatioValue.SetText("0%");
         }else{
             hitRatioValue.SetText((PlayerStatistic.INSTANCE.getHitRatio() * 100).ToString() + "%");
         }
-        timePlayedValue.SetText(((int) PlayerStatistic.INSTANCE.getTimePlayed()/60).ToString()+ ":"+((int)PlayerStatistic.INSTANCE.getTimePlayed()%60).ToString());
+        
+        int totalSeconds = (int)PlayerStatistic.INSTANCE.getTimePlayed();
+        int hours = totalSeconds / 3600;
+        int minutes = (totalSeconds % 3600) / 60;
+        int seconds = totalSeconds % 60;
+
+        timePlayedValue.SetText($"{hours:D2}:{minutes:D2}:{seconds:D2}");
     }
 }
