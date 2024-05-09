@@ -40,6 +40,19 @@ public class PauseManager : MonoBehaviour {
 		//{
 		//          pauseMenu.SetActive(false);
 		//      }
+
+		if(isPaused){
+			Cursor.visible = true;
+			Cursor.lockState = CursorLockMode.Confined;
+
+			GameObject.FindGameObjectWithTag("Player").GetComponent<InputManager>().enabled = false;
+		}else{
+			Cursor.visible = false;
+			Cursor.lockState = CursorLockMode.None;
+
+			GameObject.FindGameObjectWithTag("Player").GetComponent<InputManager>().enabled = true;
+		}
+
 		pauseMenu.SetActive(isPaused);
 		Debug.Log("Game is Paused ("+isPaused+")");
     }
