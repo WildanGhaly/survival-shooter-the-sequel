@@ -6,7 +6,9 @@ public class SaveGameInteractable : Interactable
 {
     protected override void Interact()
     {
-        GameManager.INSTANCE.SaveGame();
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
+        GameObject.FindGameObjectWithTag("Player").GetComponent<InputManager>().enabled = false;
         base.Interact();
     }
 }
