@@ -11,6 +11,7 @@ public class CheckLoadWilly2 : MonoBehaviour
 
     private void Start()
     {
+        SwitchCamera.Instance.SimpleFade(0, 2f);
         questNumber = GameManager.INSTANCE.currentQuestID;
         Debug.Log("Quest Number " + questNumber);
         LoadMap();
@@ -18,12 +19,12 @@ public class CheckLoadWilly2 : MonoBehaviour
 
     public void LoadMap()
     {
-        if (questNumber >= 1)
+        if (questNumber == 4)
         {
             SkipFirstQuest();
         }
 
-        if (questNumber >= 2)
+        if (questNumber == 5)
         {
             SkipSecondQuest();
         }

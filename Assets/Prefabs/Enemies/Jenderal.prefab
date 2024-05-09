@@ -12231,6 +12231,7 @@ GameObject:
   - component: {fileID: 8596073780775517094}
   - component: {fileID: 2591540039012556237}
   - component: {fileID: 7726320090770480496}
+  - component: {fileID: 7139905565754796941}
   m_Layer: 0
   m_Name: Jenderal
   m_TagString: Enemy
@@ -12355,7 +12356,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e9ff9e09dc94844f85749fb2a7e1afa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageMultiplier: 1
   startChase: 1.5
+  damagePerHit: 30
+  saber: {fileID: 2301058407118804500}
 --- !u!114 &8596073780775517094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12492,6 +12496,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!114 &7139905565754796941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9172193577678207995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa827b738340fb645b16ed3c6342e0b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pet: {fileID: 5205217544112192330, guid: d0020b4a94f59ef47a6fd506a367db16, type: 3}
+  numberOfPet: 1
+  spawnRadius: 5
 --- !u!1 &9211073363936417547
 GameObject:
   m_ObjectHideFlags: 0
@@ -12731,7 +12750,6 @@ MonoBehaviour:
   eventCollideEnter: 0
   eventCollideStay: 0
   eventCollideExit: 0
-  damagePerHit: 25
 --- !u!1001 &8425442010221900048
 PrefabInstance:
   m_ObjectHideFlags: 0

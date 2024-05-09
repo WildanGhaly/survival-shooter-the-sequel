@@ -29,6 +29,7 @@ public class WakeUpInHell : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        SwitchCamera.Instance.SimpleFade(0, 2f);
         StartCoroutine(cutscene1());
     }
 
