@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: 8200000}
   - component: {fileID: 11400006}
   - component: {fileID: 5558859534081675344}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: ZomBear
   m_TagString: Enemy
   m_Icon: {fileID: 0}

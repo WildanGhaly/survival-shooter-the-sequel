@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 8200000}
   - component: {fileID: 11400006}
   - component: {fileID: 739681252270284719}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: ZomBunny
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -276,6 +276,7 @@ MonoBehaviour:
   sinkSpeed: 2.5
   scoreValue: 7
   deathClip: {fileID: 8300000, guid: 1d3bfb9269f136947bf8ac164cace1ff, type: 3}
+  currentHealth: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
