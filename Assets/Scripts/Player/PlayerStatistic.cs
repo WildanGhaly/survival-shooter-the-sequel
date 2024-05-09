@@ -35,6 +35,7 @@ public class PlayerStatistic : MonoBehaviour
     void Update()
     {
         time += Time.deltaTime;
+        playerName = GameManager.INSTANCE.playerName;
     }
 
     public void setPlayerName(string name)
