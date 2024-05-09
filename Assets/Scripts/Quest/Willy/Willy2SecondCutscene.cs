@@ -29,6 +29,7 @@ public class Willy2SecondCutscene : MonoBehaviour
 
     IEnumerator StartCutscene()
     {
+        GameManager.INSTANCE.updateCurrentQuestID(4);
         yield return new WaitForSeconds(1);
         SwitchCamera.Instance.SwitchCameraMethod(pCam, cam2, 0.5f);
         Conversation.Instance.StartConversation(dialogues);

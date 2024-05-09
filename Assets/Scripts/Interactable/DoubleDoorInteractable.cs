@@ -29,7 +29,6 @@ public class DoubleDoorInteractable : Interactable
     {
         if (!isQuestStarted)
         {
-            GameManager.INSTANCE.updateCurrentQuestID(4);
             StartDialogues();
             promptMessage = string.Empty;
             OpenDoor();

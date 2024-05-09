@@ -306,7 +306,6 @@ GameObject:
   - component: {fileID: 5861419219326725246}
   - component: {fileID: 6248391203944236674}
   - component: {fileID: 1322630682260267782}
-  - component: {fileID: 31147130879217215}
   - component: {fileID: 567776515195728952}
   m_Layer: 0
   m_Name: PlayerWithUI
@@ -356,20 +355,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa8a451193d30404aa90158e7cf63951, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &31147130879217215
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2023764058360593417}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 189bfb9c6772b6b4a87e12cd8b9af36f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isPaused: 0
-  pauseMenu: {fileID: 0}
 --- !u!114 &567776515195728952
 MonoBehaviour:
   m_ObjectHideFlags: 0
