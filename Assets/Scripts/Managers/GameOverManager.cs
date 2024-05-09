@@ -1,42 +1,38 @@
 ﻿using System.Collections;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 namespace Nightmare
 {
     public class GameOverManager : MonoBehaviour
     {
-        private PlayerHealth playerHealth;
-        Animator anim;
-
-        LevelManager lm;
-        private UnityEvent listener;
-
-        void Awake ()
+        [SerializeField] private GameObject gameOverPanel;
+        [SerializeField] private GameObject fade;
+        void Update()
         {
-            playerHealth = FindObjectOfType<PlayerHealth>();
-            anim = GetComponent <Animator> ();
-            lm = FindObjectOfType<LevelManager>();
-            EventManager.StartListening("GameOver", ShowGameOver);
+            if (HealthSystem.Instance != null && HealthSystem.Instance.isDeath){
+                gameOverPanel.SetActive(true);
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+            }
+        }
+        public void Restart()
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            HealthSystem.Instance.SetIsDeath(false);
+            gameOverPanel.SetActive(false);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
-        void OnDestroy()
+        public void GameOver()
         {
-            EventManager.StopListening("GameOver", ShowGameOver);
-        }
-
-        void ShowGameOver()
-        {
-            anim.SetBool("GameOver", true);
-        }
-
-        private void ResetLevel()
-        {
-            ScoreManager.score = 0;
-            LevelManager lm = FindObjectOfType<LevelManager>();
-            lm.LoadInitialLevel();
-            anim.SetBool("GameOver", false);
-            playerHealth.ResetPlayer();
+            HealthSystem.Instance.SetIsDeath(false);
+            gameOverPanel.SetActive(false);
+            fade.SetActive(false);
+            SceneManager.LoadScene(0);
         }
     }
 }
