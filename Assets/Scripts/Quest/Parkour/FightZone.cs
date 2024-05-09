@@ -14,12 +14,9 @@ public class FightZone : MonoBehaviour
         if (enemyManager.isDoneSpawning && !other.gameObject.tag.Contains("Player"))
         {
             return;
-        } else if (other.gameObject.tag.Contains("Player"))
-        {
-            cutscene[0].stopped += ctx => { enemyManager.enabled = true; };
-            cutscene[0].Play();
         }
-        
+        cutscene[0].stopped += ctx => { enemyManager.enabled = true; };
+        cutscene[0].Play();        
     }
 
     // Scene continues if theres no more enemies in FightZone
