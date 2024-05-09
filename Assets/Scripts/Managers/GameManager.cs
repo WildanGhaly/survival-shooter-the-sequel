@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
 
     public Dictionary<int, bool> hasPet = new();
 
+    public GameObject[] petModel;
+
     public void SetPlayerName(string name)
     {
         playerName = name;
@@ -156,10 +158,25 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void AddPet(int id = 0)
+    public void AddPet(int id = 0, float price = 0f)
     {
-        hasPet.Add(id, true);
-        Debug.Log("yo , di id: " + id + " adalah " + hasPet[id]);
+        // TODO: if tidak cukup maka ga jadi beli :V
+        if (!hasPet.TryGetValue(id, out bool value)){
+            hasPet.Add(id, true);
+            Debug.Log("yo , di id: " + id + " adalah " + hasPet[id]);
+            Instantiate(petModel[id], GameObject.FindGameObjectWithTag("Player").transform.position, Quaternion.identity);
+        }
+    }
+
+    public void InitiatePet()
+    {
+        foreach (KeyValuePair<int, bool> pet in hasPet)
+        {
+            if (pet.Value)
+            {
+                Instantiate(petModel[pet.Key], GameObject.FindGameObjectWithTag("Player").transform.position, Quaternion.identity);
+            }
+        }
     }
 }
 

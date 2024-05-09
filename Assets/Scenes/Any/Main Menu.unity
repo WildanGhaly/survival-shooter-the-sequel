@@ -414,6 +414,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hellephant (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: b77f122f451a2394898a24191c26107c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: b77f122f451a2394898a24191c26107c, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.477
@@ -935,10 +939,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -1067,6 +1071,18 @@ PrefabInstance:
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4150988823034146902, guid: d84490d46562f4a3d946c584720b16db, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5798
+      objectReference: {fileID: 0}
+    - target: {fileID: 4150988823034146902, guid: d84490d46562f4a3d946c584720b16db, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5798
+      objectReference: {fileID: 0}
+    - target: {fileID: 4150988823034146902, guid: d84490d46562f4a3d946c584720b16db, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5798
+      objectReference: {fileID: 0}
+    - target: {fileID: 4150988823034146902, guid: d84490d46562f4a3d946c584720b16db, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -1100,7 +1116,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4150988823034146902, guid: d84490d46562f4a3d946c584720b16db, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 55
+      value: 70.655
       objectReference: {fileID: 0}
     - target: {fileID: 4150988823034146902, guid: d84490d46562f4a3d946c584720b16db, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1142,6 +1158,10 @@ PrefabInstance:
     - target: {fileID: 100004, guid: b77f122f451a2394898a24191c26107c, type: 3}
       propertyPath: m_Name
       value: Hellephant (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: b77f122f451a2394898a24191c26107c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: b77f122f451a2394898a24191c26107c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4791,6 +4811,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hellephant (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: b77f122f451a2394898a24191c26107c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: b77f122f451a2394898a24191c26107c, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.477
@@ -8225,6 +8249,7 @@ MonoBehaviour:
   isSaved: 000000
   indexSelected: -1
   copyIndexSelected: -1
+  copyState: 0
 --- !u!114 &1033336227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8386,6 +8411,10 @@ PrefabInstance:
     - target: {fileID: 100004, guid: b77f122f451a2394898a24191c26107c, type: 3}
       propertyPath: m_Name
       value: Hellephant
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: b77f122f451a2394898a24191c26107c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: b77f122f451a2394898a24191c26107c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -8992,6 +9021,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Environment
       objectReference: {fileID: 0}
+    - target: {fileID: 1228775315308096, guid: 149d6dcc67e8d1240bbc0dd6ddf0c1bd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4017298257535748, guid: 149d6dcc67e8d1240bbc0dd6ddf0c1bd, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.16
@@ -9530,6 +9563,9 @@ MonoBehaviour:
   volume: 0
   multiplier: 1
   difficulty: 3
+  petModel:
+  - {fileID: 3614874333654181129, guid: a0edd5ebed6f1453ba184269e4b4006b, type: 3}
+  - {fileID: 7400854353945586331, guid: 48ee285afdf4f1d4f9224dbfd5897305, type: 3}
 --- !u!1 &1277696012
 GameObject:
   m_ObjectHideFlags: 0
@@ -13783,6 +13819,10 @@ PrefabInstance:
     - target: {fileID: 100004, guid: b77f122f451a2394898a24191c26107c, type: 3}
       propertyPath: m_Name
       value: Hellephant (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: b77f122f451a2394898a24191c26107c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: b77f122f451a2394898a24191c26107c, type: 3}
       propertyPath: m_LocalPosition.y

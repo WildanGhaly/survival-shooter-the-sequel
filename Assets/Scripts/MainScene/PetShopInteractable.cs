@@ -42,8 +42,10 @@ public class PetShopInteractable : Interactable
             Destroy(child.gameObject);
         }
         availablePets.Clear();
-        AddPetToShop(new PetData(1, "Pet 1", 256));
-        AddPetToShop(new PetData(2, "Pet 2", 128));
+
+        // TODO: silahkan pet menyesuailan
+        AddPetToShop(new PetData(0, "Pet 1", 256));
+        AddPetToShop(new PetData(1, "Pet 2", 128));
         Debug.Log(availablePets.Count);
 
         foreach (PetData pet in availablePets)
