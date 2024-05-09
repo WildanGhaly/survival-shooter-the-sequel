@@ -21,12 +21,14 @@ public class PauseMenu : MonoBehaviour
     public void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        FindObjectOfType<PauseManager>().Pause();
         Debug.Log("Level Restart");
     }
     public void ExitLevel()
     {
         // diasumsikan ke main level/main menu
         SceneManager.LoadScene(SceneManager.GetSceneByName("Main Menu").buildIndex);
+        FindObjectOfType<PauseManager>().Pause();
         Debug.Log("Level Exit");
     }
 }
