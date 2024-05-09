@@ -5325,8 +5325,8 @@ MonoBehaviour:
   scoreValue: 10
   deathClip: {fileID: 8300000, guid: 1d3bfb9269f136947bf8ac164cace1ff, type: 3}
   currentHealth: 0
-  targetSink: 4
-  waitBeforeSink: 3
+  targetSink: 5
+  waitBeforeSink: 0
 --- !u!114 &7250869958848730889
 MonoBehaviour:
   m_ObjectHideFlags: 0

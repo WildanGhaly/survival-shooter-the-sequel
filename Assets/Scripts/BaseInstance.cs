@@ -28,8 +28,6 @@ public class BaseInstance : MonoBehaviour
 
 	public void AddMultiplierGunDamage(float multiplier)
     {
-		Debug.Log("Multiplier " + multiplier);
-		Debug.Log("Changing the gun damage from " + gunDamage + " * " + multiplierGunDamage + " to " + (multiplierGunDamage + multiplier));
 		multiplierGunDamage += multiplier;
 		if (multiplierGunDamage <= 0) multiplierGunDamage = 0;
     }

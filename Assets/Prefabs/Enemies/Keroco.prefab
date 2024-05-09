@@ -12354,7 +12354,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e9ff9e09dc94844f85749fb2a7e1afa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageMultiplier: 1
   startChase: 1.5
+  damagePerHit: 25
+  saber: {fileID: 2301058407118804500}
 --- !u!114 &8596073780775517094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12730,4 +12733,3 @@ MonoBehaviour:
   eventCollideEnter: 0
   eventCollideStay: 0
   eventCollideExit: 0
-  damagePerHit: 25

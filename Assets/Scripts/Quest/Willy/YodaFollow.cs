@@ -15,11 +15,10 @@ public class YodaFollow : EnemyFollow
     [SerializeField] private float damagePerHit = 30f;
     [SerializeField] private SaberDamage saber;
 
-    public float damageMultiplier = 1f;
 
     public override void AddDamageMultiplier(float value)
     {
-        damageMultiplier += value;
+        base.AddDamageMultiplier(value);
         SetSaberDamage();
     }
 
@@ -30,6 +29,8 @@ public class YodaFollow : EnemyFollow
 
         player = GameObject.FindWithTag("Player").transform;
         enemyStoppingDistance = enemy.stoppingDistance;
+
+        SetSaberDamage();
     }
 
     private void Start()
