@@ -23,7 +23,7 @@ public class WinTrigger : MonoBehaviour
         cutscene.stopped -= OnCutscenePlayed;
         if (cutscenePlayed)
         {
-            SceneManager.LoadScene("MainHall");
+            SceneManager.LoadScene("Closing");
             cutscenePlayed = false;
         }
     }
