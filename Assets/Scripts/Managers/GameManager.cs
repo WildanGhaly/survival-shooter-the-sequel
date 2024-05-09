@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
     public void SaveGame(int id = 1)
     {
         string playerStat = "\"player\": " + JsonUtility.ToJson(PlayerStatistic.INSTANCE);
-        string scene = "\"scene\": {\"name\":\""+ SceneManager.GetActiveScene().name + "\", \"index\": " + SceneManager.GetActiveScene().buildIndex.ToString() + "}"; 
+        string scene = "\"scene\": {\"name\":\""+ SceneManager.GetActiveScene().name + "\", \"index\": " + SceneManager.GetActiveScene().buildIndex.ToString() + ", \"currentQuestID: \"" + currentQuestID.ToString() + ", \"ultimateCount: \"" + ultimateCount.ToString() +"}"; 
         string pointCoint = "\"point\": " + this.point + ", \"coin\":" + this.coin;
 
         string json = "{"+ pointCoint + ", " + playerStat + "," + scene + "}";
@@ -86,6 +86,8 @@ public class GameManager : MonoBehaviour
             // Update GameManager
             point = gameData.point;
             coin = gameData.coin;
+            currentQuestID = gameData.currentQuestID;
+            ultimateCount = gameData.ultimateCount;
 
             // Update Player Statistics
             PlayerStatistic.INSTANCE.setPlayerName(gameData.player.playerName);
@@ -107,6 +109,8 @@ public class GameData
 {
     public int point;
     public int coin;
+    public int currentQuestID;
+    public int ultimateCount;
     public PlayerData player;
     public SceneData scene;
 }
