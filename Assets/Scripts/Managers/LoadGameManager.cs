@@ -49,4 +49,9 @@ public class LoadGameManager : MonoBehaviour
             copyIndexSelected = indexSelected;
         }
     }
+
+    public void EnablePlayerInputManager()
+    {
+        GameObject.FindGameObjectWithTag("Player").GetComponent<InputManager>().enabled = true;
+    }
 }
