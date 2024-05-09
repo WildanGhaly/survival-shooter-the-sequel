@@ -19,12 +19,12 @@ public class CheckLoadWilly2 : MonoBehaviour
 
     public void LoadMap()
     {
-        if (questNumber == 4)
+        if (questNumber >= 4)
         {
             SkipFirstQuest();
         }
 
-        if (questNumber == 5)
+        if (questNumber >= 5)
         {
             SkipSecondQuest();
         }

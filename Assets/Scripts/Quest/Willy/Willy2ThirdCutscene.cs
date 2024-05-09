@@ -20,9 +20,6 @@ public class Willy2ThirdCutscene : MonoBehaviour
 
     void Update()
     {
-        GameManager.INSTANCE.addCoin(100);
-        GameManager.INSTANCE.addPoint(150);
-        GameManager.INSTANCE.updateCurrentQuestID(5);
         if (!isTriggered && GameObject.FindGameObjectWithTag("FinalBoss") == null)
         {
             isTriggered = true;
@@ -40,6 +37,9 @@ public class Willy2ThirdCutscene : MonoBehaviour
 
     IEnumerator StartCutscene()
     {
+        GameManager.INSTANCE.addCoin(100);
+        GameManager.INSTANCE.addPoint(150);
+        GameManager.INSTANCE.updateCurrentQuestID(5);
         SwitchCamera.Instance.SwitchCameraMethod(pCam, cam2, 0.5f);
         Conversation.Instance.StartConversation(dialogues);
         door.SetBool("isOpen", true);

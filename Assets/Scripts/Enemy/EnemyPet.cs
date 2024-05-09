@@ -37,6 +37,11 @@ public class EnemyPet : MonoBehaviour
 
     void Update()
     {
+        if (pointB == null)
+        {
+            Stay();
+            return;
+        }
         GetPositionC(pointA, pointB);
         LookToC(pointC, pointD);
         float distanceToPlayer = Vector3.Distance(pointA.position, pointD.position);

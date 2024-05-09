@@ -16,6 +16,11 @@ public class BossKilledScene : MonoBehaviour
 
     private void OnEnable()
     {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in enemies)
+        {
+            Destroy(enemy);
+        }
         SwitchCamera.Instance.SwitchCameraMethod(playerCam, cutsceneCam, fadeDuration);
         Conversation.Instance.StartConversation(dialogues);
         healthBar.SetActive(false);
