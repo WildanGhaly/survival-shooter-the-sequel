@@ -15,8 +15,16 @@ namespace Nightmare
         bool playerInRange;
         float timer;
 
+        private float damage;
+
+        void SetUpDamage()
+        {
+            damage = attackDamage * GameManager.INSTANCE.multiplier;
+        }
+
         void Awake ()
         {
+            SetUpDamage();
             // Setting up the references.
             player = GameObject.FindGameObjectWithTag ("Player");
             playerHealth = player.GetComponent <PlayerHealth> ();
@@ -83,7 +91,7 @@ namespace Nightmare
             if(HealthSystem.Instance.hitPoint > 0)
             {
                 // ... damage the player.
-                playerHealth.TakeDamage (attackDamage);
+                playerHealth.TakeDamage (damage);
             }
         }
     }
