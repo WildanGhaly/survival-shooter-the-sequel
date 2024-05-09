@@ -22,8 +22,10 @@ public class YodaFollow : EnemyFollow
         SetSaberDamage();
     }
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         enemy = GetComponent<NavMeshAgent>();
         enemyAnimator = GetComponent<Animator>();
 

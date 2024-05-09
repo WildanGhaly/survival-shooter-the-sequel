@@ -57,8 +57,10 @@ public class RajaFollow : EnemyFollow
         SetUpDamage();
     }
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         SetUpDamage();
 
         enemy = GetComponent<NavMeshAgent>();
