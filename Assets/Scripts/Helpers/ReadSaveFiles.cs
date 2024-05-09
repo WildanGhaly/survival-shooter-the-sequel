@@ -10,7 +10,7 @@ public class ReadSaveFiles : MonoBehaviour
 
     public GameObject[] saveSlots;
 
-    void OnEnable()
+    void Update()
     {
         ReadSaveFilesMethod();
     }

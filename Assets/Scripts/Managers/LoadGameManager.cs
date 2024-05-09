@@ -10,6 +10,7 @@ public class LoadGameManager : MonoBehaviour
     public bool[] isSaved = new bool[3];
     public int indexSelected;
     public int copyIndexSelected;
+    public bool copyState = false;
 
     void Start()
     {
@@ -33,7 +34,28 @@ public class LoadGameManager : MonoBehaviour
 
     public void SetIndex(int index)
     {
-        indexSelected = index;
+        if(!copyState){
+            indexSelected = index;
+        }else{
+            copyIndexSelected = index;
+            if (indexSelected != -1 && copyIndexSelected != -1 && copyState){
+
+                Debug.Log("SRC Index " + indexSelected.ToString());
+                Debug.Log("DEST INDEX " + copyIndexSelected.ToString());
+
+                // Read From SRC File
+                string srcPath = Path.Combine(Application.persistentDataPath, "savefile" + (indexSelected + 1).ToString() + ".json");
+
+                // Copy to DEST File
+                string destPath = Path.Combine(Application.persistentDataPath, "savefile" + (copyIndexSelected + 1).ToString() + ".json");
+                
+                if(File.Exists(srcPath))
+                    File.WriteAllText(destPath, File.ReadAllText(srcPath));
+
+                copyState = false;
+                copyIndexSelected = -1;
+            }
+        }
     }
 
     public void Clear()
@@ -52,9 +74,7 @@ public class LoadGameManager : MonoBehaviour
 
     public void Copy()
     {
-        if (indexSelected != -1){
-            copyIndexSelected = indexSelected;
-        }
+        copyState = true;
     }
 
     public void EnablePlayerInputManager()
