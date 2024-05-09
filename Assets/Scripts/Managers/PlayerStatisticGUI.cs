@@ -23,7 +23,12 @@ public class PlayerStatisticGUI : MonoBehaviour
         playerNameValue.SetText(PlayerStatistic.INSTANCE.getPlayerName().ToString() + "'s statistics");
         killCountValue.SetText(PlayerStatistic.INSTANCE.getKillCount().ToString());
         distanceValue.SetText(PlayerStatistic.INSTANCE.getDistance().ToString());
-        hitRatioValue.SetText(PlayerStatistic.INSTANCE.getHitRatio().ToString());
+        if(float.IsNaN(PlayerStatistic.INSTANCE.getHitRatio()))
+        {
+            hitRatioValue.SetText("0%");
+        }else{
+            hitRatioValue.SetText((PlayerStatistic.INSTANCE.getHitRatio() * 100).ToString() + "%");
+        }
         timePlayedValue.SetText(((int) PlayerStatistic.INSTANCE.getTimePlayed()/60).ToString()+ ":"+((int)PlayerStatistic.INSTANCE.getTimePlayed()%60).ToString());
     }
 }
