@@ -12713,11 +12713,11 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 0
+  m_Speed: 4
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 10
+  m_StoppingDistance: 9999
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -12740,7 +12740,7 @@ MonoBehaviour:
   enemy: {fileID: 8500409342375152436}
   enemyAnimator: {fileID: 8968445805404935605}
   player: {fileID: 0}
-  spawningFrequency: 0
+  spawningFrequency: 7
   shootingFrequency: 7
   firstActive: 0
   spawnPoints:
@@ -12751,7 +12751,7 @@ MonoBehaviour:
   enemyPrefab: {fileID: 9172193577678207995, guid: a603436c3324a9641b3399acee08891a, type: 3}
   staff: {fileID: 2832201123622822990}
   bulletPerAttack: 32
-  maxAngle: 19.3
+  maxAngle: 10
   shootRange: 9999
   shootDamage: 10
   boomLaser: {fileID: 6907154261784437212}
@@ -12772,7 +12772,7 @@ MonoBehaviour:
   sinkSpeed: 2.5
   scoreValue: 10
   deathClip: {fileID: 8300000, guid: 8c615fd0429f34edf85539d70279360d, type: 3}
-  currentHealth: 0
+  currentHealth: 200
   healthBar: {fileID: 0}
 --- !u!82 &5429239314587454765
 AudioSource:

@@ -85,6 +85,11 @@ namespace Nightmare
             }
         }
 
+        public void Heal(float amount)
+        {
+            HealthSystem.Instance.SetRegenMultiplier(amount);
+        }
+
         void Death()
         {
             // Set the death flag so this function won't be called again.
