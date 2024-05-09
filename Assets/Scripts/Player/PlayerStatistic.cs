@@ -121,4 +121,12 @@ public class PlayerStatistic : MonoBehaviour
     public int getOrbsCollected(){
         return orbsCollected;
     }
+
+    public void setOrbsCollected(int orbs){
+        orbsCollected = orbs;
+    }
+
+    public void setDeathCount(int count){
+        deathCount = count;
+    }
 }
