@@ -99,7 +99,7 @@ public class GameManager : MonoBehaviour
 
     public void addPoint(int point)
     {
-        this.point = point;
+        this.point += point;
     }
 
     public void updatePointCoin(){
