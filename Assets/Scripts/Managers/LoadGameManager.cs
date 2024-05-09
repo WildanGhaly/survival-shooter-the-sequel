@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class LoadGameManager : MonoBehaviour
@@ -39,6 +40,12 @@ public class LoadGameManager : MonoBehaviour
     {
         if (indexSelected != -1){
             this.isSaved[indexSelected] = false;
+            
+            // Delete the savegamefile
+            string path = Path.Combine(Application.persistentDataPath, "savefile" + (indexSelected + 1).ToString() + ".json");
+
+            File.Delete(path);
+
             SetIndex(-1);
         }
     }
