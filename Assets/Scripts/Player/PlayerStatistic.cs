@@ -15,10 +15,8 @@ public class PlayerStatistic : MonoBehaviour
     protected float updateCountdown = 5f; 
     [SerializeField] private int enemiesKilled = 0;
     [SerializeField] private float time;
-    [SerializeField] private int bulletsShot;
-    [SerializeField] private int bulletsHit;
-    private Vector3 previousPosition;
-    private Vector3 currentPosition;
+    [SerializeField] private int bulletsShot = 0;
+    [SerializeField] private int bulletsHit = 0;
 
     void Awake()
     {
@@ -30,9 +28,7 @@ public class PlayerStatistic : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        previousPosition = transform.position;
         time = 0f;
-        StartCoroutine(CalculateDistance(updateCountdown));
     }
 
     // Update is called once per frame
@@ -73,6 +69,11 @@ public class PlayerStatistic : MonoBehaviour
         distanceReached = dist;
     }
 
+    public void addDistance(float dist)
+    {
+        distanceReached += dist;
+    }
+
     public float getTimePlayed(){
         return time;
     }
@@ -90,23 +91,15 @@ public class PlayerStatistic : MonoBehaviour
         this.bulletsShot = fired;
     }
 
-    public float getHitRatio(){
-        return (float) bulletsHit/ (float) bulletsShot;
+    public void addBulletHit(){
+        bulletsHit++;
     }
 
-    protected virtual IEnumerator CalculateDistance(float count){
-        currentPosition = transform.position;
+    public void addBulletFired(){
+        bulletsShot++;
+    }
 
-        float distance = Vector3.Distance(previousPosition, currentPosition);
-
-        previousPosition = currentPosition;
-
-        distanceReached += distance;
-
-        Debug.Log(distanceReached);
-
-        yield return new WaitForSeconds(count);
-
-        StartCoroutine(CalculateDistance(updateCountdown));
+    public float getHitRatio(){
+        return (float) bulletsHit/ (float) bulletsShot;
     }
 }

@@ -1072,7 +1072,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1383006564}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: LoadGame
         m_Mode: 3
@@ -4706,7 +4706,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1383006564}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: LoadGame
         m_Mode: 3
@@ -4972,7 +4972,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1383006564}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: LoadGame
         m_Mode: 3
@@ -13163,5 +13163,4 @@ SceneRoots:
   - {fileID: 200255459}
   - {fileID: 709039322}
   - {fileID: 47022839}
-  - {fileID: 1383006565}
   - {fileID: 586479227}
