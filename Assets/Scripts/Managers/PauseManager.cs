@@ -14,7 +14,7 @@ public class PauseManager : MonoBehaviour {
     private void Awake()
     {
 		pauseMenu = GameObject.Find("PauseMenu");
-		if (gameObject == null) { Debug.Log("Pause Menu object is not found in scene"); return; }
+		if (pauseMenu == null) { Debug.Log("Pause Menu object is not found in scene"); return; }
 		pauseMenu.SetActive(false);
     }
 
