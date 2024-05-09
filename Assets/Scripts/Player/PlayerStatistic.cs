@@ -17,6 +17,8 @@ public class PlayerStatistic : MonoBehaviour
     [SerializeField] private float time;
     [SerializeField] private int bulletsShot = 0;
     [SerializeField] private int bulletsHit = 0;
+    [SerializeField] private int deathCount = 0;
+    [SerializeField] private int orbsCollected = 0;
 
     void Awake()
     {
@@ -102,5 +104,21 @@ public class PlayerStatistic : MonoBehaviour
 
     public float getHitRatio(){
         return (float) bulletsHit/ (float) bulletsShot;
+    }
+
+    public void addDeathCount(){
+        deathCount++;
+    }
+
+    public int getDeathCount(){
+        return deathCount;
+    }
+
+    public void addOrbsCollected(){
+        orbsCollected++;
+    }
+
+    public int getOrbsCollected(){
+        return orbsCollected;
     }
 }
