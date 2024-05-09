@@ -1261,6 +1261,10 @@ PrefabInstance:
       propertyPath: layer.m_Bits
       value: 243
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 4e5a0d387dc27394b81600988ad0216f, type: 3}
+      propertyPath: shotgunBulletCount
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 11400002, guid: 4e5a0d387dc27394b81600988ad0216f, type: 3}
       propertyPath: runAud
       value: 
@@ -1293,6 +1297,10 @@ PrefabInstance:
       propertyPath: m_Positions.Array.size
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 12000000, guid: 4e5a0d387dc27394b81600988ad0216f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 82c41e979960b474bb384032467f23c0, type: 2}
     - target: {fileID: 12000000, guid: 4e5a0d387dc27394b81600988ad0216f, type: 3}
       propertyPath: m_Positions.Array.data[1].x
       value: 10

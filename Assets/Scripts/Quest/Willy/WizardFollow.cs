@@ -26,14 +26,22 @@ public class WizardFollow : MonoBehaviour
 
     [SerializeField] private AudioSource boomLaser;
 
+    [SerializeField] private float damage;
+
     private float enemySpeed;
     private float enemyStoppingDistance;
 
     private bool isStarted;
     [SerializeField] private bool isBoss = false;
 
+    void SetUpDamage()
+    {
+        damage = shootDamage * GameManager.INSTANCE.multiplier;
+    }
+
     private void Awake()
     {
+        SetUpDamage();
         if (player == null)
         {
             player = GameObject.FindWithTag("Player").transform;
@@ -153,7 +161,7 @@ public class WizardFollow : MonoBehaviour
                 Nightmare.PlayerHealth playerHealth = hit.collider.GetComponent<Nightmare.PlayerHealth>();
                 if (playerHealth != null)
                 {
-                    playerHealth.TakeDamage(shootDamage);
+                    playerHealth.TakeDamage(damage);
                 }
                 targetPoint = hit.point;
             }
