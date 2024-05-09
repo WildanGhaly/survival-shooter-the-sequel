@@ -27,12 +27,32 @@ public class PauseMenu : MonoBehaviour
     public void ExitLevel()
     {
         // diasumsikan ke main level/main menu
+
         FindObjectOfType<PauseManager>().Pause();
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
 
         GameObject.FindGameObjectWithTag("Player").GetComponent<InputManager>().enabled = false;
         Debug.Log("Level Exit");
+
+        if(GameManager.INSTANCE.currentQuestID != 0){
+            SceneManager.LoadScene(3);
+        }else{
+            SceneManager.LoadScene(0);
+        }
+
+    }
+
+    public void ExitGame()
+    {
+        FindObjectOfType<PauseManager>().Pause();
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
+
+        GameObject.FindGameObjectWithTag("Player").GetComponent<InputManager>().enabled = false;
+        Debug.Log("Exit Game");
         SceneManager.LoadScene(0);
     }
+
+
 }
