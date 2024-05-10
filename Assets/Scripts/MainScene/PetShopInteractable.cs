@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using TMPro;
+using UnityEngine.UI;
+using System.IO;
 
 public class PetShopInteractable : Interactable
 {
@@ -10,6 +12,37 @@ public class PetShopInteractable : Interactable
     [SerializeField] private TextMeshProUGUI coinText;
     private int c;
     private List<PetData> availablePets = new List<PetData>();
+
+    void Start()
+    {
+        Debug.Log("Load");
+        Sprite tejoSprite = Resources.Load<Sprite>("Tejo");
+        if (tejoSprite != null)
+        {
+            AddPetToShop(new PetData(0, "Tejo", 256, tejoSprite));
+        }
+
+        Sprite healerSprite = Resources.Load<Sprite>("Healer");
+        if (healerSprite != null)
+        {
+            AddPetToShop(new PetData(1, "Healer", 128, healerSprite));
+        }
+        else
+        {
+            Debug.LogError("Failed to load sprite for Healer");
+        }
+
+        Sprite agusSprite = Resources.Load<Sprite>("Agus");
+        if (agusSprite != null)
+        {
+            AddPetToShop(new PetData(2, "Agus", 200, agusSprite));
+        }
+        else
+        {
+            Debug.LogError("Failed to load sprite for Agus");
+        }
+
+    }
 
     private void Update()
     {
@@ -37,18 +70,10 @@ public class PetShopInteractable : Interactable
 
     private void PopulatePetList()
     {
-        // remove existing game object
         foreach (Transform child in contentPanel)
         {
             Destroy(child.gameObject);
         }
-        availablePets.Clear();
-
-        // TODO: silahkan pet menyesuailan
-        AddPetToShop(new PetData(0, "Tejo", 256));
-        AddPetToShop(new PetData(1, "Healer", 128));
-        AddPetToShop(new PetData(2, "Agus", 200));
-        Debug.Log(availablePets.Count);
 
         foreach (PetData pet in availablePets)
         {
@@ -56,12 +81,14 @@ public class PetShopInteractable : Interactable
             newItem.GetComponent<PetBuy>().SetId(pet.id);
 
             TextMeshProUGUI nameText = newItem.transform.Find("NameText").GetComponent<TextMeshProUGUI>();
+            Image petImage = newItem.transform.Find("Image").GetComponent<Image>();
             TextMeshProUGUI priceText = newItem.transform.Find("PriceText").GetComponent<TextMeshProUGUI>();
 
-            if (nameText != null && priceText != null)
+            if (nameText != null && priceText != null && petImage != null)
             {
                 nameText.text = pet.Name;
                 priceText.text = pet.Price.ToString();
+                petImage.sprite = pet.Image;
             }
         }
     }
@@ -80,13 +107,15 @@ public class PetShopInteractable : Interactable
         public int id;
         public string Name;
         public float Price;
+        public Sprite Image;
 
         // ctor
-        public PetData(int _id, string _name, float _price)
+        public PetData(int _id, string _name, float _price, Sprite _image)
         {
             id = _id;
             Name = _name;
             Price = _price;
+            Image = _image;
         }
     }
 }
