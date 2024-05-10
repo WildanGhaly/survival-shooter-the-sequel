@@ -71,7 +71,7 @@ public class PlayerLook : MonoBehaviour
             playerModel.transform.localRotation = newRotation;
         }
 #else
-
+        /*
                     Vector3 turnDir = new Vector3(CrossPlatformInputManager.GetAxisRaw("Mouse X") , 0f , CrossPlatformInputManager.GetAxisRaw("Mouse Y"));
 
                     if (turnDir != Vector3.zero)
@@ -88,6 +88,7 @@ public class PlayerLook : MonoBehaviour
                         // Set the player's rotation to this new rotation.
                         playerRigidbody.MoveRotation(newRotatation);
                     }
+        */
 #endif
     }
 

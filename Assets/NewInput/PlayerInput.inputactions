@@ -60,15 +60,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Crouch",
-                    "type": "Button",
-                    "id": "8920825f-d5e4-4647-86e8-abbbe6214955",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "ThirdPerson",
                     "type": "Button",
                     "id": "3401770a-db49-4d42-a570-c6c796d1236c",
@@ -90,15 +81,6 @@
                     "name": "IsometricTopDown",
                     "type": "Button",
                     "id": "53a70f8f-b5fc-48ac-97a4-7c67dd4522be",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "FireGranat",
-                    "type": "Button",
-                    "id": "800c0fa6-ae96-4704-91f6-5f91ebe6afd6",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -321,28 +303,6 @@
                 },
                 {
                     "name": "",
-                    "id": "8d1120de-f818-47c5-86d4-9014f2fe7411",
-                    "path": "<Keyboard>/ctrl",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Crouch",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "7feb14e4-c14d-4f0a-a347-a171db14d55e",
-                    "path": "<Gamepad>/buttonEast",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Crouch",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "891c4d22-e0e0-48c5-8f55-9ffeecb5a989",
                     "path": "<Keyboard>/f2",
                     "interactions": "",
@@ -404,28 +364,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "IsometricTopDown",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "32a825ab-6741-4700-bce6-697cf657e5cd",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "FireGranat",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "6457926a-e795-4f08-9644-d462ded22aed",
-                    "path": "<Gamepad>/buttonWest",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "FireGranat",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -509,7 +447,7 @@
                 {
                     "name": "",
                     "id": "35f6378b-c3e7-4ae5-8e9b-b216c213f1d0",
-                    "path": "",
+                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -587,6 +525,17 @@
                     "name": "",
                     "id": "a051127d-32af-4fb0-8b60-e5129281dc4e",
                     "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Ultimate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c90d6b47-f71c-4d45-b666-73cf46379a57",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

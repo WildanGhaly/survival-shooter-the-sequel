@@ -111,6 +111,8 @@ public class MainMenu : MonoBehaviour
         
         File.WriteAllText(filePath, json);
 
+        AudioListener.volume = volume.value;
+
         GameManager.INSTANCE.SetPlayerName(rename.text);
         GameManager.INSTANCE.SetVolume(volume.value);
         GameManager.INSTANCE.UpdateDifficulty(difficulty.value);

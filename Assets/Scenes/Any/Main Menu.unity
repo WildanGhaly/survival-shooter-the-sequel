@@ -499,7 +499,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &48478987
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10763,7 +10763,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1367002966
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12506,7 +12506,7 @@ RectTransform:
   m_Father: {fileID: 1221660551}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -13295,84 +13295,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!1 &1809836381
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1809836384}
-  - component: {fileID: 1809836383}
-  - component: {fileID: 1809836385}
-  m_Layer: 0
-  m_Name: EventSystem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1809836383
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1809836381}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
-  m_sendNavigationEvents: 1
-  m_DragThreshold: 10
---- !u!4 &1809836384
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1809836381}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1809836385
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1809836381}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
-  m_MoveRepeatDelay: 0.5
-  m_MoveRepeatRate: 0.1
-  m_XRTrackingOrigin: {fileID: 0}
-  m_ActionsAsset: {fileID: -944628639613478452, guid: 758c1f0b017b428459468778713860db, type: 3}
-  m_PointAction: {fileID: 4299980756265988204, guid: 758c1f0b017b428459468778713860db, type: 3}
-  m_MoveAction: {fileID: -6918009147613550610, guid: 758c1f0b017b428459468778713860db, type: 3}
-  m_SubmitAction: {fileID: -7628910176675889622, guid: 758c1f0b017b428459468778713860db, type: 3}
-  m_CancelAction: {fileID: 1328439933680207763, guid: 758c1f0b017b428459468778713860db, type: 3}
-  m_LeftClickAction: {fileID: -6849600438156294261, guid: 758c1f0b017b428459468778713860db, type: 3}
-  m_MiddleClickAction: {fileID: -3645237137681560980, guid: 758c1f0b017b428459468778713860db, type: 3}
-  m_RightClickAction: {fileID: -2649383085022196179, guid: 758c1f0b017b428459468778713860db, type: 3}
-  m_ScrollWheelAction: {fileID: -5764332392600976067, guid: 758c1f0b017b428459468778713860db, type: 3}
-  m_TrackedDevicePositionAction: {fileID: -4458555209550958252, guid: 758c1f0b017b428459468778713860db, type: 3}
-  m_TrackedDeviceOrientationAction: {fileID: 3660029592477627234, guid: 758c1f0b017b428459468778713860db, type: 3}
-  m_DeselectOnBackgroundClick: 1
-  m_PointerBehavior: 0
-  m_CursorLockBehavior: 0
 --- !u!1 &1811791791
 GameObject:
   m_ObjectHideFlags: 0
@@ -14973,7 +14895,7 @@ RectTransform:
   m_Father: {fileID: 1340611252}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -15599,7 +15521,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 1940276261}
   - {fileID: 80229945}
-  - {fileID: 1809836384}
   - {fileID: 286359279}
   - {fileID: 321922225}
   - {fileID: 1189027447}

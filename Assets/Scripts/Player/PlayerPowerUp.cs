@@ -7,9 +7,6 @@ public class PlayerPowerUp : MonoBehaviour
     [SerializeField] private bool isIncreaseSpeed;
     [SerializeField] private bool isIncreaseDamage;
 
-    [SerializeField] private float increaseSpeedDuration = 10;
-    [SerializeField] private float increaseDamageDuration = 10;
-
     public static PlayerPowerUp Instance;
 
     private int multiplierCount = 0;
@@ -62,7 +59,7 @@ public class PlayerPowerUp : MonoBehaviour
 
     public void PermanentDamagePowerUp(float multiplier)
     {
-        if (multiplierCount < 15)
+        if (multiplierCount < maxIncreaseDamageCount)
         {
             multiplierCount++;
             BaseInstance.Instance.AddMultiplierGunDamage(multiplier);

@@ -4925,6 +4925,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1241967079}
+  - component: {fileID: 1241967080}
   - component: {fileID: 1241967078}
   m_Layer: 0
   m_Name: Ending Cutscene Timeline
@@ -5050,6 +5051,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1241967080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1241967077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 801ed9c37fe96426e9dda6a036f17ed8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1245059383
 GameObject:
   m_ObjectHideFlags: 0
@@ -8237,6 +8250,10 @@ MonoBehaviour:
   gravity: -9.8
   timeSprint: 0.1
   manaCost: 2
+  sprintSpeedUpMultiplier: 20
+  walkAud: {fileID: 0}
+  runAud: {fileID: 0}
+  jumpAud: {fileID: 0}
   speedModifier: 1
 --- !u!108 &1949139221
 Light:

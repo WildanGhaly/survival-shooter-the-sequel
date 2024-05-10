@@ -32,8 +32,13 @@ public class ReadSaveFiles : MonoBehaviour
                 GameData gameData = JsonUtility.FromJson<GameData>(json);
 
                 saveSlots[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText(gameData.scene.name);
-                saveSlots[i].transform.GetChild(1).GetComponent<TextMeshProUGUI>().SetText(((int)gameData.player.time / 60).ToString() + ":" + ((int)gameData.player.time % 60).ToString());
-                saveSlots[i].transform.GetChild(3).GetComponent<TextMeshProUGUI>().SetText("Quest: " + gameData.scene.currentQuestID.ToString());
+                int totalSeconds = (int)PlayerStatistic.INSTANCE.getTimePlayed();
+                int hours = totalSeconds / 3600;
+                int minutes = (totalSeconds % 3600) / 60;
+                int seconds = totalSeconds % 60;
+
+                saveSlots[i].transform.GetChild(1).GetComponent<TextMeshProUGUI>().SetText($"{hours:D2}:{minutes:D2}:{seconds:D2}");
+                saveSlots[i].transform.GetChild(2).GetComponent<TextMeshProUGUI>().SetText("Quest: " + gameData.scene.currentQuestID.ToString());
                 saveSlots[i].transform.GetChild(3).GetComponent<TextMeshProUGUI>().SetText("$ " + (gameData.point.ToString()) + " / " + (gameData.coin.ToString()));
             }
             else

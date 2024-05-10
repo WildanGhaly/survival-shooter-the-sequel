@@ -3,14 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class UnDestroy : MonoBehaviour
+public class AllSceneManager : MonoBehaviour
 {
+    public static AllSceneManager Instance { get; private set; }
+
     void Awake()
     {
-        GameObject[] sceneManager = GameObject.FindGameObjectsWithTag("SceneManager"); 
-        DontDestroyOnLoad(gameObject);
-        if (sceneManager.Length > 1){
-            Destroy(sceneManager[sceneManager.Length-1]);
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else if (Instance != this)
+        {
+            if (SceneManager.GetActiveScene().buildIndex == 0)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }
