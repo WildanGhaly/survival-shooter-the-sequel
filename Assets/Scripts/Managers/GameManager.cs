@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     public int difficulty = 2;
 
     public Dictionary<int, bool> hasPet = new();
+    private List<float> prices = new List<float> { 256f, 128f, 200f };
 
     public GameObject[] petModel;
 
@@ -161,9 +162,11 @@ public class GameManager : MonoBehaviour
     public void AddPet(int id = 0, float price = 0f)
     {
         // TODO: if tidak cukup maka ga jadi beli :V
-        if (!hasPet.TryGetValue(id, out bool value)){
+        
+        if (!hasPet.TryGetValue(id, out bool value) && coin > prices[id]){
             hasPet.Add(id, true);
-            Debug.Log("yo , di id: " + id + " adalah " + hasPet[id]);
+            coin -= ((int)prices[id]);
+            Debug.Log("Success, remaining coin : " + coin);
             Instantiate(petModel[id], GameObject.FindGameObjectWithTag("Player").transform.position, Quaternion.identity);
         }
     }

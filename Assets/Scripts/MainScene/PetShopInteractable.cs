@@ -7,7 +7,8 @@ public class PetShopInteractable : Interactable
     [SerializeField] private GameObject UI;
     [SerializeField] private Transform contentPanel;
     [SerializeField] private GameObject petItemPrefab;
-
+    [SerializeField] private TextMeshProUGUI coinText;
+    private int c;
     private List<PetData> availablePets = new List<PetData>();
 
     private void Update()
@@ -69,7 +70,11 @@ public class PetShopInteractable : Interactable
     {
         availablePets.Add(pet);
     }
-
+    private void FixedUpdate()
+    {
+        c = GameManager.INSTANCE.coin;
+        coinText.text = $"Coins: {c}";
+    }
     public class PetData
     {
         public int id;
