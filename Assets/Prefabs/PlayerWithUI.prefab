@@ -2273,9 +2273,6 @@ PrefabInstance:
       addedObject: {fileID: 7595637721795260464}
     - targetCorrespondingSourceObject: {fileID: 100006, guid: 4e5a0d387dc27394b81600988ad0216f, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5712904687601725658}
-    - targetCorrespondingSourceObject: {fileID: 100006, guid: 4e5a0d387dc27394b81600988ad0216f, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 4086358274230666451}
     - targetCorrespondingSourceObject: {fileID: 100002, guid: 4e5a0d387dc27394b81600988ad0216f, type: 3}
       insertIndex: -1
@@ -2300,8 +2297,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isIncreaseSpeed: 0
   isIncreaseDamage: 0
-  increaseSpeedDuration: 10
-  increaseDamageDuration: 10
   maxIncreaseDamageCount: 15
 --- !u!114 &7595637721795260464
 MonoBehaviour:
@@ -2324,18 +2319,6 @@ MonoBehaviour:
   pCam: {fileID: 6498003147682016766}
   ultCam: {fileID: 418931129618509842}
   playerModel: {fileID: 3238190465893479302}
---- !u!114 &5712904687601725658
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3238190465890369152}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8614284fdcefc549a8c931833022101, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4086358274230666451
 MonoBehaviour:
   m_ObjectHideFlags: 0
