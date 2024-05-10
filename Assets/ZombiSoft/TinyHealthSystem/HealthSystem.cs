@@ -47,7 +47,10 @@ public class HealthSystem : MonoBehaviour
 		Instance = this;
 		isDeath = false;
 	}
-	
+	public void SetIsDeath(bool cond)
+	{
+		isDeath = cond;
+	}
 	//==============================================================
 	// Awake
 	//==============================================================

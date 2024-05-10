@@ -9,6 +9,8 @@ TagManager:
   - HealthSprite
   - FinalBoss
   - SceneManager
+  - Fade
+  - OpeningCamMaze
   layers:
   - Default
   - TransparentFX

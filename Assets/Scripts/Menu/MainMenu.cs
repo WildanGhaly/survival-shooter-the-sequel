@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 using System.IO;
+using Unity.VisualScripting;
 
 public class MainMenu : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class MainMenu : MonoBehaviour
     public GameObject loadGameCanvas;
     public GameObject settingsCanvas;
     public GameObject statsCanvas;
+    public GameObject fade;
 
 
     public void Start()
@@ -21,13 +23,17 @@ public class MainMenu : MonoBehaviour
         settingsCanvas.SetActive(false);
         loadGameCanvas.SetActive(false);
         statsCanvas.SetActive(false);
-
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        fade = GameObject.Find("Fade");
+        fade.GetComponent<CanvasGroup>().alpha = 0f;
         SetupGeneralSave();
-        
     }
+    
     public void NewGame()
     {
-        SceneManager.LoadScene(1);
+        GameManager.INSTANCE.resetGame();
+        SceneManager.LoadSceneAsync(1);
     }
 
     public void LoadGame()

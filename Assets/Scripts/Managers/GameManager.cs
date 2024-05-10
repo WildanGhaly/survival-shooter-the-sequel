@@ -19,6 +19,15 @@ public class GameManager : MonoBehaviour
 
     public float multiplier = 1f;
     public int difficulty = 2;
+    
+    public void resetGame(){
+        coin = 0;
+        point = 0;
+        currentQuestID = 0;
+        ultimateCount = 0;
+        multiplier = 1f;
+        difficulty = 2;
+    }
 
     public void SetPlayerName(string name)
     {
