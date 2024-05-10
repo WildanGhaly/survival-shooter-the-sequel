@@ -119,7 +119,7 @@ public class GameManager : MonoBehaviour
 
     public void updatePointCoin(){
         point++;
-        coin = (int) ((float) point * 0.8);
+        coin++;
     }
 
     public void SaveGame(int id = 1)
