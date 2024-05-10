@@ -60,22 +60,33 @@ public class MainMenu : MonoBehaviour
     private void SetupGeneralSave()
     {
         string filePath = Path.Combine(Application.persistentDataPath, "generalsave.json");
+        GeneralSave gs;
 
-        if(File.Exists(filePath))
+        if(!File.Exists(filePath))
         {
-            string json = File.ReadAllText(filePath);
-            GeneralSave gs = JsonUtility.FromJson<GeneralSave>(json);
-
-            // Write to GameManager
-            GameManager.INSTANCE.SetPlayerName(gs.playerName);
-            GameManager.INSTANCE.SetVolume(gs.volume);
-            GameManager.INSTANCE.UpdateDifficulty(gs.difficulty);
-
-            // Write to Canvas
-            settingsCanvas.GetComponentInChildren<TMP_InputField>().text = gs.playerName;
-            settingsCanvas.GetComponentInChildren<Slider>().value = gs.volume;
-            settingsCanvas.GetComponentInChildren<TMP_Dropdown>().value = gs.difficulty;
+            gs = new GeneralSave("Player", 0, 0);
+            File.WriteAllText(filePath, JsonUtility.ToJson(gs));
         }
+        gs = JsonUtility.FromJson<GeneralSave>(File.ReadAllText(filePath));
+        // Write to GameManager
+        GameManager.INSTANCE.SetPlayerName(gs.playerName);
+        GameManager.INSTANCE.SetVolume(gs.volume);
+        GameManager.INSTANCE.UpdateDifficulty(gs.difficulty);
+
+        // Write to Canvas
+        settingsCanvas.GetComponentInChildren<TMP_InputField>().text = gs.playerName;
+        settingsCanvas.GetComponentInChildren<Slider>().value = gs.volume;
+        settingsCanvas.GetComponentInChildren<TMP_Dropdown>().value = gs.difficulty;
+        
+        // Write to Player Statistics
+        PlayerStatistic.INSTANCE.setPlayerName(gs.playerData.playerName);
+        PlayerStatistic.INSTANCE.setDistance(gs.playerData.distanceReached);
+        PlayerStatistic.INSTANCE.setEnemiesKilled(gs.playerData.enemiesKilled);
+        PlayerStatistic.INSTANCE.setTimePlayed(gs.playerData.time);
+        PlayerStatistic.INSTANCE.setBulletFired(gs.playerData.bulletsShot);
+        PlayerStatistic.INSTANCE.setBulletHit(gs.playerData.bulletsHit);
+        PlayerStatistic.INSTANCE.setDeathCount(gs.playerData.deathCount);
+        PlayerStatistic.INSTANCE.setOrbsCollected(gs.playerData.orbsCollected);
     }
 
     public void ToMainMenu()
@@ -101,11 +112,21 @@ public class MainMenu : MonoBehaviour
         Slider volume = settingsCanvas.GetComponentInChildren<Slider>();
         TMP_Dropdown difficulty = settingsCanvas.GetComponentInChildren<TMP_Dropdown>();
 
-        GeneralSave gs = new GeneralSave(rename.text, volume.value, difficulty.value);
-
-        string json = JsonUtility.ToJson(gs);
+        GeneralSave gs;
 
         string filePath = Path.Combine(Application.persistentDataPath, "generalsave.json");
+
+        if(File.Exists(filePath))
+        {
+            gs = JsonUtility.FromJson<GeneralSave>(File.ReadAllText(filePath));
+            gs.playerName = rename.text;
+            gs.volume = volume.value;
+            gs.difficulty = difficulty.value;
+        }else{
+            gs = new GeneralSave(rename.text, volume.value, difficulty.value);
+        }
+
+        string json = JsonUtility.ToJson(gs);
         
         File.WriteAllText(filePath, json);
 
@@ -127,6 +148,7 @@ class GeneralSave{
     public string playerName;
     public float volume;
     public int difficulty;
+    public PlayerData playerData;
 
     public GeneralSave(string p, float v, int d)
     {

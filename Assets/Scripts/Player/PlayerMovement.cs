@@ -79,7 +79,7 @@ namespace Nightmare
 
         public void StartSprint()
         {
-            if (!isSprinting)
+            if ((playerVelocity.x != 0 || playerVelocity.z != 0) && !isSprinting)
             {
                 BaseInstance.Instance.AddMultiplierSpeed(sprintSpeedUpMultiplier / 100);
                 isSprinting = true;
@@ -104,6 +104,8 @@ namespace Nightmare
             Vector3 moveDirection = Vector3.zero;
             moveDirection.x = input.x;
             moveDirection.z = input.y;
+            playerVelocity.x = input.x;
+            playerVelocity.z = input.y;
             controller.Move(BaseInstance.Instance.GetCurrentSpeed() * Time.deltaTime * transform.TransformDirection(moveDirection));
 
             playerVelocity.y += gravity * Time.deltaTime * speedModifier;
