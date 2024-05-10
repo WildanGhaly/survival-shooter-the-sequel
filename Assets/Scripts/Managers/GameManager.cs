@@ -29,6 +29,11 @@ public class GameManager : MonoBehaviour
         difficulty = 2;
     }
 
+    public Dictionary<int, bool> hasPet = new();
+    private List<float> prices = new List<float> { 256f, 128f, 200f };
+
+    public GameObject[] petModel;
+
     public void SetPlayerName(string name)
     {
         playerName = name;
@@ -163,6 +168,29 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene(gameData.scene.index); 
         }
 
+    }
+
+    public void AddPet(int id = 0, float price = 0f)
+    {
+        // TODO: if tidak cukup maka ga jadi beli :V
+        
+        if (!hasPet.TryGetValue(id, out bool value) && coin > prices[id]){
+            hasPet.Add(id, true);
+            coin -= ((int)prices[id]);
+            Debug.Log("Success, remaining coin : " + coin);
+            Instantiate(petModel[id], GameObject.FindGameObjectWithTag("Player").transform.position, Quaternion.identity);
+        }
+    }
+
+    public void InitiatePet()
+    {
+        foreach (KeyValuePair<int, bool> pet in hasPet)
+        {
+            if (pet.Value)
+            {
+                Instantiate(petModel[pet.Key], GameObject.FindGameObjectWithTag("Player").transform.position, Quaternion.identity);
+            }
+        }
     }
 }
 
