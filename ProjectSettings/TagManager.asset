@@ -8,6 +8,7 @@ TagManager:
   - ManaSprite
   - HealthSprite
   - FinalBoss
+  - SceneManager
   layers:
   - Default
   - TransparentFX
