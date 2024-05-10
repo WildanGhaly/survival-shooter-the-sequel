@@ -174,7 +174,7 @@ public class GameManager : MonoBehaviour
     {
         // TODO: if tidak cukup maka ga jadi beli :V
         
-        if (!hasPet.TryGetValue(id, out bool value) && coin > prices[id]){
+        if (!hasPet.TryGetValue(id, out bool value) && coin >= prices[id]){
             hasPet.Add(id, true);
             coin -= ((int)prices[id]);
             Debug.Log("Success, remaining coin : " + coin);
