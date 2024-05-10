@@ -7,8 +7,6 @@ public class QuestComplete : Collidable
 {
     [SerializeField] private FinalCutscene finalCutscene;
     [SerializeField] private Animator exitAnimator;
-    [SerializeField] private int sceneIndexTarget = 1;
-    [SerializeField] private float delayExit = 6.25f;
 
     protected override void CollideEnter()
     {
