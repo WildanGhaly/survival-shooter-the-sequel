@@ -29,6 +29,11 @@ public class GameManager : MonoBehaviour
         difficulty = 2;
     }
 
+    public Dictionary<int, bool> hasPet = new();
+    private List<float> prices = new List<float> { 256f, 128f, 200f };
+
+    public GameObject[] petModel;
+
     public void SetPlayerName(string name)
     {
         playerName = name;
@@ -73,6 +78,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         // saveButton.AddListener(() => {SaveGame();});
+        StartCoroutine(updateGeneralSave());
     }
 
     // Update is called once per frame
@@ -113,16 +119,14 @@ public class GameManager : MonoBehaviour
 
     public void updatePointCoin(){
         point++;
-        coin = (int) ((float) point * 0.8);
+        coin++;
     }
 
     public void SaveGame(int id = 1)
     {
-        string playerStat = "\"player\": " + JsonUtility.ToJson(PlayerStatistic.INSTANCE);
         string scene = "\"scene\": {\"name\":\""+ SceneManager.GetActiveScene().name + "\", \"index\": " + SceneManager.GetActiveScene().buildIndex.ToString() + ", \"currentQuestID\": " + currentQuestID.ToString() + ", \"ultimateCount\": " + ultimateCount.ToString() +"}"; 
-        string pointCoint = "\"point\": " + this.point + ", \"coin\":" + this.coin;
-
-        string json = "{"+ pointCoint + ", " + playerStat + "," + scene + "}";
+        string pointCoint = "\"point\": " + this.point + ", \"coin\":" + this.coin + ", \"time\": " + PlayerStatistic.INSTANCE.getTimePlayed();
+        string json = "{"+ pointCoint + ", " + scene + "}";
 
         string path = Path.Combine(Application.persistentDataPath, "savefile"+id+".json");
 
@@ -147,22 +151,64 @@ public class GameManager : MonoBehaviour
             coin = gameData.coin;
             currentQuestID = gameData.scene.currentQuestID;
             ultimateCount = gameData.scene.ultimateCount;
-
-
-            // Update Player Statistics
-            PlayerStatistic.INSTANCE.setPlayerName(gameData.player.playerName);
-            PlayerStatistic.INSTANCE.setDistance(gameData.player.distanceReached);
-            PlayerStatistic.INSTANCE.setEnemiesKilled(gameData.player.enemiesKilled);
-            PlayerStatistic.INSTANCE.setTimePlayed(gameData.player.time);
-            PlayerStatistic.INSTANCE.setBulletFired(gameData.player.bulletsShot);
-            PlayerStatistic.INSTANCE.setBulletHit(gameData.player.bulletsHit);
-            PlayerStatistic.INSTANCE.setDeathCount(gameData.player.deathCount);
-            PlayerStatistic.INSTANCE.setOrbsCollected(gameData.player.orbsCollected);
-
+            
             // Update Scene (TBD)
             SceneManager.LoadScene(gameData.scene.index); 
         }
 
+    }
+
+    public void AddPet(int id = 0, float price = 0f)
+    {
+        // TODO: if tidak cukup maka ga jadi beli :V
+        
+        if (!hasPet.TryGetValue(id, out bool value) && coin > prices[id]){
+            hasPet.Add(id, true);
+            coin -= ((int)prices[id]);
+            Debug.Log("Success, remaining coin : " + coin);
+            Instantiate(petModel[id], GameObject.FindGameObjectWithTag("Player").transform.position, Quaternion.identity);
+        }
+    }
+
+    public void InitiatePet()
+    {
+        foreach (KeyValuePair<int, bool> pet in hasPet)
+        {
+            if (pet.Value)
+            {
+                Instantiate(petModel[pet.Key], GameObject.FindGameObjectWithTag("Player").transform.position, Quaternion.identity);
+            }
+        }
+    }
+
+    public IEnumerator updateGeneralSave()
+    {
+        while(true)
+        {
+            // Update GeneralSave
+            string filePath = Path.Combine(Application.persistentDataPath, "generalsave.json");
+
+            if(File.Exists(filePath) && SceneManager.GetActiveScene().buildIndex > 1)
+            {
+                string generalSaveJSON = File.ReadAllText(filePath);
+                GeneralSave gs = JsonUtility.FromJson<GeneralSave>(generalSaveJSON);
+
+                gs.playerData.playerName = PlayerStatistic.INSTANCE.getPlayerName();
+                gs.playerData.distanceReached = PlayerStatistic.INSTANCE.getDistance();
+                gs.playerData.enemiesKilled = PlayerStatistic.INSTANCE.getKillCount();
+                gs.playerData.time = PlayerStatistic.INSTANCE.getTimePlayed();
+                gs.playerData.bulletsShot = PlayerStatistic.INSTANCE.getBulletFired();
+                gs.playerData.bulletsHit = PlayerStatistic.INSTANCE.getBulletHit();
+                gs.playerData.deathCount = PlayerStatistic.INSTANCE.getDeathCount();
+                gs.playerData.orbsCollected = PlayerStatistic.INSTANCE.getOrbsCollected();
+
+                Debug.Log(JsonUtility.ToJson(gs));
+
+                File.WriteAllText(filePath, JsonUtility.ToJson(gs));
+            }
+
+            yield return new WaitForSeconds(1);
+        }
     }
 }
 
@@ -171,7 +217,7 @@ public class GameData
 {
     public int point;
     public int coin;
-    public PlayerData player;
+    public float time;
     public SceneData scene;
 }
 
@@ -179,7 +225,7 @@ public class GameData
 public class PlayerData
 {
     public string playerName;
-    public int distanceReached;
+    public float distanceReached;
     public int enemiesKilled;
     public float time;
     public int bulletsShot;
