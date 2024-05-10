@@ -125,7 +125,7 @@ public class GameManager : MonoBehaviour
     public void SaveGame(int id = 1)
     {
         string scene = "\"scene\": {\"name\":\""+ SceneManager.GetActiveScene().name + "\", \"index\": " + SceneManager.GetActiveScene().buildIndex.ToString() + ", \"currentQuestID\": " + currentQuestID.ToString() + ", \"ultimateCount\": " + ultimateCount.ToString() +"}"; 
-        string pointCoint = "\"point\": " + this.point + ", \"coin\":" + this.coin + ", \"time\": " + PlayerStatistic.INSTANCE.getTimePlayed();
+        string pointCoint = "\"point\": " + this.point + ", \"coin\":" + this.coin + ", \"time\": \"" + DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss") + "\"";
         string json = "{"+ pointCoint + ", " + scene + "}";
 
         string path = Path.Combine(Application.persistentDataPath, "savefile"+id+".json");
@@ -217,7 +217,7 @@ public class GameData
 {
     public int point;
     public int coin;
-    public float time;
+    public string time;
     public SceneData scene;
 }
 
