@@ -78,6 +78,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         // saveButton.AddListener(() => {SaveGame();});
+        StartCoroutine(updateGeneralSave());
     }
 
     // Update is called once per frame
@@ -123,11 +124,9 @@ public class GameManager : MonoBehaviour
 
     public void SaveGame(int id = 1)
     {
-        string playerStat = "\"player\": " + JsonUtility.ToJson(PlayerStatistic.INSTANCE);
         string scene = "\"scene\": {\"name\":\""+ SceneManager.GetActiveScene().name + "\", \"index\": " + SceneManager.GetActiveScene().buildIndex.ToString() + ", \"currentQuestID\": " + currentQuestID.ToString() + ", \"ultimateCount\": " + ultimateCount.ToString() +"}"; 
-        string pointCoint = "\"point\": " + this.point + ", \"coin\":" + this.coin;
-
-        string json = "{"+ pointCoint + ", " + playerStat + "," + scene + "}";
+        string pointCoint = "\"point\": " + this.point + ", \"coin\":" + this.coin + ", \"time\": " + PlayerStatistic.INSTANCE.getTimePlayed();
+        string json = "{"+ pointCoint + ", " + scene + "}";
 
         string path = Path.Combine(Application.persistentDataPath, "savefile"+id+".json");
 
@@ -152,18 +151,7 @@ public class GameManager : MonoBehaviour
             coin = gameData.coin;
             currentQuestID = gameData.scene.currentQuestID;
             ultimateCount = gameData.scene.ultimateCount;
-
-
-            // Update Player Statistics
-            PlayerStatistic.INSTANCE.setPlayerName(gameData.player.playerName);
-            PlayerStatistic.INSTANCE.setDistance(gameData.player.distanceReached);
-            PlayerStatistic.INSTANCE.setEnemiesKilled(gameData.player.enemiesKilled);
-            PlayerStatistic.INSTANCE.setTimePlayed(gameData.player.time);
-            PlayerStatistic.INSTANCE.setBulletFired(gameData.player.bulletsShot);
-            PlayerStatistic.INSTANCE.setBulletHit(gameData.player.bulletsHit);
-            PlayerStatistic.INSTANCE.setDeathCount(gameData.player.deathCount);
-            PlayerStatistic.INSTANCE.setOrbsCollected(gameData.player.orbsCollected);
-
+            
             // Update Scene (TBD)
             SceneManager.LoadScene(gameData.scene.index); 
         }
@@ -192,6 +180,36 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
+    public IEnumerator updateGeneralSave()
+    {
+        while(true)
+        {
+            // Update GeneralSave
+            string filePath = Path.Combine(Application.persistentDataPath, "generalsave.json");
+
+            if(File.Exists(filePath) && SceneManager.GetActiveScene().buildIndex > 1)
+            {
+                string generalSaveJSON = File.ReadAllText(filePath);
+                GeneralSave gs = JsonUtility.FromJson<GeneralSave>(generalSaveJSON);
+
+                gs.playerData.playerName = PlayerStatistic.INSTANCE.getPlayerName();
+                gs.playerData.distanceReached = PlayerStatistic.INSTANCE.getDistance();
+                gs.playerData.enemiesKilled = PlayerStatistic.INSTANCE.getKillCount();
+                gs.playerData.time = PlayerStatistic.INSTANCE.getTimePlayed();
+                gs.playerData.bulletsShot = PlayerStatistic.INSTANCE.getBulletFired();
+                gs.playerData.bulletsHit = PlayerStatistic.INSTANCE.getBulletHit();
+                gs.playerData.deathCount = PlayerStatistic.INSTANCE.getDeathCount();
+                gs.playerData.orbsCollected = PlayerStatistic.INSTANCE.getOrbsCollected();
+
+                Debug.Log(JsonUtility.ToJson(gs));
+
+                File.WriteAllText(filePath, JsonUtility.ToJson(gs));
+            }
+
+            yield return new WaitForSeconds(1);
+        }
+    }
 }
 
 [Serializable]
@@ -199,7 +217,7 @@ public class GameData
 {
     public int point;
     public int coin;
-    public PlayerData player;
+    public float time;
     public SceneData scene;
 }
 
@@ -207,7 +225,7 @@ public class GameData
 public class PlayerData
 {
     public string playerName;
-    public int distanceReached;
+    public float distanceReached;
     public int enemiesKilled;
     public float time;
     public int bulletsShot;

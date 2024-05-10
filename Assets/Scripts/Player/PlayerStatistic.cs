@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 [Serializable]
@@ -36,7 +37,9 @@ public class PlayerStatistic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        time += Time.deltaTime;
+        if(SceneManager.GetActiveScene().buildIndex > 1){
+            time += Time.deltaTime;
+        }
         playerName = GameManager.INSTANCE.playerName;
     }
 
@@ -100,6 +103,14 @@ public class PlayerStatistic : MonoBehaviour
 
     public void addBulletFired(){
         bulletsShot++;
+    }
+
+    public int getBulletFired(){
+        return bulletsShot;
+    }
+
+    public int getBulletHit(){
+        return bulletsHit;
     }
 
     public float getHitRatio(){
