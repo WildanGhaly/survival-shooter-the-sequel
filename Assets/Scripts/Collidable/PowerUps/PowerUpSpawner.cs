@@ -12,6 +12,7 @@ public class PowerUpSpawner : MonoBehaviour
     }
 
     public List<OrbProbability> orbsWithProbabilities;
+    [SerializeField] private float notSpawnOrb = 0f;
 
     public void TrySpawnOrb()
     {
@@ -20,7 +21,7 @@ public class PowerUpSpawner : MonoBehaviour
         {
             total += orb.probability;
         }
-
+        total += notSpawnOrb;
         float randomPoint = Random.Range(0, total);
 
         foreach (var orb in orbsWithProbabilities)

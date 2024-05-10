@@ -12631,6 +12631,7 @@ GameObject:
   - component: {fileID: 5429239314587454765}
   - component: {fileID: 2321663451884410889}
   - component: {fileID: 1903206127849296516}
+  - component: {fileID: 696659962123431790}
   m_Layer: 0
   m_Name: KepalaKeroco
   m_TagString: Enemy
@@ -12755,6 +12756,7 @@ MonoBehaviour:
   shootRange: 100
   shootDamage: 10
   boomLaser: {fileID: 6907154261784437212}
+  damage: 0
   isBoss: 0
 --- !u!114 &1171882002392269359
 MonoBehaviour:
@@ -12902,6 +12904,30 @@ MonoBehaviour:
   targetSink: 4
   sinkSpeed: 4
   waitBeforeSink: 3
+--- !u!114 &696659962123431790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7668598671086299945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f54de2c872756244bd91650b7e50df9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  orbsWithProbabilities:
+  - orbPrefab: {fileID: 8363414893086624847, guid: ca9dadda73fffd44790bb1ebab680bd2, type: 3}
+    probability: 1
+  - orbPrefab: {fileID: 1196561483885472495, guid: e05ac88bec4511d40ba4a06216a2b205, type: 3}
+    probability: 1
+  - orbPrefab: {fileID: 3002461420310479958, guid: 7db73da8507cb7946a936e0d0bcf72a2, type: 3}
+    probability: 1
+  - orbPrefab: {fileID: 8288017297698150514, guid: 9f960730167cce54788cdcdc21dc256f, type: 3}
+    probability: 1
+  - orbPrefab: {fileID: 1378687163409516870, guid: 6afa191679c96084299d5bc4beddb3e5, type: 3}
+    probability: 1
+  notSpawnOrb: 5
 --- !u!1 &7734327399852227760
 GameObject:
   m_ObjectHideFlags: 0
