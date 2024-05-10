@@ -44,8 +44,9 @@ public class PetShopInteractable : Interactable
         availablePets.Clear();
 
         // TODO: silahkan pet menyesuailan
-        AddPetToShop(new PetData(0, "Pet 1", 256));
-        AddPetToShop(new PetData(1, "Pet 2", 128));
+        AddPetToShop(new PetData(0, "Tejo", 256));
+        AddPetToShop(new PetData(1, "Healer", 128));
+        AddPetToShop(new PetData(2, "Agus", 200));
         Debug.Log(availablePets.Count);
 
         foreach (PetData pet in availablePets)
