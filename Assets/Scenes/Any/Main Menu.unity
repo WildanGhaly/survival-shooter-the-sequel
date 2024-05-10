@@ -2215,7 +2215,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Main Menu
+  m_text: 'Main Hall
 
 '
   m_isRightToLeft: 0
@@ -11652,7 +11652,7 @@ GameObject:
   - component: {fileID: 1535832209}
   - component: {fileID: 1535832208}
   m_Layer: 5
-  m_Name: Go To Main Menu
+  m_Name: Go To Main Hall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

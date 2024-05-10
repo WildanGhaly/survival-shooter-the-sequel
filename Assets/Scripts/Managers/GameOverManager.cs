@@ -31,8 +31,8 @@ namespace Nightmare
         {
             HealthSystem.Instance.SetIsDeath(false);
             gameOverPanel.SetActive(false);
-            fade.SetActive(false);
-            SceneManager.LoadScene(0);
+            fade.SetActive(true);
+            SceneManager.LoadScene(3);
         }
     }
 }
