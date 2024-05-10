@@ -32,7 +32,7 @@ public class ReadSaveFiles : MonoBehaviour
                 GameData gameData = JsonUtility.FromJson<GameData>(json);
 
                 saveSlots[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText(gameData.scene.name);
-                int totalSeconds = (int)PlayerStatistic.INSTANCE.getTimePlayed();
+                int totalSeconds = (int)gameData.player.time;
                 int hours = totalSeconds / 3600;
                 int minutes = (totalSeconds % 3600) / 60;
                 int seconds = totalSeconds % 60;
