@@ -100,6 +100,6 @@ public class StatueHealth : EnemyHealth
 
         yield return new WaitForSeconds(2);
 
-        SceneManager.LoadScene(3); // TODO: Go to main scene
+        SceneManager.LoadScene(4); // TODO: Go to main scene
     }
 } 

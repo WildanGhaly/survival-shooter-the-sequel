@@ -14,7 +14,6 @@ public class MainMenu : MonoBehaviour
     public GameObject loadGameCanvas;
     public GameObject settingsCanvas;
     public GameObject statsCanvas;
-    public GameObject fade;
 
 
     public void Start()
@@ -25,15 +24,14 @@ public class MainMenu : MonoBehaviour
         statsCanvas.SetActive(false);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-        fade = GameObject.Find("Fade");
-        fade.GetComponent<CanvasGroup>().alpha = 0f;
+        SwitchCamera.Instance.SimpleFade(0, 0.5f);
         SetupGeneralSave();
     }
     
     public void NewGame()
     {
         GameManager.INSTANCE.resetGame();
-        SceneManager.LoadSceneAsync(1);
+        SceneManager.LoadScene(2);
     }
 
     public void LoadGame()

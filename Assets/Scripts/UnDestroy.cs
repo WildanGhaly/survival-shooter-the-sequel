@@ -16,10 +16,7 @@ public class AllSceneManager : MonoBehaviour
         }
         else if (Instance != this)
         {
-            if (SceneManager.GetActiveScene().buildIndex == 0)
-            {
-                Destroy(gameObject);
-            }
+
         }
     }
 }

@@ -17,6 +17,6 @@ public class BackToMainHall : MonoBehaviour
         yield return new WaitForSeconds(1f);
         SwitchCamera.Instance.SimpleFade(1,2f);
         yield return new WaitForSeconds(6f);
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(4);
     }
 }

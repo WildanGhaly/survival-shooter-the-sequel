@@ -52,6 +52,6 @@ public class Willy2ThirdCutscene : MonoBehaviour
     {
         SwitchCamera.Instance.SimpleFade(1, 2f);
         yield return new WaitForSeconds(2f);
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(4);
     }
 }

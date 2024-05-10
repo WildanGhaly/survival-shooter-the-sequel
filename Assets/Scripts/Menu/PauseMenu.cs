@@ -36,9 +36,9 @@ public class PauseMenu : MonoBehaviour
         Debug.Log("Level Exit");
 
         if(GameManager.INSTANCE.currentQuestID != 0){
-            SceneManager.LoadScene(3);
+            SceneManager.LoadScene(4);
         }else{
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(1);
         }
 
     }
@@ -51,7 +51,7 @@ public class PauseMenu : MonoBehaviour
 
         GameObject.FindGameObjectWithTag("Player").GetComponent<InputManager>().enabled = false;
         Debug.Log("Exit Game");
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
 

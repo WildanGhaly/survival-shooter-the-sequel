@@ -20,6 +20,6 @@ public class ScriptChangeTest : MonoBehaviour
     IEnumerator ChangeScene()
     {
         yield return new WaitForSeconds(3);
-        SceneManager.LoadScene(4);
+        SceneManager.LoadScene(5);
     }
 }

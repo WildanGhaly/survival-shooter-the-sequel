@@ -14,6 +14,6 @@ public class MoveToFisrtScene : MonoBehaviour
     IEnumerator startScene()
     {
         yield return new WaitForSeconds(27f);
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(3);
     }
 }

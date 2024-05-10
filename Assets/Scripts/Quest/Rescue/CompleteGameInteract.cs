@@ -49,6 +49,6 @@ public class CompleteGameInteract : Interactable
         GameManager.INSTANCE.addCoin(100);
         GameManager.INSTANCE.addPoint(200);
         GameManager.INSTANCE.updateCurrentQuestID(6);
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(4);
     }
 }

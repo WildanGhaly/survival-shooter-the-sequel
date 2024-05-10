@@ -9,7 +9,6 @@ namespace Nightmare
     public class GameOverManager : MonoBehaviour
     {
         [SerializeField] private GameObject gameOverPanel;
-        [SerializeField] private GameObject fade;
         void Update()
         {
             if (HealthSystem.Instance != null && HealthSystem.Instance.isDeath){
@@ -31,12 +30,11 @@ namespace Nightmare
         {
             HealthSystem.Instance.SetIsDeath(false);
             gameOverPanel.SetActive(false);
-            fade.SetActive(false);
 
             if(GameManager.INSTANCE.currentQuestID == 0){
-                SceneManager.LoadScene(0);
+                SceneManager.LoadScene(1);
             }else{
-                SceneManager.LoadScene(3);
+                SceneManager.LoadScene(4);
             }
         }
     }
