@@ -60,12 +60,12 @@ public class InputManager : MonoBehaviour
 
         onFoot.Fire.performed += ctx => gun.GetComponent<PlayerShooting>().StartFire();
         onFoot.Fire.canceled += ctx => gun.GetComponent<PlayerShooting>().StopFire();
-        onFoot.FireGranat.performed += ctx => gun.GetComponent<PlayerShooting>().StartThrowGranat();
-        onFoot.FireGranat.canceled += ctx => gun.GetComponent<PlayerShooting>().StopThrowGranat();
 
         onFoot.PrimaryWeapon.performed += ctx => gun.GetComponent<PlayerShooting>().ChangeWeapon(1);
         onFoot.SecondaryWeapon.performed += ctx => gun.GetComponent<PlayerShooting>().ChangeWeapon(2);
         onFoot.SwordWeapon.performed += ctx => gun.GetComponent<PlayerShooting>().ChangeWeapon(3);
+
+        onFoot.SwitchWeapon.performed += ctx => gun.GetComponent<PlayerShooting>().RollWeapon();
 
         onFoot.Ultimate.performed += ctx => Ultimate();
 

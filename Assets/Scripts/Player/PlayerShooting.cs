@@ -136,6 +136,11 @@ namespace Nightmare
             }
         }
 
+        public void RollWeapon()
+        {
+            ChangeWeapon((weaponId < 3) ? weaponId + 1 : 1);
+        }
+
         public void ChangeWeapon(int id)
         {
             switch (id)
