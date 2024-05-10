@@ -949,6 +949,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ButtonPause
       objectReference: {fileID: 0}
+    - target: {fileID: 11436726, guid: ed59e3bb23f69ce4fb9dc9a59bd1357f, type: 3}
+      propertyPath: m_Color.a
+      value: 0.19607843
+      objectReference: {fileID: 0}
     - target: {fileID: 22410302, guid: ed59e3bb23f69ce4fb9dc9a59bd1357f, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1080,6 +1084,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ButtonUltimate
       objectReference: {fileID: 0}
+    - target: {fileID: 114425277387837950, guid: f718cb37258f70c49856d44a08cd4c7c, type: 3}
+      propertyPath: m_Color.a
+      value: 0.19607843
+      objectReference: {fileID: 0}
     - target: {fileID: 224428426358322408, guid: f718cb37258f70c49856d44a08cd4c7c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1210,6 +1218,10 @@ PrefabInstance:
     - target: {fileID: 1957458824144390, guid: c8247c72d94bcde488a15146d6aaa0c1, type: 3}
       propertyPath: m_Name
       value: ButtonPOVThird
+      objectReference: {fileID: 0}
+    - target: {fileID: 114441996291925248, guid: c8247c72d94bcde488a15146d6aaa0c1, type: 3}
+      propertyPath: m_Color.a
+      value: 0.19607843
       objectReference: {fileID: 0}
     - target: {fileID: 224161643341444744, guid: c8247c72d94bcde488a15146d6aaa0c1, type: 3}
       propertyPath: m_Pivot.x
@@ -1599,6 +1611,10 @@ PrefabInstance:
     - target: {fileID: 1130313291382594, guid: ad02094928ffb0b45b55bb0150064bef, type: 3}
       propertyPath: m_Name
       value: ButtonJump
+      objectReference: {fileID: 0}
+    - target: {fileID: 114644997381122366, guid: ad02094928ffb0b45b55bb0150064bef, type: 3}
+      propertyPath: m_Color.a
+      value: 0.19607843
       objectReference: {fileID: 0}
     - target: {fileID: 224760601006483164, guid: ad02094928ffb0b45b55bb0150064bef, type: 3}
       propertyPath: m_Pivot.x
@@ -2470,6 +2486,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ButtonPOVFirst
       objectReference: {fileID: 0}
+    - target: {fileID: 114441996291925248, guid: c8247c72d94bcde488a15146d6aaa0c1, type: 3}
+      propertyPath: m_Color.a
+      value: 0.19607843
+      objectReference: {fileID: 0}
     - target: {fileID: 224161643341444744, guid: c8247c72d94bcde488a15146d6aaa0c1, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3047,6 +3067,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ButtonChangeWeapon
       objectReference: {fileID: 0}
+    - target: {fileID: 114254327003529294, guid: 92be597db9b1e464589792f236fef97f, type: 3}
+      propertyPath: m_Color.a
+      value: 0.19607843
+      objectReference: {fileID: 0}
     - target: {fileID: 224245318638431358, guid: 92be597db9b1e464589792f236fef97f, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3442,6 +3466,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: JoystickMove
       objectReference: {fileID: 0}
+    - target: {fileID: 114753845697650932, guid: 8e481f790246b3d4d8e7e4ca3a9e0b93, type: 3}
+      propertyPath: m_Color.a
+      value: 0.19607843
+      objectReference: {fileID: 0}
     - target: {fileID: 224500404478422710, guid: 8e481f790246b3d4d8e7e4ca3a9e0b93, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3586,6 +3614,10 @@ PrefabInstance:
     - target: {fileID: 1957458824144390, guid: c8247c72d94bcde488a15146d6aaa0c1, type: 3}
       propertyPath: m_Name
       value: ButtonShoot
+      objectReference: {fileID: 0}
+    - target: {fileID: 114441996291925248, guid: c8247c72d94bcde488a15146d6aaa0c1, type: 3}
+      propertyPath: m_Color.a
+      value: 0.19607843
       objectReference: {fileID: 0}
     - target: {fileID: 224161643341444744, guid: c8247c72d94bcde488a15146d6aaa0c1, type: 3}
       propertyPath: m_Pivot.x
@@ -4088,6 +4120,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ButtonInteract
       objectReference: {fileID: 0}
+    - target: {fileID: 114498235376587320, guid: 8f529982d7403f94f965604f16960e7d, type: 3}
+      propertyPath: m_Color.a
+      value: 0.19607843
+      objectReference: {fileID: 0}
     - target: {fileID: 224737496094207772, guid: 8f529982d7403f94f965604f16960e7d, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -4219,6 +4255,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ButtonSprint
       objectReference: {fileID: 0}
+    - target: {fileID: 114603393335917588, guid: a8f8fc8e200a8384da8c00bacf1c485e, type: 3}
+      propertyPath: m_Color.a
+      value: 0.19607843
+      objectReference: {fileID: 0}
     - target: {fileID: 224851404343325438, guid: a8f8fc8e200a8384da8c00bacf1c485e, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -4349,6 +4389,10 @@ PrefabInstance:
     - target: {fileID: 1957458824144390, guid: c8247c72d94bcde488a15146d6aaa0c1, type: 3}
       propertyPath: m_Name
       value: ButtonPOVTopDown
+      objectReference: {fileID: 0}
+    - target: {fileID: 114441996291925248, guid: c8247c72d94bcde488a15146d6aaa0c1, type: 3}
+      propertyPath: m_Color.a
+      value: 0.19607843
       objectReference: {fileID: 0}
     - target: {fileID: 224161643341444744, guid: c8247c72d94bcde488a15146d6aaa0c1, type: 3}
       propertyPath: m_Pivot.x
