@@ -56,10 +56,7 @@ namespace Nightmare
 
         override protected void Death()
         {
-            EventManager.TriggerEvent("Sound", this.transform.position);
-            PlayerStatistic.INSTANCE.addKill();
-            enemyAudio.clip = deathClip;
-            enemyAudio.Play();
+            base.Death();
             GetComponent<WizardFollow>().enabled = false;
         }
     }
