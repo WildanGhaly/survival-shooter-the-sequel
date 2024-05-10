@@ -8,7 +8,6 @@ public class LavaKill : MonoBehaviour
     // and also opens level design possibility
     private void OnTriggerEnter(Collider other)
     {
-        // FIXME HealthSystem for player is not in Player object but in PlayerUI object
 
         // Kenali dulu siapa yang jatuh, dealdamage sebanyak maxhealth/startinghealth
         if (other.gameObject.name.Contains("Player"))

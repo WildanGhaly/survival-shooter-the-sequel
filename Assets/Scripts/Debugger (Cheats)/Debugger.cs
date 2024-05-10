@@ -24,6 +24,9 @@ namespace Nightmare
 
         public static DebugCommand HELP;
         public static DebugCommand INVULNERABLE;
+        public static DebugCommand KILL_ALL_ENEMY;
+        public static DebugCommand MOTHERLODE;
+        public static DebugCommand<int> COIN;
         public static DebugCommand<float> HEAL;
 
 
@@ -67,14 +70,69 @@ namespace Nightmare
                 HealthSystem.Instance.HealDamage(Amount);
                 Debug.Log($"HEAL {Amount}");
             });
+            KILL_ALL_ENEMY = new DebugCommand("KILL_ALL_ENEMY", "Kill all enemy in the level", "KILL_ALL_ENEMY", () =>
+            {
+                GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+                GameObject[] bosses = GameObject.FindGameObjectsWithTag("FinalBoss");
+                GameObject[] targets = new GameObject[enemies.Length + bosses.Length];
+
+                if (enemies.Length == 0 || bosses.Length == 0)
+                {
+                    Debug.Log("There is no enemy found");
+                    return;
+                }
+
+                enemies.CopyTo(targets, 0);
+                bosses.CopyTo(enemies, enemies.Length);
+
+                foreach (var target in targets)
+                {
+                    if (target.GetComponent<EnemyHealth>() == null)
+                    {
+                        Debug.Log($"Enemy {target.name} does not have a health, destroying immideately");
+                        Destroy(target);
+                    } else
+                    {
+                        target.GetComponent<EnemyHealth>().TakeDamage(target.GetComponent<EnemyHealth>().currentHealth, target.transform.position);
+                    }
+                }
+                Debug.Log($"Killed {targets.Length}");
+            });
+            MOTHERLODE = new DebugCommand("MOTHERLODE", "Gain 99999 Coins", "MOTHERLODE", () =>
+            {
+                GameObject gameManager = GameObject.FindGameObjectWithTag("SceneManager");
+                if (gameManager == null)
+                {
+                    Debug.Log("SceneManager is not found");
+                    return;
+                }
+
+                gameManager.GetComponentInChildren<GameManager>().addCoin(99999);
+                Debug.Log("MOTHERLODE");
+            });
+            COIN = new DebugCommand<int>("COIN", "Gain X number of Coins", "COIN <Amount>", (Amount) =>
+            {
+                GameObject gameManager = GameObject.FindGameObjectWithTag("SceneManager");
+                if (gameManager == null)
+                {
+                    Debug.Log("SceneManager is not found");
+                    return;
+                }
+
+                gameManager.GetComponentInChildren<GameManager>().addCoin(Amount);
+                Debug.Log($"COIN {Amount}");
+            });
 
 
             // Definition of cheat list
             CommandList = new List<object>
             {
+                HELP,
                 INVULNERABLE,
                 HEAL,
-                HELP,
+                KILL_ALL_ENEMY,
+                MOTHERLODE,
+                COIN,
             };
         }
 
@@ -123,6 +181,9 @@ namespace Nightmare
                     } else if ((command as DebugCommand<float>) != null)
                     {
                         (command as DebugCommand<float>)?.Invoke(float.Parse(properties[1]));
+                    } else if ((command as DebugCommand<int>) != null)
+                    {
+                        (command as DebugCommand<int>)?.Invoke(int.Parse(properties[1]));
                     }
                 }
             }

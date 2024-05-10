@@ -50,8 +50,12 @@ public class InputManager : MonoBehaviour
 
         onFoot.Jump.performed += ctx => move.Jump();
 
-        //FIXME!! Sprint depletes even when player is staying still
-        onFoot.Sprint.performed += ctx => move.StartSprint();
+        onFoot.Sprint.performed += ctx => {
+            if (onFoot.Movement.ReadValue<Vector2>() != Vector2.zero)
+            {
+                move.StartSprint();
+            }
+        };
         onFoot.Sprint.canceled += ctx => move.StopSprint();
 
         onFoot.FirstPerson.performed += ctx => SetCameraMode(CameraMode.FirstPerson);
@@ -70,6 +74,7 @@ public class InputManager : MonoBehaviour
         onFoot.Ultimate.performed += ctx => Ultimate();
 
         onFoot.Pause.performed += ctx => { FindObjectOfType<PauseManager>().Pause(); };
+        onFoot.ToggleDebugCheat.performed += ctx => { FindObjectOfType<PauseManager>().Pause(); };
     }
 
     private void FixedUpdate()
