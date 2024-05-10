@@ -13247,7 +13247,7 @@ MonoBehaviour:
     probability: 1
   - orbPrefab: {fileID: 1378687163409516870, guid: 6afa191679c96084299d5bc4beddb3e5, type: 3}
     probability: 1
-  - orbPrefab: {fileID: 69597916902826831, guid: 044723d0e72fb9145a3d1aaf2772cecc, type: 3}
+  - orbPrefab: {fileID: 6091881002628048902, guid: c29d196c01b128144adafbbb74cbaec6, type: 3}
     probability: 1
   notSpawnOrb: 5
 --- !u!82 &2591540039012556237
