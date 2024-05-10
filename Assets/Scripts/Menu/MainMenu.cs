@@ -32,6 +32,7 @@ public class MainMenu : MonoBehaviour
     
     public void NewGame()
     {
+        GameManager.INSTANCE.resetGame();
         SceneManager.LoadSceneAsync(1);
     }
 
