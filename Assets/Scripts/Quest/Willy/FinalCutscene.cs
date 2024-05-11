@@ -7,6 +7,7 @@ public class FinalCutscene : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject playerModel;
     [SerializeField] private GameObject crosshair;
+    [SerializeField] private GameObject target;
 
     private CharacterController characterController;
     private InputManager inputManager;
@@ -33,7 +34,7 @@ public class FinalCutscene : MonoBehaviour
         inputManager.enabled = false;
         meshRenderer.enabled = true;
         player.transform.localPosition = new Vector3(-130, -4, -150);
-        player.transform.localRotation = Quaternion.Euler(0, 255, 0);
+        player.transform.rotation = Quaternion.Euler(0, -115, 0);
         StartCoroutine(OpenFinalGate());
     }
 
