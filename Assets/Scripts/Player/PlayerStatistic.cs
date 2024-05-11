@@ -101,8 +101,8 @@ public class PlayerStatistic : MonoBehaviour
         bulletsHit++;
     }
 
-    public void addBulletFired(){
-        bulletsShot++;
+    public void addBulletFired(int shot = 1){
+        bulletsShot += shot;
     }
 
     public int getBulletFired(){
