@@ -17,7 +17,7 @@ public class CoinsUIUpdate : MonoBehaviour
     {
         if (GameManager.INSTANCE != null)
         {
-            promptText.text = coinsName + GameManager.INSTANCE.point.ToString();
+            promptText.text = coinsName + GameManager.INSTANCE.coin.ToString();
         }
     }
 }
