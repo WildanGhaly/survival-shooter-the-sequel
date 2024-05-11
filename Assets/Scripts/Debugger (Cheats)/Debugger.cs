@@ -29,6 +29,7 @@ namespace Nightmare
         public static DebugCommand MOTHERLODE;
         public static DebugCommand SKIP;
         public static DebugCommand KILL_PET;
+        public static DebugCommand ULTIMATE;
         public static DebugCommand<int> COIN;
         public static DebugCommand<float> HEAL;
         public static DebugCommand<int> LOAD_LEVEL;
@@ -170,8 +171,17 @@ namespace Nightmare
                     Destroy(pet);
                 }
             });
+            ULTIMATE = new DebugCommand("ULTIMATE", "Get 100 ultimate", "ULTIMATE", () =>
+            {
+                GameObject gameManager = GameObject.FindGameObjectWithTag("SceneManager");
+                if (gameManager == null)
+                {
+                    Debug.Log("SceneManager is not found");
+                    return;
+                }
 
-
+                GameManager.INSTANCE.ultimateCount += 100;
+            });
 
             // Definition of cheat list
             CommandList = new List<object>
@@ -183,6 +193,7 @@ namespace Nightmare
                 MOTHERLODE,
                 SKIP,
                 KILL_PET,
+                ULTIMATE,
                 COIN,
                 LOAD_LEVEL,
                 LOAD_QUEST,
