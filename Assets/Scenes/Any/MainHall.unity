@@ -56059,6 +56059,10 @@ MonoBehaviour:
   - {fileID: 1615049629}
   - {fileID: 837466907}
   - {fileID: 424458849}
+  availableSlotName:
+  - {fileID: 1621911517}
+  - {fileID: 1953364487}
+  - {fileID: 789449859}
 --- !u!4 &1590517361 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 467750, guid: a5d47e9cdfeba484f8f8f62f424a717f, type: 3}

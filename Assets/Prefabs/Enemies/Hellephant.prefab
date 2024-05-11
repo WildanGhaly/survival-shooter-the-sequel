@@ -10280,17 +10280,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   orbsWithProbabilities:
   - orbPrefab: {fileID: 8363414893086624847, guid: ca9dadda73fffd44790bb1ebab680bd2, type: 3}
-    probability: 5
+    probability: 1
   - orbPrefab: {fileID: 1196561483885472495, guid: e05ac88bec4511d40ba4a06216a2b205, type: 3}
-    probability: 20
+    probability: 1
   - orbPrefab: {fileID: 3002461420310479958, guid: 7db73da8507cb7946a936e0d0bcf72a2, type: 3}
-    probability: 10
+    probability: 1
   - orbPrefab: {fileID: 8288017297698150514, guid: 9f960730167cce54788cdcdc21dc256f, type: 3}
-    probability: 20
+    probability: 1
   - orbPrefab: {fileID: 1378687163409516870, guid: 6afa191679c96084299d5bc4beddb3e5, type: 3}
-    probability: 15
-  - orbPrefab: {fileID: 0}
-    probability: 30
+    probability: 1
+  - orbPrefab: {fileID: 6091881002628048902, guid: c29d196c01b128144adafbbb74cbaec6, type: 3}
+    probability: 1
+  notSpawnOrb: 5
 --- !u!1 &184534
 GameObject:
   m_ObjectHideFlags: 0

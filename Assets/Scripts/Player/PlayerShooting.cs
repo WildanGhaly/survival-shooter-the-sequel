@@ -74,6 +74,8 @@ namespace Nightmare
         [SerializeField] private float shotgunMaxSpreadAngle = 20f;
   
         private UnityAction listener;
+        private Animator swordAnimator;
+        private Animator shotgunAnimator;
 
         void Awake ()
         {
@@ -87,6 +89,9 @@ namespace Nightmare
             rifleAudio = rifle.GetComponent<AudioSource>();
             shotgunAudio = shotgun.GetComponent<AudioSource>();
             swordAudio = sword.GetComponent<AudioSource>();
+
+            swordAnimator = sword.GetComponent<Animator>();
+            shotgunAnimator = shotgun.GetComponent<Animator>();
 
             AdjustGrenadeStock(0);
 
@@ -245,6 +250,7 @@ namespace Nightmare
                 shotgunBulletShoot += shotgunBulletCount;
                 gunLine.positionCount = shotgunBulletCount * 2;
                 ShootShotgun();
+                shotgunAnimator.SetTrigger("Attack");
                 shotgunAudio.Play();
             }
             else if (weaponId == 3)
@@ -252,9 +258,12 @@ namespace Nightmare
                 swordBulletShoot++;
                 gunLine.positionCount = 2;
                 SwordSlash();
+                swordAnimator.SetTrigger("Attack");
                 swordAudio.Play();
             }
-            PlayerStatistic.INSTANCE.addBulletFired();
+
+            if (weaponId == 2) PlayerStatistic.INSTANCE.addBulletFired(shotgunBulletCount);
+            else PlayerStatistic.INSTANCE.addBulletFired();
         }
 
         void SwordSlash()
