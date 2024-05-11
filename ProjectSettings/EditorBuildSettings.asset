@@ -4,5 +4,38 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Any/StartGame.unity
+    guid: 851d9d6b7204d304a802376e9cbaaaaf
+  - enabled: 1
+    path: Assets/Scenes/Any/Main Menu.unity
+    guid: f053bf737f876664f8ca509dccf080e6
+  - enabled: 1
+    path: Assets/Scenes/Any/Opening.unity
+    guid: b6249fc7c5f944e40a33f23fda523468
+  - enabled: 1
+    path: Assets/Scenes/Any/Adventure.unity
+    guid: 35f06b6daafaa4977b0d75beacd3810b
+  - enabled: 1
+    path: Assets/Scenes/Any/MainHall.unity
+    guid: c031ca43712764cdd8f15f6890804fa4
+  - enabled: 1
+    path: Assets/Scenes/Any/Willy.unity
+    guid: 31ad50ff79a145443b06566380719095
+  - enabled: 1
+    path: Assets/Scenes/Any/Willy2.unity
+    guid: c46c9eba2e0206345940e8a14676545e
+  - enabled: 1
+    path: Assets/Scenes/Any/Scene 5.unity
+    guid: 21b0b95eb2d78804ba1df11716c17a8e
+  - enabled: 1
+    path: Assets/Scenes/Any/Ultra Difficult.unity
+    guid: 793af3b2c42881d4a8b4354bdc26d966
+  - enabled: 1
+    path: Assets/Scenes/Any/Parkour.unity
+    guid: 59d180ccdd531428aba93945ee6e9a28
+  - enabled: 1
+    path: Assets/Scenes/Any/Closing.unity
+    guid: 1f105cbcbc8104c3db3de802ef74ac54
   m_configObjects: {}
