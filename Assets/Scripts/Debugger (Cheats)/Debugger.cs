@@ -27,6 +27,7 @@ namespace Nightmare
         public static DebugCommand INVULNERABLE;
         public static DebugCommand KILL_ALL_ENEMY;
         public static DebugCommand MOTHERLODE;
+        public static DebugCommand SKIP;
         public static DebugCommand<int> COIN;
         public static DebugCommand<float> HEAL;
         public static DebugCommand<int> LOAD_LEVEL;
@@ -126,7 +127,7 @@ namespace Nightmare
             });
             LOAD_LEVEL = new DebugCommand<int>("LOAD_LEVEL", "Directly load level with id X", "LOAD_LEVEL <Index>", (Index) =>
             {
-                SceneManager.LoadScene(Math.Clamp(Index, 0, 10));
+                SceneManager.LoadScene(Math.Clamp(Index, 1, 8));
             });
             LOAD_QUEST = new DebugCommand<int>("LOAD_QUEST", "Directly load quest with id X", "LOAD_QUEST <Index>", (Index) =>
             {
@@ -140,6 +141,18 @@ namespace Nightmare
                 GameManager.INSTANCE.currentQuestID = Index;
                 GameManager.INSTANCE.LoadQuestScene();
             });
+            SKIP = new DebugCommand("SKIP", "Skip current quest and load lobby scene", "SKIP", () =>
+            {
+                GameObject gameManager = GameObject.FindGameObjectWithTag("SceneManager");
+                if (gameManager == null)
+                {
+                    Debug.Log("SceneManager is not found");
+                    return;
+                }
+
+                GameManager.INSTANCE.currentQuestID++;
+                SceneManager.LoadScene(4);
+            });
 
 
             // Definition of cheat list
@@ -150,6 +163,7 @@ namespace Nightmare
                 HEAL,
                 KILL_ALL_ENEMY,
                 MOTHERLODE,
+                SKIP,
                 COIN,
                 LOAD_LEVEL,
                 LOAD_QUEST,

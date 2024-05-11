@@ -41,7 +41,6 @@ public class GameManager : MonoBehaviour
             4 => 6,
             5 => 7,
             6 => 8,
-            7 => 9,
             _ => 4,
         };
         SceneManager.LoadScene(sceneIndex);

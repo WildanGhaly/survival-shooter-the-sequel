@@ -19599,6 +19599,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6925905700636835316, guid: 765afca53a5c31544ad60817c5b4498c, type: 3}
   m_PrefabInstance: {fileID: 1151540857}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1151540861 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3238190465890369158, guid: 765afca53a5c31544ad60817c5b4498c, type: 3}
+  m_PrefabInstance: {fileID: 1151540857}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1152868021
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21603,6 +21608,7 @@ MonoBehaviour:
   inputManager: {fileID: 1991069331}
   cam1: {fileID: 143408106}
   camUI: {fileID: 1555529264}
+  playerModel: {fileID: 1151540861}
 --- !u!1 &1277994018
 GameObject:
   m_ObjectHideFlags: 0
