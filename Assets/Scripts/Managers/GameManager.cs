@@ -19,14 +19,14 @@ public class GameManager : MonoBehaviour
 
     public float multiplier = 1f;
     public int difficulty = 2;
+
+    public string savedName = "Save Game Name";
     
     public void resetGame(){
         coin = 0;
         point = 0;
         currentQuestID = 0;
         ultimateCount = 0;
-        multiplier = 1f;
-        difficulty = 2;
     }
 
     public Dictionary<int, bool> hasPet = new();
@@ -122,9 +122,14 @@ public class GameManager : MonoBehaviour
         coin++;
     }
 
-    public void SaveGame(int id = 1)
+    public void SetName(string name)
     {
-        string scene = "\"scene\": {\"name\":\""+ SceneManager.GetActiveScene().name + "\", \"index\": " + SceneManager.GetActiveScene().buildIndex.ToString() + ", \"currentQuestID\": " + currentQuestID.ToString() + ", \"ultimateCount\": " + ultimateCount.ToString() +"}"; 
+        savedName = name;
+    }
+
+    public void SaveGame(int id = 1, string name = "Save Game Name")
+    {
+        string scene = "\"scene\": {\"name\":\""+ name + "\", \"index\": " + SceneManager.GetActiveScene().buildIndex.ToString() + ", \"currentQuestID\": " + currentQuestID.ToString() + ", \"ultimateCount\": " + ultimateCount.ToString() +"}"; 
         string pointCoint = "\"point\": " + this.point + ", \"coin\":" + this.coin + ", \"time\": \"" + DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss") + "\"";
         string json = "{"+ pointCoint + ", " + scene + "}";
 
@@ -135,7 +140,7 @@ public class GameManager : MonoBehaviour
         Debug.Log(path);
     }
 
-    public void LoadGame(int id)
+    public void LoadGame(int id, string name = null)
     {
         // Get the path
         if(File.Exists(Path.Combine(Application.persistentDataPath, "savefile"+id+".json")))
@@ -149,6 +154,7 @@ public class GameManager : MonoBehaviour
             // Update GameManager
             point = gameData.point;
             coin = gameData.coin;
+            savedName = name ?? gameData.scene.name;
             currentQuestID = gameData.scene.currentQuestID;
             ultimateCount = gameData.scene.ultimateCount;
             
