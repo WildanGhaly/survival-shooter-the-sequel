@@ -7222,7 +7222,7 @@ MonoBehaviour:
   weaponId: 1
   faceLight: {fileID: 3238190465896870820}
   shotgunBulletCount: 20
-  shotgunMaxSpreadAngle: 20
+  shotgunMaxSpreadAngle: 5
 --- !u!108 &3238190465896870822
 Light:
   m_ObjectHideFlags: 0
@@ -10967,6 +10967,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3238190465890394790}
     m_Modifications:
+    - target: {fileID: 2849644033297354174, guid: f7a69565ab2ff984789da792b0969f4b, type: 3}
+      propertyPath: m_Convex
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2849644033297354174, guid: f7a69565ab2ff984789da792b0969f4b, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3537247361575131816, guid: f7a69565ab2ff984789da792b0969f4b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.28
@@ -11007,9 +11015,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3745853452057941777, guid: f7a69565ab2ff984789da792b0969f4b, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4205521026231025682, guid: f7a69565ab2ff984789da792b0969f4b, type: 3}
       propertyPath: m_Name
       value: shotgun_001
+      objectReference: {fileID: 0}
+    - target: {fileID: 4205521026231025682, guid: f7a69565ab2ff984789da792b0969f4b, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4205521026231025682, guid: f7a69565ab2ff984789da792b0969f4b, type: 3}
       propertyPath: m_IsActive

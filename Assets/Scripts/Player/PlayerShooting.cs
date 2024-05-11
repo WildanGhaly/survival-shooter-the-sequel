@@ -373,7 +373,7 @@ namespace Nightmare
                     }
                     else
                     {
-                        gunLine.SetPosition(i * 2 + 1, shootDirection * shotgunRange);
+                        gunLine.SetPosition(i * 2 + 1, transform.position);
                     }
                 }
             }
