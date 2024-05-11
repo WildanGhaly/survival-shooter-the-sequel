@@ -208,7 +208,7 @@ namespace Nightmare
             float y = 0;
             if (showHelp)
             {
-                GUI.Box(new Rect(0, y, Screen.width, 100), "");
+                GUI.Box(new Rect(0, y, Screen.width, (float)(0.1 * Screen.height)), "");
                 
                 Rect viewport = new Rect(0, 0, Screen.width - 30, 20 * CommandList.Count);
 
@@ -225,7 +225,7 @@ namespace Nightmare
                 GUI.EndScrollView();
                 y += 100;
             }
-            GUI.Box(new Rect(0, y, Screen.width, 30), "");
+            GUI.Box(new Rect(0, y, Screen.width, (float)(0.1 * Screen.height)), "");
             GUI.backgroundColor = new Color(0, 0, 0, 0);
 
             input = GUI.TextField(new Rect(10f, y + 5f, Screen.width - 20f, 20f), input);
