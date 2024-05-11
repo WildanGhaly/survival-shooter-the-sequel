@@ -30,6 +30,22 @@ public class GameManager : MonoBehaviour
         hasPet.Clear();
     }
 
+    public void LoadQuestScene()
+    {
+        var sceneIndex = currentQuestID switch
+        {
+            0 => 3,
+            1 => 5,
+            2 => 5,
+            3 => 6,
+            4 => 6,
+            5 => 7,
+            6 => 8,
+            _ => 4,
+        };
+        SceneManager.LoadScene(sceneIndex);
+    }
+
     public Dictionary<int, bool> hasPet = new();
     private List<float> prices = new List<float> { 256f, 128f, 200f };
 

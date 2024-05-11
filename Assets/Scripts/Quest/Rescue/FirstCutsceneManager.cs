@@ -7,6 +7,7 @@ public class FirstCutscene : MonoBehaviour
     [SerializeField] InputManager inputManager;
     [SerializeField] GameObject cam1;
     [SerializeField] GameObject camUI;
+    [SerializeField] GameObject playerModel;
 
     private readonly string[,] dialogues = new string[,]
     {
@@ -26,6 +27,8 @@ public class FirstCutscene : MonoBehaviour
 
     IEnumerator Cutscene()
     {
+        yield return new WaitForFixedUpdate();
+        playerModel.GetComponent<SkinnedMeshRenderer>().enabled = true;
         inputManager.enabled = false;
         Conversation.Instance.StartConversation(dialogues);
         yield return new WaitForSeconds(27);

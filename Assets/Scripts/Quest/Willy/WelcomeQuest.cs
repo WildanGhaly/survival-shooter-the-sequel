@@ -21,7 +21,6 @@ public class WelcomeQuest : MonoBehaviour
 
     void Start()
     {
-        inputManager.enabled = false;
         crosshair.SetActive(false);
         Conversation.Instance.StartConversation(dialogues);
         Conversation.Instance.ConversationEnded += HandleConversationEnd;
@@ -30,7 +29,6 @@ public class WelcomeQuest : MonoBehaviour
 
     void HandleConversationEnd()
     {
-        inputManager.enabled = true;
         SwitchCamera.Instance.SwitchCameraMethod(cameraStart, cameraPlayer, 0.5f);
     }
 

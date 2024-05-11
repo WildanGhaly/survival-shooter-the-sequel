@@ -11,6 +11,7 @@ TagManager:
   - SceneManager
   - Fade
   - OpeningCamMaze
+  - Pet
   layers:
   - Default
   - TransparentFX

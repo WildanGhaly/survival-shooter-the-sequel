@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 namespace Nightmare
 {
@@ -26,9 +27,13 @@ namespace Nightmare
         public static DebugCommand INVULNERABLE;
         public static DebugCommand KILL_ALL_ENEMY;
         public static DebugCommand MOTHERLODE;
+        public static DebugCommand SKIP;
+        public static DebugCommand KILL_PET;
+        public static DebugCommand ULTIMATE;
         public static DebugCommand<int> COIN;
         public static DebugCommand<float> HEAL;
-
+        public static DebugCommand<int> LOAD_LEVEL;
+        public static DebugCommand<int> LOAD_QUEST;
 
         public List<object> CommandList;
 
@@ -122,7 +127,61 @@ namespace Nightmare
                 gameManager.GetComponentInChildren<GameManager>().addCoin(Amount);
                 Debug.Log($"COIN {Amount}");
             });
+            LOAD_LEVEL = new DebugCommand<int>("LOAD_LEVEL", "Directly load level with id X", "LOAD_LEVEL <Index>", (Index) =>
+            {
+                SceneManager.LoadScene(Math.Clamp(Index, 1, 8));
+            });
+            LOAD_QUEST = new DebugCommand<int>("LOAD_QUEST", "Directly load quest with id X", "LOAD_QUEST <Index>", (Index) =>
+            {
+                GameObject gameManager = GameObject.FindGameObjectWithTag("SceneManager");
+                if (gameManager == null)
+                {
+                    Debug.Log("SceneManager is not found");
+                    return;
+                }
 
+                GameManager.INSTANCE.currentQuestID = Index;
+                GameManager.INSTANCE.LoadQuestScene();
+            });
+            SKIP = new DebugCommand("SKIP", "Skip current quest and load lobby scene", "SKIP", () =>
+            {
+                GameObject gameManager = GameObject.FindGameObjectWithTag("SceneManager");
+                if (gameManager == null)
+                {
+                    Debug.Log("SceneManager is not found");
+                    return;
+                }
+
+                GameManager.INSTANCE.currentQuestID++;
+                SceneManager.LoadScene(4);
+            });
+            KILL_PET = new DebugCommand("KILL_PET", "Kill all your pet", "KILL_PET", () =>
+            {
+                GameObject gameManager = GameObject.FindGameObjectWithTag("SceneManager");
+                if (gameManager == null)
+                {
+                    Debug.Log("SceneManager is not found");
+                    return;
+                }
+
+                GameManager.INSTANCE.hasPet.Clear();
+                GameObject[] pets = GameObject.FindGameObjectsWithTag("Pet");
+                foreach (GameObject pet in pets)
+                {
+                    Destroy(pet);
+                }
+            });
+            ULTIMATE = new DebugCommand("ULTIMATE", "Get 100 ultimate", "ULTIMATE", () =>
+            {
+                GameObject gameManager = GameObject.FindGameObjectWithTag("SceneManager");
+                if (gameManager == null)
+                {
+                    Debug.Log("SceneManager is not found");
+                    return;
+                }
+
+                GameManager.INSTANCE.ultimateCount += 100;
+            });
 
             // Definition of cheat list
             CommandList = new List<object>
@@ -132,7 +191,12 @@ namespace Nightmare
                 HEAL,
                 KILL_ALL_ENEMY,
                 MOTHERLODE,
+                SKIP,
+                KILL_PET,
+                ULTIMATE,
                 COIN,
+                LOAD_LEVEL,
+                LOAD_QUEST,
             };
         }
 
