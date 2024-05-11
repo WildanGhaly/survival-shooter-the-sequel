@@ -39,7 +39,7 @@ public class MainMenu : MonoBehaviour
         loadGameCanvas.SetActive(true);
         mainMenuCanvas.SetActive(false);
 
-        loadGameCanvas.GetComponent<ReadSaveFiles>().enabled = true; 
+        loadGameCanvas.GetComponent<ReadSaveFiles>().ReadSaveFilesMethod(); 
     }
 
     public void Stats()
@@ -139,7 +139,12 @@ public class MainMenu : MonoBehaviour
 
     public void LoadGameToScene(int id)
     {
-        GameManager.INSTANCE.LoadGame(id);
+        Transform saveSlotList = loadGameCanvas.transform.GetChild(1);
+        Transform saveSlotId = saveSlotList.GetChild(id - 1);
+        Transform saveGame = saveSlotId.GetChild(0);
+        Transform saveName = saveGame.GetChild(0);
+        string name = saveName.GetComponent<TMP_InputField>().text;
+        GameManager.INSTANCE.LoadGame(id, name);
     }
 }
 
