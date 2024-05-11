@@ -19,6 +19,13 @@ Aplikasi yang dibangun menggunakan library:
 3. Kawaii Slimes (Asset)
 4. Horror Starter Pack (Asset)
 5. Mobile Game GUI Vector Pack
+6. Battle Wizard Poly Art
+7  Cartoon FX Free Pack
+8. ORBS VFX Pack
+9. TinyHealthSystem v1.0
+10. Volumetric Lines
+11. Weapons FREE
+12. Input System 1.7.0
 
 ## Screenshot Game
 ### Main Menu
