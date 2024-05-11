@@ -261,7 +261,9 @@ namespace Nightmare
                 swordAnimator.SetTrigger("Attack");
                 swordAudio.Play();
             }
-            PlayerStatistic.INSTANCE.addBulletFired();
+
+            if (weaponId == 2) PlayerStatistic.INSTANCE.addBulletFired(shotgunBulletCount);
+            else PlayerStatistic.INSTANCE.addBulletFired();
         }
 
         void SwordSlash()
