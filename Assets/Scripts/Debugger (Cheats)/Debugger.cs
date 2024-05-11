@@ -28,6 +28,7 @@ namespace Nightmare
         public static DebugCommand KILL_ALL_ENEMY;
         public static DebugCommand MOTHERLODE;
         public static DebugCommand SKIP;
+        public static DebugCommand KILL_PET;
         public static DebugCommand<int> COIN;
         public static DebugCommand<float> HEAL;
         public static DebugCommand<int> LOAD_LEVEL;
@@ -153,6 +154,23 @@ namespace Nightmare
                 GameManager.INSTANCE.currentQuestID++;
                 SceneManager.LoadScene(4);
             });
+            KILL_PET = new DebugCommand("KILL_PET", "Kill all your pet", "KILL_PET", () =>
+            {
+                GameObject gameManager = GameObject.FindGameObjectWithTag("SceneManager");
+                if (gameManager == null)
+                {
+                    Debug.Log("SceneManager is not found");
+                    return;
+                }
+
+                GameManager.INSTANCE.hasPet.Clear();
+                GameObject[] pets = GameObject.FindGameObjectsWithTag("Pet");
+                foreach (GameObject pet in pets)
+                {
+                    Destroy(pet);
+                }
+            });
+
 
 
             // Definition of cheat list
@@ -164,6 +182,7 @@ namespace Nightmare
                 KILL_ALL_ENEMY,
                 MOTHERLODE,
                 SKIP,
+                KILL_PET,
                 COIN,
                 LOAD_LEVEL,
                 LOAD_QUEST,

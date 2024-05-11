@@ -5085,7 +5085,7 @@ GameObject:
   - component: {fileID: 7250869958848730889}
   m_Layer: 0
   m_Name: Slime_Increase
-  m_TagString: Enemy
+  m_TagString: Pet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5340,6 +5340,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orbsWithProbabilities: []
+  notSpawnOrb: 0
 --- !u!1 &5783515147973438587
 GameObject:
   m_ObjectHideFlags: 0
