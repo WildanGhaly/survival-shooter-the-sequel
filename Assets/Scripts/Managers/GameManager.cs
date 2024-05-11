@@ -25,8 +25,6 @@ public class GameManager : MonoBehaviour
         point = 0;
         currentQuestID = 0;
         ultimateCount = 0;
-        multiplier = 1f;
-        difficulty = 2;
     }
 
     public Dictionary<int, bool> hasPet = new();
