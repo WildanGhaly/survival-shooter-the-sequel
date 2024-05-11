@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
         point = 0;
         currentQuestID = 0;
         ultimateCount = 0;
+        hasPet.Clear();
     }
 
     public Dictionary<int, bool> hasPet = new();
@@ -127,9 +128,15 @@ public class GameManager : MonoBehaviour
         savedName = name;
     }
 
+    private string ConvertPetToJson()
+    {
+        var keys = hasPet.Keys;
+        return "[" + string.Join(", ", keys) + "]";
+    }
+
     public void SaveGame(int id = 1, string name = "Save Game Name")
     {
-        string scene = "\"scene\": {\"name\":\""+ name + "\", \"index\": " + SceneManager.GetActiveScene().buildIndex.ToString() + ", \"currentQuestID\": " + currentQuestID.ToString() + ", \"ultimateCount\": " + ultimateCount.ToString() +"}"; 
+        string scene = "\"scene\": {\"name\":\""+ name + "\", \"index\": " + SceneManager.GetActiveScene().buildIndex.ToString() + ", \"currentQuestID\": " + currentQuestID.ToString() + ", \"ultimateCount\": " + ultimateCount.ToString() +",\"pet\":" + ConvertPetToJson() + "}"; 
         string pointCoint = "\"point\": " + this.point + ", \"coin\":" + this.coin + ", \"time\": \"" + DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss") + "\"";
         string json = "{"+ pointCoint + ", " + scene + "}";
 
@@ -157,6 +164,11 @@ public class GameManager : MonoBehaviour
             savedName = name ?? gameData.scene.name;
             currentQuestID = gameData.scene.currentQuestID;
             ultimateCount = gameData.scene.ultimateCount;
+            hasPet.Clear();
+            foreach (int val in gameData.scene.pet)
+            {
+                AddPet(val);
+            }
             
             // Update Scene (TBD)
             SceneManager.LoadScene(gameData.scene.index); 
@@ -172,7 +184,8 @@ public class GameManager : MonoBehaviour
             hasPet.Add(id, true);
             coin -= ((int)prices[id]);
             Debug.Log("Success, remaining coin : " + coin);
-            Instantiate(petModel[id], GameObject.FindGameObjectWithTag("Player").transform.position, Quaternion.identity);
+            if (GameObject.FindGameObjectWithTag("Player") != null)
+                Instantiate(petModel[id], GameObject.FindGameObjectWithTag("Player").transform.position, Quaternion.identity);
         }
     }
 
@@ -247,4 +260,5 @@ public class SceneData
     public int index;
     public int currentQuestID;
     public int ultimateCount;
+    public List<int> pet;
 }
